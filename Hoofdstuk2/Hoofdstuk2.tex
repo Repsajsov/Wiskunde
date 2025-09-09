@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+\setcounter{section}{1}
+\begin{document}
+
+\begin{center}
+    \Large \textbf{Caleidoscoop Hoofdstuk 2}
+\end{center}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\section{Volledige Inductie}
+
+\subsection{Bewijs met volledige inductie}
+\begin{enumerate}[label=\alph*)]
+    \item $\forall n \in \mathbb{Z}_{\geq 1} : 3^{2n + 1} + 2^{n-1}$ is een $7$-voud.
+        \begin{proof}
+            \textbf{Basis:} Voor $n=1$:
+            \[
+                3^{2(1)+1} + 2^{(1)-1} = 3^3+2^0 = 28 = 7\cdot4
+            \]
+            
+            \textbf{Inductiestap:}
+            Stel de uitspraak is waar voor $n=k$, en bewijs voor $n=k+1$. Gebruik $3^{2k-1}+2^{k-1}=7p$ voor een zeker $p \in \mathbb{Z}$.    
+            \begin{align*}
+                3^{2(k+1)+1} + 2^{(k+1)-1} &= 3^2 \cdot 3^{2k+1} + 2 \cdot 2^{k-1} \\
+                &= 9 \cdot (7p-2^{k-1}) + 2 \cdot 2^{k-1} \quad (\text{Vervang }3^{2n+1} = 7p-2^{n-1} )\\
+                &= 9 \cdot 7p-9 \cdot 2^{k-1} + 2 \cdot 2^{k-1} \\
+                &= 9 \cdot 7p+2^{k-1}(-9+2) \\
+                &= 7 \cdot 9p+7 \cdot 2^{k-1} \\
+                &= 7(9p+2^{k-1})
+            \end{align*}
+            De uitspraak geldt dus ook voor $n=k+1$ en daarmee is het bewijs voltooid.
+        \end{proof}
+    \item Iedere $n \in \mathbb{Z}_{>1}$ is deelbaar door een priemgetal.
+        \begin{proof}
+            \textbf{Basis:} Voor $n=2$ dan $2 | 2$ en $2$ is priem.
+            \textbf{Inductiestap:} Stel de bewering geldt voor alle $2 \leq k < n$, en bewijs voor $n$.
+            Als $n$ priem is dan $p = n$, dus $p | n$. Als $n$ niet priem dan nemen we $a, b \in \mathbb{Z}$ zodanig dat $n=ab \wedge 1 < a, b < n$.
+            Echter aangezien $a < n$ geldt $\exists p \in \mathbb{P} : p | a$ en uit $  a | n$ volgt $p | n$.
+        \end{proof}
+    \item 
+
+    
+\end{enumerate}
+
+
+
+\end{document}
