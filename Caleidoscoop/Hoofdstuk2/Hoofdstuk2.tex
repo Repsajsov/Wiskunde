@@ -48,7 +48,23 @@
             Als $n$ priem is dan $p = n$, dus $p | n$. Als $n$ niet priem dan nemen we $a, b \in \mathbb{Z}$ zodanig dat $n=ab \wedge 1 < a, b < n$.
             Echter aangezien $a < n$ geldt $\exists p \in \mathbb{P} : p | a$ en uit $  a | n$ volgt $p | n$.
         \end{proof}
-    \item 
+    \item Voor alle $x \in \mathbb{R}_{>1}$ geldt: $\forall n \in \mathbb{Z}: (1+x)^n \geq (1+nx)$. 
+        \begin{proof}
+            \textbf{Basis:} Voor $n=1$, dan $(1+x)^1 = 1+(1)x \implies 1 + x = 1+ x$. 
+            \textbf{Inductiestap:} Stel de uitspraak is waar voor $n=k$, bewijs voor $n=k+1$.
+            Vermedigvuldig beide kanten met $(1+x)$ dan:
+                \begin{align*}
+                    (1+x)^k(x+1) &\geq (1 + kx)(x+1) \\
+                    &\geq (1 + x + kx^2 + kx) \\
+                    &> (1+kx +x) \\  
+                    &= (1+(k+1)x)
+                \end{align*}
+                Hieruit volgt dus $(1+x)^{k+1} \geq 1+(k+1)x$. En dat betekent dat de uitspraak juist is.
+        \end{proof}
+    \item $\forall n \in \mathbb{Z}_{\geq 4}: n! > 2^n.$
+    \begin{proof}
+        
+    \end{proof}
 
     
 \end{enumerate}
