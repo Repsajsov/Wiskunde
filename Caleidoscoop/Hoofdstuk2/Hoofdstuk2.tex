@@ -63,11 +63,26 @@
         \end{proof}
     \item $\forall n \in \mathbb{Z}_{\geq 4}: n! > 2^n.$
     \begin{proof}
-        
+        \textbf{Basis:} Voor $n=4$, dan $4! > 2^4 \Leftrightarrow 24 > 16$ en dus klopt de uitspraak voor $n=4$. 
+        \textbf{Inductiestap:} Stel de uitspraak is waar voor $n=k$ en bewijs voor $n=k+1$:
+            \begin{align*}
+                (k+1)! &> 2^{k+1} \\
+                &\Leftrightarrow \\
+                (k+1)(k)! &> 2 \cdot 2^k 
+            \end{align*}
+            Volgens de inductie-hypothese is $k! > 2^k$ en aangezien $k+1\geq 5>2$ is $(k+1)(k)! > 2 \cdot 2^k$ en klopt de uitspraak voor alle $n \geq 4$.
     \end{proof}
-
-    
+    \item $\forall n \in \mathbb{Z}_{>0} : \sum_{i=1}^{n}(2i-1) = n^2$.
+    \textbf{Basis:} Voor $n=1$, dan $\sum_{i=1}^{1}(2i-1)=1 \Leftrightarrow 1^2 = 1$. De uitspraak klopt voor $n=1$.
+    \textbf{Inductiestap:} Stel de uitspraak is waar voor $n=k$ en bewijs voor $n=k+1$. 
+        \begin{align*}
+            \sum_{i=1}^{k+1}(2i-1) &= \sum_{i=1}^{k}(2i-1) + 2(k+1)-1 \\
+            &= k^2+2k+1 \\
+            &= (k+1)^2
+        \end{align*}
+        De uitspraak is dus waar voor $k+1$ en hiermee geldt de uitspraak voor alle $n>0$.
 \end{enumerate}
+\subsection{}
 
 
 

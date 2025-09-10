@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+{\Large \textbf{Wiskundige Structuren Huiswerk}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 1} \hfill \today \\
+Studentnr: \emph{s2911159} 
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\section*{Opgave 1}
+    \begin{enumerate}[label=\alph*)]
+        \item 
+            \begin{proof}
+                Laten we aannemen dat de vergelijking niet klopt door te stellen:
+                \[(A \cap B) \cap (A \setminus B) \neq \emptyset\]
+                Neem een $x \in (A \cap B) \cap (A \setminus B)$ en werk verder uit:
+                \begin{align*}
+                    x \in (A \cap B) \cap (A \setminus B) &\implies (x \in A \wedge x \in B) \wedge (x \in A \wedge x \notin B) \\
+                    &\implies x \in A \wedge (x \in B \wedge x \notin B) \\
+                    &\implies x \in A \wedge x \in \emptyset \\
+                    &\implies A \cap \emptyset = \emptyset
+                \end{align*}
+                Dit is een tegenspraak dus $(A \cap B) \cap (A \setminus B) = \emptyset$.
+            \end{proof}
+        \item
+            \begin{proof}
+                Net zoals bij de vorige vraag stellen we dat de vegelijking niet klopt:
+                \[(A \cap B) \cup (A \setminus B) \neq A\]
+                \begin{align*}
+                    x \in (A \cap B) \cup (A \setminus B) &\implies (x \in A \wedge x \in B) \vee (x \in A \wedge x \notin B) \\
+                    &\implies x \in A \wedge (x \in B \vee x \notin B) \quad (p \wedge q) \vee (p \wedge r) \Leftrightarrow p \wedge (q \vee r) \\
+                    &\implies x \in A \wedge x \in U \\
+                    &\implies A \cap U = A
+                \end{align*}
+                Dit is een tegenspraak dus $(A \cap B) \cup (A \setminus B) = A$.
+            \end{proof}
+    \end{enumerate}
+\section*{Opgave 2}
+    \begin{enumerate}[label=\alph*)]
+        \item 
+            We kijken eerst of $f$ injectief is:
+            \begin{proof}
+                Voor alle $n_1, n_2 \in A : f(n_1) = f(n_2) \implies (n_1)=(n_2)$, en dus: 
+                \begin{align*}
+                    (n_1)^2 &= (n_2)^2 \\ 
+                    \sqrt{(n_1)^2} &= \sqrt{(n_2)^2} \\
+                    n_1 &= n_2 
+                \end{align*}
+                Aangezien $n_1, n_2 \geq 0$ is er een unieke $n$ voor een bepaalde $m \in B$, en dus is $f$ injectief.
+            \end{proof}
+            Nu gaan we kijken of $f$ surjectief is:
+            \begin{proof}
+                $\forall m \in B \ \exists n \in A$ zodanig dat $f(n) = m$.
+                \begin{align*}
+                    f(n) &= m \\ 
+                    n^2 &= m \\ 
+                    n &= \sqrt{m}
+                \end{align*}
+                Hieruit volgt $f(\sqrt{m}) = (\sqrt{m})^2 = m$, en aangezien elk element $m$ dus bereikt kan worden voor een bepaalde $x$ is $f$ surjectief.
+            \end{proof}
+            $f$ is dus zowel injectief als surjectief.
+        \item
+            \begin{proof}
+                Eerst bewijzen we of $g$ injectief is:
+                \[\forall x_1, x_2 \in A : g(x_1) = g(x_2) \implies x_1 = x_2\]
+                Hieruit volgt: 
+                \begin{align*}
+                    g(x_1) &= g(x_2) \\
+                    (x_1)^3 + 5 &= (x_2)^3 + 5 \\ 
+                    (x_1)^3 &= (x_2)^3 \\
+                    x_1 &= x_2 
+                \end{align*}
+                $g$ is dus injectief, nu bewijzen we surjectiviteit:
+                \[\forall y \in B \ \exists x \in A : g(x) = y\]
+                Dus:
+                \begin{align*}
+                    g(x) &= y \\
+                    x^3 + 5 &= y \\
+                    x^3 &= y - 5 \\
+                    x &= \sqrt[3]{y-5}
+                \end{align*}
+                Nu gaan we het controleren:
+                \[g(\sqrt[3]{y-5})=(\sqrt[3]{y-5})^3 + 5 = y-5 + 5 = y\]
+                Dus $g$ is ook surjectief, en aangezien $g$ zowel injectief als surjectief is geldt dat $g$ een bijectie is en een inverse $g^{-1}$ heeft.
+                Nu gaan we de inverse berekenen:
+                \begin{align*}
+                    g(y) &= x \\
+                    y^3 + 5 &= x \\  
+                    y^3 &= x - 5 \\
+                    y &= \sqrt[3]{x-5} = g^{-1}(x)
+                \end{align*}
+
+            \end{proof}
+    \end{enumerate}
+\end{document}
