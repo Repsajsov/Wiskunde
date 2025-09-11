@@ -28,7 +28,6 @@
             \[
                 3^{2(1)+1} + 2^{(1)-1} = 3^3+2^0 = 28 = 7\cdot4
             \]
-            
             \textbf{Inductiestap:}
             Stel de uitspraak is waar voor $n=k$, en bewijs voor $n=k+1$. Gebruik $3^{2k-1}+2^{k-1}=7p$ voor een zeker $p \in \mathbb{Z}$.    
             \begin{align*}
@@ -36,8 +35,8 @@
                 &= 9 \cdot (7p-2^{k-1}) + 2 \cdot 2^{k-1} \quad (\text{Vervang }3^{2n+1} = 7p-2^{n-1} )\\
                 &= 9 \cdot 7p-9 \cdot 2^{k-1} + 2 \cdot 2^{k-1} \\
                 &= 9 \cdot 7p+2^{k-1}(-9+2) \\
-                &= 7 \cdot 9p+7 \cdot 2^{k-1} \\
-                &= 7(9p+2^{k-1})
+                &= 7 \cdot 9p-7 \cdot 2^{k-1} \\
+                &= 7(9p-2^{k-1})
             \end{align*}
             De uitspraak geldt dus ook voor $n=k+1$ en daarmee is het bewijs voltooid.
         \end{proof}
