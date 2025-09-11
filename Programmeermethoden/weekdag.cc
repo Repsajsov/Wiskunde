@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+int main()
+{
   const int januariCumulatief = 31;
   const int februariCumulatief = 59;
   const int maartCumulatief = 90;
@@ -51,10 +52,11 @@ int main() {
   };
 
   int numTests = sizeof(testCases) / sizeof(testCases[0]);
-  string weekdagen[] = {"Dinsdag",  "Woensdag", "Donderdag", "Vrijdag",
-                        "Zaterdag", "Zondag",   "Maandag"};
+  string weekdagen[] = {"Dinsdag", "Woensdag", "Donderdag", "Vrijdag",
+                        "Zaterdag", "Zondag", "Maandag"};
 
-  for (int i = 0; i < numTests; i++) {
+  for (int i = 0; i < numTests; i++)
+  {
     int geboortejaar = testCases[i][0];
     int geboortemaand = testCases[i][1];
     int geboortedag = testCases[i][2];
@@ -68,7 +70,7 @@ int main() {
     // Je originele code hieronder:
     // We tellen vanaf 1904 (Het eerste schrikkeljaar) we voegen +1 toe omdat we
     // 1904 niet meetellen
-    int dagenVanaf1901 =
+    int aantalDagen =
         (geboortejaar - 1901) * 365 + (((geboortejaar)-1904) + 1) / 4;
     cout << "Aantal schrikkeljaren: " << (((geboortejaar)-1904) / 4) << endl;
     bool isSchrikkeljaar =
@@ -76,40 +78,44 @@ int main() {
          geboortejaar % 400 == 0);
     // Correctie aangezien 2100 geen schrikkeljaar is
     if (geboortejaar >= 2100)
-      dagenVanaf1901--;
-    if (geboortemaand == 1) {
-      dagenVanaf1901 += geboortedag;
+      aantalDagen--;
+    if (geboortemaand == 1)
+    {
+      aantalDagen += geboortedag;
       if (isSchrikkeljaar)
-        dagenVanaf1901--;
-    } else if (geboortemaand == 2) {
-      dagenVanaf1901 += januariCumulatief + geboortedag;
+        aantalDagen--;
+    }
+    else if (geboortemaand == 2)
+    {
+      aantalDagen += januariCumulatief + geboortedag;
       if (isSchrikkeljaar && geboortedag < 29)
-        dagenVanaf1901--;
-    } else if (geboortemaand == 3)
-      dagenVanaf1901 += februariCumulatief + geboortedag;
+        aantalDagen--;
+    }
+    else if (geboortemaand == 3)
+      aantalDagen += februariCumulatief + geboortedag;
     else if (geboortemaand == 4)
-      dagenVanaf1901 += maartCumulatief + geboortedag;
+      aantalDagen += maartCumulatief + geboortedag;
     else if (geboortemaand == 5)
-      dagenVanaf1901 += aprilCumulatief + geboortedag;
+      aantalDagen += aprilCumulatief + geboortedag;
     else if (geboortemaand == 6)
-      dagenVanaf1901 += meiCumulatief + geboortedag;
+      aantalDagen += meiCumulatief + geboortedag;
     else if (geboortemaand == 7)
-      dagenVanaf1901 += juniCumulatief + geboortedag;
+      aantalDagen += juniCumulatief + geboortedag;
     else if (geboortemaand == 8)
-      dagenVanaf1901 += juliCumulatief + geboortedag;
+      aantalDagen += juliCumulatief + geboortedag;
     else if (geboortemaand == 9)
-      dagenVanaf1901 += augustusCumulatief + geboortedag;
+      aantalDagen += augustusCumulatief + geboortedag;
     else if (geboortemaand == 10)
-      dagenVanaf1901 += septemberCumulatief + geboortedag;
+      aantalDagen += septemberCumulatief + geboortedag;
     else if (geboortemaand == 11)
-      dagenVanaf1901 += oktoberCumulatief + geboortedag;
+      aantalDagen += oktoberCumulatief + geboortedag;
     else if (geboortemaand == 12)
-      dagenVanaf1901 += novemberCumulatief + geboortedag;
+      aantalDagen += novemberCumulatief + geboortedag;
     // Correctie aangezien we altijd op 1 januari eindigen en cumalatief het dus
     // 1 dag teveel optelt
-    dagenVanaf1901--;
+    aantalDagen--;
 
-    int berekendWeekdag = dagenVanaf1901 % 7;
+    int berekendWeekdag = aantalDagen % 7;
     cout << "Berekend: " << berekendWeekdag << " ("
          << weekdagen[berekendWeekdag] << ")" << endl;
     cout << "CORRECT: " << (berekendWeekdag == verwachteWeekdag ? "JA" : "NEE")
