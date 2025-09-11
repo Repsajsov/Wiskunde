@@ -43,7 +43,7 @@ int main()
     }
     else
     {
-      cout << "Gefeliciteerd met je ver(maand)dag!" << endl;
+      cout << "Gefeliciteerd met je ver(maand)jaardag!" << endl;
     }
   }
 
@@ -116,9 +116,9 @@ int main()
   int antwoordBetaGebruiker;
   int antwoordBeta;
 
-  const int coefA = (rand() % 10) + 1;
-  const int coefB = (rand() % 10) + 1;
-  const int coefC = (rand() % 10) + 1;
+  const int coefA = (rand() % 1000000) + 1;
+  const int coefB = (rand() % 1000000) + 1;
+  const int coefC = (rand() % 1000000) + 1;
 
   int discriminant = (coefB * coefB - 4 * coefA * coefC);
   cout << coefA << "x^2 + " << coefB << "x + " << coefC << endl;
@@ -140,39 +140,63 @@ int main()
 
   if (antwoordBetaGebruiker == antwoordBeta)
   {
-    cout << "Correct!" << endl;
+    if (jarenOudDecimaal >= 30)
+    {
+      cout << "Correct! U bent aangenomen voor de studie! Gefeliciteerd!!!" << endl;
+    }
+    else
+    {
+      cout << "Goed gedaan... Je bent aangenomen..." << endl;
+    }
+    return 0;
   }
   else
   {
-    cout << "Fout!" << endl;
-    return 1;
+    if (jarenOudDecimaal >= 30)
+    {
+      cout << "U heeft een incorrect antwoord gegeven." << endl;
+    }
+    else
+    {
+      cout << "Onjuist! Haha!!" << endl;
+    }
   }
 
   // Alpha vraag
-  if (jarenOudDecimaal > 30)
-  {
-    cout << "Heeft u enig idee welke artiest de nachtwacht heeft geschilderd?" << endl;
-  }
-  else
-  {
-    cout << "Wie heeft de nachtwacht geschilderd!?" << endl;
-  }
-  cout << "A) Rembrandt" << endl;
-  cout << "B) Van Gogh" << endl;
-  cout << "C) Rubens" << endl;
-  cout << "Vul in (A, B, of C)" << endl;
-
   char antwoordAlphaGebruiker;
   char antwoordAlpha = 'A';
-  cin >> antwoordAlphaGebruiker;
-
-  if (antwoordAlpha == antwoordAlphaGebruiker)
+  if (jarenOudDecimaal >= 30)
   {
-    cout << "Correct!" << endl;
+    cout << "Heeft u enig idee welke bekende schilder de nachtwacht heeft geschilderd?" << endl;
+    cout << "A) Rembrandt" << endl;
+    cout << "B) Van Gogh" << endl;
+    cout << "C) Rubens" << endl;
+    cout << "Vul in: (A, B, of C)" << endl;
+    cin >> antwoordAlphaGebruiker;
+    cout << "Het juiste antwoord was B: Rembrandt." << endl;
+    if (antwoordAlpha == antwoordAlphaGebruiker)
+    {
+      cout << "U heeft het correcte antwoord gegeven! U bent daarmee aangenomen voor een willekeurige alpha studie!" << endl;
+      return 0;
+    }
+    cout << "U heeft het jammer genoeg incorrect en komt niet in aanmerking voor een universitaire studie." << endl;
+    return 1;
   }
   else
   {
-    cout << "Fout!" << endl;
+    cout << "Legolas speelt in welke filmreeks?" << endl;
+    cout << "A) Lord of the Rings" << endl;
+    cout << "B) Harry Potter" << endl;
+    cout << "C) Game of Thrones" << endl;
+    cout << "Vul in: (A, B, of C)" << endl;
+    cin >> antwoordAlphaGebruiker;
+    cout << "Het juiste antwoord was B: Lord of the Rings." << endl;
+    if (antwoordAlpha == antwoordAlphaGebruiker)
+    {
+      cout << "Goed gedaan! je kunt nu een alpha studie doen... " << endl;
+      return 0;
+    }
+    cout << "Ga maar in de werken want de universiteit is niks voor jou." << endl;
     return 1;
   }
 
