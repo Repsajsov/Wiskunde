@@ -1,8 +1,10 @@
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 int main()
 {
+  srand(time(0));
   const int maandenInJaar = 12;
   const int huidigJaar = 2025;
   const int huidigeMaand = 9;
@@ -15,6 +17,10 @@ int main()
   // Leeftijd invullen
   cout << "Wat is uw geboortejaar:" << endl;
   cin >> geboortejaar;
+  if (huidigJaar - geboortejaar > 100 || huidigJaar - geboortejaar < 10)
+  {
+    return 1;
+  }
   cout << "Wat is uw geboortemaand:" << endl;
   cin >> geboortemaand;
   cout << "Wat is uw geboortedag:" << endl;
@@ -22,7 +28,9 @@ int main()
 
   // Leeftijd berekenen
   int maandenOud = (maandenInJaar - geboortemaand) +
-                   ((huidigJaar - (geboortejaar + 1)) * 12) + huidigeMaand;
+                   ((huidigJaar - (geboortejaar + 1)) * 12) +
+                   huidigeMaand;
+  cout << maandenOud << endl;
   if (huidigeDag < geboortedag)
   {
     maandenOud--;
@@ -35,7 +43,7 @@ int main()
 
   // Eventuele feestdagen
   if (huidigeDag == geboortedag ||
-      (huidigeMaand == geboortemaand) && (huidigeDag == geboortedag))
+      ((huidigeMaand == geboortemaand) && (huidigeDag == geboortedag)))
   {
     if (jarenOudDecimaal >= 30)
     {
@@ -96,7 +104,7 @@ int main()
 
   // Geboorteweekdag controle
   char eersteLetter;
-  char tweedeLetter;
+  char tweedeLetter = 'x';
   if (jarenOudDecimaal >= 30)
     cout << "Op welke weekdag bent u geboren? (m, di, w, do, v, za, zo):" << endl;
   else
@@ -108,6 +116,60 @@ int main()
     cout << "Tweede letter:" << endl;
     cin >> tweedeLetter;
   }
+  if (eersteLetter == 'm' && tweedeLetter == 'x')
+  {
+    if (aantalDagen % 7 == 6)
+    {
+      cout << "Correct" << endl;
+    }
+  }
+  else if (eersteLetter == 'd' && tweedeLetter == 'i')
+  {
+    if (aantalDagen % 7 == 0)
+    {
+      cout << "Correct" << endl;
+    }
+  }
+  else if (eersteLetter == 'w' && tweedeLetter == 'x')
+  {
+    if (aantalDagen % 7 == 1)
+    {
+      cout << "Correct" << endl;
+    }
+  }
+  else if (eersteLetter == 'd' && tweedeLetter == 'o')
+  {
+
+    if (aantalDagen % 7 == 2)
+    {
+      cout << "Correct" << endl;
+    }
+  }
+  else if (eersteLetter == 'v' && tweedeLetter == 'x')
+  {
+
+    if (aantalDagen % 7 == 3)
+    {
+      cout << "Correct" << endl;
+    }
+  }
+  else if (eersteLetter == 'z' && tweedeLetter == 'a')
+  {
+
+    if (aantalDagen % 7 == 4)
+    {
+      cout << "Correct" << endl;
+    }
+  }
+  else if (eersteLetter == 'z' && tweedeLetter == 'o')
+  {
+
+    if (aantalDagen % 7 == 5)
+    {
+      cout << "Correct" << endl;
+    }
+  }
+  cout << aantalDagen % 7 << endl;
   // cout << "Weekdag: " << aantalDagen % 7 << endl;
 
   // Check of de weekdag overeenkomt
@@ -173,7 +235,7 @@ int main()
     cout << "C) Rubens" << endl;
     cout << "Vul in: (A, B, of C)" << endl;
     cin >> antwoordAlphaGebruiker;
-    cout << "Het juiste antwoord was B: Rembrandt." << endl;
+    cout << "Het juiste antwoord was A: Rembrandt." << endl;
     if (antwoordAlpha == antwoordAlphaGebruiker)
     {
       cout << "U heeft het correcte antwoord gegeven! U bent daarmee aangenomen voor een willekeurige alpha studie!" << endl;
@@ -190,7 +252,7 @@ int main()
     cout << "C) Game of Thrones" << endl;
     cout << "Vul in: (A, B, of C)" << endl;
     cin >> antwoordAlphaGebruiker;
-    cout << "Het juiste antwoord was B: Lord of the Rings." << endl;
+    cout << "Het juiste antwoord was A: Lord of the Rings." << endl;
     if (antwoordAlpha == antwoordAlphaGebruiker)
     {
       cout << "Goed gedaan! je kunt nu een alpha studie doen... " << endl;
