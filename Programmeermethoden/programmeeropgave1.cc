@@ -1,9 +1,16 @@
+// Programmeeropgave I
+
+// Auteur: Jasper Vos
+// Studentnr: s2911159
+// Compilerversie: g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+
 #include <iostream>
 #include <ctime>
 using namespace std;
 
 int main()
 {
+  // Voor de coefficienten bij de ABC-formule
   srand(time(0));
   const int maandenInJaar = 12;
   const int huidigJaar = 2025;
@@ -17,10 +24,9 @@ int main()
   // Leeftijd invullen
   cout << "Wat is uw geboortejaar:" << endl;
   cin >> geboortejaar;
+  // Ruwe leeftijdscontrole
   if (huidigJaar - geboortejaar > 100 || huidigJaar - geboortejaar < 10)
-  {
     return 1;
-  }
   cout << "Wat is uw geboortemaand:" << endl;
   cin >> geboortemaand;
   cout << "Wat is uw geboortedag:" << endl;
@@ -32,9 +38,8 @@ int main()
                    huidigeMaand;
   cout << maandenOud << endl;
   if (huidigeDag < geboortedag)
-  {
     maandenOud--;
-  }
+
   int jarenOud = maandenOud / maandenInJaar;
   float jarenOudDecimaal = maandenOud / 12.f;
 
@@ -46,13 +51,9 @@ int main()
       ((huidigeMaand == geboortemaand) && (huidigeDag == geboortedag)))
   {
     if (jarenOudDecimaal >= 30)
-    {
       cout << "Gefeliciteerd met uw ver(maand)jaardag!" << endl;
-    }
     else
-    {
       cout << "Gefeliciteerd met je ver(maand)jaardag!" << endl;
-    }
   }
 
   // Leeftijdscontrole
@@ -67,12 +68,10 @@ int main()
     return 1;
   }
 
-  // Aantal schrikkeljaren tussen 1901 en het geboortejaar
+  // Bereken het aantal dagen tussen 01-01-1901 tot het geboortejaar
   int aantalSchrikkeljaren = (((geboortejaar - 1) / 4) * 4 - 1904) / 4;
   int aantalDagen =
       (geboortejaar - 1901) * 365 + aantalSchrikkeljaren;
-
-  // cout << "Aantal schrikkeljaren: " << aantalSchrikkeljaren << endl;
 
   if (geboortemaand == 1)
     aantalDagen += geboortedag;
@@ -102,7 +101,7 @@ int main()
   if (((geboortejaar % 4 == 0 && geboortejaar % 100 != 0) || geboortejaar % 400 == 0) && geboortemaand > 2)
     aantalDagen++;
 
-  // Geboorteweekdag controle
+  // Controleer de weekdag van de geboortedag
   char eersteLetter;
   char tweedeLetter = 'x';
   if (jarenOudDecimaal >= 30)
@@ -116,84 +115,44 @@ int main()
     cout << "Tweede letter:" << endl;
     cin >> tweedeLetter;
   }
-  if (eersteLetter == 'm' && tweedeLetter == 'x')
-  {
-    if (aantalDagen % 7 == 6)
-    {
-      cout << "Correct" << endl;
-    }
-  }
-  else if (eersteLetter == 'd' && tweedeLetter == 'i')
-  {
-    if (aantalDagen % 7 == 0)
-    {
-      cout << "Correct" << endl;
-    }
-  }
-  else if (eersteLetter == 'w' && tweedeLetter == 'x')
-  {
-    if (aantalDagen % 7 == 1)
-    {
-      cout << "Correct" << endl;
-    }
-  }
-  else if (eersteLetter == 'd' && tweedeLetter == 'o')
-  {
+  int weekdag = aantalDagen % 7;
+  if ((eersteLetter == 'm' && tweedeLetter == 'x' && weekdag != 6) ||
+      (eersteLetter == 'd' && tweedeLetter == 'i' && weekdag != 0) ||
+      (eersteLetter == 'w' && tweedeLetter == 'x' && weekdag != 1) ||
+      (eersteLetter == 'd' && tweedeLetter == 'o' && weekdag != 2) ||
+      (eersteLetter == 'v' && tweedeLetter == 'x' && weekdag != 3) ||
+      (eersteLetter == 'z' && tweedeLetter == 'z' && weekdag != 4) ||
+      (eersteLetter == 'z' && tweedeLetter == 'o' && weekdag != 5))
+    return 1;
 
-    if (aantalDagen % 7 == 2)
-    {
-      cout << "Correct" << endl;
-    }
-  }
-  else if (eersteLetter == 'v' && tweedeLetter == 'x')
-  {
-
-    if (aantalDagen % 7 == 3)
-    {
-      cout << "Correct" << endl;
-    }
-  }
-  else if (eersteLetter == 'z' && tweedeLetter == 'a')
-  {
-
-    if (aantalDagen % 7 == 4)
-    {
-      cout << "Correct" << endl;
-    }
-  }
-  else if (eersteLetter == 'z' && tweedeLetter == 'o')
-  {
-
-    if (aantalDagen % 7 == 5)
-    {
-      cout << "Correct" << endl;
-    }
-  }
-  cout << aantalDagen % 7 << endl;
-  // cout << "Weekdag: " << aantalDagen % 7 << endl;
-
-  // Check of de weekdag overeenkomt
-
-  // Beta vraag
+  // Vraag voor toelating beta studie
   int antwoordBetaGebruiker;
   int antwoordBeta;
 
-  const int coefA = (rand() % 1000000) + 1;
-  const int coefB = (rand() % 1000000) + 1;
-  const int coefC = (rand() % 1000000) + 1;
+  double coefA = (rand() % 1000000) + 1;
+  double coefB = (rand() % 1000000);
+  double coefC = (rand() % 1000000);
+  if (rand() % 2 == 1)
+    coefB = -1 * coefB;
+  if (rand() % 2 == 1)
+    coefC = -1 * coefC;
 
-  int discriminant = (coefB * coefB - 4 * coefA * coefC);
-  cout << coefA << "x^2 + " << coefB << "x + " << coefC << endl;
+  double discriminant = (coefB * coefB - 4 * coefA * coefC);
+  cout << coefA << "x^2";
+  if (coefB < 0)
+    cout << coefB << "x";
+  else
+    cout << "+" << coefB << "x";
+  if (coefC < 0)
+    cout << coefC << endl;
+  else
+    cout << "+" << coefC << endl;
 
   cout << discriminant << endl;
   if (discriminant > 0)
-  {
     antwoordBeta = 2;
-  }
   else if (discriminant < 0)
-  {
     antwoordBeta = 0;
-  }
   else
     antwoordBeta = 1;
 
@@ -203,30 +162,21 @@ int main()
   if (antwoordBetaGebruiker == antwoordBeta)
   {
     if (jarenOudDecimaal >= 30)
-    {
       cout << "Correct! U bent aangenomen voor de studie! Gefeliciteerd!!!" << endl;
-    }
     else
-    {
       cout << "Goed gedaan... Je bent aangenomen..." << endl;
-    }
     return 0;
   }
   else
   {
     if (jarenOudDecimaal >= 30)
-    {
       cout << "U heeft een incorrect antwoord gegeven." << endl;
-    }
     else
-    {
       cout << "Onjuist! Haha!!" << endl;
-    }
   }
 
-  // Alpha vraag
-  char antwoordAlphaGebruiker;
-  char antwoordAlpha = 'A';
+  // Vraag voor toelating alpha studie
+  char antwoordAlpha;
   if (jarenOudDecimaal >= 30)
   {
     cout << "Heeft u enig idee welke bekende schilder de nachtwacht heeft geschilderd?" << endl;
@@ -234,11 +184,11 @@ int main()
     cout << "B) Van Gogh" << endl;
     cout << "C) Rubens" << endl;
     cout << "Vul in: (A, B, of C)" << endl;
-    cin >> antwoordAlphaGebruiker;
+    cin >> antwoordAlpha;
     cout << "Het juiste antwoord was A: Rembrandt." << endl;
-    if (antwoordAlpha == antwoordAlphaGebruiker)
+    if (antwoordAlpha == 'A' || antwoordAlpha == 'a')
     {
-      cout << "U heeft het correcte antwoord gegeven! U bent daarmee aangenomen voor een willekeurige alpha studie!" << endl;
+      cout << "U heeft het correcte antwoord gegeven! U bent dus aangenomen voor een willekeurige alpha studie!" << endl;
       return 0;
     }
     cout << "U heeft het jammer genoeg incorrect en komt niet in aanmerking voor een universitaire studie." << endl;
@@ -251,9 +201,9 @@ int main()
     cout << "B) Harry Potter" << endl;
     cout << "C) Game of Thrones" << endl;
     cout << "Vul in: (A, B, of C)" << endl;
-    cin >> antwoordAlphaGebruiker;
+    cin >> antwoordAlpha;
     cout << "Het juiste antwoord was A: Lord of the Rings." << endl;
-    if (antwoordAlpha == antwoordAlphaGebruiker)
+    if (antwoordAlpha == 'A' || antwoordAlpha == 'a')
     {
       cout << "Goed gedaan! je kunt nu een alpha studie doen... " << endl;
       return 0;
