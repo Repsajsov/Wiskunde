@@ -27,13 +27,31 @@ Studentnr: \emph{s2911159}
         \item
         \item
             \begin{align*}
-                \lim_{x \rightarrow -\infty} \sqrt{x^2+x+4} + x &= \lim_{t \rightarrow \infty} \sqrt{t^2-t+4}-t \\
-                &= \lim_{t \rightarrow \infty} \frac{(\sqrt{t^2-t+4}-t)(\sqrt{t^2-t+4}+t)}{\sqrt{t^2-t+4}+t} \\
+                \lim_{x \rightarrow -\infty} \sqrt{x^2+x+4} + x &= \lim_{t \rightarrow \infty} \sqrt{t^2-t+4}-t \quad (\text{Vervang $x$ met $t$ waarbij $t=-x$})\\
+                &= \lim_{t \rightarrow \infty} \frac{(\sqrt{t^2-t+4}-t)(\sqrt{t^2-t+4}+t)}{\sqrt{t^2-t+4}+t} \quad (\text{Gebruik de worteltruc})\\ 
                 &= \lim_{t \rightarrow \infty} \frac{\cancel{t^2}-t+4-\cancel{t^2}}{\sqrt{t^2-t+4}+t} \\
-                &= \lim_{t \rightarrow \infty} \frac{\frac{-t}{t}+\frac{4}{t}}{\sqrt{\frac{t^2}{t^2}-\frac{t}{t^2}+\frac{4}{t^2}} + \frac{t}{t}} \\
+                &= \lim_{t \rightarrow \infty} \frac{\frac{-t}{t}+\frac{4}{t}}{\sqrt{\frac{t^2}{t^2}-\frac{t}{t^2}+\frac{4}{t^2}} + \frac{t}{t}} \quad (\text{Deel de teller en noemer door $t$})\\
                 &= \frac{-1 + 0}{\sqrt{1+0+0}+1} = \boxed{-\frac{1}{2}}
             \end{align*}
-        
+        \item
+            \begin{align*}
+                \lim_{x \rightarrow \infty} \frac{2x^3-2x^2-4x}{(x^2-1)(x-2)} &= \lim_{x \rightarrow \infty} \frac{2x^3-2x^2-4x}{x^3-2x^2-x+2} \quad (\text{Werk de haakjes weg}) \\
+                &= \lim_{x \rightarrow \infty} \frac{\frac{2x^3}{x^3}-\frac{2x^2}{x^3}-\frac{4x}{x^3}}{\frac{x^3}{x^3}-\frac{2x^2}{x^3}-\frac{x}{x^3}+\frac{2}{x^3}} \quad (\text{Deel de teller en noemer door $x^3$})\\
+                &= \frac{2-0-0}{1-0-0+0} = \boxed{2}
+            \end{align*}
+        \item
+            Als $f(x)$ continu is op $x=-1$ moeten zowel het linker als rechterlimiet gelijk aan elkaar zijn. 
+            \begin{align*}
+                \lim_{x \uparrow -1} \sqrt{x^2+x+4}+x &= \sqrt{(-1)^2-1+4}-1 \\
+                &= \sqrt{4} - 1 = 1 \\
+                &\Leftrightarrow \\
+                \lim_{x \downarrow -1} \frac{2x^3-2x^2-4x}{(x^2-1)(x-2)} &= \lim_{x \downarrow -1} \frac{2x(x^2-x-2)}{(x-1)(x+1)(x-2)} \\
+                &= \lim_{x \downarrow -1} \frac{2x\cancel{(x+1)}\cancel{(x-2)}}{(x-1)\cancel{(x+1)}\cancel{(x-2)}} \\
+                &= \frac{2(-1)}{(-1)-1} = 1
+            \end{align*}
+            Aangezien $\lim_{x \uparrow -1} f(x) = \lim_{x \downarrow -1} f(x)$ moet $f(x)$ continu zijn op het punt $x=-1$.
+                
+
     \end{enumerate}
 \end{enumerate}
 
