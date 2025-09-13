@@ -50,9 +50,24 @@ Studentnr: \emph{s2911159}
                 &= \frac{2(-1)}{(-1)-1} = 1
             \end{align*}
             Aangezien $\lim_{x \uparrow -1} f(x) = \lim_{x \downarrow -1} f(x)$ moet $f(x)$ continu zijn op het punt $x=-1$.
-                
-
+        \item         
+            Gebruik wat we bij de vorige vraag hebben bereikt namelijk $\lim_{x \rightarrow 1} \frac{2x}{x-1}$ en werk verder uit.
+            Vul in voor $x \rightarrow 1$ dan: 
+            \[\lim_{x \rightarrow 1} \frac{2x}{x-1} = \frac{2}{0}\] 
+            Dit betekent dat we een verticale asymptoot hebben op $x=1$.
+            Vul nu in voor $x \rightarrow 2$ dan: 
+            \[\lim_{x \rightarrow 2} \frac{2x}{x-1} = \frac{4}{1} = 4\] 
+        \item
+            Gebruik weer het vorige resultaat dan: $\lim_{x \uparrow 2} \frac{2x}{x-1} = 4 \Leftrightarrow \lim_{x \downarrow 2} \frac{2x}{x-1} = 4$. Als we dus $c=4$ nemen is $g$ continu op $x=2$.
+            $g$ is continu op $(-\infty, 1) \cup (1, \infty)$ aangezien $1$ geen element is op $(-\infty, 1) \cup (1, \infty)$, en voor alle overige elementen het wel gedefinieerd is.
     \end{enumerate}
+    \item 
+        Zij $f(x) = x^2, g(x) = x^2 \sin(\frac{1}{x}+50x^2-\cos(x))$ en $h(x)=-x^2$. We weten dat:
+        \[x^2 \geq x^2 \sin(\frac{1}{x}+50x^2-\cos(x)) \geq -x^2\] 
+        Aangezien $1 \geq \sin(\frac{1}{x}+50x^2-\cos(x)) \geq -1$. Hieruit volgt dat we de tussenwaardestelling kunnen gebruiken.
+        \[\lim_{x \rightarrow 0} x^2 = 0 \Leftrightarrow \lim_{x \rightarrow 0} -x^2 = 0\]
+        Omdat $\lim_{x \rightarrow 0} f(x)=0 \geq \lim_{x \rightarrow 0} g(x) \geq \lim_{x \rightarrow 0} h(x)=0$, moet $\lim_{x \rightarrow 0} g(x) = x^2\sin(\frac{1}{x}+50x^2-\cos(x)) = 0$.
+        
 \end{enumerate}
 
 \end{document}
