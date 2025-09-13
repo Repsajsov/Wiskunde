@@ -24,7 +24,15 @@ Studentnr: \emph{s2911159}
 \begin{enumerate}
     \item
     \begin{enumerate}[label=\alph*)]
-        \item 
+        \item
+        \item
+            \begin{align*}
+                \lim_{x \rightarrow -\infty} \sqrt{x^2+x+4} + x &= \lim_{t \rightarrow \infty} \sqrt{t^2-t+4}-t \\
+                &= \lim_{t \rightarrow \infty} \frac{(\sqrt{t^2-t+4}-t)(\sqrt{t^2-t+4}+t)}{\sqrt{t^2-t+4}+t} \\
+                &= \lim_{t \rightarrow \infty} \frac{\cancel{t^2}-t+4-\cancel{t^2}}{\sqrt{t^2-t+4}+t} \\
+                &= \lim_{t \rightarrow \infty} \frac{\frac{-t}{t}+\frac{4}{t}}{\sqrt{\frac{t^2}{t^2}-\frac{t}{t^2}+\frac{4}{t^2}} + \frac{t}{t}} \\
+                &= \frac{-1 + 0}{\sqrt{1+0+0}+1} = \boxed{-\frac{1}{2}}
+            \end{align*}
         
     \end{enumerate}
 \end{enumerate}
