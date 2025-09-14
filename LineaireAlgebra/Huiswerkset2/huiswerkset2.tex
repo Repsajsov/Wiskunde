@@ -6,6 +6,9 @@
 \usepackage{cancel}
 \usepackage{enumitem}
 
+% Stof: §§1.4–1.7 van het dictaat, behalve subsecties 1.5.2 en 1.7.2
+% Opgaven:  1.4.2(1), 1.4.4, 1.4.5, 1.5.2, 1.5.5, 1.6.1, 1.6.3, 1.6.5, 1.7.3
+
 \setlength{\parindent}{0pt}
 
 \begin{document}
@@ -21,6 +24,35 @@ Studentnr: \emph{s2911159}
 
 \bigskip
 
-        
+\section*{Opdracht 1.4.2(1)}
+\begin{proof}
+    Schrijf probleem in logische notatie zodat het makkelijker is.
+    \begin{align*}
+        ||v|| = ||w|| &\Leftrightarrow <v-w, v+w> = 0 \\
+        &\Leftrightarrow \\
+        (||v|| = ||w|| \implies <v-w, v+w> = 0) \quad &\wedge \quad (<v-w, v+w> = 0 \implies ||v|| = ||w||)
+    \end{align*}
+    Bewijs $||v|| = ||w|| \implies <v, w> = 0$:
+    \begin{align*}
+        \boxed{||v|| = ||w||} &\implies ||v|| - ||w|| = 0 \\
+        &\implies ||v||^2 - ||w||^2 = 0 \\
+        &\implies <v, v> - <w, w> = 0 \\
+        &\implies <v, v> + <v, w> - <v, w> - <w, w> = 0 \\
+        &\implies v_1^2 + vw_1 - vw_1 - w_1^2 + v_2^2 + vw_2 -vw_2 -w_2^2 + \dots + v_n^2 + vw_n - vw_n -w_n^2 = 0 \\
+        &\implies (v_1 + w_1)(v_1 - w_1) + \dots + (v_n + w_n)(v_n - w_n) = 0 \\
+        &\implies \boxed{<v+w, v-w> = 0}
+    \end{align*}
+    Bewijs nu voor $<v, w> = 0 \implies ||v|| = ||w||$:
+    \begin{align*}
+        \boxed{<v+w, v-w> = 0} &\implies (v_1 + w_1)(v_1 - w_1) + \dots + (v_n + w_n)(v_n - w_n) = 0 \\
+        &\implies v_1^2 + vw_1 - vw_1 - w_1^2 + v_2^2 + vw_2 -vw_2 -w_2^2 + \dots + v_n^2 + vw_n - vw_n -w_n^2 = 0 \\
+        &\implies <v, v> + <v, w> - <v, w> - <w, w> = 0 \\
+        &\implies <v, v> - <w, w> = 0 \\
+        &\implies ||v||^2 - ||w||^2 = 0 \\
+        &\implies \boxed{||v|| - ||w|| = 0}
+    \end{align*}
+    Dit voldoet aan $||v|| = ||w|| \Leftrightarrow <v-w, v+w> = 0$ en dus zijn we klaar.
+\end{proof}
+\section*{Opdracht 1.6.5}
 
 \end{document}
