@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1757875396.36383 "/home/jaspervos/Wiskunde/LineaireAlgebra/Huiswerkset2/huiswerkset2.tex" "huiswerkset2.pdf" "huiswerkset2" 1757875396.77831 0
+["pdflatex"] 1757964573.57031 "/home/jaspervos/Wiskunde/LineaireAlgebra/Huiswerkset2/huiswerkset2.tex" "huiswerkset2.pdf" "huiswerkset2" 1757964573.99594 0
   "/etc/texmf/web2c/texmf.cnf" 1757446605.82382 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jaspervos/Wiskunde/LineaireAlgebra/Huiswerkset2/huiswerkset2.tex" 1757875396.17667 2096 cde4c2e0fb569b1e154b8433a8e56c80 ""
+  "/home/jaspervos/Wiskunde/LineaireAlgebra/Huiswerkset2/huiswerkset2.tex" 1757964573.38379 2817 23ca029e5e24aba4fc365167e4b30994 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -22,6 +22,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel-dutch/dutch.ldf" 1630268686 6785 9a88117cf3b054cf3e3476265f93dce2 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty" 1704662920 150008 7a05b0fdc0167c04e192003e780ab195 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel/locale/nl/babel-dutch.tex" 1498512262 336 688c2541014a5f1e639d9f99b6017791 ""
@@ -51,8 +52,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1757446629.09984 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1757446697 8212830 740bee7d723266b3ee93681b5f7463c7 ""
-  "huiswerkset2.aux" 1757875396.73567 130 404eae76ec299246a9fdf6bf62543e10 "pdflatex"
-  "huiswerkset2.tex" 1757875396.17667 2096 cde4c2e0fb569b1e154b8433a8e56c80 ""
+  "huiswerkset2.aux" 1757964573.95535 130 404eae76ec299246a9fdf6bf62543e10 "pdflatex"
+  "huiswerkset2.tex" 1757964573.38379 2817 23ca029e5e24aba4fc365167e4b30994 ""
   (generated)
   "huiswerkset2.aux"
   "huiswerkset2.log"

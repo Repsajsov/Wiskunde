@@ -54,5 +54,16 @@ Studentnr: \emph{s2911159}
     Dit voldoet aan $||v|| = ||w|| \Leftrightarrow <v-w, v+w> = 0$ en dus zijn we klaar.
 \end{proof}
 \section*{Opdracht 1.6.5}
+Laten we eerst het vlak $V$ opspannen en daarna de afstand tussen het vlak en $q$ berekenen.
+Neem $V = \{ \lambda_1 \lambda_2 \in \mathbb{R} : p_1 + \lambda_1 (p_2-p_1) + \lambda_2 (p_3-p_1) \}$ en vul in:
+\[ V = \{ \lambda_1, \lambda_2 \in \mathbb{R} : (1,2,-1) + \lambda_1(0,-2,2) + \lambda_2(-3, 1, 2) \} \]
+Bereken het kruisproduct $(p_2 - p_1) \times (p_3 - p_1)$ zodat je een vector krijgt die zowel op $p_2 - p_1$ en $p_3-p-1$ loodrecht staat.
+\[n=(-2)(2) - (2)(1), (2)(-3)- (0)(2), (0)(1)-(-2)(-3) = (-6,-6,-6) \]
+Tot slot projecteren we de vector $q-p_1$ op de normaalvector $n$.
+\[ <(q-p_1)n> = ((2-1)(-6)+(2-2)(-6)+(1-(-1))(-6))-18 \]
+Bereken nu de afstand:
+\[\frac{18}{\sqrt{36+36+36}} = \boxed{\sqrt{3}}\]
+
+
 
 \end{document}
