@@ -96,14 +96,14 @@ Studentnr: \emph{s2911159}
                 Nu gaan we het controleren:
                 \[g(\sqrt[3]{y-5})=(\sqrt[3]{y-5})^3 + 5 = y-5 + 5 = y\]
                 Dus $g$ is ook surjectief, en aangezien $g$ zowel injectief als surjectief is geldt dat $g$ een bijectie is en een inverse $g^{-1}$ heeft.
-                Nu gaan we de inverse berekenen:
+                De inverse hebben we al voor een deel afgeleid uit het bewijs voor surjectiviteit:
+                \[g^{-1}(x) = \sqrt[3]{x-5}\]
+                Tot slot bepalen we $g^{-1}(\{0, 1\})$:
                 \begin{align*}
-                    g(y) &= x \\
-                    y^3 + 5 &= x \\  
-                    y^3 &= x - 5 \\
-                    y &= \sqrt[3]{x-5} = g^{-1}(x)
+                x^3 + 5 = 0 \Leftrightarrow (-\sqrt[3]{5})^3 + 5 = 0 \quad (\text{Dus $x=-\sqrt[3]{5}$})  \\
+                x^3 + 5 = 1 \Leftrightarrow (-\sqrt[3]{4})^3 + 5 = 1 \quad (\text{Dus $x=-\sqrt[3]{4}$}) 
                 \end{align*}
-
+                En dus $g^{-1}(\{0,1\}) = \{-\sqrt[3]{5}, -\sqrt[3]{4}\}$.
             \end{proof}
     \end{enumerate}
 \end{document}
