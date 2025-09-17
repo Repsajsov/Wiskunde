@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1757836761.36568 "/home/jaspervos/Wiskunde/AnalyseI/Huiswerk/Huiswerkset2/huiswerkset2.tex" "huiswerkset2.pdf" "huiswerkset2" 1757836761.68309 0
+["pdflatex"] 1758127224.21363 "/home/jaspervos/Wiskunde/AnalyseI/Huiswerk/Huiswerkset2/huiswerkset2.tex" "huiswerkset2.pdf" "huiswerkset2" 1758127224.64941 0
   "/etc/texmf/web2c/texmf.cnf" 1757446605.82382 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jaspervos/Wiskunde/AnalyseI/Huiswerk/Huiswerkset2/huiswerkset2.tex" 1757836761.20214 4063 ca9b3c66346e47de27b1d2b1f55300ad ""
+  "/home/jaspervos/Wiskunde/AnalyseI/Huiswerk/Huiswerkset2/huiswerkset2.tex" 1758127224.02247 4836 c592eaca5047e37ec848dc5ebd74395d ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -55,8 +55,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1757446629.09984 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1757446697 8212830 740bee7d723266b3ee93681b5f7463c7 ""
-  "huiswerkset2.aux" 1757836761.64514 130 39353acbd12ce4c61fe15e390d09ca31 "pdflatex"
-  "huiswerkset2.tex" 1757836761.20214 4063 ca9b3c66346e47de27b1d2b1f55300ad ""
+  "huiswerkset2.aux" 1758127224.6021 130 39353acbd12ce4c61fe15e390d09ca31 "pdflatex"
+  "huiswerkset2.tex" 1758127224.02247 4836 c592eaca5047e37ec848dc5ebd74395d ""
   (generated)
   "huiswerkset2.aux"
   "huiswerkset2.log"
