@@ -21,16 +21,37 @@ int main()
   int geboortemaand;
   int geboortedag;
 
+  cout << "Welkom in het toelatingsprogramma voor Universiteit Leiden." << endl;
+  cout << "We stellen u vragen om vast te stellen dat u geschikt ben voor de Universiteit." << endl;
+  cout << endl
+       << endl;
   // Leeftijd invullen
   cout << "Wat is uw geboortejaar:" << endl;
   cin >> geboortejaar;
   // Ruwe leeftijdscontrole
   if (huidigJaar - geboortejaar > 100 || huidigJaar - geboortejaar < 10)
+  {
+    if (huidigJaar < geboortejaar)
+    {
+      cout << "Bent u een tijdreiziger?!" << endl;
+    }
+    cout << "U voldoet niet aan het juiste leeftijdscriteria...";
     return 1;
-  cout << "Wat is uw geboortemaand:" << endl;
+  }
+  cout << "Wat is uw geboortemaand: (1, 2, ...,  12)" << endl;
   cin >> geboortemaand;
-  cout << "Wat is uw geboortedag:" << endl;
+  if (geboortemaand > 12 || geboortemaand < 1)
+  {
+    cout << "Dit is geen geldige maand...";
+    return 1;
+  }
+  cout << "Wat is uw geboortedag: (1, 2, ..., 31)" << endl;
   cin >> geboortedag;
+  if (geboortedag < 1 || geboortedag > 31)
+  {
+    cout << "Dit is geen geldige dag...";
+    return 1;
+  }
 
   // Leeftijd berekenen
   int maandenOud = (maandenInJaar - geboortemaand) +
@@ -38,11 +59,15 @@ int main()
                    huidigeMaand;
   cout << maandenOud << endl;
   if (huidigeDag < geboortedag)
+  {
     maandenOud--;
+  }
 
   int jarenOud = maandenOud / maandenInJaar;
   float jarenOudDecimaal = maandenOud / 12.f;
 
+  cout << endl
+       << "U bent ";
   cout << jarenOud << " jaar en " << maandenOud % 12 << " maanden oud" << endl;
   cout << maandenOud << " maanden oud" << endl;
 
@@ -51,9 +76,13 @@ int main()
       ((huidigeMaand == geboortemaand) && (huidigeDag == geboortedag)))
   {
     if (jarenOudDecimaal >= 30)
+    {
       cout << "Gefeliciteerd met uw ver(maand)jaardag!" << endl;
+    }
     else
+    {
       cout << "Gefeliciteerd met je ver(maand)jaardag!" << endl;
+    }
   }
 
   // Leeftijdscontrole
@@ -74,29 +103,53 @@ int main()
       (geboortejaar - 1901) * 365 + aantalSchrikkeljaren;
 
   if (geboortemaand == 1)
+  {
     aantalDagen += geboortedag;
+  }
   else if (geboortemaand == 2)
+  {
     aantalDagen += 31 + geboortedag;
+  }
   else if (geboortemaand == 3)
+  {
     aantalDagen += 59 + geboortedag;
+  }
   else if (geboortemaand == 4)
+  {
     aantalDagen += 90 + geboortedag;
+  }
   else if (geboortemaand == 5)
+  {
     aantalDagen += 120 + geboortedag;
+  }
   else if (geboortemaand == 6)
+  {
     aantalDagen += 151 + geboortedag;
+  }
   else if (geboortemaand == 7)
+  {
     aantalDagen += 181 + geboortedag;
+  }
   else if (geboortemaand == 8)
+  {
     aantalDagen += 212 + geboortedag;
+  }
   else if (geboortemaand == 9)
+  {
     aantalDagen += 243 + geboortedag;
+  }
   else if (geboortemaand == 10)
+  {
     aantalDagen += 273 + geboortedag;
+  }
   else if (geboortemaand == 11)
+  {
     aantalDagen += 304 + geboortedag;
-  else if (geboortemaand == 12)
+  }
+  else
+  {
     aantalDagen += 334 + geboortedag;
+  }
 
   if (((geboortejaar % 4 == 0 && geboortejaar % 100 != 0) || geboortejaar % 400 == 0) && geboortemaand > 2)
     aantalDagen++;
@@ -105,11 +158,18 @@ int main()
   char eersteLetter;
   char tweedeLetter = 'x';
   if (jarenOudDecimaal >= 30)
-    cout << "Op welke weekdag bent u geboren? (m, di, w, do, v, za, zo):" << endl;
+  {
+    cout << endl
+         << "Op welke weekdag bent u geboren? (m, di, w, do, v, za, zo):" << endl;
+  }
   else
+  {
     cout << "Welke weekdag bent je geboren!? (m, di, w, do, v, za, zo):" << endl;
+  }
+
   cout << "Eerste letter:" << endl;
   cin >> eersteLetter;
+
   if (eersteLetter != 'm' && eersteLetter != 'w' && eersteLetter != 'v')
   {
     cout << "Tweede letter:" << endl;
@@ -123,7 +183,15 @@ int main()
       (eersteLetter == 'v' && tweedeLetter == 'x' && weekdag != 3) ||
       (eersteLetter == 'z' && tweedeLetter == 'z' && weekdag != 4) ||
       (eersteLetter == 'z' && tweedeLetter == 'o' && weekdag != 5))
+  {
+    cout << "Dit klopt niet!" << endl;
     return 1;
+  }
+  else
+  {
+    cout << "Correct!" << endl
+         << endl;
+  }
 
   // Vraag voor toelating beta studie
   int antwoordBetaGebruiker;
@@ -133,53 +201,88 @@ int main()
   double coefB = (rand() % 1000000);
   double coefC = (rand() % 1000000);
   if (rand() % 2 == 1)
+  {
     coefB = -1 * coefB;
+  }
   if (rand() % 2 == 1)
+  {
     coefC = -1 * coefC;
+  }
 
   double discriminant = (coefB * coefB - 4 * coefA * coefC);
+  if (jarenOudDecimaal > 30)
+  {
+    cout << "Kunt u bepalen hoeveel verschillende opslossingen deze ABC-formule heeft." << endl;
+  }
+  else
+  {
+    cout << "Hoeveel oplossingen heeft deze ABC-formule..." << endl
+         << endl;
+  }
   cout << coefA << "x^2";
   if (coefB < 0)
+  {
     cout << coefB << "x";
+  }
   else
+  {
     cout << "+" << coefB << "x";
+  }
   if (coefC < 0)
+  {
     cout << coefC << endl;
+  }
   else
+  {
     cout << "+" << coefC << endl;
+  }
 
   cout << discriminant << endl;
   if (discriminant > 0)
+  {
     antwoordBeta = 2;
+  }
   else if (discriminant < 0)
+  {
     antwoordBeta = 0;
+  }
   else
+  {
     antwoordBeta = 1;
+  }
 
-  cout << "Hoeveel oplossingen zijn er? (0, 1, 2)";
+  cout << "Hoeveel oplossingen zijn er? (0, 1, 2)" << endl;
   cin >> antwoordBetaGebruiker;
+  cout << endl;
 
   if (antwoordBetaGebruiker == antwoordBeta)
   {
     if (jarenOudDecimaal >= 30)
+    {
       cout << "Correct! U bent aangenomen voor de studie! Gefeliciteerd!!!" << endl;
+    }
     else
+    {
       cout << "Goed gedaan... Je bent aangenomen..." << endl;
+    }
     return 0;
   }
   else
   {
     if (jarenOudDecimaal >= 30)
-      cout << "U heeft een incorrect antwoord gegeven." << endl;
+      cout << "U heeft een incorrect antwoord gegeven." << endl
+           << endl;
     else
-      cout << "Onjuist! Haha!!" << endl;
+      cout << "Onjuist! Haha!!" << endl
+           << endl;
   }
 
   // Vraag voor toelating alpha studie
   char antwoordAlpha;
   if (jarenOudDecimaal >= 30)
   {
-    cout << "Heeft u enig idee welke bekende schilder de nachtwacht heeft geschilderd?" << endl;
+    cout << "Heeft u enig idee welke bekende schilder de nachtwacht heeft geschilderd?" << endl
+         << endl;
     cout << "A) Rembrandt" << endl;
     cout << "B) Van Gogh" << endl;
     cout << "C) Rubens" << endl;
@@ -196,7 +299,8 @@ int main()
   }
   else
   {
-    cout << "Legolas speelt in welke filmreeks?" << endl;
+    cout << "Legolas speelt in welke filmreeks?" << endl
+         << endl;
     cout << "A) Lord of the Rings" << endl;
     cout << "B) Harry Potter" << endl;
     cout << "C) Game of Thrones" << endl;
