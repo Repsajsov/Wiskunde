@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+{\Large \textbf{Wiskundige Structuren Huiswerk}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 2} \hfill \today \\
+Studentnr: \emph{s2911159} 
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\cn}[1]{\cancel{#1}}
+\newcommand{\R}{\mathbb{R}}
+
+\section*{Opgave 1}
+Om te laten zien dat $A \cup B$ aftelbaar oneindig is maken we een functie die bijectief is en $A \cup B$ als beeld heeft.
+Laten we de natuurlijke getallen $\N$ gebruiken. Aangezien $A \cap B = \emptyset$ kunnen we vanuit $\N$ elk element apart bereiken door gebruikt te maken van dat $n \in \N$ oneven of even kan zijn.
+Daarmee kunnen we een functie opstellen waarbij we elk $a \in A \tx{ en } b \in B$ bereikt kan worden vanuit $\N$.
+
+\bigskip
+
+Zij $f:\N \rightarrow A \cup B$: waarvoor geldt:
+
+\[
+f(n) = \begin{cases}
+    a_{\f{n}{2} + 1} & \tx{als $n$ even is} \\
+    b_{\f{n-1}{2} + 1} & \tx{als $n$ oneven is} \\
+\end{cases}
+\]
+
+Laat zien dat de functie injectief is: 
+    \[\forall n_1, n_2 \tx{ geldt } f(n_1) = f(n_2) \implies n_1 = n_2 \]
+\emph{Geval 1:} $n_1, n_2 \in \N$ waarbij $n_1$ en $n_2$ even zijn.  
+\begin{align*}
+    a_{\f{n_1}{2}+1} &= a_{\f{n_2}{2}+ 1} \\
+    &\Downarrow \\
+    \f{n_1}{\cn{2}} + \cn{1} &= \f{n_2}{\cn{2}} + \cn{1} \\
+    n_1 &= n_2 \\
+\end{align*}
+\emph{Geval 1:} $n_1, n_2 \in \N$ waarbij $n_1$ en $n_2$ oneven zijn.  
+\begin{align*}
+    b_{\f{n_1-1}{2}+1} &= b_{\f{n_2 - 1}{2}+ 1} \\
+    &\Downarrow \\
+    \f{n_1 - \cn{1}}{\cn{2}} + \cn{1} &= \f{n_2 - \cn{1}}{\cn{2}} + \cn{1} \\
+    n_1 &= n_2 \\
+\end{align*}
+\emph{Geval 3:} $n_1, n_2 \in \N$ waarbij $n_1$ is even en $n_2$ is oneven.
+\begin{center}
+    $n_1 = n_2$ kan niet als $n_1$ even is en $n_2$ oneven aangezien een getal niet zowel even als oneven kan zijn. 
+\end{center}
+
+
+Vervolgens laten we zien dat de functie surjectief is:
+\begin{align*}
+    \forall m \in (A \cup B) \ \exists n \in \N \tx{ zodanig dat } f(n) = m
+\end{align*}
+
+
+
+\section*{Opgave 2}
+Om bijectie te bewijzen moet de functie $f$ zowel injectief als surjectief zijn.
+Laat zien dat de functie injectief is:
+\[\forall (n_1, x_1), (n_2, x_2) \in \N_{>0} \times \R\ \tx{ geldt } f((n_1, x_1)) = f((n_2,x_2)) \implies n_1 = n_2 \wedge x_1 = x_2\]  
+\begin{align*}
+    (98n_1x_1, n_1) &= (98n_2x_2, n_2) \\
+    &\Downarrow \\
+    98n_1x_1 = 98n_2x_2 &\wedge n_1 = n_2 \\
+    n_1x_1 = n_2x_2 &\wedge n_1 = n_2 \\
+    x_1 = x_2 &\wedge n_1 = n_2 
+\end{align*}
+
+
+\end{document}
