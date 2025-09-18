@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1758200572.81016 "/home/jaspervos/Wiskunde/Programmeermethoden/Programmeeropgave1/programmeeropgave1.tex" "programmeeropgave1.pdf" "programmeeropgave1" 1758200573.59962 0
+["pdflatex"] 1758223376.92382 "/home/jaspervos/Wiskunde/Programmeermethoden/Programmeeropgave1/programmeeropgave1.tex" "programmeeropgave1.pdf" "programmeeropgave1" 1758223377.56496 0
   "/etc/texmf/web2c/texmf.cnf" 1757446605.82382 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jaspervos/Wiskunde/Programmeermethoden/Programmeeropgave1/programmeeropgave1.tex" 1758200572.58314 1042 f955e6a37ef8062c7554614c539fb1f9 ""
+  "/home/jaspervos/Wiskunde/Programmeermethoden/Programmeeropgave1/programmeeropgave1.tex" 1758223376.69718 1044 b431b990c93eb3af5bfc4171bf029cd1 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm0900.tfm" 1136768653 1536 c4f439db76ef96a9c53bc437f35ffe20 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcti0900.tfm" 1136768653 2048 c39c5154886a5521006765320aa4d25e ""
@@ -67,9 +67,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1757446629.09984 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1757446697 8212830 740bee7d723266b3ee93681b5f7463c7 ""
-  "programmeeropgave1.aux" 1758200573.53128 433 176a44e3ae56b3b8477850752bd47b81 "pdflatex"
+  "programmeeropgave1.aux" 1758223377.50603 433 176a44e3ae56b3b8477850752bd47b81 "pdflatex"
   "programmeeropgave1.cc" 1758199814.5918 7926 e4287544d5327ab089a5c98854b7234b ""
-  "programmeeropgave1.tex" 1758200572.58314 1042 f955e6a37ef8062c7554614c539fb1f9 ""
+  "programmeeropgave1.tex" 1758223376.69718 1044 b431b990c93eb3af5bfc4171bf029cd1 ""
   (generated)
   "programmeeropgave1.aux"
   "programmeeropgave1.log"

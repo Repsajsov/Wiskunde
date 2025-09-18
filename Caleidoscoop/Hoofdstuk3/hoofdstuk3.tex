@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+\setcounter{section}{2}
+\begin{document}
+
+\begin{center}
+    \Large \textbf{Caleidoscoop Hoofdstuk 3}
+\end{center}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\section{Equivalentierelaties}
+
+\subsection{}
+\begin{enumerate}[label=\alph*)]
+    \item 
+        Stel de volgende equivalentierelatie $\mathcal{R}$ op, waarbij $a \sim b \Longleftrightarrow a = b$.
+        \begin{enumerate}[label=\arabic*]
+            \item \emph{Reflexief:} Bekijk $a \mathcal{R} a \implies a = a$
+            \item \emph{Symmetrie:} Bekijk $(a \mathcal{R} b \implies b \mathcal{R} a) \implies a = b \implies b = a$ 
+            \item \emph{Transitiviteit:} Bekijk $((a \mathcal{R} b \wedge b \mathcal{R} c) \implies a \mathcal{R}c) \implies (a = b \wedge b = c) \implies a = c$
+        \end{enumerate}
+    \item
+        Neem de volgende equivalentierelatie $\mathcal{R}$ op, waarbij $a \sim b \Longleftrightarrow a \mod 42 = b \mod 42$.
+        \begin{enumerate}[label=\arabic*]
+            \item \emph{Reflexief:} $a \mod 42 = a \mod 42$
+            \item \emph{Symmetrie:} $(a \mod 42 = b \mod 42) \implies b \mod 42 = a \mod 42$ 
+            \item \emph{Transitiviteit:} $(a \mod 42 = b \mod 42 \wedge b \mod 42 = c \mod 42) \Longleftrightarrow a \mod 42 = c \mod 42$
+        \end{enumerate}
+    \item 
+    \begin{proof}
+        $\mathbf{Aanname:}$ Ik stel dat $A$ een verzameling is waarbij $A \neq \emptyset$, en $A/_\sim = \emptyset$. 
+        Aangezien $A \neq \emptyset$ bestaat er een $a \in A$, maar als we een equivalentierelatie hebben betekent dit $a \sim a$.
+        Als $a \sim a$ dan moet er een equivalentieklasse $\overline{a} = \{b \in A : b \sim a\}$ bestaan waarbij $a \in \overline{a}$, maar $\overline{a} \in A/_\sim$. 
+        Dit is een tegenspraak want we stelde dat $A/_\sim = \emptyset$, en dus kan $A/_\sim$ niet leeg zijn.
+    \end{proof}
+\end{enumerate}
+
+
+
+\end{document}
