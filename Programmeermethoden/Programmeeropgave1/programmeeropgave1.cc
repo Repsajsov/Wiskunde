@@ -22,7 +22,7 @@ int main()
   int geboortedag;
 
   cout << "Welkom in het toelatingsprogramma voor Universiteit Leiden." << endl;
-  cout << "We stellen u vragen om vast te stellen dat u geschikt ben voor de Universiteit." << endl;
+  cout << "We stellen u vragen om te kijken dat u geschikt bent." << endl;
   cout << endl
        << endl;
   // Leeftijd invullen
@@ -151,7 +151,9 @@ int main()
     aantalDagen += 334 + geboortedag;
   }
 
-  if (((geboortejaar % 4 == 0 && geboortejaar % 100 != 0) || geboortejaar % 400 == 0) && geboortemaand > 2)
+  if (((geboortejaar % 4 == 0 && geboortejaar % 100 != 0) ||
+       geboortejaar % 400 == 0) &&
+      geboortemaand > 2)
     aantalDagen++;
 
   // Controleer de weekdag van de geboortedag
@@ -212,7 +214,7 @@ int main()
   double discriminant = (coefB * coefB - 4 * coefA * coefC);
   if (jarenOudDecimaal > 30)
   {
-    cout << "Kunt u bepalen hoeveel verschillende opslossingen deze ABC-formule heeft." << endl;
+    cout << "Hoeveel verschillende opslossingen heeft deze ABC-formule." << endl;
   }
   else
   {
@@ -281,7 +283,7 @@ int main()
   char antwoordAlpha;
   if (jarenOudDecimaal >= 30)
   {
-    cout << "Heeft u enig idee welke bekende schilder de nachtwacht heeft geschilderd?" << endl
+    cout << "Welke bekende schilder heeft de nachtwacht geschilderd?" << endl
          << endl;
     cout << "A) Rembrandt" << endl;
     cout << "B) Van Gogh" << endl;
@@ -291,10 +293,12 @@ int main()
     cout << "Het juiste antwoord was A: Rembrandt." << endl;
     if (antwoordAlpha == 'A' || antwoordAlpha == 'a')
     {
-      cout << "U heeft het correcte antwoord gegeven! U bent dus aangenomen voor een willekeurige alpha studie!" << endl;
+      cout << "U heeft het correcte antwoord gegeven!";
+      cout
+          << "U bent dus aangenomen voor een willekeurige alpha studie !" << endl;
       return 0;
     }
-    cout << "U heeft het jammer genoeg incorrect en komt niet in aanmerking voor een universitaire studie." << endl;
+    cout << "U heeft het jammer genoeg incorrect." << endl;
     return 1;
   }
   else

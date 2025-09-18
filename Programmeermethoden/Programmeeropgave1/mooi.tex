@@ -1,0 +1,52 @@
+
+%
+% Stel je wilt het C++-programma iets.cc mooi printen,
+% en wellicht er nog wat begeleidende tekst bij schrijven.
+%
+
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\parindent=0pt
+
+\usepackage{fullpage}
+
+\frenchspacing
+
+\usepackage{microtype}
+
+\usepackage[english,dutch]{babel}
+
+\usepackage{listings}
+% Er zijn talloze parameters ...
+\lstset{language=C++, showstringspaces=false, basicstyle=\small,
+  numbers=left, numberstyle=\tiny, numberfirstline=false, breaklines=true,
+  stepnumber=1, tabsize=8, 
+  commentstyle=\ttfamily, identifierstyle=\ttfamily,
+  stringstyle=\itshape}
+
+\title{Mooi printen}
+\author{Walter Kosters}
+
+\begin{document}
+
+\selectlanguage{dutch}
+
+\maketitle
+
+\section{Uitleg}
+Tijd voor een verslag.
+Hoe print je daarbij een C$\stackrel{++}{}$ programma mooi?
+Bijvoorbeeld met \LaTeX-package \verb+listings+.
+Let op de talloze opties, bijvoorbeeld voor de tab-grootte.
+
+\section{Tijd}
+Er is hier veel tijd aan besteed.
+
+\section*{Code}
+En dit is het programma:
+
+\lstinputlisting{iets.cc}
+
+\end{document}
