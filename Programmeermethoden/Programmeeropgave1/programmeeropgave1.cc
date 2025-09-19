@@ -21,8 +21,8 @@ int main()
   int geboortemaand;
   int geboortedag;
 
-  cout << "Welkom in het toelatingsprogramma voor Universiteit Leiden." << endl;
-  cout << "We stellen u vragen om te kijken dat u geschikt bent." << endl;
+  cout << "Welkom in het toelatingsprogramma van Universiteit Leiden." << endl;
+  cout << "We stellen u vragen om te kijken of u geschikt bent." << endl;
   cout << endl
        << endl;
   // Leeftijd invullen
