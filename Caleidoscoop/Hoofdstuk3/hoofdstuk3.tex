@@ -14,6 +14,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\q}{/_\sim}
 \newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\tx}[1]{\text{#1}}
 
 \begin{document}
 
@@ -100,8 +101,65 @@
 	      want $a \sim b \Leftrightarrow a-b \in \{0\} = W$, en
 	      dus $a = b$. Dit betekent dat elk element in $V$
 	      een eigen equivalentieklasse heeft met zichzelf.
-
 \end{enumerate}
+\subsection*{Opgave 3.4}
+Ik heb er geen kunnen vinden als we vanuit $\Z$ dit proberen op te lossen.
+Als we vanuit $\Zg$ starten dan kan ik het wel oplossen.
+
+Laat $x \sim y$ met $x, y \in \Zg$ als $x$ en $y$ op hetzelfde niveau $n$ liggen in Pascal's driehoek.
+\begin{enumerate}[label=\arabic*]
+	\item \emph{Reflexief:} $x$ ligt op hetzelfde niveau als $x$ en dus reflexief.
+	\item \emph{Symmetrie:} $x$ en $y$ op hetzelfde niveau betekent $y$ en $x$
+	      op hetzelfde niveau en dus geldt symmetrie.
+	\item \emph{Transitiviteit:} Als $x$ en $y$ op hetzelfde niveau liggen en $y$ en $z$ ook.
+	      Dan moet $x$ ook op hetzelfde niveau liggen als $z$.
+\end{enumerate}
+Tot slot heb ik nog een idee om alsnog met $\Z$ dit op te lossen.
+We moeten eerst een functie $f$ opstellen met $f: \Z \rightarrow \Zg$ waarbij
+\[
+	f = \begin{cases}
+		2x       & \tx{als } x \geq 0 \\
+		|2x + 1| & \tx{als } x < 0
+	\end{cases}
+\]
+Dit zorgt ervoor dat we gewoon met $\Zg$ verder kunnen werken en dan
+dezelfde equivalentierelatie kunnen opstellen als hierboven.
+Ik weet niet of dit goed is...
+\subsection*{Opgave 3.5}
+\begin{enumerate}[label=\alph*)]
+	\item
+	      \begin{proof}
+		      \begin{enumerate}[label=\arabic*]
+			      \item \emph{Reflexief:} Als $p = p$ dan moet $p' = p'$.
+			      \item \emph{Symmetrie:} Als $p \sim q$ dan $p' = q'
+				            \implies q' = p' \implies q \sim p$
+			      \item \emph{Transitiviteit:} Als $p \sim q \wedge q \sim r$
+			            dan $p' = q'$ en $q' = r'$ waardoor $p' = r' \implies p \sim r$.
+		      \end{enumerate}
+	      \end{proof}
+	\item
+	      Laat $p, q \in \Z[X]$ waarbij $p \neq q$ en $\ol{p} = \ol{q}$,
+	      dan geldt $f(\ol{p}) \neq f(\ol{q})$
+	      maar dit is een tegenspraak want $\ol{p} = \ol{q}$.
+	      Dit betekent dat dit geen functie is, Aangezien
+	      voor elk argument hebben we een unieke waarde moeten hebben.
+	\item
+	      Laat $P = p(x) + c$ en $Q = q(x) + d$ met
+	      $P \neq Q$ en $P' = Q'$, dan:
+	      \begin{align*}
+		      g(\ol{P}) & = p(1) + c - (p(0) + c) \\
+		                & = p(1) - p(0)           \\ \\
+		      g(\ol{Q}) & = q(1) + c - (q(0) + c) \\
+		                & = q(1) - q(0)
+	      \end{align*}
+	      Het verschil tussen $P$ en $Q$ was de constante.
+	      De constante verdwijnt door de functie $g$ en dus is
+	      deze wel goed gedefinieerd.
+\end{enumerate}
+\subsection*{Opgave 3.6}
+
+
+
 
 
 
