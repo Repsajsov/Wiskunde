@@ -6,8 +6,13 @@
 \usepackage{cancel}
 \usepackage{enumitem}
 
+
 \setlength{\parindent}{0pt}
 \setcounter{section}{2}
+
+\newcommand{\Zg}{\mathbb{Z}_{\geq 0}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\q}{/_\sim}
 \begin{document}
 
 \begin{center}
@@ -47,6 +52,14 @@
 \subsection*{Opgave 3.2}
 \begin{enumerate}[label=\alph*)]
     \item $X$ wordt gepartioneerd in $X/_\sim$, omdat $|X/_\sim| = \infty =$ zit in elke equivalentieklasse minstens 1 represetant die in $X$ moet liggen. Dit betekent dus dat $|X| \geq |X/_\sim| = \infty$.
+    \item
+        \begin{itemize}
+            \item \emph{Geval 1:} $|X/_\sim| = n \wedge |X| = \infty$: \\ 
+                Neem $X=\Z$ met $x \sim y$ als $x \equiv y \mod n$, dan 
+                heeft $|X\q|$ precies $n$ elmenten namelijk: ${\overline{0}, \overline{1}}
+                $|X| = \infty$, en $|X\q| = n$.
+
+        \end{itemize}
 \end{enumerate}
 
 

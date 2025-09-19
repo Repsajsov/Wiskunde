@@ -1,8 +1,9 @@
 # Fdb version 4
-["pdflatex"] 1758231866.10743 "/home/jaspervos/Wiskunde/Caleidoscoop/Hoofdstuk3/hoofdstuk3.tex" "hoofdstuk3.pdf" "hoofdstuk3" 1758231866.41789 0
+["pdflatex"] 1758273784.43072 "/home/jaspervos/Wiskunde/Caleidoscoop/Hoofdstuk3/hoofdstuk3.tex" "hoofdstuk3.pdf" "hoofdstuk3" 1758273785.04005 2
   "/etc/texmf/web2c/texmf.cnf" 1757446605.82382 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jaspervos/Wiskunde/Caleidoscoop/Hoofdstuk3/hoofdstuk3.tex" 1758231865.94665 2419 781ff1fa92152db1e1acdb9eb490f582 ""
+  "/home/jaspervos/Wiskunde/Caleidoscoop/Hoofdstuk3/hoofdstuk3.tex" 1758273783.47463 2855 f0e66a85788ebd69d8b2305f23389b02 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1246382020 924 9904cf1d39e9767e7a3622f2a125a565 ""
@@ -23,6 +24,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel-dutch/dutch.ldf" 1630268686 6785 9a88117cf3b054cf3e3476265f93dce2 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty" 1704662920 150008 7a05b0fdc0167c04e192003e780ab195 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel/locale/nl/babel-dutch.tex" 1498512262 336 688c2541014a5f1e639d9f99b6017791 ""
@@ -49,11 +51,13 @@
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty" 1654720880 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
   "/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1704491087 30006 57b07afb710ee2f649c65cfbafda39c1 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
+  "/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1636152094 2900 1537cc8184ad1792082cd229ecc269f4 ""
+  "/usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb" 1636152094 138258 6525c253f16cededa14c7fd0da7f67b2 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1757446629.09984 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1757446697 8212830 740bee7d723266b3ee93681b5f7463c7 ""
-  "hoofdstuk3.aux" 1758231866.38463 238 4692f81400e51d8824c8ad557e12b41a "pdflatex"
-  "hoofdstuk3.tex" 1758231865.94665 2419 781ff1fa92152db1e1acdb9eb490f582 ""
+  "hoofdstuk3.aux" 1758273784.94352 238 4692f81400e51d8824c8ad557e12b41a "pdflatex"
+  "hoofdstuk3.tex" 1758273783.47463 2855 f0e66a85788ebd69d8b2305f23389b02 ""
   (generated)
   "hoofdstuk3.aux"
   "hoofdstuk3.log"
