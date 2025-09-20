@@ -157,6 +157,31 @@ Ik weet niet of dit goed is...
 	      deze wel goed gedefinieerd.
 \end{enumerate}
 \subsection*{Opgave 3.6}
+\subsubsection*{Correct gedefinieerd}
+Neem $f: X\q \rightarrow \Zg$ met $f(\ol{x}) := g(x)$, waarbij $g: X -> \Zg$ met $g(x) = x \mod 2$.
+Beschouw $X \in \Zg$ en stel de equivalentierelatie $(x \sim y)$ als $(x \mod 6) = (y \mod 6)$ op.
+Als we nu willekeurige $x, y \in \ol{x}$ representanten zouden selecteren dan $f(x) = f(y)$, 
+aangezien voor elk element in $\ol{a}$ geldt dat het in dezelfde restklasse valt. Ofwel
+voor $\ol{0}$ kunnen we elk element schrijven als $2(x) + 0$, \ $\ol{1} \implies 2(x) + 1, \ \ol{2} \implies 2(x) + 2$, etc.
+Voorbeeld:
+\begin{align*}
+	\ol{0} &= \{0, 6, 12, 18, 24, \dots \} \\
+	&= \{(2\cdot0), (2\cdot3), (2\cdot4), \dots \} \\ \\ 
+	\ol{1} &= \{1, 7, 13, 19, \dots \} \\
+	&= \{(2\cdot 0 + 1), (2\cdot3 + 1), (2 \cdot 6 + 1), \dots \} \\ \\
+	\ol{\vdots} &= \{ \dots \dots \dots \}
+\end{align*}
+\subsubsection*{Incorrect gedefinieerd}
+Neem $f: X\q \rightarrow \Zg$ met $f(\ol{x}) := g(x)$ waarbij $g: X \rightarrow \Zg$ met $g(x) = x \mod 2$.
+Beschouw $X \in \Zg$ en stel de equivalentierelatie $x \sim y$ als $(x \mod 3) = (y \mod 3)$ op. 
+Als we nu willekeurige $x, y \in \ol{x}$ representanten zouden selecteren dan $f(x) \neq f(y)$, want  
+neem bijvoorbeeld $3, 6 \in \ol{0}$, dan $f(3) = 3 \mod 2 = \boxed{1}$ en $f(6) = 6 \mod 2 = \boxed{0}$. 
+Hieruit volgt dus dat $f$ geen functie is aangezien een argument meer dan één waarde kan vertegenwoordigen. 
+
+\subsection*{Opgave 3.7}
+Neem $(a,b)\cdot(c,d) = (ac + bd,  $
+
+
 
 
 
