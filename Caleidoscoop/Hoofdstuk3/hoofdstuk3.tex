@@ -179,7 +179,27 @@ neem bijvoorbeeld $3, 6 \in \ol{0}$, dan $f(3) = 3 \mod 2 = \boxed{1}$ en $f(6) 
 Hieruit volgt dus dat $f$ geen functie is aangezien een argument meer dan één waarde kan vertegenwoordigen. 
 
 \subsection*{Opgave 3.7}
-Neem $(a,b)\cdot(c,d) = (ac + bd,  $
+Zij $(a, b), (c, d) \in X\q$ en laat de vermedigvuldiging als volgt zijn:
+\begin{align*}
+	(a, \ b)\cdot(c, \ d) &= (a-b)(c-d) \\
+	&= ac - ad - bc + bd \\
+	&= (ac + bd) - (ad + bc) \\
+	&= (ac + bd, \ ad + bc)
+\end{align*}
+We gaan nu laten zien dat de berekening represetant onafhankelijk is.
+Neem $(ac + bd, \ ad + bc)$, en $(a'c' + b'd', \ a'd'+b'c')$ en kijk of:
+\begin{align*}
+(ac + bd, \ ad + bc) &\sim (a'c' + b'd', \ a'd' + b'c') \\
+&\Downarrow \\ 
+ac + bd + a'd' + b'c' &= ad + bc + a'c' + b'd' \\
+&\Downarrow \\
+(ac + bd) - (ad + bd) &= (a'c' + b'd') - (a'd' + b'c') \\
+&\Downarrow \\
+(ac + bd, ad + bd) &= (a'c' + b'd', a'd' + b'c') \\
+\end{align*}
+Hieruit volgt dat het represetant onafhankelijk is. Ik twijfel nog over deze uitwerking...
+
+\subsection*{Opgave 3.8}
 
 
 
