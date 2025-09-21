@@ -160,48 +160,89 @@ Ik weet niet of dit goed is...
 \subsubsection*{Correct gedefinieerd}
 Neem $f: X\q \rightarrow \Zg$ met $f(\ol{x}) := g(x)$, waarbij $g: X -> \Zg$ met $g(x) = x \mod 2$.
 Beschouw $X \in \Zg$ en stel de equivalentierelatie $(x \sim y)$ als $(x \mod 6) = (y \mod 6)$ op.
-Als we nu willekeurige $x, y \in \ol{x}$ representanten zouden selecteren dan $f(x) = f(y)$, 
+Als we nu willekeurige $x, y \in \ol{x}$ representanten zouden selecteren dan $f(x) = f(y)$,
 aangezien voor elk element in $\ol{a}$ geldt dat het in dezelfde restklasse valt. Ofwel
 voor $\ol{0}$ kunnen we elk element schrijven als $2(x) + 0$, \ $\ol{1} \implies 2(x) + 1, \ \ol{2} \implies 2(x) + 2$, etc.
 Voorbeeld:
 \begin{align*}
-	\ol{0} &= \{0, 6, 12, 18, 24, \dots \} \\
-	&= \{(2\cdot0), (2\cdot3), (2\cdot4), \dots \} \\ \\ 
-	\ol{1} &= \{1, 7, 13, 19, \dots \} \\
-	&= \{(2\cdot 0 + 1), (2\cdot3 + 1), (2 \cdot 6 + 1), \dots \} \\ \\
-	\ol{\vdots} &= \{ \dots \dots \dots \}
+	\ol{0}      & = \{0, 6, 12, 18, 24, \dots \}                               \\
+	            & = \{(2\cdot0), (2\cdot3), (2\cdot4), \dots \}                \\ \\
+	\ol{1}      & = \{1, 7, 13, 19, \dots \}                                   \\
+	            & = \{(2\cdot 0 + 1), (2\cdot3 + 1), (2 \cdot 6 + 1), \dots \} \\ \\
+	\ol{\vdots} & = \{ \dots \dots \dots \}
 \end{align*}
 \subsubsection*{Incorrect gedefinieerd}
 Neem $f: X\q \rightarrow \Zg$ met $f(\ol{x}) := g(x)$ waarbij $g: X \rightarrow \Zg$ met $g(x) = x \mod 2$.
-Beschouw $X \in \Zg$ en stel de equivalentierelatie $x \sim y$ als $(x \mod 3) = (y \mod 3)$ op. 
-Als we nu willekeurige $x, y \in \ol{x}$ representanten zouden selecteren dan $f(x) \neq f(y)$, want  
-neem bijvoorbeeld $3, 6 \in \ol{0}$, dan $f(3) = 3 \mod 2 = \boxed{1}$ en $f(6) = 6 \mod 2 = \boxed{0}$. 
-Hieruit volgt dus dat $f$ geen functie is aangezien een argument meer dan één waarde kan vertegenwoordigen. 
+Beschouw $X \in \Zg$ en stel de equivalentierelatie $x \sim y$ als $(x \mod 3) = (y \mod 3)$ op.
+Als we nu willekeurige $x, y \in \ol{x}$ representanten zouden selecteren dan $f(x) \neq f(y)$, want
+neem bijvoorbeeld $3, 6 \in \ol{0}$, dan $f(3) = 3 \mod 2 = \boxed{1}$ en $f(6) = 6 \mod 2 = \boxed{0}$.
+Hieruit volgt dus dat $f$ geen functie is aangezien een argument meer dan één waarde kan vertegenwoordigen.
 
 \subsection*{Opgave 3.7}
 Zij $(a, b), (c, d) \in X\q$ en laat de vermedigvuldiging als volgt zijn:
 \begin{align*}
-	(a, \ b)\cdot(c, \ d) &= (a-b)(c-d) \\
-	&= ac - ad - bc + bd \\
-	&= (ac + bd) - (ad + bc) \\
-	&= (ac + bd, \ ad + bc)
+	(a, \ b)\cdot(c, \ d) & = (a-b)(c-d)            \\
+	                      & = ac - ad - bc + bd     \\
+	                      & = (ac + bd) - (ad + bc) \\
+	                      & = (ac + bd, \ ad + bc)
 \end{align*}
 We gaan nu laten zien dat de berekening represetant onafhankelijk is.
 Neem $(ac + bd, \ ad + bc)$, en $(a'c' + b'd', \ a'd'+b'c')$ en kijk of:
 \begin{align*}
-(ac + bd, \ ad + bc) &\sim (a'c' + b'd', \ a'd' + b'c') \\
-&\Downarrow \\ 
-ac + bd + a'd' + b'c' &= ad + bc + a'c' + b'd' \\
-&\Downarrow \\
-(ac + bd) - (ad + bd) &= (a'c' + b'd') - (a'd' + b'c') \\
-&\Downarrow \\
-(ac + bd, ad + bd) &= (a'c' + b'd', a'd' + b'c') \\
+	(ac + bd, \ ad + bc)  & \sim (a'c' + b'd', \ a'd' + b'c') \\
+	                      & \Downarrow                        \\
+	ac + bd + a'd' + b'c' & = ad + bc + a'c' + b'd'           \\
+	                      & \Downarrow                        \\
+	(ac + bd) - (ad + bd) & = (a'c' + b'd') - (a'd' + b'c')   \\
+	                      & \Downarrow                        \\
+	(ac + bd, ad + bd)    & = (a'c' + b'd', a'd' + b'c')      \\
 \end{align*}
 Hieruit volgt dat het represetant onafhankelijk is. Ik twijfel nog over deze uitwerking..
 
 \subsection*{Opgave 3.8}
 Zij $f: \Z \rightarrow \Z \times \Z_{\neq 0}$ met $f(x) = (x, 1)$, waarbij we een equivalentierelatie opstellen:
-\[(a, b) \sim (c, d) \Longleftrightarrow ad = bc\] 
+\[(a, b) \sim (c, d) \Longleftrightarrow ad = bc\]
+\begin{enumerate}[label=\arabic*]
+	\item \emph{Reflexief:} Neem $(a, b) \in \Z \times \Z_{\neq 0}$ dan:
+	      \begin{align*}
+		      (a, b) & \sim (a,b)                                                         \\
+		             & \Downarrow                                                         \\
+		      ab     & = ba                                                               \\
+		      ab     & = ab \quad (\because \tx{Vermedigvuldiging is commutatief in } \Z)
+	      \end{align*}
+	      De relatie is dus reflexief.
+	\item \emph{Symmetrie:} Als $(a, b) \sim (c,d)$ dan:
+	      \begin{align*}
+		      ad     & = bc                                                               \\
+		             & \Downarrow                                                         \\
+		      bc     & = ad                                                               \\
+		             & \Downarrow                                                         \\
+		      cb     & = da \quad (\because \tx{Vermedigvuldiging is commutatief in } \Z) \\
+		             & \Downarrow                                                         \\
+		      (c,d ) & \sim (a,b)
+	      \end{align*}
+	      De relatie is dus symmetrisch.
+	\item \emph{Transitiviteit:} Als $(a, b) \sim (c, d) \wedge (c, d) \sim (e, f)$ dan $(a, b) \sim (e, f)$
+	      \begin{align*}
+		      (a, b) \sim (c, d) & \implies ad = bc \\
+		                         & \Downarrow       \\
+		      (c, d) \sim (e, f) & \implies cf = de \\
+		                         & \Downarrow       \\
+		      ad(f)              & = bc(f)          \\
+		                         & \Downarrow       \\
+		      ad(f)              & = b(de)          \\
+		                         & \Downarrow       \\
+		      af                 & = be             \\
+		                         & \Downarrow       \\
+		      (a,b)              & \sim (e,f)
+	      \end{align*}
+	      De relatie is dus transitief.
+\end{enumerate}
+Nu moeten we nog bewijzen of de equivalentierelatie representantonafhankelijk is. Neem $(a,b) \sim (c,d)$ en $(a',b') \sim (c',d')$ dan:
+\begin{align*}
+	a
+\end{align*}
+
 Waarbij de interpretatie als volgt is:
 \[\ol{(a, b)} = \frac{a}{b}\]
 En nu hebben we $\mathbb{Q}$?
