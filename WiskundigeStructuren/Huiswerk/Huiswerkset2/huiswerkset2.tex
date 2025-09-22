@@ -15,7 +15,7 @@
 \bigskip
 
 \textbf{Jasper Vos} \hfill \textbf{Huiswerkset 2} \hfill \today \\
-Studentnr: \emph{s2911159} 
+Studentnr: \emph{s2911159}
 
 \rule{\textwidth}{2pt}
 
@@ -28,61 +28,92 @@ Studentnr: \emph{s2911159}
 \newcommand{\R}{\mathbb{R}}
 
 \section*{Opgave 1}
-Om te laten zien dat $A \cup B$ aftelbaar oneindig is maken we een functie die bijectief is en $A \cup B$ als beeld heeft.
-Laten we de natuurlijke getallen $\N$ gebruiken. Aangezien $A \cap B = \emptyset$ kunnen we vanuit $\N$ elk element apart bereiken door gebruikt te maken van dat $n \in \N$ oneven of even kan zijn.
-Daarmee kunnen we een functie opstellen waarbij we elk $a \in A \tx{ en } b \in B$ bereikt kan worden vanuit $\N$.
+\begin{proof}
 
-\bigskip
+    Als $A$ en $B$ beide aftelbaar oneindig zijn dan
+    bestaat er een bijectie vanuit $\N$.
+    Zij $g: \N \rightarrow A$ en $h: \N \rightarrow B$.
+    Laten we nu een functie $f$ opstellen
+    waarbij we $A$ en $B$ vlechten in $f$.
+    Zij $f:\N \rightarrow A \cup B$: waarvoor geldt:
 
-Zij $f:\N \rightarrow A \cup B$: waarvoor geldt:
+    \[
+        f(n) = \begin{cases}
+            a_{\f{n}{2}}   & \tx{als $n$ even is}   \\
+            b_{\f{n+1}{2}} & \tx{als $n$ oneven is} \\
+        \end{cases}
+    \]
 
-\[
-f(n) = \begin{cases}
-    a_{\f{n}{2} + 1} & \tx{als $n$ even is} \\
-    b_{\f{n-1}{2} + 1} & \tx{als $n$ oneven is} \\
-\end{cases}
-\]
+    \subsection*{Injectiviteit:}
+    Zij $n_1, n_2 \in \N \tx{ te bewijzen } f(n_1) = f(n_2) \implies n_1 = n_2$
+    \subsubsection*{Geval 1: $n_1, n_2$ beide even:}
+    \begin{align*}
+        f(n_1)         & = f(n_2)                                               \\
+        a_{\f{n_1}{2}} & = a_{\f{n_2}{2}}                                       \\
+        n_1            & = n_2 \quad (\because g, h \tx{ beide injectief zijn})
+    \end{align*}
+    \subsubsection*{Geval 2: $n_1, n_2$ beide oneven:}
+    \begin{align*}
+        f(n_1)           & = f(n_2)                                               \\
+        b_{\f{n_1+1}{2}} & = b_{\f{n_2+1}{2}}                                     \\
+        n_1              & = n_2 \quad (\because g, h \tx{ beide injectief zijn})
+    \end{align*}
+    \subsubsection*{Geval 3: $n_1$ even en $n_2$ oneven:}
+    \begin{align*}
+        f(n_1)         & = f(n_2)              \\
+        a_{\f{n_1}{2}} & \neq b_{\f{n_2+1}{2}} \\
+    \end{align*}
+    Dit kan niet omdat aan de linkerkant
+    een element van $A$ staat en aan de rechterkant
+    een element van $B$, en gegeven was dat $A \cap B = \emptyset$.
+    Geval 3 is dus niet relevant en de overige zijn correct dus
+    $f$ is injectief.
 
-Laat zien dat de functie injectief is: 
-    \[\forall n_1, n_2 \tx{ geldt } f(n_1) = f(n_2) \implies n_1 = n_2 \]
-\emph{Geval 1:} $n_1, n_2 \in \N$ waarbij $n_1$ en $n_2$ even zijn.  
-\begin{align*}
-    a_{\f{n_1}{2}+1} &= a_{\f{n_2}{2}+ 1} \\
-    &\Downarrow \\
-    \f{n_1}{\cn{2}} + \cn{1} &= \f{n_2}{\cn{2}} + \cn{1} \\
-    n_1 &= n_2 \\
-\end{align*}
-\emph{Geval 1:} $n_1, n_2 \in \N$ waarbij $n_1$ en $n_2$ oneven zijn.  
-\begin{align*}
-    b_{\f{n_1-1}{2}+1} &= b_{\f{n_2 - 1}{2}+ 1} \\
-    &\Downarrow \\
-    \f{n_1 - \cn{1}}{\cn{2}} + \cn{1} &= \f{n_2 - \cn{1}}{\cn{2}} + \cn{1} \\
-    n_1 &= n_2 \\
-\end{align*}
-\emph{Geval 3:} $n_1, n_2 \in \N$ waarbij $n_1$ is even en $n_2$ is oneven.
-\begin{center}
-    $n_1 = n_2$ kan niet als $n_1$ even is en $n_2$ oneven aangezien een getal niet zowel even als oneven kan zijn. 
-\end{center}
+    \subsection*{Surjectiviteit:}
+    Te bewijzen $\forall m \in A \cup B$ geldt dat er een $n \in \N$ bestaat zodanig
+    dat $f(n) = m$
+    \subsubsection*{Geval 1: Als $m \in A$:}
+    Dan bestaat er een $a_k \in A$ zodanig dat $a_k = m$, we kiezen $n = 2k$ dan:
 
+    \[f(2k) = a_{\f{2k}{2}} = a_k = m\]
 
-Vervolgens laten we zien dat de functie surjectief is:
-\begin{align*}
-    \forall m \in (A \cup B) \ \exists n \in \N \tx{ zodanig dat } f(n) = m
-\end{align*}
+    \subsubsection*{Geval 2: Als $m \in B$:}
+    Dan bestaat er een $b_k \in B$ zodanig dat $b_k = m$, we kiezen $n = 2k-1$ dan:
 
+    \[f(2k-1) = b_{\f{(2k-1) + 1}{2}} = b_k = m\]
 
+    $f$ is surjectief en injectief waaruit volgt dat $f$ bijectief is.
+    Hieruit volgt dus dat $f: \N \rightarrow A \cup B$ aftelbaar oneindig is.
 
+\end{proof}
 \section*{Opgave 2}
-Om bijectie te bewijzen moet de functie $f$ zowel injectief als surjectief zijn.
-Laat zien dat de functie injectief is:
-\[\forall (n_1, x_1), (n_2, x_2) \in \N_{>0} \times \R\ \tx{ geldt } f((n_1, x_1)) = f((n_2,x_2)) \implies n_1 = n_2 \wedge x_1 = x_2\]  
-\begin{align*}
-    (98n_1x_1, n_1) &= (98n_2x_2, n_2) \\
-    &\Downarrow \\
-    98n_1x_1 = 98n_2x_2 &\wedge n_1 = n_2 \\
-    n_1x_1 = n_2x_2 &\wedge n_1 = n_2 \\
-    x_1 = x_2 &\wedge n_1 = n_2 
-\end{align*}
+\begin{proof}
+    Om bijectiviteit te bewijzen moet $f$ zowel injectief als surjectief zijn.
+    \subsection*{Injectiviteit:}
+    Te bewijzen $\forall (n_1, x_1), \ (n_2, x_2) \in \N_{>0}
+        \rightarrow \R$ dan $f(n_1, x_1) = f(n_2, x_2) \implies n_1 = n_2, \tx{ en } x_1 = x_2$.
+    \begin{align*}
+        (98n_1x_1, n_1) & = (98n_2x_2, n_2)                                                          \\ \\
+        n_1             & = n_2 \quad (\tx{Rechtercomponent})                                        \\ \\
+        98n_1x_1        & = 98n_2x_2                                                                 \\
+        n_1x_1          & = n_2x_2                                                                   \\
+        x_1             & = x_2 \quad (\tx{Geschrapt vanuit het resultaat van het rechtercomponent})
+    \end{align*}
+    Voor zowel het rechter als linkercomponent geldt dus dat $f$ injectief is.
+    \subsection*{Surjectiviteit:}
+    Te bewijzen $\forall (y, m) \in \R \times \N_{>0}$
+    bestaat er een $(n, x) \in \N_{>0} \times \R$
+    zodanig dat $f(n, x) = (y, m)$.
+    neem $(n, x) = (m, \f{y}{98m})$, dan:
+    \[f(m, \f{y}{98m}) = (\cn{98m}(\f{y}{\cn{98m}}), m) = (y, m)\]
+    Hieruit volgt dus dat $f$ surjectief is. We hebben
+    al eerder bewezen dat $f$ injectief is en dus is $f$
+    bijectief.
+\end{proof}
+\subsection*{Inverse:}
+Tot slot stellen we de inverse $f^{-1} = g$ op.
+
+\[g: \R \times \N_{>0} \rightarrow \N_{>0} \times \R \tx{ met } g(x, n) = (n, \f{x}{98n}) \]
 
 
 \end{document}
