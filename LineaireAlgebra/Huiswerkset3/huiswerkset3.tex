@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\newcommand{\R}{\mathbb{R}}
+
+
+\begin{document}
+
+{\Large \textbf{Lineaire Algebra Huiswerk}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 3} \hfill \today \\
+Studentnr: \emph{s2911159}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\section*{Opgave 2.2.9 (4)}
+\subsection*{Nulelement}
+We stellen de nulfunctie op namelijk $f: \R \rightarrow \R$ met $f_0(x) = 0$, dan $f_0(3) = 0$ en dus $f_0 \in V$.
+\subsection*{Optelling}
+Zij $f_1, f_2$ willekeurig gekozen in $V$, en laat $g = f_1 + f_2$, dan:
+\begin{align*}
+    g(3) & = (f_1 + f_2)(3)  \\
+         & = f_1(3) + f_2(3) \\
+         & = 0 + 0           \\
+         & = \boxed{0}
+\end{align*}
+Hieruit volgt dus dat $g(3) = 0$ en dus $g \in V$.
+\subsection*{Vermedigvuldiging}
+Zij $\lambda \in \R$ en $f$ willekeurig gekozen in $V$ dan:
+\begin{align*}
+    \lambda f(3) & = \lambda (0) \\
+                 & = \boxed{0}
+\end{align*}
+\subsection*{Axioma's}
+\subsubsection*{Additieve commutativiteit:}
+Te bewijzen: Voor alle $f, g \in V$ geldt $f(x) + g(x) = g(x) + f(x)$.
+
+Merk op dat $f(x), g(x) \in \R$, en voor $\R$ geldt dat termen commutatief zijn.
+Dus $f(x) + g(x) = g(x) + f(x)$.
+\subsubsection*{Additieve associativiteit:}
+Te bewijzen: Voor alle $f, g, h \in V$ geldt dat $(f+(g+h))(x) = ((f + g) + h)(x)$.
+\begin{align*}
+    (f + (g + h))(x) & = f(x) + (g + h)(x)  \quad (f(x), g(x), h(x) \in \R \text{ en dus associatief}) \\
+                     & = f(x) + g(x) + h(x)                                                            \\
+                     & = (f + g)(x) + h(x)                                                             \\
+                     & = ((f + g)+h)(x)
+\end{align*}
+\subsubsection*{Neutraal element:}
+
+
+
+
+\end{document}
