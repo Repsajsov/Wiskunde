@@ -43,21 +43,73 @@ Zij $\lambda \in \R$ en $f$ willekeurig gekozen in $V$ dan:
                  & = \boxed{0}
 \end{align*}
 \subsection*{Axioma's}
-\subsubsection*{Additieve commutativiteit:}
+\subsubsection*{1. Additieve commutativiteit:}
 Te bewijzen: Voor alle $f, g \in V$ geldt $f(x) + g(x) = g(x) + f(x)$.
-
-Merk op dat $f(x), g(x) \in \R$, en voor $\R$ geldt dat termen commutatief zijn.
-Dus $f(x) + g(x) = g(x) + f(x)$.
-\subsubsection*{Additieve associativiteit:}
+\begin{proof}
+    Merk op dat $f(x), g(x) \in \R$, en voor $\R$ geldt dat termen commutatief zijn.
+    Dus $f(x) + g(x) = g(x) + f(x)$.
+\end{proof}
+\subsubsection*{2. Additieve associativiteit:}
 Te bewijzen: Voor alle $f, g, h \in V$ geldt dat $(f+(g+h))(x) = ((f + g) + h)(x)$.
-\begin{align*}
-    (f + (g + h))(x) & = f(x) + (g + h)(x)  \quad (f(x), g(x), h(x) \in \R \text{ en dus associatief}) \\
-                     & = f(x) + g(x) + h(x)                                                            \\
-                     & = (f + g)(x) + h(x)                                                             \\
-                     & = ((f + g)+h)(x)
-\end{align*}
-\subsubsection*{Neutraal element:}
+\begin{proof}
+    \begin{align*}
+        (f + (g + h))(x) & = f(x) + (g + h)(x)  \quad (f(x), g(x), h(x) \in \R \text{ en dus associatief}) \\
+                         & = f(x) + g(x) + h(x)                                                            \\
+                         & = (f + g)(x) + h(x)                                                             \\
+                         & = ((f + g)+h)(x)
+    \end{align*}
+\end{proof}
+Dus $V$ is associatief.
+\subsubsection*{3. Neutraal element:}
+Te bewijzen: Voor alle $f \in V$ geldt $f + f_0 = f$
+\begin{proof}
+    Merk op dat $f_0(x) = 0$ en dus $f(x) + f_0(x) = f(x) + 0 = f(x)$.
+\end{proof}
+\subsubsection*{4. Bestaan van negatieven:}
+Te bewijzen: Voor alle $f \in V$ bestaat er een $f' \in V$ zodanig dat $f + f' = f_0$.
+\begin{proof}
+    We weten dat $f(x) \in \R$ ligt en voor $\R$ geldt dat elk element een additieve inverse heeft.
+    Dus neem $f'(x) = -f(x)$ dan $f(x) + f'(x) = f_0(x)$.
+\end{proof}
+\subsubsection*{5. Scalaire Vermedigvuldiging is associatief:}
+Te bewijzen: Voor alle $\lambda, \mu \in \R$ en $f \in V$ geldt: $(\lambda \odot (\mu \odot f))(x) = ((\lambda \odot \mu) \odot f)(x)$.
+\begin{proof}
+    We weten dat $\lambda, \mu$ en $f(x)$ allemaal in $\R$ liggen en voor
+    $\R$ geldt dat vermedigvuldiging associatief is dus:
+    \begin{align*}
+        (\lambda \odot (\mu \odot f))(x) & =  \lambda (\mu \odot f)(x)        \\
+                                         & = \lambda(\mu f(x))                \\
+                                         & = (\lambda \mu)f(x)                \\
+                                         & = ((\lambda \odot \mu) \odot f)(x)
+    \end{align*}
+\end{proof}
+\subsubsection*{6. Vermedigvuldiging met $1$ doet niks:}
+Te bewijzen: Voor alle $f \in V$ geldt $1 \odot f = f$.
+\begin{proof}
+    Merk op $f(x) \in \R$, dan $1 \odot f(x) = f(x)$.
+\end{proof}
 
+\subsubsection*{7. Distributiviteit I:}
+Te bewijzen: Voor alle $\lambda \in \R$ en voor alle $f, g \in V$ geldt $(\lambda \odot (f + g))(x) = (\lambda \odot f)(x) \oplus (\lambda \odot g)(x)$.
+\begin{proof}
+    Merk op dat $f(x) \in \R$ en voor $\R$ geldt dat het distributief is, en dus:
+    \begin{align*}
+        (\lambda \odot (f + g))(x) & = \lambda \odot (f(x) + g(x))                      \\
+                                   & = (\lambda \odot f)(x) \oplus (\lambda \odot g)(x)
+    \end{align*}
+\end{proof}
+\subsubsection*{8. Distributiviteit II:}
+Te bewijzen: Voor alle $\lambda, \mu \in \R$ en voor alle $f \in V$ geldt $((\lambda + \mu) \odot f)(x) = (\lambda \odot f)(x) \oplus (\mu \odot f)(x)$.
+\begin{proof}
+    Merk op dat $f(x) \in \R$ en voor $\R$ geldt dat het distributief is, en dus:
+    \begin{align*}
+        ((\lambda \odot \mu) + f)(x) & = (\lambda \odot \mu)f(x)                      \\
+                                     & = (\lambda \odot f)(x) \oplus (\mu \odot f)(x)
+    \end{align*}
+\end{proof}
+
+$V$ heeft een Nulelement, optelling, vermedigvuldiging, en voldoet aan de acht axioma's
+waardoor we kunnen zeggen at $V$ een vectorruimte is.
 
 
 
