@@ -108,6 +108,7 @@ void decodeer(string &invoerFile, string &uitvoerFile, int pincode)
         else if (karakter == '\t' || karakter == '\r')
         {
             uitvoer.put(karakter);
+            count--;
         }
         else
         {
