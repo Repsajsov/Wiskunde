@@ -90,6 +90,7 @@ void decodeer(string &invoerFile, string &uitvoerFile, int pincode)
     ofstream uitvoer(uitvoerFile, ios::out);
 
     char karakter, vorigKarakter, karakterUitvoer;
+    char vorigKarakterUitvoer;
     int caesar;
     int getal = 0;
     int exponent;
@@ -107,7 +108,6 @@ void decodeer(string &invoerFile, string &uitvoerFile, int pincode)
         else if (karakter == '\t' || karakter == '\r')
         {
             uitvoer.put(karakter);
-            count--;
         }
         else
         {
@@ -115,35 +115,36 @@ void decodeer(string &invoerFile, string &uitvoerFile, int pincode)
             caesar = pincode / power(10, exponent) % 10;
             karakterUitvoer = ((karakter - 32 - caesar) % 95) + 32;
             uitvoer.put(karakterUitvoer);
-        }
-        if (isCijfer(karakter))
-        {
-            if (isCijfer(vorigKarakter))
+            if (isCijfer(karakterUitvoer))
             {
-                getal = (getal * 10) + (karakter - '0');
+                if (isCijfer(vorigKarakterUitvoer))
+                {
+                    getal = (getal * 10) + (karakterUitvoer - '0');
+                }
+                else
+                {
+                    getal = karakterUitvoer - '0';
+                }
             }
             else
             {
-                getal = karakter - '0';
-            }
-        }
-        else
-        {
-            if (isCijfer(vorigKarakter))
-            {
-                if (getal > 0 && getal < 10000)
+                if (isCijfer(vorigKarakterUitvoer))
                 {
-                    veranderPincode = true;
+                    if (getal > 0 && getal < 10000)
+                    {
+                        veranderPincode = true;
+                    }
                 }
             }
+            if (veranderPincode && !isCijfer(karakterUitvoer))
+            {
+                pincode = getal;
+                getal = 0;
+                veranderPincode = false;
+            }
+            vorigKarakterUitvoer = karakterUitvoer;
         }
 
-        if (veranderPincode && !isCijfer(karakter))
-        {
-            pincode = getal;
-            getal = 0;
-            veranderPincode = false;
-        }
         count++;
     }
     invoer.close();
