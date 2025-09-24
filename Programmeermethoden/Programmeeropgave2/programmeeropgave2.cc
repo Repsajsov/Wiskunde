@@ -19,7 +19,6 @@ bool isCijfer(char karakter)
     }
     return false;
 }
-
 void codeer(string &invoerFile, string &uitvoerFile, int pincode)
 {
     ifstream invoer(invoerFile, ios::in);
@@ -85,7 +84,6 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
     invoer.close();
     uitvoer.close();
 }
-
 void decodeer(string &invoerFile, string &uitvoerFile, int pincode)
 {
     ifstream invoer(invoerFile, ios::in);
