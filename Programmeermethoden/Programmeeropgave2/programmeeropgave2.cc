@@ -7,7 +7,7 @@ int power(int getal, int exponent)
 {
     if (exponent == 0)
         return 1;
-    return getal *= power(getal, exponent - 1);
+    return getal * power(getal, exponent - 1);
 }
 
 void codeer(string &invoerFilepad, string &uitvoerFilepad, int pincode)
@@ -32,9 +32,8 @@ void codeer(string &invoerFilepad, string &uitvoerFilepad, int pincode)
         }
         else if (letter == '\n')
         {
-            count = 0;
+            count = -1;
             cout << "VERAndert!";
-            continue;
         }
         uitvoer.put(letter);
         count++;
@@ -42,20 +41,33 @@ void codeer(string &invoerFilepad, string &uitvoerFilepad, int pincode)
     invoer.close();
     uitvoer.close();
 }
-void decodeer(string &invoerFilepad, string &uitvoerFilepad, int caesar)
+void decodeer(string &invoerFilepad, string &uitvoerFilepad, int pincode)
 {
     ifstream invoer(invoerFilepad, ios::in);
     ofstream uitvoer(uitvoerFilepad, ios::out);
 
     char letter;
+    int caesar;
+    int exponent;
+    int count = 0;
     while (!invoer.eof())
     {
         letter = invoer.get();
+        exponent = 3 - (count % 4);
+        caesar = pincode / power(10, exponent) % 10;
+        cout << caesar << endl;
+
         if (letter != '\n' && letter != '\r' && letter != '\t')
         {
             letter = ((letter - 32 - caesar) % 95) + 32;
         }
+        else if (letter == '\n')
+        {
+            count = -1;
+            cout << "VERAndert!";
+        }
         uitvoer.put(letter);
+        count++;
     }
     invoer.close();
     uitvoer.close();
@@ -72,7 +84,7 @@ int main()
     //     return 0;
     // }
 
-    int pincode = 1234;
+    int pincode = 34;
 
     // Lezen van invoerfile
 
