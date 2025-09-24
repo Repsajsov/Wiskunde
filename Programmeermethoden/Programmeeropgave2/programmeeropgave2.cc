@@ -53,18 +53,15 @@ void decodeer(string &invoerFilepad, string &uitvoerFilepad, int pincode)
     while (!invoer.eof())
     {
         letter = invoer.get();
-        exponent = 3 - (count % 4);
-        caesar = pincode / power(10, exponent) % 10;
-        cout << caesar << endl;
-
-        if (letter != '\n' && letter != '\r' && letter != '\t')
-        {
-            letter = ((letter - 32 - caesar) % 95) + 32;
-        }
-        else if (letter == '\n')
+        if (letter == '\n')
         {
             count = -1;
-            cout << "VERAndert!";
+        }
+        else if (letter != '\n' && letter != '\r' && letter != '\t')
+        {
+            exponent = 3 - (count % 4);
+            caesar = pincode / power(10, exponent) % 10;
+            letter = ((letter - 32 - caesar) % 95) + 32;
         }
         uitvoer.put(letter);
         count++;
