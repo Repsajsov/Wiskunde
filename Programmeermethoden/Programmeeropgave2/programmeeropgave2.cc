@@ -84,34 +84,68 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
     }
     invoer.close();
     uitvoer.close();
-    cout << getal;
 }
+
 void decodeer(string &invoerFile, string &uitvoerFile, int pincode)
 {
     ifstream invoer(invoerFile, ios::in);
     ofstream uitvoer(uitvoerFile, ios::out);
 
-    char karakter;
+    char karakter, vorigKarakter, karakterUitvoer;
     int caesar;
+    int getal = 0;
     int exponent;
     int count = 0;
+    bool veranderPincode = false;
     while (!invoer.eof())
     {
+        vorigKarakter = karakter;
         karakter = invoer.get();
         if (karakter == '\n')
         {
+            uitvoer.put(karakter);
             count = -1;
         }
-        else if (karakter != '\r' && karakter != '\t')
+        else if (karakter == '\t' || karakter == '\r')
+        {
+            uitvoer.put(karakter);
+            count--;
+        }
+        else
         {
             exponent = 3 - (count % 4);
             caesar = pincode / power(10, exponent) % 10;
-            karakter = ((karakter - 32 - caesar) % 95) + 32;
+            karakterUitvoer = ((karakter - 32 - caesar) % 95) + 32;
+            uitvoer.put(karakterUitvoer);
         }
-        else if (karakter)
+        if (isCijfer(karakter))
         {
+            if (isCijfer(vorigKarakter))
+            {
+                getal = (getal * 10) + (karakter - '0');
+            }
+            else
+            {
+                getal = karakter - '0';
+            }
         }
-        uitvoer.put(karakter);
+        else
+        {
+            if (isCijfer(vorigKarakter))
+            {
+                if (getal > 0 && getal < 10000)
+                {
+                    veranderPincode = true;
+                }
+            }
+        }
+
+        if (veranderPincode && !isCijfer(karakter))
+        {
+            pincode = getal;
+            getal = 0;
+            veranderPincode = false;
+        }
         count++;
     }
     invoer.close();
