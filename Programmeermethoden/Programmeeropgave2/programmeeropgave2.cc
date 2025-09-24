@@ -6,8 +6,18 @@ using namespace std;
 int power(int getal, int exponent)
 {
     if (exponent == 0)
+    {
         return 1;
+    }
     return getal * power(getal, exponent - 1);
+}
+bool isCijfer(char karakter)
+{
+    if (karakter >= 48 && karakter <= 57)
+    {
+        return true;
+    }
+    return false;
 }
 
 void codeer(string &invoerFile, string &uitvoerFile, int pincode)
@@ -15,12 +25,14 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
     ifstream invoer(invoerFile, ios::in);
     ofstream uitvoer(uitvoerFile, ios::out);
 
-    char karakter;
+    char karakter, vorigKarakter;
     int caesar;
+    int getal;
     int exponent;
     int count = 0;
     while (!invoer.eof())
     {
+        vorigKarakter = karakter;
         karakter = invoer.get();
         if (karakter == '\n')
         {
@@ -28,6 +40,17 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
         }
         else if (karakter != '\r' && karakter != '\t')
         {
+            if (isCijfer(karakter))
+            {
+                if (isCijfer(vorigKarakter))
+                {
+                    getal = (getal * 10) + (karakter - '0');
+                }
+                else
+                {
+                    getal = karakter - '0';
+                }
+            }
             exponent = 3 - (count % 4);
             caesar = pincode / power(10, exponent) % 10;
             karakter = ((karakter - 32 + caesar) % 95) + 32;
@@ -37,6 +60,7 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
     }
     invoer.close();
     uitvoer.close();
+    cout << getal;
 }
 void decodeer(string &invoerFile, string &uitvoerFile, int pincode)
 {
@@ -72,7 +96,6 @@ void decodeer(string &invoerFile, string &uitvoerFile, int pincode)
 
 int main()
 {
-
     int pincode;
     cout << "Geef pincode: ";
     cin >> pincode;
@@ -85,12 +108,12 @@ int main()
 
     // Lezen van invoerfile
 
-    string orgineleFile = "simpel2025.txt";
-    string gecodeerdeFile = "simpel2025gecodeerd.txt";
-    string gedecoreerdeFile = "simpel2025gedecoreerd.txt";
+    string orgineleFile = "voorbeeld2025.txt";
+    string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
+    string gedecoreerdeFile = "voorbeeld2025gedecoreerd.txt";
 
     codeer(orgineleFile, gecodeerdeFile, pincode);
-    // decodeer(gecodeerdeFile, gedecoreerdeFile, 2);
+    decodeer(gecodeerdeFile, gedecoreerdeFile, pincode);
 
     return 0;
 }
