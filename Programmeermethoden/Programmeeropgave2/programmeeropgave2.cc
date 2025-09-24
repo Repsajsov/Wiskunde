@@ -40,9 +40,10 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
             uitvoer.put(karakter);
             count = -1;
         }
-        else if (karakter == '\t' || karakter == 'r')
+        else if (karakter == '\t' || karakter == '\r')
         {
             uitvoer.put(karakter);
+            count--;
         }
         else
         {
@@ -66,21 +67,20 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
         {
             if (isCijfer(vorigKarakter))
             {
-                if (getal >= 0 && getal <= 10000)
+                if (getal > 0 && getal < 10000)
                 {
                     veranderPincode = true;
                 }
-                cout << getal << endl;
             }
         }
 
-        count++;
-        if (veranderPincode)
+        if (veranderPincode && !isCijfer(karakter))
         {
             pincode = getal;
             getal = 0;
             veranderPincode = false;
         }
+        count++;
     }
     invoer.close();
     uitvoer.close();
