@@ -3,14 +3,7 @@
 #include <string>
 
 using namespace std;
-int power(int getal, int exponent)
-{
-    if (exponent == 0)
-    {
-        return 1;
-    }
-    return getal * power(getal, exponent - 1);
-}
+
 bool isCijfer(char karakter)
 {
     if (karakter >= 48 && karakter <= 57)
@@ -19,134 +12,79 @@ bool isCijfer(char karakter)
     }
     return false;
 }
+int krijgPincodeCijfer(int pincode, int index)
+{
+    switch (index % 4)
+    {
+    case 0:
+        return (pincode / 1000) % 10;
+    case 1:
+        return (pincode / 100) % 10;
+    case 2:
+        return (pincode / 10) % 10;
+    case 3:
+        return pincode % 10;
+    }
+}
+char verschuifKarakter(char karakter, int verschuiving)
+{
+    return (((karakter - 32) + verschuiving) % 95) + 32;
+}
+void verwerkKarakter(char &karakter, char &vorigKarakter, int &pincode, int &index, int &getal)
+{
+    int verschuiving;
+    if (karakter == '\n')
+    {
+        index = 0;
+        return;
+    }
+    else if (karakter == '\t' || karakter == '\r')
+    {
+        return;
+    }
+    else
+    {
+        verschuiving = krijgPincodeCijfer(pincode, index);
+        karakter = verschuifKarakter(karakter, verschuiving);
+    }
+    verwerkGetal(karakter, vorigKarakter, pincode, getal);
+}
+void verwerkGetal(char karakter, char vorigKarakter, int &pincode, int &getal)
+{
+
+    if (isCijfer(karakter))
+    {
+        if (isCijfer(vorigKarakter))
+        {
+            getal = (getal * 10) + (karakter - '0');
+        }
+        else
+        {
+            getal = karakter - '0';
+        }
+    }
+    else if (isCijfer(vorigKarakter) && getal > 0 && getal < 10000)
+    {
+        pincode = getal;
+        getal = 0;
+    }
+}
+
 void codeer(string &invoerFile, string &uitvoerFile, int pincode)
 {
     ifstream invoer(invoerFile, ios::in);
     ofstream uitvoer(uitvoerFile, ios::out);
 
-    char karakter, vorigKarakter, karakterUitvoer;
-    int caesar;
+    char karakter, vorigKarakter;
     int getal = 0;
-    int exponent;
-    int count = 0;
-    bool veranderPincode = false;
+    int index = 0;
+
+    karakter = invoer.get();
     while (!invoer.eof())
     {
+        verwerkKarakter(karakter, vorigKarakter, pincode, index, getal);
         vorigKarakter = karakter;
         karakter = invoer.get();
-        if (karakter == '\n')
-        {
-            uitvoer.put(karakter);
-            count = -1;
-        }
-        else if (karakter == '\t' || karakter == '\r')
-        {
-            uitvoer.put(karakter);
-            count--;
-        }
-        else
-        {
-            exponent = 3 - (count % 4);
-            caesar = pincode / power(10, exponent) % 10;
-            karakterUitvoer = ((karakter - 32 + caesar) % 95) + 32;
-            uitvoer.put(karakterUitvoer);
-        }
-        if (isCijfer(karakter))
-        {
-            if (isCijfer(vorigKarakter))
-            {
-                getal = (getal * 10) + (karakter - '0');
-            }
-            else
-            {
-                getal = karakter - '0';
-            }
-        }
-        else
-        {
-            if (isCijfer(vorigKarakter))
-            {
-                if (getal > 0 && getal < 10000)
-                {
-                    veranderPincode = true;
-                }
-            }
-        }
-
-        if (veranderPincode && !isCijfer(karakter))
-        {
-            pincode = getal;
-            getal = 0;
-            veranderPincode = false;
-        }
-        count++;
-    }
-    invoer.close();
-    uitvoer.close();
-}
-void decodeer(string &invoerFile, string &uitvoerFile, int pincode)
-{
-    ifstream invoer(invoerFile, ios::in);
-    ofstream uitvoer(uitvoerFile, ios::out);
-
-    char karakter, vorigKarakter, karakterUitvoer;
-    char vorigKarakterUitvoer;
-    int caesar;
-    int getal = 0;
-    int exponent;
-    int count = 0;
-    bool veranderPincode = false;
-    while (!invoer.eof())
-    {
-        vorigKarakter = karakter;
-        karakter = invoer.get();
-        if (karakter == '\n')
-        {
-            uitvoer.put(karakter);
-            count = -1;
-        }
-        else if (karakter == '\t' || karakter == '\r')
-        {
-            uitvoer.put(karakter);
-            count--;
-        }
-        else
-        {
-            exponent = 3 - (count % 4);
-            caesar = pincode / power(10, exponent) % 10;
-            karakterUitvoer = ((karakter - 32 - caesar) % 95) + 32;
-            uitvoer.put(karakterUitvoer);
-            if (isCijfer(karakterUitvoer))
-            {
-                if (isCijfer(vorigKarakterUitvoer))
-                {
-                    getal = (getal * 10) + (karakterUitvoer - '0');
-                }
-                else
-                {
-                    getal = karakterUitvoer - '0';
-                }
-            }
-            else
-            {
-                if (isCijfer(vorigKarakterUitvoer))
-                {
-                    if (getal > 0 && getal < 10000)
-                    {
-                        veranderPincode = true;
-                    }
-                }
-            }
-            if (veranderPincode && !isCijfer(karakterUitvoer))
-            {
-                pincode = getal;
-                getal = 0;
-                veranderPincode = false;
-            }
-            vorigKarakterUitvoer = karakterUitvoer;
-        }
-
-        count++;
     }
     invoer.close();
     uitvoer.close();
@@ -171,7 +109,6 @@ int main()
     string gedecoreerdeFile = "voorbeeld2025gedecoreerd.txt";
 
     codeer(orgineleFile, gecodeerdeFile, pincode);
-    decodeer(gecodeerdeFile, gedecoreerdeFile, pincode);
 
     return 0;
 }
