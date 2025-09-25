@@ -24,30 +24,13 @@ int krijgPincodeCijfer(int pincode, int index)
         return (pincode / 10) % 10;
     case 3:
         return pincode % 10;
+    default:
+        return 0;
     }
 }
 char verschuifKarakter(char karakter, int verschuiving)
 {
     return (((karakter - 32) + verschuiving) % 95) + 32;
-}
-void verwerkKarakter(char &karakter, char &vorigKarakter, int &pincode, int &index, int &getal)
-{
-    int verschuiving;
-    if (karakter == '\n')
-    {
-        index = 0;
-        return;
-    }
-    else if (karakter == '\t' || karakter == '\r')
-    {
-        return;
-    }
-    else
-    {
-        verschuiving = krijgPincodeCijfer(pincode, index);
-        karakter = verschuifKarakter(karakter, verschuiving);
-    }
-    verwerkGetal(karakter, vorigKarakter, pincode, getal);
 }
 void verwerkGetal(char karakter, char vorigKarakter, int &pincode, int &getal)
 {
@@ -69,6 +52,28 @@ void verwerkGetal(char karakter, char vorigKarakter, int &pincode, int &getal)
         getal = 0;
     }
 }
+void verwerkKarakter(char &karakter, char &vorigKarakter, int &pincode, int &index, int &getal)
+{
+    int verschuiving;
+    if (karakter == '\n')
+    {
+        index = 0;
+        return;
+    }
+    else if (karakter == '\t' || karakter == '\r')
+    {
+        return;
+    }
+    else
+    {
+        verwerkGetal(karakter, vorigKarakter, pincode, getal);
+
+        verschuiving = krijgPincodeCijfer(pincode, index);
+        karakter = verschuifKarakter(karakter, verschuiving);
+
+        index++;
+    }
+}
 
 void codeer(string &invoerFile, string &uitvoerFile, int pincode)
 {
@@ -82,8 +87,9 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
     karakter = invoer.get();
     while (!invoer.eof())
     {
-        verwerkKarakter(karakter, vorigKarakter, pincode, index, getal);
         vorigKarakter = karakter;
+        verwerkKarakter(karakter, vorigKarakter, pincode, index, getal);
+        uitvoer.put(karakter);
         karakter = invoer.get();
     }
     invoer.close();
@@ -92,17 +98,7 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
 
 int main()
 {
-    int pincode;
-    cout << "Geef pincode: ";
-    cin >> pincode;
-    if (pincode < 0 || pincode > 9999)
-    {
-        return 0;
-    }
-
-    // int pincode = 34;
-
-    // Lezen van invoerfile
+    int pincode = 1234;
 
     string orgineleFile = "voorbeeld2025.txt";
     string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
