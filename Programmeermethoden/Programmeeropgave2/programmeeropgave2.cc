@@ -20,18 +20,16 @@ int lychrel(int getal)
 {
     int omgekeerdGetal;
     int iteraties = 0;
-    while (getal < 10000)
+    while (getal < 1000000)
     {
         omgekeerdGetal = draaiGetal(getal);
         if (getal == omgekeerdGetal)
         {
-            cout << iteraties;
             return iteraties;
         }
 
         getal += omgekeerdGetal;
         iteraties++;
-        cout << getal << endl;
     }
     return -1;
 }
@@ -61,7 +59,12 @@ int krijgPincodeCijfer(int pincode, int index)
 }
 char verschuifKarakter(char karakter, int verschuiving)
 {
-    return (((karakter - 32) + verschuiving) % 95) + 32;
+    int resultaat = (karakter - 32 + verschuiving) % 95;
+    if (resultaat < 0)
+    {
+        resultaat += 95;
+    }
+    return resultaat + 32;
 }
 void verwerkGetal(char karakter, char vorigKarakter, int &pincode, int &getal)
 {
@@ -86,6 +89,9 @@ void verwerkGetal(char karakter, char vorigKarakter, int &pincode, int &getal)
 }
 char ontsleutelKarakter(char karakter, char vorigVersleuteldKarakter, int &pincode, int &index, int &getal)
 {
+    int verschuiving = krijgPincodeCijfer(pincode, index);
+    char versleuteldKarakter = verschuifKarakter(karakter, -verschuiving);
+    verwerkGetal(versleuteldKarakter, vorigVersleuteldKarakter, pincode, getal);
     if (karakter == '\n')
     {
         index = 0;
@@ -95,16 +101,8 @@ char ontsleutelKarakter(char karakter, char vorigVersleuteldKarakter, int &pinco
     {
         return karakter;
     }
-    else
-    {
-        int verschuiving = krijgPincodeCijfer(pincode, index);
-        char versleuteldKarakter = verschuifKarakter(karakter, -verschuiving);
-
-        verwerkGetal(versleuteldKarakter, vorigVersleuteldKarakter, pincode, getal);
-
-        index++;
-        return versleuteldKarakter;
-    }
+    index++;
+    return versleuteldKarakter;
 }
 char versleutelKarakter(char karakter, char vorigKarakter, int &pincode, int &index, int &getal)
 {
@@ -127,8 +125,7 @@ char versleutelKarakter(char karakter, char vorigKarakter, int &pincode, int &in
         return verschuifKarakter(karakter, verschuiving);
     }
 }
-
-void versleutel(string invoerFile, string uitvoerFile, int pincode, bool isVersleuteld)
+void versleutel(bool isVersleuteld, string invoerFile, string uitvoerFile, int pincode)
 {
     ifstream invoer(invoerFile, ios::in);
     ofstream uitvoer(uitvoerFile, ios::out);
@@ -136,9 +133,9 @@ void versleutel(string invoerFile, string uitvoerFile, int pincode, bool isVersl
     char karakter;
     char vorigKarakter = '\0';
     char vorigVersleuteldKarakter = '\0';
+    char resultaat;
     int getal = 0;
     int index = 0;
-    char resultaat;
 
     karakter = invoer.get();
     while (!invoer.eof())
@@ -165,17 +162,17 @@ int main()
     int pincode = 1234;
 
     // Test
-    // string orgineleFile = "test.txt";
-    // string gecodeerdeFile = "testCod.txt";
-    // string gedecoreerdeFile = "testDecod.txt";
+    string orgineleFile = "test.txt";
+    string gecodeerdeFile = "testCod.txt";
+    string gedecoreerdeFile = "testDecod.txt";
 
     // Voorbeeld
-    string orgineleFile = "voorbeeld2025.txt";
-    string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
-    string gedecoreerdeFile = "voorbeeld2025gedecodeerd.txt";
+    // string orgineleFile = "voorbeeld2025.txt";
+    // string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
+    // string gedecoreerdeFile = "voorbeeld2025gedecodeerd.txt";
 
-    versleutel(orgineleFile, gecodeerdeFile, pincode, false);
-    versleutel(gecodeerdeFile, gedecoreerdeFile, pincode, true);
+    versleutel(false, orgineleFile, gecodeerdeFile, pincode);
+    versleutel(true, gecodeerdeFile, gedecoreerdeFile, pincode);
 
     return 0;
 }
