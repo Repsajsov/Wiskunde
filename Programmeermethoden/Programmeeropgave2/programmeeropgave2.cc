@@ -1,9 +1,40 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <climits>
 
 using namespace std;
 
+int draaiGetal(int getal)
+{
+    int result = 0;
+    while (getal > 0)
+    {
+        result *= 10;
+        result += getal % 10;
+        getal /= 10;
+    }
+    return result;
+}
+int lychrel(int getal)
+{
+    int omgekeerdGetal;
+    int iteraties = 0;
+    while (getal < 10000)
+    {
+        omgekeerdGetal = draaiGetal(getal);
+        if (getal == omgekeerdGetal)
+        {
+            cout << iteraties;
+            return iteraties;
+        }
+
+        getal += omgekeerdGetal;
+        iteraties++;
+        cout << getal << endl;
+    }
+    return -1;
+}
 bool isCijfer(char karakter)
 {
     if (karakter >= 48 && karakter <= 57)
@@ -49,12 +80,12 @@ void verwerkGetal(char karakter, char vorigKarakter, int &pincode, int &getal)
     else if (isCijfer(vorigKarakter) && (getal > 0 && getal < 10000))
     {
         pincode = getal;
+        cout << "Getal: " << getal << "\nIteraties lychrel: " << lychrel(getal) << endl;
         getal = 0;
     }
 }
-char verwerkKarakter(char karakter, char vorigKarakter, int &pincode, int &index, int &getal)
+char ontsleutelKarakter(char karakter, char vorigVersleuteldKarakter, int &pincode, int &index, int &getal)
 {
-    int verschuiving;
     if (karakter == '\n')
     {
         index = 0;
@@ -66,7 +97,30 @@ char verwerkKarakter(char karakter, char vorigKarakter, int &pincode, int &index
     }
     else
     {
-        verwerkGetal(karakter, vorigKarakter, pincode, getal);
+        int verschuiving = krijgPincodeCijfer(pincode, index);
+        char versleuteldKarakter = verschuifKarakter(karakter, -verschuiving);
+
+        verwerkGetal(versleuteldKarakter, vorigVersleuteldKarakter, pincode, getal);
+
+        index++;
+        return versleuteldKarakter;
+    }
+}
+char versleutelKarakter(char karakter, char vorigKarakter, int &pincode, int &index, int &getal)
+{
+    int verschuiving;
+    verwerkGetal(karakter, vorigKarakter, pincode, getal);
+    if (karakter == '\n')
+    {
+        index = 0;
+        return karakter;
+    }
+    else if (karakter == '\t' || karakter == '\r')
+    {
+        return karakter;
+    }
+    else
+    {
 
         verschuiving = krijgPincodeCijfer(pincode, index);
         index++;
@@ -74,20 +128,31 @@ char verwerkKarakter(char karakter, char vorigKarakter, int &pincode, int &index
     }
 }
 
-void codeer(string &invoerFile, string &uitvoerFile, int pincode)
+void versleutel(string invoerFile, string uitvoerFile, int pincode, bool isVersleuteld)
 {
     ifstream invoer(invoerFile, ios::in);
     ofstream uitvoer(uitvoerFile, ios::out);
 
     char karakter;
     char vorigKarakter = '\0';
+    char vorigVersleuteldKarakter = '\0';
     int getal = 0;
     int index = 0;
+    char resultaat;
 
     karakter = invoer.get();
     while (!invoer.eof())
     {
-        uitvoer.put(verwerkKarakter(karakter, vorigKarakter, pincode, index, getal));
+        if (isVersleuteld)
+        {
+            resultaat = ontsleutelKarakter(karakter, vorigVersleuteldKarakter, pincode, index, getal);
+            vorigVersleuteldKarakter = resultaat;
+        }
+        else
+        {
+            resultaat = versleutelKarakter(karakter, vorigKarakter, pincode, index, getal);
+        }
+        uitvoer.put(resultaat);
         vorigKarakter = karakter;
         karakter = invoer.get();
     }
@@ -99,11 +164,18 @@ int main()
 {
     int pincode = 1234;
 
-    string orgineleFile = "test.txt";
-    string gecodeerdeFile = "testCod.txt";
-    string gedecoreerdeFile = "testDecod.txt";
+    // Test
+    // string orgineleFile = "test.txt";
+    // string gecodeerdeFile = "testCod.txt";
+    // string gedecoreerdeFile = "testDecod.txt";
 
-    codeer(orgineleFile, gecodeerdeFile, pincode);
+    // Voorbeeld
+    string orgineleFile = "voorbeeld2025.txt";
+    string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
+    string gedecoreerdeFile = "voorbeeld2025gedecodeerd.txt";
+
+    versleutel(orgineleFile, gecodeerdeFile, pincode, false);
+    versleutel(gecodeerdeFile, gedecoreerdeFile, pincode, true);
 
     return 0;
 }
