@@ -46,32 +46,31 @@ void verwerkGetal(char karakter, char vorigKarakter, int &pincode, int &getal)
             getal = karakter - '0';
         }
     }
-    else if (isCijfer(vorigKarakter) && getal > 0 && getal < 10000)
+    else if (isCijfer(vorigKarakter) && (getal > 0 && getal < 10000))
     {
         pincode = getal;
         getal = 0;
     }
 }
-void verwerkKarakter(char &karakter, char &vorigKarakter, int &pincode, int &index, int &getal)
+char verwerkKarakter(char karakter, char vorigKarakter, int &pincode, int &index, int &getal)
 {
     int verschuiving;
     if (karakter == '\n')
     {
         index = 0;
-        return;
+        return karakter;
     }
     else if (karakter == '\t' || karakter == '\r')
     {
-        return;
+        return karakter;
     }
     else
     {
         verwerkGetal(karakter, vorigKarakter, pincode, getal);
 
         verschuiving = krijgPincodeCijfer(pincode, index);
-        karakter = verschuifKarakter(karakter, verschuiving);
-
         index++;
+        return verschuifKarakter(karakter, verschuiving);
     }
 }
 
@@ -80,16 +79,16 @@ void codeer(string &invoerFile, string &uitvoerFile, int pincode)
     ifstream invoer(invoerFile, ios::in);
     ofstream uitvoer(uitvoerFile, ios::out);
 
-    char karakter, vorigKarakter;
+    char karakter;
+    char vorigKarakter = '\0';
     int getal = 0;
     int index = 0;
 
     karakter = invoer.get();
     while (!invoer.eof())
     {
+        uitvoer.put(verwerkKarakter(karakter, vorigKarakter, pincode, index, getal));
         vorigKarakter = karakter;
-        verwerkKarakter(karakter, vorigKarakter, pincode, index, getal);
-        uitvoer.put(karakter);
         karakter = invoer.get();
     }
     invoer.close();
@@ -100,9 +99,9 @@ int main()
 {
     int pincode = 1234;
 
-    string orgineleFile = "voorbeeld2025.txt";
-    string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
-    string gedecoreerdeFile = "voorbeeld2025gedecoreerd.txt";
+    string orgineleFile = "test.txt";
+    string gecodeerdeFile = "testCod.txt";
+    string gedecoreerdeFile = "testDecod.txt";
 
     codeer(orgineleFile, gecodeerdeFile, pincode);
 
