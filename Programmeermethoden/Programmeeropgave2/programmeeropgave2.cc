@@ -162,14 +162,14 @@ int main()
     int pincode = 1234;
 
     // Test
-    string orgineleFile = "test.txt";
-    string gecodeerdeFile = "testCod.txt";
-    string gedecoreerdeFile = "testDecod.txt";
+    // string orgineleFile = "test.txt";
+    // string gecodeerdeFile = "testCod.txt";
+    // string gedecoreerdeFile = "testDecod.txt";
 
     // Voorbeeld
-    // string orgineleFile = "voorbeeld2025.txt";
-    // string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
-    // string gedecoreerdeFile = "voorbeeld2025gedecodeerd.txt";
+    string orgineleFile = "voorbeeld2025a.txt";
+    string gecodeerdeFile = "voorbeeld2025agecodeerd.txt";
+    string gedecoreerdeFile = "voorbeeld2025agedecodeerd.txt";
 
     versleutel(false, orgineleFile, gecodeerdeFile, pincode);
     versleutel(true, gecodeerdeFile, gedecoreerdeFile, pincode);
