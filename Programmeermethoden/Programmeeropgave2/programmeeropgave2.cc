@@ -1,191 +1,185 @@
-#include <iostream>
-#include <fstream>
-#include <string>
 #include <climits>
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
-int draaiGetal(int getal)
-{
-    int resultaat = 0;
-    while (getal > 0)
-    {
-        if ((INT_MAX / 10) < resultaat)
-            return -1;
-        else
-        {
-            resultaat *= 10;
-        }
-        if ((INT_MAX - getal) < resultaat)
-        {
-            return -1;
-        }
-        else
-        {
-            resultaat += getal % 10;
-        }
-        getal /= 10;
+int draaiGetal(int getal) {
+  int resultaat = 0;
+  while (getal != 0) {
+    if ((INT_MAX / 10) < resultaat)
+      return -1;
+    else {
+      resultaat *= 10;
     }
-    return resultaat;
+    if ((INT_MAX - getal) < resultaat) {
+      return -1;
+    } else {
+      resultaat += getal % 10;
+    }
+    getal /= 10;
+  }
+  return resultaat;
 }
-int lychrel(int getal)
-{
-    int omgekeerdGetal;
-    int iteraties = 0;
-    while (true)
-    {
-        iteraties++;
-        omgekeerdGetal = draaiGetal(getal);
-        if (getal == omgekeerdGetal || omgekeerdGetal == -1)
-        {
-            break;
-        }
+int lychrel(int getal) {
+  int omgekeerdGetal;
+  int iteraties = 0;
+  while (true) {
+    iteraties++;
+    omgekeerdGetal = draaiGetal(getal);
+    if (getal == omgekeerdGetal || omgekeerdGetal == -1) {
+      break;
+    }
+    if ((INT_MAX - omgekeerdGetal) < getal) {
+      break;
+    } else {
+      getal += omgekeerdGetal;
+    }
+  }
+  return iteraties;
+}
+bool isCijfer(char karakter) { return karakter >= '0' && karakter <= '9'; }
+int krijgPincodeCijfer(int pincode, int index) {
+  if (index == 0)
+    return (pincode / 1000);
+  else if (index == 1)
+    return (pincode / 100) % 10;
+  else if (index == 2)
+    return (pincode / 10) % 10;
+  else
+    return pincode % 10;
+}
+char verschuifKarakter(char karakter, int verschuiving) {
+  int resultaat = (karakter - 32 + verschuiving) % 95;
+  if (resultaat < 0) {
+    resultaat += 95;
+  }
+  return resultaat + 32;
+}
+void verwerkGetal(char karakter, char vorigKarakter, int &pincode, int &getal) {
 
-        if ((INT_MAX - omgekeerdGetal) < getal)
-        {
-            break;
-        }
-        else
-        {
-            getal += omgekeerdGetal;
-        }
+  if (isCijfer(karakter)) {
+    if (isCijfer(vorigKarakter)) {
+      getal = (getal * 10) + (karakter - '0');
+    } else {
+      getal = karakter - '0';
     }
-    return iteraties;
+  } else if (isCijfer(vorigKarakter) && (getal > 0 && getal < 10000)) {
+    pincode = getal;
+    cout << "Getal: " << getal << "\nIteraties lychrel: " << lychrel(getal)
+         << endl;
+    getal = 0;
+  }
 }
-bool isCijfer(char karakter)
-{
-    return karakter >= '0' && karakter <= '9';
+char ontsleutelKarakter(char karakter, char vorigVersleuteldKarakter,
+                        int &pincode, int &index, int &getal) {
+  int verschuiving = krijgPincodeCijfer(pincode, index);
+  char versleuteldKarakter = verschuifKarakter(karakter, -verschuiving);
+  verwerkGetal(versleuteldKarakter, vorigVersleuteldKarakter, pincode, getal);
+  if (karakter == '\n') {
+    index = 0;
+    return karakter;
+  } else if (karakter == '\t' || karakter == '\r') {
+    return karakter;
+  }
+  index++;
+  return versleuteldKarakter;
 }
-int krijgPincodeCijfer(int pincode, int index)
-{
-    switch (index % 4)
-    {
-    case 0:
-        return (pincode / 1000);
-    case 1:
-        return (pincode / 100) % 10;
-    case 2:
-        return (pincode / 10) % 10;
-    case 3:
-        return pincode % 10;
-    }
-}
-char verschuifKarakter(char karakter, int verschuiving)
-{
-    int resultaat = (karakter - 32 + verschuiving) % 95;
-    if (resultaat < 0)
-    {
-        resultaat += 95;
-    }
-    return resultaat + 32;
-}
-void verwerkGetal(char karakter, char vorigKarakter, int &pincode, int &getal)
-{
+char versleutelKarakter(char karakter, char vorigKarakter, int &pincode,
+                        int &index, int &getal) {
+  int verschuiving;
+  verwerkGetal(karakter, vorigKarakter, pincode, getal);
+  if (karakter == '\n') {
+    index = 0;
+    return karakter;
+  } else if (karakter == '\t' || karakter == '\r') {
+    return karakter;
+  } else {
 
-    if (isCijfer(karakter))
-    {
-        if (isCijfer(vorigKarakter))
-        {
-            getal = (getal * 10) + (karakter - '0');
-        }
-        else
-        {
-            getal = karakter - '0';
-        }
-    }
-    else if (isCijfer(vorigKarakter) && (getal > 0 && getal < 10000))
-    {
-        pincode = getal;
-        cout << "Getal: " << getal << "\nIteraties lychrel: " << lychrel(getal) << endl;
-        getal = 0;
-    }
-}
-char ontsleutelKarakter(char karakter, char vorigVersleuteldKarakter, int &pincode, int &index, int &getal)
-{
-    int verschuiving = krijgPincodeCijfer(pincode, index);
-    char versleuteldKarakter = verschuifKarakter(karakter, -verschuiving);
-    verwerkGetal(versleuteldKarakter, vorigVersleuteldKarakter, pincode, getal);
-    if (karakter == '\n')
-    {
-        index = 0;
-        return karakter;
-    }
-    else if (karakter == '\t' || karakter == '\r')
-    {
-        return karakter;
-    }
+    verschuiving = krijgPincodeCijfer(pincode, index);
     index++;
-    return versleuteldKarakter;
+    return verschuifKarakter(karakter, verschuiving);
+  }
 }
-char versleutelKarakter(char karakter, char vorigKarakter, int &pincode, int &index, int &getal)
-{
-    int verschuiving;
-    verwerkGetal(karakter, vorigKarakter, pincode, getal);
-    if (karakter == '\n')
-    {
-        index = 0;
-        return karakter;
-    }
-    else if (karakter == '\t' || karakter == '\r')
-    {
-        return karakter;
-    }
-    else
-    {
+void telAantalThe(char nieuwKarakter, char &karakter1, char &karakter2,
+                  char &karakter3, int &aantalThe) {
+  karakter3 = karakter2;
+  karakter2 = karakter1;
+  karakter1 = nieuwKarakter;
 
-        verschuiving = krijgPincodeCijfer(pincode, index);
-        index++;
-        return verschuifKarakter(karakter, verschuiving);
-    }
+  if ((karakter3 == 't' || karakter3 == 'T') &&
+      (karakter2 == 'h' || karakter2 == 'H') &&
+      (karakter1 == 'e' || karakter1 == 'E')) {
+    aantalThe++;
+  }
 }
-void versleutel(bool isVersleuteld, string invoerFile, string uitvoerFile, int pincode)
-{
-    ifstream invoer(invoerFile, ios::in);
-    ofstream uitvoer(uitvoerFile, ios::out);
+int versleutel(bool isVersleuteld, string invoerFile, string uitvoerFile,
+               int pincode, bool schrijf) {
+  ifstream invoer(invoerFile, ios::in);
+  ofstream uitvoer(uitvoerFile, ios::out);
 
-    char karakter;
-    char vorigKarakter = '\0';
-    char vorigVersleuteldKarakter = '\0';
-    char resultaat;
-    int getal = 0;
-    int index = 0;
+  char karakter;
+  char vorigKarakter = '\0';
+  char vorigVersleuteldKarakter = '\0';
+  char resultaat;
+  int getal = 0;
+  int index = 0;
+  int aantalThe = 0;
+  char karakter1 = '\0', karakter2 = '\0', karakter3 = '\0';
 
+  karakter = invoer.get();
+  while (!invoer.eof()) {
+    if (isVersleuteld) {
+      resultaat = ontsleutelKarakter(karakter, vorigVersleuteldKarakter,
+                                     pincode, index, getal);
+      vorigVersleuteldKarakter = resultaat;
+      if (!schrijf) {
+        telAantalThe(resultaat, karakter1, karakter2, karakter3, aantalThe);
+      }
+    } else {
+      resultaat =
+          versleutelKarakter(karakter, vorigKarakter, pincode, index, getal);
+    }
+    if (schrijf) {
+      uitvoer.put(resultaat);
+    }
+    vorigKarakter = karakter;
     karakter = invoer.get();
-    while (!invoer.eof())
-    {
-        if (isVersleuteld)
-        {
-            resultaat = ontsleutelKarakter(karakter, vorigVersleuteldKarakter, pincode, index, getal);
-            vorigVersleuteldKarakter = resultaat;
-        }
-        else
-        {
-            resultaat = versleutelKarakter(karakter, vorigKarakter, pincode, index, getal);
-        }
-        uitvoer.put(resultaat);
-        vorigKarakter = karakter;
-        karakter = invoer.get();
-    }
-    invoer.close();
+  }
+  invoer.close();
+  if (schrijf) {
     uitvoer.close();
+  }
+  if (schrijf) {
+    return -1;
+  } else
+    return aantalThe;
 }
 
-int main()
-{
-    int pincode = 1234;
+int main() {
+  int pincode = 1234;
 
-    // Test
-    // string orgineleFile = "test.txt";
-    // string gecodeerdeFile = "testCod.txt";
-    // string gedecoreerdeFile = "testDecod.txt";
+  // Voorbeeld
+  string orgineleFile = "voorbeeld2025.txt";
+  string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
+  string gedecoreerdeFile = "voorbeeld2025gedecodeerd.txt";
 
-    // Voorbeeld
-    string orgineleFile = "voorbeeld2025.txt";
-    string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
-    string gedecoreerdeFile = "voorbeeld2025gedecodeerd.txt";
+  versleutel(false, orgineleFile, gecodeerdeFile, pincode, true);
+  int aantalThe = 0;
+  int bestePincode = 0;
+  int maxThe = INT_MIN;
 
-    versleutel(false, orgineleFile, gecodeerdeFile, pincode);
-    versleutel(true, gecodeerdeFile, gedecoreerdeFile, pincode);
+  for (int i = 0; i < 10000; i++) {
+    aantalThe = versleutel(true, gecodeerdeFile, gedecoreerdeFile, i, false);
+    if (aantalThe >= maxThe) {
+      maxThe = aantalThe;
+      bestePincode = i;
+    }
+  }
+  cout << "Beste pincode: " << bestePincode << ", Aantal the's: " << maxThe
+       << endl;
+  versleutel(true, gecodeerdeFile, gedecoreerdeFile, bestePincode, true);
 
-    return 0;
+  return 0;
 }
