@@ -7,54 +7,67 @@ using namespace std;
 
 int draaiGetal(int getal)
 {
-    int result = 0;
+    int resultaat = 0;
     while (getal > 0)
     {
-        result *= 10;
-        result += getal % 10;
+        if ((INT_MAX / 10) < resultaat)
+            return -1;
+        else
+        {
+            resultaat *= 10;
+        }
+        if ((INT_MAX - getal) < resultaat)
+        {
+            return -1;
+        }
+        else
+        {
+            resultaat += getal % 10;
+        }
         getal /= 10;
     }
-    return result;
+    return resultaat;
 }
 int lychrel(int getal)
 {
     int omgekeerdGetal;
     int iteraties = 0;
-    while (getal < 1000000)
+    while (true)
     {
+        iteraties++;
         omgekeerdGetal = draaiGetal(getal);
-        if (getal == omgekeerdGetal)
+        if (getal == omgekeerdGetal || omgekeerdGetal == -1)
         {
-            return iteraties;
+            break;
         }
 
-        getal += omgekeerdGetal;
-        iteraties++;
+        if ((INT_MAX - omgekeerdGetal) < getal)
+        {
+            break;
+        }
+        else
+        {
+            getal += omgekeerdGetal;
+        }
     }
-    return -1;
+    return iteraties;
 }
 bool isCijfer(char karakter)
 {
-    if (karakter >= 48 && karakter <= 57)
-    {
-        return true;
-    }
-    return false;
+    return karakter >= '0' && karakter <= '9';
 }
 int krijgPincodeCijfer(int pincode, int index)
 {
     switch (index % 4)
     {
     case 0:
-        return (pincode / 1000) % 10;
+        return (pincode / 1000);
     case 1:
         return (pincode / 100) % 10;
     case 2:
         return (pincode / 10) % 10;
     case 3:
         return pincode % 10;
-    default:
-        return 0;
     }
 }
 char verschuifKarakter(char karakter, int verschuiving)
@@ -167,9 +180,9 @@ int main()
     // string gedecoreerdeFile = "testDecod.txt";
 
     // Voorbeeld
-    string orgineleFile = "voorbeeld2025a.txt";
-    string gecodeerdeFile = "voorbeeld2025agecodeerd.txt";
-    string gedecoreerdeFile = "voorbeeld2025agedecodeerd.txt";
+    string orgineleFile = "voorbeeld2025.txt";
+    string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
+    string gedecoreerdeFile = "voorbeeld2025gedecodeerd.txt";
 
     versleutel(false, orgineleFile, gecodeerdeFile, pincode);
     versleutel(true, gecodeerdeFile, gedecoreerdeFile, pincode);
