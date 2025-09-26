@@ -158,28 +158,67 @@ int versleutel(bool isVersleuteld, string invoerFile, string uitvoerFile,
     return aantalThe;
 }
 
-int main() {
+void infoblokje() {
+  cout << "==================================================" << endl;
+  cout << "===============Versleutel Programma===============" << endl;
+  cout << "==================================================" << endl;
+  cout << "Auteur: Jasper Vos" << endl;
+  cout << "Datum:  26-09-2025" << endl;
+  cout << "Programmeermethoden - Opdracht 2" << endl << endl;
+}
 
-  // Voorbeeld
-  string orgineleFile = "voorbeeld2025.txt";
-  string gecodeerdeFile = "geheim2025.txt";
-  string gedecoreerdeFile = "geheim2025antwoord.txt";
-
-  //   versleutel(false, orgineleFile, gecodeerdeFile, pincode, true);
+int kraken(string invoerFile, string uitvoerFile) {
+  int maxThe = 0;
   int aantalThe = 0;
-  int bestePincode = 0;
-  int maxThe = INT_MIN;
+  int bestePincode;
+  for (int pincode = 0; pincode < 10000; pincode++) {
 
-  for (int i = 0; i < 10000; i++) {
-    aantalThe = versleutel(true, gecodeerdeFile, gedecoreerdeFile, i, false);
+    aantalThe = versleutel(true, invoerFile, uitvoerFile, pincode, false);
     if (aantalThe >= maxThe) {
       maxThe = aantalThe;
-      bestePincode = i;
+      bestePincode = pincode;
     }
   }
-  cout << "Beste pincode: " << bestePincode << ", Aantal the's: " << maxThe
-       << endl;
-  versleutel(true, gecodeerdeFile, gedecoreerdeFile, bestePincode, true);
+  cout << "Beste pincode gevonden: " << bestePincode << endl;
+  versleutel(true, invoerFile, uitvoerFile, bestePincode, true);
+
+  return bestePincode;
+}
+void vragen() {
+  char keuze;
+  string invoerFile;
+  string uitvoerFile;
+  bool isVersleuteld;
+  int pincode;
+
+  cout << "Wilt u versleutelen of ontsleutelen: (V/O)" << endl;
+  cin >> keuze;
+  if (keuze == 'v' || keuze == 'V') {
+    isVersleuteld = false;
+  } else if (keuze == 'o' || keuze == 'O') {
+    isVersleuteld = true;
+  }
+  cout << "Geef het pad van de invoerfile naam: " << endl;
+  cin >> invoerFile;
+  cout << "Geef het pad van de uitvoerfile naam: " << endl;
+  cin >> uitvoerFile;
+  if (keuze == 'v' || keuze == 'V') {
+    cout << "Pincode: " << "(0-9999)" << endl;
+  } else {
+    cout << "Pincode: " << "(0-9999), (-1)" << endl;
+  }
+  cin >> pincode;
+  if (pincode == -1) {
+    kraken(invoerFile, uitvoerFile);
+  } else {
+    versleutel(isVersleuteld, invoerFile, uitvoerFile, pincode, true);
+  }
+}
+
+int main() {
+
+  infoblokje();
+  vragen();
 
   return 0;
 }
