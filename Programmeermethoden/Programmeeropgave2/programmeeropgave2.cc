@@ -41,11 +41,12 @@ int lychrel(int getal) {
 }
 bool isCijfer(char karakter) { return karakter >= '0' && karakter <= '9'; }
 int krijgPincodeCijfer(int pincode, int index) {
-  if (index == 0)
+  int indexRest = index % 4;
+  if (indexRest == 0)
     return (pincode / 1000);
-  else if (index == 1)
+  else if (indexRest == 1)
     return (pincode / 100) % 10;
-  else if (index == 2)
+  else if (indexRest == 2)
     return (pincode / 10) % 10;
   else
     return pincode % 10;
@@ -158,14 +159,13 @@ int versleutel(bool isVersleuteld, string invoerFile, string uitvoerFile,
 }
 
 int main() {
-  int pincode = 1234;
 
   // Voorbeeld
   string orgineleFile = "voorbeeld2025.txt";
-  string gecodeerdeFile = "voorbeeld2025gecodeerd.txt";
-  string gedecoreerdeFile = "voorbeeld2025gedecodeerd.txt";
+  string gecodeerdeFile = "geheim2025.txt";
+  string gedecoreerdeFile = "geheim2025antwoord.txt";
 
-  versleutel(false, orgineleFile, gecodeerdeFile, pincode, true);
+  //   versleutel(false, orgineleFile, gecodeerdeFile, pincode, true);
   int aantalThe = 0;
   int bestePincode = 0;
   int maxThe = INT_MIN;
