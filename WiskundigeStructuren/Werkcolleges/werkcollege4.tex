@@ -15,6 +15,13 @@
 \newcommand{\q}{/_\sim}
 \newcommand{\ol}[1]{\overline{#1}}
 \newcommand{\tx}[1]{\text{#1}}
+\newcommand{\zdd}{\text{ zodanig dat }}
+\newcommand{\geldt}{\text{ geldt }}
+\newcommand{\Zij}{\text{Zij }}
+\newcommand{\Laat}{\text{Laat }}
+\newcommand{\een}{\text{één }}
+\newcommand{\dan}{\text{ dan }}
+\newcommand{\en}{\text{ en }}
 
 \begin{document}
 
@@ -27,20 +34,61 @@
 \bigskip
 
 \section*{Opgave 1}
+\subsection*{a)}
+Te bewijzen:
+\[-(a+b) = (-a) + (-b)\]
+\begin{proof}
+    Allereerst moeten we bewijzen dat er slechts \een $x \in \Z \zdd y \in \Z \geldt x + y = 0$
+
+    Neem $x + y_1 = 0 \en x + y_2 = 0$ dan:
+    \begin{align*}
+        y_1 & = y_1 + 0 \quad (0 \tx{ is het neutrale element})  \\
+            & = y_1 + (x + y_2)                                  \\
+            & = (y_1 + x) + y_2 \quad ( \Z \tx{ is associatief}) \\
+            & = 0 + y_2                                          \\
+            & = y_2
+    \end{align*}
+    Dit betekent dus dat elk element een unieke inverse heeft, en dus:
+    \begin{align*}
+        a + (-a) + b + (-b)              & = 0                                                          \\
+        a + b + (-a) + (-b)              & = 0 \quad (\Z \tx{ is commutatief})                          \\
+        (a + b) + (-a) + (-b)            & = 0                                                          \\
+        (a + b) + -(a + b) + (-a) + (-b) & = -(a + b) \quad (-(a + b) \tx{ is de inverse van } (a + b)) \\
+        0 + (-a) + (-b)                  & = -(a + b)                                                   \\
+        (-a) + (-b)                      & = -(a + b)
+    \end{align*}
+    Hieruit volgt dus dat:
+    \[-(a+b) = (-a) + (-b)\]
+\end{proof}
+
 \subsection*{b)}
-\begin{align*}
-\end{align*}
+Te bewijzen:
+\[ -0 = 0 \]
+\begin{proof}
+    Uit opgave a hebben we bewezen dat elke element een unieke inverse heeft, en dus:
+    \begin{align*}
+        -0 & = -0 + 0  \quad (\Z \tx{ heeft $0$ als neutrale element}) \\
+           & = 0 + (-0) \quad (\Z \tx{ is commutatief})                \\
+           & = 0
+    \end{align*}
+\end{proof}
+
 \subsection*{c)}
-\begin{align*}
-\end{align*}
-\section*{Opgave 3}
-\begin{align*}
-    ac       & = bc                                              \\
-    ac - bc  & = bc - bc \quad (\tx{Gebruik additieve inverse} ) \\
-    c(a - b) & = 0 \quad (\tx{Distributieve eigenschap})         \\
-    \Downarrow                                                   \\
-    a        & = b \quad (\because c \neq 0)
-\end{align*}
+Te bewijzen:
+\[(-ab) = (-a)b \]
+\begin{proof}
+    Veronderstel dat:
+    \begin{align*}
+        (-ab) - (-a)b & = 0                                                                                          \\
+        b(-a + -(-a)) & = 0                                                                                          \\
+        b(-a + a)     & = 0 \quad (\tx{De inverse van $a$ is $-a$ en de inverse van $-a$ is $a$, vanwege uniciteit}) \\
+        b(0) = 0
+    \end{align*}
+\end{proof}
+
+
+\subsection*{d)}
+
 
 
 \section*{Opgave 12} MOET P(A) P(OMEGA)
