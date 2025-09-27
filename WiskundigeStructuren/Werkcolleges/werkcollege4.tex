@@ -5,7 +5,11 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage{cancel}
 \usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
 
+\newtheorem{lemma}{Lemma}
+\providecommand*{\lemmaautorefname}{Lemma}
 
 \setlength{\parindent}{0pt}
 \setcounter{section}{2}
@@ -22,6 +26,7 @@
 \newcommand{\een}{\text{één }}
 \newcommand{\dan}{\text{ dan }}
 \newcommand{\en}{\text{ en }}
+\newcommand{\of}{\text{ of }}
 
 \begin{document}
 
@@ -76,23 +81,81 @@ Te bewijzen:
 \subsection*{c)}
 Te bewijzen:
 \[(-ab) = (-a)b \]
+\begin{lemma}\label{lem:uniciteit}
+    Voor alle $x \in \Z \ \exists ! y \in \Z \zdd x + y = 0$
+\end{lemma}
+\begin{lemma}\label{lem:nulmult}
+    Voor alle $x \in \Z \geldt x(0) = 0$
+    \begin{proof}
+        Laat $x = y(0)$ dan:
+        \begin{align*}
+            x + x        & = y(0) + y(0)                                       \\
+            x + x        & = y(0 + 0) \quad (\tx{Gebruik distributie in }\Z)   \\
+            x + x        & = y(0)                                              \\
+            x + x        & = x                                                 \\
+            x + x + (-x) & = x + (-x) \quad (\tx{Voeg de inverse van $x$ toe}) \\
+            x + 0        & = 0 \quad (\tx{$0$ is het neutrale element})        \\
+            x            & = 0
+        \end{align*}
+        Hieruit volgt dus dat $y(0) = 0$.
+    \end{proof}
+\end{lemma}
 \begin{proof}
     Veronderstel dat:
     \begin{align*}
-        (-ab) - (-a)b & = 0                                                                                          \\
-        b(-a + -(-a)) & = 0                                                                                          \\
-        b(-a + a)     & = 0 \quad (\tx{De inverse van $a$ is $-a$ en de inverse van $-a$ is $a$, vanwege uniciteit}) \\
-        b(0) = 0
+        ab + (-a)b & = b(a + (-a)) \quad (\tx{Gebruik distributie in }\Z)                        \\
+                   & = b(0) \quad (\tx{Vanuit \autoref{lem:uniciteit} en \autoref{lem:nulmult}}) \\
+                   & = 0
     \end{align*}
+    Door \autoref{lem:uniciteit} bestaat er precies \een additieve inverse en dus
+    $(-ab) = (-a)b$.
 \end{proof}
 
 
 \subsection*{d)}
+Te bewijzen:
+\[(-a)\cdot(-b) = a \cdot b\]
+\begin{proof}
+    Gebruik \autoref{lem:uniciteit} zodat je kan schrijven:
+    \begin{align*}
+        (-a)\cdot(-b) + -(a\cdot b) & = (-a)((-b) + b) \quad (\tx{Volgens ditributiviteit van $\Z$}) \\
+                                    & = (-a)(0)      \quad (\tx{Gebruik \autoref{lem:nulmult}})      \\
+                                    & = 0
+    \end{align*}
+    Volgens \autoref{lem:uniciteit} bestaat er slechts \een inverse en dus moet
+    $(-a)\cdot(-b) = (a\cdot b)$
+\end{proof}
 
+\section*{Opgave 2}
+\begin{proof}
+    Stel dat $1 = 0$, en neem $a \in \Z$ waarbij $a \neq 1 \en a \neq 0$ dan:
+    \begin{align*}
+        a & = a \cdot 1 \quad (\tx{Het neutrale element in vermedigvuldiging}) \\
+          & = a \cdot 0 \quad (\tx{Vanuit \autoref{lem:nulmult}})              \\
+          & = 0
+    \end{align*}
+    Hieruit volgt dus $\forall a \in \Z: a = 0$, en dus $\Z = \{0\}$, maar
+    volgens axioma $\Z9$ is $\Z$ niet eindig, en dus tegenspraak. $\lightning$
+\end{proof}
 
+\section*{Opgave 3}
+\begin{proof}
+    Vanuit \autoref{lem:uniciteit} stellen we:
+    \[ac -(bc) = 0\]
+    \begin{align*}
+        ac + -(bc) & = ac + (-b)c \quad (\tx{Vanuit Opgave 1(c)})                                   \\
+                   & = c(a + (-b))                                 \quad(\tx{distributie van $\Z$}) \\
+    \end{align*}
+    Merk op dat $c \neq 0$, en dan is er slechts \een oplossing mogelijk:
+    \begin{align*}
+        (a + (-b))   & = 0 \\
+        a + (-b) + b & = b \\
+        a + 0        & = b \\
+        a            & = b
+    \end{align*}
+\end{proof}
 
 \section*{Opgave 12} MOET P(A) P(OMEGA)
-\subsection*{d)}
 
 
 
