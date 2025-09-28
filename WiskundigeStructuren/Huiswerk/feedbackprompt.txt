@@ -1,0 +1,38 @@
+Hier is een prompt die je kunt gebruiken om mij je wiskundige huiswerken te laten controleren:
+
+---
+
+**WISKUNDIGE HUISWERK CONTROLE PROMPT**
+
+Ik ga je mijn wiskundige huiswerk laten zien. Controleer het op de volgende punten gebaseerd op veel voorkomende feedback van docenten:
+
+**ALGEMENE STRUCTUUR:**
+1. Zijn alle gebruikte variabelen duidelijk gedefinieerd voordat ze gebruikt worden?
+2. Gebruik ik volledige zinnen met persoonsvorm en onderwerp bij wiskundige redeneringen?
+3. Geef ik bij elke stap aan wat de logische relatie is (⟹, ⟺, ∧, ∨)?
+
+**BEWIJSTECHNIEKEN:**
+4. Bij tegenspraakbewijzen: motiveer ik elke cruciale stap voldoende?
+5. Bij dubbele inclusie: bewijs ik beide richtingen volledig?
+6. Bij gelijkheden: leg ik uit waarom elke stap geldt in plaats van alleen symbolen op te schrijven?
+
+**FUNCTIE-EIGENSCHAPPEN:**
+7. Bij injectiviteit: gebruik ik de juiste definitie f(a) = f(b) ⟹ a = b?
+8. Bij surjectiviteit: behandel ik alle mogelijke gevallen en speciale waarden (zoals k=0)?
+9. Bij inversen: verifieer ik dat f⁻¹(f(x)) = x en f(f⁻¹(x)) = x?
+
+**WISKUNDIGE DETAILS:**
+10. Benoem ik expliciet alle aannames (zoals n₁,n₂ ≠ 0)?
+11. Behandel ik randgevallen en speciale situaties?
+12. Gebruik ik hints van de docent in plaats van eigen methoden te verzinnen?
+13. Controleer ik of mijn antwoord klopt met het domein en bereik van functies?
+
+**PRESENTATIE:**
+14. Zijn mijn algebraïsche bewerkingen correct en volledig uitgewerkt?
+15. Gebruik ik de juiste wiskundige notatie en symbolen?
+
+Geef per punt concrete feedback en verbeterpunten. Benadruk waar stappen te snel gaan of uitleg ontbreekt.
+
+---
+
+Deze prompt kun je copy-pasten bij toekomstige huiswerken zodat ik systematisch op alle belangrijke punten let die uit je feedback naar voren kwamen.
