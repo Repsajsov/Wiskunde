@@ -29,11 +29,14 @@ Studentnr: \emph{s2911159}
 \newcommand{\Rho}{\mathcal{P}}
 \newcommand{\en}{\tx{ en }}
 \newcommand{\of}{\tx{ of }}
+\newcommand{\geldt}{\tx{ geldt }}
+\newcommand{\dan}{\tx{ dan }}
+\newcommand{\als}{\tx{ als }}
 
 \section*{Opgave 1}
 \begin{proof}
-	Ik bewijs voor zowel $n = 0 \en n = 1$,
-	omdat er vaak dubbelzinnigheid is over
+	We bewijzen voor zowel $n = 0 \en n = 1$,
+	omdat er vaak dubbelzinnigheid is over 
 	$0 \in \N \of 0 \notin \N$.
 	\begin{enumerate}
 		\item \emph{Basisstap: $n = 0, \ n = 1$}
@@ -54,19 +57,46 @@ Studentnr: \emph{s2911159}
 		      $0 \leq k < n$, dan geldt dus:
 		      $|A| = k \en |\Rho(A)| = 2^k$.
 
-		      Laat $k = n-1$, en $B = A \cup \{b\}$,
+		      Laat $k = n-1$ en $B = A \cup \{b\}$ waarbij $b \notin A$
 		      Dan kunnen we de machtsverzameling opstellen
-		      voor $\Rho(B)$ waarbij:
-		      \[C = \{V \in \Rho(B): \{b\} \notin V)\} = \Rho(A) \]
-		      en:
-		      \[ D = \{V \in \Rho(B): \{b\} \in V \} \]
-		      Hieruit volgt $C \cup D = \Rho(B)$. Merk op
-		      dat $D = \{V \cup \{b\} : V \in \Rho(A)\}$, en dus:
-		      \[|D| = |\Rho(A)|\]
+		      voor $\Rho(B)$ waarbij we $\Rho(B)$ partioneren met $\Rho(B) = P_1 \cup P_2$ in het geval 
+			  $b \in \Rho(B) \of b \notin \Rho(B)$:
+		      \[P_1 = \{V \in \Rho(B): b \notin V)\} = \Rho(A)\]
+		      \[ P_2 = \{V \in \Rho(B): b \in V \} \]
+			  Nu moeten we nog bewijzen dat $P_1 \cup P_2 = \Rho(B)$ met: 
+			  \begin{align*}
+					& P_1 \cup P_2 \subset \Rho(B) \\
+					\tx{\emph{Geval $V \in P_1$}:}& \\
+					& \implies V \in \Rho(B) \en b \notin V \quad (\tx{De definitie van $P_1$}) \\
+					& \implies V \in \Rho(B) \\
+					\tx{\emph{Geval $V \in P_2$}:}& \\
+					& \implies V \in \Rho(B) \en b \in V \quad (\tx{De definitie van $P_2$}) \\
+					& \implies V \in \Rho(B) \\ \\
+					&\Rho(B) \subset P_1 \cup P_2 \\
+					\tx{\emph{Geval $b \notin V$ met $V\in \Rho(B)$}:}& \\
+					& \implies V \in \Rho(B) \en b \notin V \quad (\tx{Volgens definitie van $P_1$}) \\
+					& \implies V \in P_1 \\
+					& \implies V \in P_1 \cup P_2 \\
+					\tx{\emph{Geval $b \in V$ met $V\in \Rho(B)$}:}& \\
+					& \implies V \in \Rho(B) \en b \in V \quad (\tx{Volgens definitie van $P_2$}) \\
+					& \implies V \in P_2 \\
+					& \implies V \in P_2 \cup P_1
+			  \end{align*}
+			  Dus $P_1 \cup P_2 = \Rho(B)$, we kunnen nu een functie $f: P_1 \rightarrow P_2$ met $f(V) = V \cup \{b\}$, 
+			  als we bewijzen dat $f$ een bijectie is dan $\Rho(A) = |P_1| = |p_2|$.
+
+			  Voor alle $V, W \in P_1 \als f(V) = f(W) \dan V \cup \{b\} = W \cup \{b\} \implies V = W$, en 
+			  dus is $f$ injectief. 
+			  
+			  Voor alle $W \in P_2$ geldt dat er een $V \in P_1$ bestaat zodanig dat $f(V) = W$.
+			  laat $V = W \slash \{b\}$ dan $f(W \slash \{b\}) = W\slash\{b\} \cup \{b\} = W$, en dus is
+			  $f$ surjectief.
+
+			  We hebben dus een bijectie tussen $P_1 \en P_2$ en dus $|P_1| = |P_2|$.
 		      Als we nu alles optellen krijgen we:
 		      \begin{align*}
-			      |\Rho(B)| & = |C| + |D|             \\
-			                & = |\Rho(A)| + |\Rho(A)| \\
+			      |\Rho(B)| & = |P_1 \cup P_2|    \quad (P_1, P_2 \tx{ partioneren } \Rho(B))         \\
+			                & = |\Rho(A)| + |\Rho(A)| \quad (|P_1| = |P_2| \tx{ omdat we $P_2$ kunnen construreren uit $P_1$})\\
 			                & = 2^k + 2^k             \\
 			                & = 2(2^k)                \\
 			                & = 2^{k+1}               \\
@@ -117,7 +147,7 @@ kan $f(f(a)) = f(f^{-1}(a))$ alleen als $f(a) = f^{-1}(a)$.
 				&= (k + 1)(k+2)(k+3) \quad (\tx{Commutativiteit}) \\
 				&= (k + 1)((k+1) + 1)((k+1)+ 2)
 			\end{align*}
-		\item \emph{}
+		\item \emph{Uitspraak waar voor alle $n$:}
 		Stel dat de stelling niet geldt voor alle $n \in \N$ dan bestaat er een kleinste $n_0$ waarbij de stelling niet waar moet zijn,
 		echter geldt voor $0 \leq k \leq n$ dat de stelling klopt, en dus is dit een tegenspraak.
 		

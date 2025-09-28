@@ -77,6 +77,8 @@ INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsb.f
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
+INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti7.tfm
+INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti7.tfm
 OUTPUT huiswerkset3.pdf
 INPUT C:\Users\jaspervos\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT huiswerkset3.aux
