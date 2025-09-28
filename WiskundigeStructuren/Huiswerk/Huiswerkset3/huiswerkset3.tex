@@ -49,6 +49,7 @@ Studentnr: \emph{s2911159}
 		      $|\Rho(A)| = |\{\emptyset, \{a\}\}| = 2^1 = 2$.
 		      Dus de uistpraak geldt voor $n = 1$.
 		\item \emph{Inductiehypothese:}
+
 		      Neem aan dat de stelling geldt voor
 		      $0 \leq k < n$, dan geldt dus:
 		      $|A| = k \en |\Rho(A)| = 2^k$.
@@ -71,6 +72,7 @@ Studentnr: \emph{s2911159}
 			                & = 2^{k+1}               \\
 		      \end{align*}
 		\item \emph{Uitspraak waar voor alle $n$:}
+
 		      We stellen dat de uitspraak waar is voor alle
 		      $n$ en gaan dit bewijzen door te stellen dat
 		      dit niet zo is door vervolgens een tegenspraak
@@ -86,9 +88,41 @@ Studentnr: \emph{s2911159}
 	\end{enumerate}
 \end{proof}
 \section*{Opgave 2}
-Voor alle $a \in A : f(f(a)) = a$,
-dan betekent dus ook omdat $f$ een bijectie is
-dat $ff = \tx{id}_A$
+\begin{proof}
+Als $f$ een inverse heeft geldt: \[f^{-1}(a) = b \Leftrightarrow f(b) = a\] 
+Neem $a \in A$
+en laat $f^{-1}(a) = b$, en $f(b) = a$. 
+Vervolgens stellen we op dat $f(b) = f(f^{-1}(a)) = a$,
+echter hebben we per definitie van $f$ dat $f(f(a)) = a$, en dus moet $f = f^{-1}$, omdat $f$ injectief is
+kan $f(f(a)) = f(f^{-1}(a))$ alleen als $f(a) = f^{-1}(a)$.
+\end{proof}
 
+\section*{Opgave 3}
+\begin{proof}
+	Volledige inductie laten we eerst beginnen met $n=0$ aangezien de formule impliceert dat $0 \in \N$.
+	\begin{enumerate}
+		\item \emph{Basisstap: $n = 0$}
+		Voor de linkerkant:
+			\[\sum_{i = 0}^{0}3i(i + 1) = 3(0)(0+1) = \boxed{0}\]
+		en de rechterkant:	
+			\[0(0+1)(0+2) = \boxed{0} \]
+			Dus de stelling klopt als $n = 0$.
+		\item \emph{Inductiehypothese:}
+			Neem aan dat de stelling klopt voor $0 \leq k \leq n$ dus: 
+			\[ \sum_{i = 0}^{k} 3i(i +1) = k(k+1)(n+2) \]
+			Laat nu $k = n-1$ dan, en bewijs voor $k + 1 = n$:
+			\begin{align*}
+				\sum_{i= 0}^{k} 3i(i + 1) + 3(k+1)(k + 2) &= k(k+1)(k+2) + 3(k+1)(k+2) \quad (\tx{Substitutie}) \\ 
+				&= (k + 3)(k+1)(k+2) \quad (\tx{Distributie}) \\
+				&= (k + 1)(k+2)(k+3) \quad (\tx{Commutativiteit}) \\
+				&= (k + 1)((k+1) + 1)((k+1)+ 2)
+			\end{align*}
+		\item \emph{}
+		Stel dat de stelling niet geldt voor alle $n \in \N$ dan bestaat er een kleinste $n_0$ waarbij de stelling niet waar moet zijn,
+		echter geldt voor $0 \leq k \leq n$ dat de stelling klopt, en dus is dit een tegenspraak.
+		
+		De stelling is dus waar voor alle $n \in \N$.
+	\end{enumerate}
+\end{proof}
 
 \end{document}
