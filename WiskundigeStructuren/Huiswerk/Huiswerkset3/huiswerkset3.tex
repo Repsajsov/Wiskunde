@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+{\Large \textbf{Wiskundige Structuren Huiswerk}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 3} \hfill \today \\
+Studentnr: \emph{s2911159}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\cn}[1]{\cancel{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rho}{\mathcal{P}}
+\newcommand{\en}{\tx{ en }}
+\newcommand{\of}{\tx{ of }}
+
+\section*{Opgave 1}
+\begin{proof}
+	Ik bewijs voor zowel $n = 0 \en n = 1$,
+	omdat er vaak dubbelzinnigheid is over
+	$0 \in \N \of 0 \notin \N$.
+	\begin{enumerate}
+		\item \emph{Basisstap: $n = 0, \ n = 1$}
+
+		      Neem $|A| = |\emptyset|$ = 0,
+		      dan en slechts dan als
+		      $|\Rho(A)| |\{\emptyset\}| = 2^0 = 1$.
+		      Dus de uitspraak geldt voor $n = 0$.
+
+
+		      Neem $|A| = |\{a\}| = 1$
+		      dan en slechts dan als
+		      $|\Rho(A)| = |\{\emptyset, \{a\}\}| = 2^1 = 2$.
+		      Dus de uistpraak geldt voor $n = 1$.
+		\item \emph{Inductiehypothese:}
+		      Neem aan dat de stelling geldt voor
+		      $0 \leq k < n$, dan geldt dus:
+		      $|A| = k \en |\Rho(A)| = 2^k$.
+
+		      Laat $k = n-1$, en $B = A \cup \{b\}$,
+		      Dan kunnen we de machtsverzameling opstellen
+		      voor $\Rho(B)$ waarbij:
+		      \[C = \{V \in \Rho(B): \{b\} \notin V)\} = \Rho(A) \]
+		      en:
+		      \[ D = \{V \in \Rho(B): \{b\} \in V \} \]
+		      Hieruit volgt $C \cup D = \Rho(B)$. Merk op
+		      dat $D = \{V \cup \{b\} : V \in \Rho(A)\}$, en dus:
+		      \[|D| = |\Rho(A)|\]
+		      Als we nu alles optellen krijgen we:
+		      \begin{align*}
+			      |\Rho(B)| & = |C| + |D|             \\
+			                & = |\Rho(A)| + |\Rho(A)| \\
+			                & = 2^k + 2^k             \\
+			                & = 2(2^k)                \\
+			                & = 2^{k+1}               \\
+		      \end{align*}
+		\item \emph{Uitspraak waar voor alle $n$:}
+		      We stellen dat de uitspraak waar is voor alle
+		      $n$ en gaan dit bewijzen door te stellen dat
+		      dit niet zo is door vervolgens een tegenspraak
+		      te vinden.
+
+		      Vanuit de welordening van $\N$ is er een kleinste
+		      element $n_0 \in \N$.
+		      We zeggen dat er een kleinste $n_0$ moet bestaan
+		      waarvoor de uispraak niet waar is, maar
+		      we hebben al bewezen dat voor $0 \leq k \leq n$
+		      de uitspraak waar is. Dit is dus een tegenspraak
+		      en daarom geldt voor alle $n \in N$ dat de uitspraak waar is.
+	\end{enumerate}
+\end{proof}
+\section*{Opgave 2}
+Voor alle $a \in A : f(f(a)) = a$,
+dan betekent dus ook omdat $f$ een bijectie is
+dat $ff = \tx{id}_A$
+
+
+\end{document}
