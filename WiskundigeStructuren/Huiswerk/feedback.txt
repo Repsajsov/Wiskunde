@@ -1,7 +1,3 @@
-Hier is een prompt die je kunt gebruiken om mij je wiskundige huiswerken te laten controleren:
-
----
-
 **WISKUNDIGE HUISWERK CONTROLE PROMPT**
 
 Ik ga je mijn wiskundige huiswerk laten zien. Controleer het op de volgende punten gebaseerd op veel voorkomende feedback van docenten:
@@ -33,6 +29,3 @@ Ik ga je mijn wiskundige huiswerk laten zien. Controleer het op de volgende punt
 
 Geef per punt concrete feedback en verbeterpunten. Benadruk waar stappen te snel gaan of uitleg ontbreekt.
 
----
-
-Deze prompt kun je copy-pasten bij toekomstige huiswerken zodat ik systematisch op alle belangrijke punten let die uit je feedback naar voren kwamen.
