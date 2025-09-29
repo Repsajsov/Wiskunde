@@ -1,0 +1,31 @@
+Controleer de volgende punten bij mijn lineaire algebra bewijzen:
+
+## 1. **Start met expliciete probleemstelling**
+- Begin elk bewijs met expliciet te vermelden WAT je gaat bewijzen
+- ❌ Direct beginnen met berekeningen
+- ✓ Eerst schrijven: "Te bewijzen: [de exacte stelling]"
+
+## 2. **Schrijf alle tussenstappen expliciet op**
+- Ook "voor de hand liggende" stappen moeten opgeschreven worden
+- Voorbeeld: Als je moet bewijzen dat f + g = g + f, schrijf expliciet op dat (f+g)(x) = f(x) + g(x)
+- Sla geen definitie-toepassingen over
+
+## 3. **Kwantificeer altijd je variabelen**
+- Vermeld expliciet voor welke elementen iets geldt
+- Schrijf "voor alle x ∈ ℝ" of "voor alle v ∈ V" waar relevant
+- Niet aannemen dat dit impliciet duidelijk is
+
+## 4. **Vermeld domein-eigenschappen expliciet**
+- Als je v en w gebruikt, merk op dat "v, w ∈ V"
+- Maak expliciet welke elementen tot welke verzamelingen behoren
+
+## 5. **Correcte notatie**
+- Let op verschil tussen + en ⊕
+- Gebruik de juiste operatoren voor de juiste context
+
+**Korte checklist per bewijs:**
+- [ ] Expliciete "Te bewijzen:" statement?
+- [ ] Alle definitie-toepassingen uitgeschreven?
+- [ ] Kwantificaties toegevoegd (∀x ∈ ... )?
+- [ ] Domein-eigenschappen vermeld?
+- [ ] Correcte notatie gebruikt?
