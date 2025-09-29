@@ -12,6 +12,7 @@
 \newcommand{\en}{\text{ en }}
 \newcommand{\dan}{\text{ dan }}
 \newcommand{\geldt}{\text{ geldt }}
+\newcommand{\met}{\text{ met }}
 
 \begin{document}
 
@@ -27,8 +28,46 @@ Studentnr: \emph{s2911159}
 \bigskip
 
 \section*{Opgave 3.4.6}
+\begin{proof}
+    Laat $F$ een willekeurig lichaam zijn voor een willekeurige
+    vectorruimte $V$ en laat met
+    tegenvoorbeeld zien dat
+    $L(I) \cap L(J) = L(I \cap J)$ niet waar kan zijn.
+    Te bewijzen met een tegenvoorbeeld.
 
-\section*{Opgave 3.4.6(2)}
+    \subsection*{Bekijk $L(I) \cap L(J)$:}
+    Neem $I \in \R^2 \met I = \{(1,1)\}, \en J \in \R^2 \met J = \{(2,2)\}$ dan:
+    \[L(I) =
+        \{\lambda(1, 1) : \lambda \in F\} \quad (\text{Voor willekeurige $\lambda$})\]
+    \begin{center}
+        en
+    \end{center}
+    \[L(J) =
+        \{\mu (2,2) : \mu \in F\} \quad (\text{Voor willekeurige $\mu$})\]
+    \begin{center}
+        daaruit volgt dus $L(I) \cap L(J)$:
+    \end{center}
+    \[ L(I) \cap L(J) = \{\lambda(1, 1) : \lambda \in F\} \quad (\text{Vool willekeurige $\lambda$})\]
+    Dit komt voort omdat $L(I), \en L(J)$ dezelfde lijn opstellen,
+    want $(2, 2)\in J$ is een opgeschaalde variant van $(1,1) \in I$.
+
+    \subsection*{Bekijk $L(I \cap J)$:}
+    Neem $I = \{1,1\}, \en J = \{2,2\}$, dan:
+    \[ I \cap J = \{(1, 1)\} \cap \{(2, 2)\} = \emptyset\]
+    Als we hier het lineaire omhulsel van nemen dan
+    krijgen we $L(\emptyset) = \{0\}$.
+
+    \bigskip
+
+    \emph{Conclusie:}
+
+    Dit betekent dus dat $L(I) \cap L(J)$ het lineaire omhulsel van $(1,1)$ is,
+    en voor $L(I \cap J)$ geldt alleen de nulvector. Dit betekent dus dat:
+    \[L(I) \cap L(J) \neq L(I \cap J)\]
+
+\end{proof}
+\newpage
+\section*{Opgave 3.4.7(2)}
 \begin{proof}
     Laat $V$ een verzameling zijn van
     alle oneven functies van $\R \rightarrow \R$,
@@ -41,7 +80,7 @@ Studentnr: \emph{s2911159}
     Zij $f_0:\R \rightarrow \{0\} \ f(x) = 0$, dan
     geldt voor alle $x \in \R$ dat:
     \[f(-x) = 0 \en -f(x) = -0 = 0\]
-    Dit betekent dus dat $V$ de nulfunctie $f_0$ bevat.
+    Dit betekent dus dat $f_0 \in V$.
 
     \subsection*{Gesloten onder optelling}
     Te bewijzen: $f, g \in V \dan f + g \in V$.
@@ -69,7 +108,7 @@ Studentnr: \emph{s2911159}
 
     \bigskip
 
-    \emph{Conclusie}
+    \emph{Conclusie:}
 
     Door te bewijzen dat $V$ voldoet aan het nulelement, optelling en scalaire vermedigvuldiging
     hebben we bewezen dat $V$ een deelruimte is van $\R^{\R}$.
