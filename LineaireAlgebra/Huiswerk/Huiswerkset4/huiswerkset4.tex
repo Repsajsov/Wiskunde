@@ -9,7 +9,9 @@
 \setlength{\parindent}{0pt}
 
 \newcommand{\R}{\mathbb{R}}
-
+\newcommand{\en}{\text{ en }}
+\newcommand{\dan}{\text{ dan }}
+\newcommand{\geldt}{\text{ geldt }}
 
 \begin{document}
 
@@ -27,5 +29,49 @@ Studentnr: \emph{s2911159}
 \section*{Opgave 3.4.6}
 
 \section*{Opgave 3.4.6(2)}
+\begin{proof}
+    Laat $V$ een verzameling zijn van
+    alle oneven functies van $\R \rightarrow \R$,
+    waarbij $V$ een deelruimte is op $\R^{\R}$.
 
+    \subsection*{Het nulelement}
+    Te bewijzen: $V$ bevat het nulelement,
+    wat in dit geval de nulfunctie $f_0$ is.
+
+    Zij $f_0:\R \rightarrow \{0\} \ f(x) = 0$, dan
+    geldt voor alle $x \in \R$ dat:
+    \[f(-x) = 0 \en -f(x) = -0 = 0\]
+    Dit betekent dus dat $V$ de nulfunctie $f_0$ bevat.
+
+    \subsection*{Gesloten onder optelling}
+    Te bewijzen: $f, g \in V \dan f + g \in V$.
+
+    Zij $f, g \in V$ willekeurig gegeven dan
+    geldt voor alle $x \in \R$ dat:
+    \begin{align*}
+        (f + g)(-x) & = f(-x) + g(-x)  \quad (\text{Definitie optellen functies}) \\
+                    & = -f(x) + -g(x) \quad (\text{Eigenschap oneven functie})    \\
+                    & = -(f(x) + g(x)) \quad (\text{Distributiviteit in $\R$})    \\
+                    & = -((f + g)(x)) \quad (\text{Definitie optellen functies})
+    \end{align*}
+    Hieruit volgt dus dat voor alle
+    $x \in \R \geldt
+        (f + g)(-x) = -(f + g)(x)$, en dus
+    $f + g \in V$.
+
+    \subsection*{Gesloten onder scalaire vermedigvuldiging}
+    Te bewijzen: $f \in V \en \lambda \in \R \dan \lambda f \in V$.
+
+    Zij $f \in V \en \lambda \in \R$ dan:
+    \[\lambda f(-x) = -\lambda f(x) \quad (\text{Eigenschap oneven functie})\]
+
+    Dus voor elke $x \in \R$ geldt dat $\lambda f(-x) = -\lambda f(x)$, en dus $\lambda f \in V$.
+
+    \bigskip
+
+    \emph{Conclusie}
+
+    Door te bewijzen dat $V$ voldoet aan het nulelement, optelling en scalaire vermedigvuldiging
+    hebben we bewezen dat $V$ een deelruimte is van $\R^{\R}$.
+\end{proof}
 \end{document}
