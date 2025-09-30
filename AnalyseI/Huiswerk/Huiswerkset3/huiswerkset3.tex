@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\s}[1]{\sqrt{#1}}
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+
+\begin{document}
+
+{\Large \textbf{Analyse I Huiswerk}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 3} \hfill \today \\
+Studentnr: \emph{s2911159}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\begin{enumerate}[label=\arabic*)]
+    \item
+          \begin{enumerate}[label=\alph*)]
+              \item Voor $x \in (0, \infty)$ geldt:
+                    \[f(x) = \f{x}{1+\s{x}}\]
+                    De functie is goed gedefinieerd want
+                    $1+\s{x} \neq 0 $ als $x \in (0, \infty)$,
+                    daarnaast geldt voor iedere $x$ dat het
+                    een inwendig punt is.
+
+                    Laten we nu $f'$
+                    berekenen op $(0, \infty)$:
+
+                    \begin{align*}
+                        f'(x) & = \f{d}{dx}\l(\f{x}{1+\s{x}}\r)                                                   \\
+                              & = \l(\f{(1+\s{x})-x(\f{1}{2}x^{-\f{1}{2}})}{(1+\s{x})^2}\r)
+                        \quad (\text{Gebruik de Quotiëntregel
+                        })                                                                                        \\
+                              & = \l(\f{1+\s{x}-\f{1}{2}x^{\f{1}{2}}}{(1+\s{x})^2}\r) \quad (\text{Vereenvoudig}) \\
+                              & = \boxed{\l(\f{1+\f{1}{2}\s{x}}{(1+\s{x})^2}\r)} \quad (\text{Vereenvoudig})
+                    \end{align*}
+                    Dus $f'(x) = \l(\f{1+\f{1}{2}\s{x}}{(1+\s{x})^2}\r)$ voor alle $x \in (0, \infty)$.
+              \item Laten we eerst kijken of de functie continu is in $x = -2$.
+
+                    Bekijk of de limieten op $x = -2$ overeenkomen:
+                    \begin{itemize}
+                        \item Voor als $x \leq -2$ dan $\lim_{x\uparrow-2} (\f{1}{x+1}) = \f{1}{-2 + 1}=\boxed{-1}$
+                        \item Voor als $x > -2$ dan $\lim_{x\downarrow -2} (x^2 + x) = (-2)^2 + (-2) = \boxed{2}$
+                    \end{itemize}
+                    En dus is $f$ niet continu op $x = -2$, en dus zeker niet differentieerbaar.
+              \item Om te bepalen of $f$ differentieerbaar is in
+                    het punt $x=0$, moet allereest gelden dat $f$ continu is op $x=0$.
+
+                    Bekijk eerst of $x=0$ continu is:
+                    \begin{itemize}
+                        \item Voor als $x < 0$ dan $\lim_{x \uparrow 0} (x^2 + x) = \boxed{0}$
+                        \item Voor als $x \geq 0$ dan $\lim_{x \downarrow 0} {\f{x}{1+\s{x}}} = \f{0}{1 + \s{0}}=\boxed{0}$
+                    \end{itemize}
+                    Dit betekent dat $f$ continu is op $x=0$, dus aan de voorwaarde continuiteit is voldaan.
+                    Nu kijken we of de afgeleiden gelijk zijn rond $x=0$.
+                    \begin{itemize}
+                        \item Neem $x \geq 0$ hebben we vanuit onderdeel a) namelijk:
+                              $f'(x) = \l(\f{1+\f{1}{2}\s{x}}{(1+\s{x})^2}\r)$
+                              en dus: \[f'(0)= \l(\f{1+\f{1}{2}\s{0}}{(1+\s{0})^2}\r) =
+                                  \boxed{1}\]
+                        \item Neem $x < 0 $, dan moeten we eerst even de afgeleide berekenen:
+                              $f'(x) = \f{d}{dx}(x^2 + x) = 2x + 1$.
+                              Bereken het limiet vanuit wat $0$ benadert vanuit $x < 0$, dan:
+                              \[\lim_{x \uparrow 0}(2x + 1) = 2(0) + 1 = \boxed{1}\]
+                    \end{itemize}
+                    Hieruit volgt dus dat $f$ differentieerbaar is op $x = 0$.
+              \item We hebben laten zien in vraag c) dat $f$ differentieerbaar is op $x=0$, en dan moet $f$ per definitie continu zijn.
+          \end{enumerate}
+    \item Gebruik de kettingregel meerdere keren:
+          \begin{align*}
+              \phi'(x) & = \f{d}{dx}\l(\sin\l(\sqrt{2 + \cos(x^2 + x + 1)}\r)\r)                                               \\
+                       & = \cos\l(\s{2 + \cos(x^2 + x + 1)}\r) \cdot \f{1}{2\s{2 + \cos(x^2 + x + 1)}}
+              \cdot \l(-\sin(x^2 + x + 1)\r) \cdot (2x + 1)                                                                    \\
+                       & = \boxed{\f{(\cos(\s{2 + \cos(x^2 + x + 1)}))(-\sin(x^2 + x + 1))(2x+1)}{2\s{2 + \cos(x^2 + x + 1)}}}
+          \end{align*}
+    \item
+          \begin{enumerate}[label=\alph*)]
+              \item
+                    \begin{align*}
+                        \lim_{x \rightarrow \f{\pi}{4}}\f{1-\tan^2(x)}{\cos(2x)} & =
+                        \lim_{x \rightarrow \f{\pi}{4}}\f{1-\f{\sin^2(x)}{\cos^2(x)}}{\cos(2x)}    \quad (\text{Herschrijf $\tan^2(x) = \f{\sin^2(x)}{\cos^2(x)}$})                                                                      \\
+                                                                                 & =\lim_{x \rightarrow \f{\pi}{4}}\f{\f{\cos^2(x) - \sin^2(x)}{\cos^2(x)}}{\cos(2x)}                                                                    \\
+                                                                                 & = \lim_{x \rightarrow \f{\pi}{4}}\f{\cos^2(x) - \sin^2(x)}{\cos^2(x)\cos(2x)}                                                                         \\
+                                                                                 & = \lim_{x \rightarrow \f{\pi}{4}}\f{\cancel{\cos^2(x) - \sin^2(x)}}{\cos^2(x)\cancel{(\cos^2(x)-\sin^2(x))}} \quad (\cos(2x) = \cos^2(x) - \sin^2(x)) \\
+                                                                                 & = \lim_{x \rightarrow \f{\pi}{4}}\f{1}{\cos^2(x)} = \f{1}{\cos^2(\f{\pi}{4})} = \boxed{2}
+                    \end{align*}
+              \item
+                    \begin{align*}
+                        \lim_{x \rightarrow 1} \f{\theta -1 + \sin(\theta^2 - 1)}{\theta^2-1} & = \lim_{x \rightarrow 1} \f{\theta - 1}{\theta^2 - 1} + \lim_{x \rightarrow 1}\f{\sin(\theta^2 - 1)}{\theta^2 - 1} \quad (\text{Gebruik rekenregels limieten})                                                               \\
+                                                                                              & = \lim_{x \rightarrow 1} \f{\cancel{\theta - 1}}{\cancel{(\theta - 1)}(\theta + 1)} + \lim_{x \rightarrow 1}\f{\sin(\theta^2 -1 )}{\theta^2 - 1} \quad (\text{Gebruik $(a^2-b^2) = (a-b)(a+b)$})                             \\
+                                                                                              & = \underbrace{\lim_{x \rightarrow 1} \f{1}{\theta + 1}}_{\text{Hieruit volgt }\f{1}{2}} + \underbrace{\lim_{x \rightarrow 1} \f{\sin(\theta^2 - 1)}{\theta^2 - 1}}_{\text{Standaardlimiet gelijk aan } 1} = \boxed{\f{3}{2}}
+                    \end{align*}
+          \end{enumerate}
+\end{enumerate}
+
+\end{document}
