@@ -15,6 +15,7 @@
 \newcommand{\q}{/_\sim}
 \newcommand{\ol}[1]{\overline{#1}}
 \newcommand{\tx}[1]{\text{#1}}
+\newcommand{\en}{\text{ en }}
 
 \begin{document}
 
@@ -54,12 +55,12 @@
 \end{enumerate}
 \subsection*{Opgave 3.2}
 \begin{enumerate}[label=\alph*)]
-	\item $X$ wordt gepartioneerd in $X/_\sim$, omdat $|X/_\sim| = \infty =$ zit in elke equivalentieklasse minstens 1 represetant die in $X$ moet liggen. Dit betekent dus dat $|X| \geq |X/_\sim| = \infty$.
+	\item $X$ wordt gepartitioneerd in $X/_\sim$, omdat $|X/_\sim| = \infty =$ zit in elke equivalentieklasse minstens 1 representant die in $X$ moet liggen. Dit betekent dus dat $|X| \geq |X/_\sim| = \infty$.
 	\item
 	      \begin{itemize}
 		      \item \emph{Geval 1:} $(|X/_\sim|) = (n \wedge |X| = \infty)$:
 		            Neem $X=\Z$ met $x \sim y$ als $x \equiv y \mod n$, dan
-		            heeft $|X\q|$ precies $n$ elmenten namelijk: $\underbrace{\{ \ol{0}, \ol{1}, \ol{2}, \dots ,\ol{n-1} \}}_{n\ \text{elementen}}$.
+		            heeft $|X\q|$ precies $n$ elementen namelijk: $\underbrace{\{ \ol{0}, \ol{1}, \ol{2}, \dots ,\ol{n-1} \}}_{n\ \text{elementen}}$.
 		            Hieruit volgt dus dat $|X| = \infty$, en $|X\q| = n$.
 		      \item \emph{Geval 2:} $(|X\q|  = n) \wedge (|X| = n)$:
 		            Laat $X = \Z_{k}$ en maak een equivalentie relatie waarbij $x \sim y \Longleftrightarrow x = y$.
@@ -179,15 +180,15 @@ neem bijvoorbeeld $3, 6 \in \ol{0}$, dan $f(3) = 3 \mod 2 = \boxed{1}$ en $f(6) 
 Hieruit volgt dus dat $f$ geen functie is aangezien een argument meer dan één waarde kan vertegenwoordigen.
 
 \subsection*{Opgave 3.7}
-Zij $(a, b), (c, d) \in X\q$ en laat de vermedigvuldiging als volgt zijn:
+Zij $(a, b), (c, d) \in X\q$ en laat de vermenigvuldiging als volgt zijn:
 \begin{align*}
 	(a, \ b)\cdot(c, \ d) & = (a-b)(c-d)            \\
 	                      & = ac - ad - bc + bd     \\
 	                      & = (ac + bd) - (ad + bc) \\
 	                      & = (ac + bd, \ ad + bc)
 \end{align*}
-We gaan nu laten zien dat de berekening represetant onafhankelijk is.
-Neem $(ac + bd, \ ad + bc)$, en $(a'c' + b'd', \ a'd'+b'c')$ en kijk of:
+We gaan nu laten zien dat de berekening representant onafhankelijk is.
+Neem \((ac + bd, \ ad + bc\)), en \((a'c' + b'd', \ a'd'+b'c')\) en kijk of:
 \begin{align*}
 	(ac + bd, \ ad + bc)  & \sim (a'c' + b'd', \ a'd' + b'c') \\
 	                      & \Downarrow                        \\
@@ -197,11 +198,13 @@ Neem $(ac + bd, \ ad + bc)$, en $(a'c' + b'd', \ a'd'+b'c')$ en kijk of:
 	                      & \Downarrow                        \\
 	(ac + bd, ad + bd)    & = (a'c' + b'd', a'd' + b'c')      \\
 \end{align*}
-Hieruit volgt dat het represetant onafhankelijk is. Ik twijfel nog over deze uitwerking..
+Hieruit volgt dat het representant onafhankelijk is. Ik twijfel nog over deze uitwerking..
 
 \subsection*{Opgave 3.8}
 Zij $f: \Z \rightarrow \Z \times \Z_{\neq 0}$ met $f(x) = (x, 1)$, waarbij we een equivalentierelatie opstellen:
 \[(a, b) \sim (c, d) \Longleftrightarrow ad = bc\]
+\subsubsection*{Opstellen van equivalentierelatie op $\Z \times \Z 
+\setminus \{0\}$}
 \begin{enumerate}[label=\arabic*]
 	\item \emph{Reflexief:} Neem $(a, b) \in \Z \times \Z_{\neq 0}$ dan:
 	      \begin{align*}
@@ -211,7 +214,7 @@ Zij $f: \Z \rightarrow \Z \times \Z_{\neq 0}$ met $f(x) = (x, 1)$, waarbij we ee
 		      ab     & = ab \quad (\because \tx{Vermedigvuldiging is commutatief in } \Z)
 	      \end{align*}
 	      De relatie is dus reflexief.
-	\item \emph{Symmetrie:} Als $(a, b) \sim (c,d)$ dan:
+	\item \emph{Symmetrie:} Als $(a, b) \sim (c,d)$, waarbij $(a, b) \en (c, d) \in \Z \times \Z$ dan:
 	      \begin{align*}
 		      ad     & = bc                                                               \\
 		             & \Downarrow                                                         \\
@@ -238,7 +241,28 @@ Zij $f: \Z \rightarrow \Z \times \Z_{\neq 0}$ met $f(x) = (x, 1)$, waarbij we ee
 	      \end{align*}
 	      De relatie is dus transitief.
 \end{enumerate}
-Nu moeten we nog bewijzen of de equivalentierelatie representantonafhankelijk is. Neem $(a,b) \sim (c,d)$ en $(a',b') \sim (c',d')$ dan:
+\subsubsection*{Opstellen optelling in \(\Z \times \Z \)}
+Neem \((a, b) \en (c, d) \in \Z \times \Z \) dan definiëren we een optelling:
+\[(a, b) + (c, d) = (ad + bc, bd)\]
+\subsubsection*{Opstellen vermenigvuldiging in \( \Z \times \Z \)}
+Neem \((a, b) \en (c, d) \in \Z \times \Z  \) dan definiëren we een vermenigvuldiging:
+\[(a, b) \cdot (c, d) = (ac, bd)\] 
+\subsubsection*{Representant-onafhankelijkheid}
+Neem \((a, b)\sim (a', b') \en (c, d), \sim (c', d')\) dan moet gelden:
+\begin{itemize}
+	\item \emph{Optelling: } 
+	\begin{align*}
+		 (a, b) + (c, d) = (ad + bc, bd) &\sim (a', b') + (c', d') = (a'd' + b'c', b'd')	\\
+		 \Downarrow \\
+		 (ad+bc,bd ) &\sim  (a'd'+ b'c', b'd') \\
+		 \Downarrow \\
+		 ((ad+bc)(b'd') &= (bd)(a'd'+b'c')) \\
+	\end{align*}
+\end{itemize}
+
+
+
+Nu moeten we nog bewijzen of de equivalentierelatie representant-onafhankelijk is. Neem $(a,b) \sim (c,d)$ en $(a',b') \sim (c',d')$ dan:
 \begin{align*}
 	a
 \end{align*}
@@ -246,7 +270,6 @@ Nu moeten we nog bewijzen of de equivalentierelatie representantonafhankelijk is
 Waarbij de interpretatie als volgt is:
 \[\ol{(a, b)} = \frac{a}{b}\]
 En nu hebben we $\mathbb{Q}$?
-
 
 
 
