@@ -8,17 +8,25 @@
 
 \setlength{\parindent}{0pt}
 
-\newcommand{\N}{\mathbb{N}}
 \newcommand{\f}[2]{\frac{#1}{#2}}
 \newcommand{\tx}[1]{\text{#1}}
 \newcommand{\cn}[1]{\cancel{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+
 \newcommand{\Rho}{\mathcal{P}}
+\newcommand{\q}[1]{#1/_\sim}
+
 \newcommand{\en}{\tx{ en }}
 \newcommand{\of}{\tx{ of }}
 \newcommand{\geldt}{\tx{ geldt }}
 \newcommand{\dan}{\tx{ dan }}
 \newcommand{\als}{\tx{ als }}
+\newcommand{\dus}{\tx{ dus }}
 
 \begin{document}
 
@@ -37,6 +45,46 @@ Studentnr: \emph{s2911159}
     \item
           \begin{enumerate}[label=\alph*)]
               \item
+                    Zij \(a, b, c \in \Q \) en \(\sim\) een equivalentie-relatie waarbij \(a - b \in \Z\).
+
+                    Bewijs dat \(\sim\) een equivalentie-relatie is:
+                    \begin{itemize}
+                        \item \(\sim\)\emph{ is reflexief:}
+
+                              \(a - a = 0 \en 0 \in \Z \) en dus is \(\sim\) reflexief.
+                        \item \(\sim\)\emph{ is symmetrisch:}
+
+                              Als \(a - b \in \Z \dan -1(a - b) = b - a \in \Z\), en dus \(b \sim a\) waaruit volgt dat \(\sim\) symmetrisch is.
+                        \item \(\sim\)\emph{ is transitief:}
+
+                              \(a-b \in \Z \en b-c \in \Z\) dan \((a-b) + (b-c) \in \Z \dus a -\cn{b} + \cn{b} - c = a-c \in \Z \)
+                              hieruit volgt \(a \sim c\) en dus is \(\sim\) een transitieve relatie.
+                    \end{itemize}
+                    Voor \(\sim\) geldt dat hij reflexief, symmetrisch en transitief is, en daarmee
+                    is \(\sim\) een equivalentie-relatie.
+
+                    Als we nu gaan kijken naar \(\Q/_\sim\),
+                    dan kunnen we elke equivalentie-klasse
+                    \(\ol{q}\) kunnen schrijven als:
+                    \[\ol{q} = \ol{\f{1}{k}} = \{(\f{k(i) + 1}{k}) : i \in \Z\}\]
+                    Hieruit volgt dus dat we oneindig equivalentie-klassen hebben want
+                    we kunnen een bijectie opstellen vanuit \(f:\Z \rightarrow (0, 1]\) met \(f(k) = \f{1}{k}\), en dus
+                    zijn het aantal equivalentie-klassen aftelbaar oneindig.
+                    Daarnaast heeft elke equivalentie-klasse oneindig elementen omdat:
+                    \[\f{k(i) + 1}{k} = i + \f{1}{k}\]
+                    We kunnen dit zien als een strikt stijgende lijn,
+                    en dus moet elke equivalentie-klasse oneindig aantal elementen bevatten.
+              \item
+                    Ik denk niet dat dit kan. Ik stel voor dat het wel kan, en probeer een tegenspraak te herleiden.
+                    \begin{proof}
+                        Stel dat er een Quotiëntruimte bestaat waarbij $|\q{Q}| = n$, en $|\ol{q}| = m$, waarbij $\ol{q} \in \q{Q}$,
+                        We weten dat $(\q{Q})$ partities vormen in \(\Q\).
+                        Dit betekent dus dat $\Q$ partities $\ol{q}$ moet vormen waarbij
+                        elk element van $\Q$ opgedeeld wordt, echter
+                        geldt voor $|\ol{q}| = m$ en $|\q{Q}| = n$, en dus zijn
+                        er hoogstens $n\cdot m$ aantal elementen. Dit luidt tot een
+                        tegenspraak want $n \cdot m < \infty = |\Q|$.
+                    \end{proof}
           \end{enumerate}
 \end{enumerate}
 
