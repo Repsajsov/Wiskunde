@@ -87,6 +87,7 @@ Studentnr: \emph{s2911159}
                         \end{proof}
             \end{enumerate}
       \item
+            \pagebreak
             \begin{enumerate}[label=\alph*)]
                   \item \begin{enumerate}
                               \item Bekijk of $X:= \{0\} \cup \{1 - \f{1}{n+2}\}_{n \in \Z_{\geq 0}}$ zowel een infimum en een supremum heeft.
@@ -154,6 +155,7 @@ Studentnr: \emph{s2911159}
                                                       automatisch het supremum.
                                                 \end{proof}
                                     \end{itemize}
+                                    \pagebreak
                               \item Bekijk of $Z:= \{b-a \in \R : a\in (-1, 1), b \in [0, 2]\}$ een supremum en infimum heeft:
                                     \begin{itemize}
                                           \item Bekijk of $Z$ een infimum heeft:
@@ -204,6 +206,7 @@ Studentnr: \emph{s2911159}
                   \item Vanuit vraag a) heeft $Z$ dus een infimum $i = 0$ waarvoor $0 \in X$ en ook
                         voor $Y$ een supremum $s = 2$ waarbij $2 \in Y$. $X$ heeft dus een minimum en $Y$ een maximum.
             \end{enumerate}
+            \pagebreak
       \item Bekijk alle gevallen:
             \begin{itemize}
                   \item \emph{Geval 1:} $\sup(U) \in U \en \inf(V) \in V$ dan geldt dat $U \cap V = \{\sup(U)\}$
@@ -218,7 +221,22 @@ Studentnr: \emph{s2911159}
                   moet $s_2$ groter zijn dan alle andere ondergrenzen dus ook $s_1$. Hieruit volgt dat $s_2 \geq s_1$.
                   Als deze beide voorwaarden waar zijn moet $s_1 = s_2$.
             \end{proof}
+      \item
+            $B$ heeft een infimum want neem $a \in A$ dan is $a$ een ondergrens van $B$.
+            Vervolgens als $B$ een ondergrens heeft dan is er ook een grootste ondergrens, en dus bestaat het infimum van $B$.
+            Hetzelfde argument geldt voor het supremum van $A$, neem $b \in B$ dan heeft $A$ een bovengrens en als er een bovengrens is dan
+            is er ook een kleinste bovengrens.
 
+            Nu het bewijs dat $\sup(A) \leq \inf(B):$
+            \begin{proof}
+                  Stel dat het niet waar is dan geldt
+                  $\sup(A) > \inf(B)$.
+
+                  Laat $\sup(A) = \inf(B) + \epsilon$ waarbij $\epsilon > 0 \en \inf(B) \in B$.
+                  Dit is een tegenspraak want $\inf(B)$ is dan een kleinere bovengrens voor $A$ ten opzichte van het orginele supremum van $A$.
+
+                  Hieruit volgt dus dat $\sup(A) \leq \inf(B)$.
+            \end{proof}
 \end{enumerate}
 
 
