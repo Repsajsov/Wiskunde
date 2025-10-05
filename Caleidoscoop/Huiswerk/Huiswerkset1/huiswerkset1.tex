@@ -152,12 +152,25 @@ Studentnr: \emph{s2911159}
                                             dit de grootste waarde is voor $1 + \f{1}{n+1}$.
                                             En dus $1 + \f{1}{0+1} = 2$. Dit betekent dus dat $2$ het maximum van $Y$ is en dus
                                             automatisch het supremum.
-
-
                                         \end{proof}
                               \end{itemize}
                     \end{enumerate}
           \end{enumerate}
+    \item Bekijk alle gevallen:
+          \begin{itemize}
+              \item \emph{Geval 1:} $\sup(U) \in U \en \inf(V) \in V$ dan geldt dat $U \cap V = \{\sup(U)\}$
+              \item \emph{Geval 2:} $\sup(U) \notin U \en \inf(V) \in V$ dan geldt dat $U \cap V = \emptyset$
+              \item \emph{Geval 3:} $\sup(U) \in U \en \inf(V) \notin V$ dan geldt dat $U \cap V = \emptyset$
+          \end{itemize}
+    \item
+          \begin{proof}
+              Stel dat $s_1 \en s_2$ beide infima zijn. Dan geldt voor $s_1$ dat voor elke andere ondergrens
+              (waaronder in het bijzonder $s_2$)
+              $s_1 \geq s_2$, echter geldt voor $s_2$ ook dat het een infimum is en dus
+              moet $s_2$ groter zijn dan alle andere ondergrenzen dus ook $s_1$. Hieruit volgt dat $s_2 \geq s_1$.
+              Als deze beide voorwaarden waar zijn moet $s_1 = s_2$.
+          \end{proof}
+
 \end{enumerate}
 
 
