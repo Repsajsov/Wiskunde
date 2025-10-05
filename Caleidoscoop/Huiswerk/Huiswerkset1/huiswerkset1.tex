@@ -42,134 +42,182 @@ Studentnr: \emph{s2911159}
 \bigskip
 
 \begin{enumerate}[label=\arabic*]
-    \item
-          \begin{enumerate}[label=\alph*)]
-              \item
-                    Zij \(a, b, c \in \Q \) en \(\sim\) een equivalentie-relatie waarbij \(a - b \in \Z\).
+      \item
+            \begin{enumerate}[label=\alph*)]
+                  \item
+                        Zij \(a, b, c \in \Q \) en \(\sim\) een equivalentie-relatie waarbij \(a - b \in \Z\).
 
-                    Bewijs dat \(\sim\) een equivalentie-relatie is:
-                    \begin{itemize}
-                        \item \(\sim\)\emph{ is reflexief:}
+                        Bewijs dat \(\sim\) een equivalentie-relatie is:
+                        \begin{itemize}
+                              \item \(\sim\)\emph{ is reflexief:}
 
-                              \(a - a = 0 \en 0 \in \Z \) en dus is \(\sim\) reflexief.
-                        \item \(\sim\)\emph{ is symmetrisch:}
+                                    \(a - a = 0 \en 0 \in \Z \) en dus is \(\sim\) reflexief.
+                              \item \(\sim\)\emph{ is symmetrisch:}
 
-                              Als \(a - b \in \Z \dan -1(a - b) = b - a \in \Z\), en dus \(b \sim a\) waaruit volgt dat \(\sim\) symmetrisch is.
-                        \item \(\sim\)\emph{ is transitief:}
+                                    Als \(a - b \in \Z \dan -1(a - b) = b - a \in \Z\), en dus \(b \sim a\) waaruit volgt dat \(\sim\) symmetrisch is.
+                              \item \(\sim\)\emph{ is transitief:}
 
-                              \(a-b \in \Z \en b-c \in \Z\) dan \((a-b) + (b-c) \in \Z \dus a -\cn{b} + \cn{b} - c = a-c \in \Z \)
-                              hieruit volgt \(a \sim c\) en dus is \(\sim\) een transitieve relatie.
-                    \end{itemize}
-                    Voor \(\sim\) geldt dat hij reflexief, symmetrisch en transitief is, en daarmee
-                    is \(\sim\) een equivalentie-relatie.
+                                    \(a-b \in \Z \en b-c \in \Z\) dan \((a-b) + (b-c) \in \Z \dus a -\cn{b} + \cn{b} - c = a-c \in \Z \)
+                                    hieruit volgt \(a \sim c\) en dus is \(\sim\) een transitieve relatie.
+                        \end{itemize}
+                        Voor \(\sim\) geldt dat hij reflexief, symmetrisch en transitief is, en daarmee
+                        is \(\sim\) een equivalentie-relatie.
 
-                    Als we nu gaan kijken naar \(\Q/_\sim\),
-                    dan kunnen we elke equivalentie-klasse
-                    \(\ol{q}\) kunnen schrijven als:
-                    \[\ol{q} = \ol{\f{1}{k}} = \{(\f{k(i) + 1}{k}) : i \in \Z\}\]
-                    Hieruit volgt dus dat we oneindig equivalentie-klassen hebben want
-                    we kunnen een bijectie opstellen vanuit \(f:\Z \rightarrow (0, 1]\) met \(f(k) = \f{1}{k}\), en dus
-                    zijn het aantal equivalentie-klassen aftelbaar oneindig.
-                    Daarnaast heeft elke equivalentie-klasse oneindig elementen omdat:
-                    \[\f{k(i) + 1}{k} = i + \f{1}{k}\]
-                    We kunnen dit zien als een strikt stijgende lijn,
-                    en dus moet elke equivalentie-klasse oneindig aantal elementen bevatten.
-              \item
-                    Ik denk niet dat dit kan. Ik stel voor dat het wel kan, en probeer een tegenspraak te herleiden.
-                    \begin{proof}
-                        Stel dat er een Quotiëntruimte bestaat waarbij $|\q{Q}| = n$, en $|\ol{q}| = m$, waarbij $\ol{q} \in \q{Q}$,
-                        We weten dat $(\q{Q})$ partities vormen in \(\Q\).
-                        Dit betekent dus dat $\Q$ partities $\ol{q}$ moet vormen waarbij
-                        elk element van $\Q$ opgedeeld wordt, echter
-                        geldt voor $|\ol{q}| = m$ en $|\q{Q}| = n$, en dus zijn
-                        er hoogstens $n\cdot m$ aantal elementen. Dit luidt tot een
-                        tegenspraak want $n \cdot m < \infty = |\Q|$.
-                    \end{proof}
-          \end{enumerate}
-    \item
-          \begin{enumerate}[label=\alph*)]
-              \item \begin{enumerate}
-                        \item Bekijk of $X:= \{0\} \cup \{1 - \f{1}{n+2}\}_{n \in \Z_{\geq 0}}$ zowel een infimum en een supremum heeft.
-                              \begin{itemize}
-                                  \item Bekijk of $X$ een infimum heeft:
-                                        \begin{proof}
-                                            Claim dat het infimum $i$ bestaat met $i = 0$.
-                                            Allereerst moet $0$ een ondergrens zijn.
-                                            Bekijk \[x \in \{0\} \cup \{1 - \f{1}{n+2}\}\]
-                                            We weten dat de rechterkant van de vereniging minstens
-                                            $x = \f{1}{2}$, en hoogstens $1$ benadert.
+                        Als we nu gaan kijken naar \(\Q/_\sim\),
+                        dan kunnen we elke equivalentie-klasse
+                        \(\ol{q}\) kunnen schrijven als:
+                        \[\ol{q} = \ol{\f{1}{k}} = \{(\f{k(i) + 1}{k}) : i \in \Z\}\]
+                        Hieruit volgt dus dat we oneindig equivalentie-klassen hebben want
+                        we kunnen een bijectie opstellen vanuit \(f:\Z \rightarrow (0, 1]\) met \(f(k) = \f{1}{k}\), en dus
+                        zijn het aantal equivalentie-klassen aftelbaar oneindig.
+                        Daarnaast heeft elke equivalentie-klasse oneindig elementen omdat:
+                        \[\f{k(i) + 1}{k} = i + \f{1}{k}\]
+                        We kunnen dit zien als een strikt stijgende lijn,
+                        en dus moet elke equivalentie-klasse oneindig aantal elementen bevatten.
+                  \item
+                        Ik denk niet dat dit kan. Ik stel voor dat het wel kan, en probeer een tegenspraak te herleiden.
+                        \begin{proof}
+                              Stel dat er een Quotiëntruimte bestaat waarbij $|\q{Q}| = n$, en $|\ol{q}| = m$, waarbij $\ol{q} \in \q{Q}$,
+                              We weten dat $(\q{Q})$ partities vormen in \(\Q\).
+                              Dit betekent dus dat $\Q$ partities $\ol{q}$ moet vormen waarbij
+                              elk element van $\Q$ opgedeeld wordt, echter
+                              geldt voor $|\ol{q}| = m$ en $|\q{Q}| = n$, en dus zijn
+                              er hoogstens $n\cdot m$ aantal elementen. Dit luidt tot een
+                              tegenspraak want $n \cdot m < \infty = |\Q|$.
+                        \end{proof}
+            \end{enumerate}
+      \item
+            \begin{enumerate}[label=\alph*)]
+                  \item \begin{enumerate}
+                              \item Bekijk of $X:= \{0\} \cup \{1 - \f{1}{n+2}\}_{n \in \Z_{\geq 0}}$ zowel een infimum en een supremum heeft.
+                                    \begin{itemize}
+                                          \item Bekijk of $X$ een infimum heeft:
+                                                \begin{proof}
+                                                      Claim dat het infimum $i$ bestaat met $i = 0$.
+                                                      Allereerst moet $0$ een ondergrens zijn.
+                                                      Bekijk \[x \in \{0\} \cup \{1 - \f{1}{n+2}\}\]
+                                                      We weten dat de rechterkant van de vereniging minstens
+                                                      $x = \f{1}{2}$, en hoogstens $1$ benadert.
 
-                                            We zeggen dat $0$ een ondergrens is als
-                                            $0\leq x$ voor alle $x \in X$. Dit komt overeen
-                                            met het minimum voor $X$ en dus is $0$ een ondergrens,
-                                            en een minimum van $X$.
+                                                      We zeggen dat $0$ een ondergrens is als
+                                                      $0\leq x$ voor alle $x \in X$. Dit komt overeen
+                                                      met het minimum voor $X$ en dus is $0$ een ondergrens,
+                                                      en een minimum van $X$.
 
-                                            Nu moeten we laten zien dat $0$ de grootste ondergrens is.
-                                            Dit is echter waar omdat $0$ ook het minimum van $X$ is en
-                                            dus is het infimum $i = 0$.
-                                        \end{proof}
-                                  \item Bekijk of $X$ een supremum heeft:
-                                        \begin{proof}Claim dat het supremum $s$ bestaat waarbij $s = 1$.
-                                            Allereerst moet $s$ een bovengrens zijn en dus moet voor
-                                            elke $x \in X$ gelden dat $s \geq x$. Bekijk:
-                                            \[X = \{0\} \cup \{1 - \f{1}{n+2}\}\]
-                                            De rechterkant van de vereniging geeft aan dat het $1$ benadert,
-                                            maar nooit $1$ kan worden en dus $1 \geq x$ voor alle $x \in X$.
+                                                      Nu moeten we laten zien dat $0$ de grootste ondergrens is.
+                                                      Dit is echter waar omdat $0$ ook het minimum van $X$ is en
+                                                      dus is het infimum $i = 0$.
+                                                \end{proof}
+                                          \item Bekijk of $X$ een supremum heeft:
+                                                \begin{proof}Claim dat het supremum $s$ bestaat waarbij $s = 1$.
+                                                      Allereerst moet $s$ een bovengrens zijn en dus moet voor
+                                                      elke $x \in X$ gelden dat $s \geq x$. Bekijk:
+                                                      \[X = \{0\} \cup \{1 - \f{1}{n+2}\}\]
+                                                      De rechterkant van de vereniging geeft aan dat het $1$ benadert,
+                                                      maar nooit $1$ kan worden en dus $1 \geq x$ voor alle $x \in X$.
 
-                                            Nu moeten we nog laten zien dat $s = 1$ de kleinste bovengrens is.
-                                            Neem $x = 1 - \f{1}{n+2}$, dan moet gelden $\forall epsilon > 0$ dat:
-                                            \[1 - \epsilon < x\]
-                                            Waarbij $1$ de gesuggereerde bovengrens $s$ is.
-                                            substitueer $x = 1 - \f{1}{n+2}$:
-                                            \[1 - \epsilon < 1- \f{1}{n+2}\]
-                                            Neem aan dat $\epsilon > \f{1}{n+2}$ dan is er altijd een
-                                            $x$ waarvoor epsilon groter is als we $n$ groot genoeg maken.
-                                            Hieruit volgt dus dat $s = 1$ de kleinste bovengrens moet zijn.
-                                        \end{proof}
-                              \end{itemize}
-                        \item Bekijk of $Y:= \{\f{n+2}{n+1}: n \in \N\}$, een supremum en infimum heeft.
-                              \begin{itemize}
-                                  \item Bekijk of $Y$ een infimum heeft:
-                                        \begin{proof}
-                                            Claim dat het infimum $i = 1$.
-                                            Dan moet voor alle $x \in Y$ gelden dat $x \geq i = 1$.
-                                            Merk op dat $x \in \f{n+2}{n+1} = 1 + \f{1}{n+1}$, dan
-                                            $1 + \f{1}{n+1} > 1$, en dus is $i=1$ een ondergrens.
+                                                      Nu moeten we nog laten zien dat $s = 1$ de kleinste bovengrens is.
+                                                      Neem $x = 1 - \f{1}{n+2}$, dan moet gelden $\forall \epsilon > 0$ dat:
+                                                      \[1 - \epsilon < x\]
+                                                      Waarbij $1$ de gesuggereerde bovengrens $s$ is.
+                                                      substitueer $x = 1 - \f{1}{n+2}$:
+                                                      \[1 - \epsilon < 1- \f{1}{n+2}\]
+                                                      Neem aan dat $\epsilon > \f{1}{n+2}$ dan is er altijd een
+                                                      $x$ waarvoor epsilon groter is als we $n$ groot genoeg maken.
+                                                      Hieruit volgt dus dat $s = 1$ de kleinste bovengrens moet zijn.
+                                                \end{proof}
+                                    \end{itemize}
+                              \item Bekijk of $Y:= \{\f{n+2}{n+1}: n \in \N\}$, een supremum en infimum heeft.
+                                    \begin{itemize}
+                                          \item Bekijk of $Y$ een infimum heeft:
+                                                \begin{proof}
+                                                      Claim dat het infimum $i = 1$.
+                                                      Dan moet voor alle $x \in Y$ gelden dat $x \geq i = 1$.
+                                                      Merk op dat $x \in \f{n+2}{n+1} = 1 + \f{1}{n+1}$, dan
+                                                      $1 + \f{1}{n+1} > 1$, en dus is $i=1$ een ondergrens.
 
-                                            Nu moeten we nog laten zien dat het de grootste ondergrens is.
-                                            Voor alle $\epsilon > 0$, bestaat er een $x \in Y$ zodanig dat:
-                                            \[\epsilon + \underbrace{1}_{\tx{Onze claim } i = 1} > x \]
-                                            neem $x = 1 + \f{1}{n+1}$, dan:
-                                            \[\epsilon + 1 > \f{1}{n+1} + 1\]
-                                            We kunnen epsilon willekeurig klein maken en met name $\epsilon > \f{1}{n+1}$,
-                                            en dus volgt dat $i = 1$ inderdaad het infimum is.
-                                        \end{proof}
-                                  \item Bekijk of $Y$ een supremum heeft:
-                                        \begin{proof}
-                                            Claim dat het supremum $s = 2$.
-                                            Bekijk $x \in 1 + \f{1}{n+1}$, we kunnen dit zien als
-                                            een strikt dalende functie en dus geldt voor $n=0$, dat
-                                            dit de grootste waarde is voor $1 + \f{1}{n+1}$.
-                                            En dus $1 + \f{1}{0+1} = 2$. Dit betekent dus dat $2$ het maximum van $Y$ is en dus
-                                            automatisch het supremum.
-                                        \end{proof}
-                              \end{itemize}
-                    \end{enumerate}
-          \end{enumerate}
-    \item Bekijk alle gevallen:
-          \begin{itemize}
-              \item \emph{Geval 1:} $\sup(U) \in U \en \inf(V) \in V$ dan geldt dat $U \cap V = \{\sup(U)\}$
-              \item \emph{Geval 2:} $\sup(U) \notin U \en \inf(V) \in V$ dan geldt dat $U \cap V = \emptyset$
-              \item \emph{Geval 3:} $\sup(U) \in U \en \inf(V) \notin V$ dan geldt dat $U \cap V = \emptyset$
-          \end{itemize}
-    \item
-          \begin{proof}
-              Stel dat $s_1 \en s_2$ beide infima zijn. Dan geldt voor $s_1$ dat voor elke andere ondergrens
-              (waaronder in het bijzonder $s_2$)
-              $s_1 \geq s_2$, echter geldt voor $s_2$ ook dat het een infimum is en dus
-              moet $s_2$ groter zijn dan alle andere ondergrenzen dus ook $s_1$. Hieruit volgt dat $s_2 \geq s_1$.
-              Als deze beide voorwaarden waar zijn moet $s_1 = s_2$.
-          \end{proof}
+                                                      Nu moeten we nog laten zien dat het de grootste ondergrens is.
+                                                      Voor alle $\epsilon > 0$, bestaat er een $x \in Y$ zodanig dat:
+                                                      \[\epsilon + \underbrace{1}_{\tx{Onze claim } i = 1} > x \]
+                                                      neem $x = 1 + \f{1}{n+1}$, dan:
+                                                      \[\epsilon + 1 > \f{1}{n+1} + 1\]
+                                                      We kunnen epsilon willekeurig klein maken en met name $\epsilon > \f{1}{n+1}$,
+                                                      en dus volgt dat $i = 1$ inderdaad het infimum is.
+                                                \end{proof}
+                                          \item Bekijk of $Y$ een supremum heeft:
+                                                \begin{proof}
+                                                      Claim dat het supremum $s = 2$.
+                                                      Bekijk $x \in 1 + \f{1}{n+1}$, we kunnen dit zien als
+                                                      een strikt dalende functie en dus geldt voor $n=0$, dat
+                                                      dit de grootste waarde is voor $1 + \f{1}{n+1}$.
+                                                      En dus $1 + \f{1}{0+1} = 2$. Dit betekent dus dat $2$ het maximum van $Y$ is en dus
+                                                      automatisch het supremum.
+                                                \end{proof}
+                                    \end{itemize}
+                              \item Bekijk of $Z:= \{b-a \in \R : a\in (-1, 1), b \in [0, 2]\}$ een supremum en infimum heeft:
+                                    \begin{itemize}
+                                          \item Bekijk of $Z$ een infimum heeft:
+                                                \begin{proof}
+                                                      Claim dat het infimum $i = -1$.
+                                                      Bekijk de minimale waarde die in $Z$ kan liggen, dus neem
+                                                      $0 \in b$ en $1 \notin a$ maar het benadert wel $1$ en dus $0 - 1 = -1$.
+                                                      Dit betekent dat $-1$ een ondergrens is.
+                                                      Nu moeten we laten zien dat $-1$ de grootste ondergrens is.
+
+                                                      Stel dat $p$ een ondergrens is en $p > -1$, waarbij we $\epsilon > 0$ nemen dan:
+                                                      \begin{align*}
+                                                            p - \epsilon & = -1          \\
+                                                            p            & = \epsilon -1
+                                                      \end{align*}
+                                                      Neem $z \in Z$ waarbij $z:= \f{-1 + p}{2}$, dan:
+                                                      \begin{align*}
+                                                            z & = \f{-1}{2} + \f{p}{2}            \\
+                                                              & = \f{-1}{2} + \f{\epsilon - 1}{2} \\
+                                                              & = \f{\epsilon}{2} - 1
+                                                      \end{align*}
+                                                      Hieruit volgt dat $\epsilon - 1 > \f{\epsilon}{2} - 1 > -1$, en dus $p > z > -1$.
+                                                      Dit is een tegenspraak want $z \in Z$ en $p > z$ en dus kan $p$ niet een ondergrens zijn.
+                                                \end{proof}
+                                          \item Bekijk of $Z$ een supremum heeft:
+                                                \begin{proof}
+                                                      Claim dat het supremum $s = 3$ is. Bekijk de maximale waarde die $Z$ kan benaderen.
+                                                      We hebben dan $2 \in b$ en richting $-1$ in $a$, dus geldt dat $s=3$ een bovengrens is.
+
+                                                      Stel nu dat $p$ een bovengrens is met $p < s$, en neem $\epsilon > 0$ dan:
+                                                      \begin{align*}
+                                                            p + \epsilon & = 3            \\
+                                                            p            & = 3 - \epsilon
+                                                      \end{align*}
+                                                      Neem nu $z \in Z$ waarbij we $z:= \f{p + 3}{2}$ dan:
+                                                      \begin{align*}
+                                                            z & = \f{p+3}{2}                     \\
+                                                              & = \f{p}{2} + \f{3}{2}            \\
+                                                              & = \f{3 - \epsilon}{2} + \f{3}{2} \\
+                                                              & = 3 - \f{\epsilon}{2}
+                                                      \end{align*}
+                                                      Hieruit volgt $p < z < 3$. Dit is een tegenspraak
+                                                      want $z \in Z$ en $p < z$, en dus kan $p$ geen bovengrens zijn.
+                                                      Dit betekent dus dat $s = 3$.
+                                                \end{proof}
+                                    \end{itemize}
+                        \end{enumerate}
+                  \item Vanuit vraag a) heeft $Z$ dus een infimum $i = 0$ waarvoor $0 \in X$ en ook
+                        voor $Y$ een supremum $s = 2$ waarbij $2 \in Y$. $X$ heeft dus een minimum en $Y$ een maximum.
+            \end{enumerate}
+      \item Bekijk alle gevallen:
+            \begin{itemize}
+                  \item \emph{Geval 1:} $\sup(U) \in U \en \inf(V) \in V$ dan geldt dat $U \cap V = \{\sup(U)\}$
+                  \item \emph{Geval 2:} $\sup(U) \notin U \en \inf(V) \in V$ dan geldt dat $U \cap V = \emptyset$
+                  \item \emph{Geval 3:} $\sup(U) \in U \en \inf(V) \notin V$ dan geldt dat $U \cap V = \emptyset$
+            \end{itemize}
+      \item
+            \begin{proof}
+                  Stel dat $s_1 \en s_2$ beide infima zijn. Dan geldt voor $s_1$ dat voor elke andere ondergrens
+                  (waaronder in het bijzonder $s_2$)
+                  $s_1 \geq s_2$, echter geldt voor $s_2$ ook dat het een infimum is en dus
+                  moet $s_2$ groter zijn dan alle andere ondergrenzen dus ook $s_1$. Hieruit volgt dat $s_2 \geq s_1$.
+                  Als deze beide voorwaarden waar zijn moet $s_1 = s_2$.
+            \end{proof}
 
 \end{enumerate}
 
