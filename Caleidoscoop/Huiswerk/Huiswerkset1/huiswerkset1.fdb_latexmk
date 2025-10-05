@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1759606273.95402 "/home/jaspervos/Wiskunde/Caleidoscoop/Huiswerk/Huiswerkset1/huiswerkset1.tex" "huiswerkset1.pdf" "huiswerkset1" 1759606274.41403 0
+["pdflatex"] 1759664587.83631 "/home/jaspervos/Wiskunde/Caleidoscoop/Huiswerk/Huiswerkset1/huiswerkset1.tex" "huiswerkset1.pdf" "huiswerkset1" 1759664588.26253 0
   "/etc/texmf/web2c/texmf.cnf" 1757446605.82382 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jaspervos/Wiskunde/Caleidoscoop/Huiswerk/Huiswerkset1/huiswerkset1.tex" 1759606273.70602 3789 b9c26bfb36b46c50faf624fd7ba4e734 ""
+  "/home/jaspervos/Wiskunde/Caleidoscoop/Huiswerk/Huiswerkset1/huiswerkset1.tex" 1759664587.5923 7225 5ee3368685aeb67f1d9135b248e4e838 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -20,12 +20,15 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1248133631 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1248133631 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb" 1248133631 11493 4f5ed183a47d3197cf8cd322325db6de ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1248133631 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel-dutch/dutch.ldf" 1630268686 6785 9a88117cf3b054cf3e3476265f93dce2 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty" 1704662920 150008 7a05b0fdc0167c04e192003e780ab195 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel/locale/nl/babel-dutch.tex" 1498512262 336 688c2541014a5f1e639d9f99b6017791 ""
@@ -57,8 +60,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1757446629.09984 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1757446697 8212830 740bee7d723266b3ee93681b5f7463c7 ""
-  "huiswerkset1.aux" 1759606274.36103 130 404eae76ec299246a9fdf6bf62543e10 "pdflatex"
-  "huiswerkset1.tex" 1759606273.70602 3789 b9c26bfb36b46c50faf624fd7ba4e734 ""
+  "huiswerkset1.aux" 1759664588.21119 130 39353acbd12ce4c61fe15e390d09ca31 "pdflatex"
+  "huiswerkset1.tex" 1759664587.5923 7225 5ee3368685aeb67f1d9135b248e4e838 ""
   (generated)
   "huiswerkset1.aux"
   "huiswerkset1.log"

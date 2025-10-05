@@ -87,6 +87,52 @@ Studentnr: \emph{s2911159}
                     \end{proof}
           \end{enumerate}
     \item
+          \begin{enumerate}[label=\alph*)]
+              \item \begin{enumerate}
+                        \item Bekijk of $X:= \{0\} \cup \{1 - \f{1}{n+2}\}_{n \in \Z_{\geq 0}}$ zowel een infimum en een supremum heeft.
+                              \begin{itemize}
+                                  \item Bekijk of $X$ een infimum heeft:
+                                        \begin{proof}
+                                            Claim dat het infimum $i$ bestaat met $i = 0$.
+                                            Allereerst moet $0$ een ondergrens zijn.
+                                            Bekijk \[x \in \{0\} \cup \{1 - \f{1}{n+2}\}\]
+                                            We weten dat de rechterkant van de vereniging minstens
+                                            $x = \f{1}{2}$, en hoogstens $1$ benadert.
+
+                                            We zeggen dat $0$ een ondergrens is als
+                                            $0\leq x$ voor alle $x \in X$. Dit komt overeen
+                                            met het minimum voor $X$ en dus is $0$ een ondergrens,
+                                            en een minimum van $X$.
+
+                                            Nu moeten we laten zien dat $0$ de grootste ondergrens is.
+                                            Dit is echter waar omdat $0$ ook het minimum van $X$ is en
+                                            dus is het infimum $i = 0$.
+                                        \end{proof}
+                                  \item Bekijk of $X$ een supremum heeft:
+                                        \begin{proof}Claim dat het supremum $s$ bestaat waarbij $s = 1$.
+                                            Allereerst moet $s$ een bovengrens zijn en dus moet voor
+                                            elke $x \in X$ gelden dat $s \geq x$. Bekijk:
+                                            \[X = \{0\} \cup \{1 - \f{1}{n+2}\}\]
+                                            De rechterkant van de vereniging geeft aan dat het $1$ benadert,
+                                            maar nooit $1$ kan worden en dus $1 \geq x$ voor alle $x \in X$.
+
+                                            Nu moeten we nog laten zien dat $s = 1$ de kleinste bovengrens is.
+                                            Neem $x = 1 - \f{1}{n+2}$, dan moet gelden $\forall epsilon > 0$ dat:
+                                            \[1 - \epsilon < x\]
+                                            Waarbij $1$ de gesuggereerde bovengrens $s$ is.
+                                            substitueer $x = 1 - \f{1}{n+2}$:
+                                            \[1 - \epsilon < 1- \f{1}{n+2}\]
+                                            Neem aan dat $\epsilon > \f{1}{n+2}$ dan is er altijd een
+                                            $x$ waarvoor epsilon groter is als we $n$ groot genoeg maken.
+                                            Hieruit volgt dus dat $s = 1$ de kleinste bovengrens moet zijn.
+                                        \end{proof}
+                              \end{itemize}
+                        \item Bekijk of $Y:= \{\f{n+2}{n+1}: n \in \N\}$, een supremum en infimum heeft.
+                              \begin{itemize}
+                                  \item
+                              \end{itemize}
+                    \end{enumerate}
+          \end{enumerate}
 \end{enumerate}
 
 
