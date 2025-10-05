@@ -129,7 +129,22 @@ Studentnr: \emph{s2911159}
                               \end{itemize}
                         \item Bekijk of $Y:= \{\f{n+2}{n+1}: n \in \N\}$, een supremum en infimum heeft.
                               \begin{itemize}
-                                  \item
+                                  \item Bekijk of $Y$ een infimum heeft:
+                                        \begin{proof}
+                                            Claim dat het infimum $i = 1$.
+                                            Dan moet voor alle $x \in Y$ gelden dat $x \geq i = 1$.
+                                            Merk op dat $x \in \f{n+2}{n+1} = 1 + \f{1}{n+1}$, dan
+                                            $1 + \f{1}{n+1} > 1$, en dus is $i=1$ een ondergrens.
+
+                                            Nu moeten we nog laten zien dat het de grootste ondergrens is.
+                                            Voor alle $\epsilon > 0$, bestaat er een $x \in Y$ zodanig dat:
+                                            \[\epsilon + \underbrace{1}_{\tx{Onze claim } i = 1} > x \]
+                                            neem $x = 1 + \f{1}{n+1}$, dan:
+                                            \[\epsilon + 1 > \f{1}{n+1} + 1\]
+                                            We kunnen epsilon willekeurig klein en met name $\epsilon > \f{1}{n+1}$,
+                                            en dus volgt hieruit dat $i = 1$ inderdaad het infimum is.
+                                        \end{proof}
+                                  \item Bekijk of $Y$ een
                               \end{itemize}
                     \end{enumerate}
           \end{enumerate}
