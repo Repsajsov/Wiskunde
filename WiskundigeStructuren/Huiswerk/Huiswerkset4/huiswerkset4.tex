@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+{\Large \textbf{Wiskundige Structuren}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 4} \hfill \today \\
+Studentnr: \emph{s2911159}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\cn}[1]{\cancel{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rho}{\mathcal{P}}
+\newcommand{\en}{\tx{ en }}
+\newcommand{\of}{\tx{ of }}
+\newcommand{\geldt}{\tx{ geldt }}
+\newcommand{\dan}{\tx{ dan }}
+\newcommand{\als}{\tx{ als }}
+\newcommand{\zdd}{\tx{ zodanig dat }}
+
+\section*{Opgave 1}
+\begin{enumerate}[label=\alph*)]
+    \item We hebben eerst een hulpstelling nodig voor het unieke inverse van elk element in $\Z$.
+    \begin{lemma}[Unieke inverse]
+        \(\forall x \in \Z \ \exists ! y \in \Z \zdd x + y = 0 \)
+        \begin{proof}
+            Neem \(x, y, y' \in Z \) en laat \( x + y = 0 \en x + y' = 0\) dan:
+            \begin{align*}
+                x + y &= x + y' \\
+                y &= y' \quad (\tx{Schrapwet})
+            \end{align*}
+            Hieruit volgt dus dat er een unieke inverse is.
+        \end{proof}
+    \end{lemma}
+    Nu beginnen we het bewijs waarom $(-1)a = -a$:
+    \begin{align*}
+        (-1)a &= 0 + (-1)a \quad (0 \tx{ is neutraal in optelling})\\
+        &= a + (-a) + (-1)a \quad (a + (-a) = 0 \ \tx{lemma unieke inverse})\\ 
+        &= a + (-1)a + (-a) \quad (\tx{Optelling is commutatief}) \\
+        &= (1)a + (-1)a + (-a) \quad (1 \tx{ is neutraal in vermenigvuldiging}) \\
+        &= (1 + (-1))a + (-a) \quad (\tx{Ditstributieve eigenschap}) \\
+        &= (0)a + (-a) \\
+        &= 0 + (-a) \\
+        &= -a
+    \end{align*}
+
+    \item
+    \item
+\end{enumerate}
+
+\section*{Opgave 2}
+\begin{enumerate}[label=\alph*)]
+    \item 
+    \item
+    \item
+\end{enumerate}
+
+\end{document}
