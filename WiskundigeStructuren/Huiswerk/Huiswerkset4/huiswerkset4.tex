@@ -39,49 +39,87 @@ Studentnr: \emph{s2911159}
 
 \section*{Opgave 1}
 \begin{enumerate}[label=\alph*)]
-    \item We hebben eerst een hulpstelling nodig voor het unieke inverse van elk element in $\Z$.
-          \begin{lemma}[Unieke inverse]
-              \(\forall x \in \Z \ \exists ! y \in \Z \zdd x + y = 0 \)
+    \item We hebben eerst een aantal hulpstellingen nodig.
+          \begin{lemma}[Schrapwet]\label{lem:schrapwet}
+              Zij $x, y, z \in \Z$ dan geldt $x + z = y + z \implies x = y$.
+              \begin{proof}
+                  Neem $x, y, z \in \Z$ dan:
+                  \begin{align*}
+                      x + z        & = y + z                                       \\
+                      x + z + (-z) & = y + z + (-z) \quad (\tx{Additieve inverse}) \\
+                      x + 0        & = y + 0 \quad (\tx{a + (-a) = 0})             \\
+                      x            & = y \quad (0 \tx{ is neutraal in optelling})
+                  \end{align*}
+              \end{proof}
+
+          \end{lemma}
+          \begin{lemma}[Unieke inverse]\label{lem:unieke-inverse}
+              \(\forall x \in \Z \ \exists ! y \in \Z \zdd x + y = 0 \).
               \begin{proof}
                   Neem \(x, y, y' \in Z \) en laat \( x + y = 0 \en x + y' = 0\) dan:
                   \begin{align*}
-                      x + y & = x + y'                    \\
-                      y     & = y' \quad (\tx{Schrapwet})
+                      x + y & = x + y'                                        \\
+                      y     & = y' \quad (\tx{zie Lemma \ref{lem:schrapwet}})
                   \end{align*}
                   Hieruit volgt dus dat er een unieke inverse is.
               \end{proof}
           \end{lemma}
+          \begin{lemma}[vermenigvuldiging met $0$]\label{lem:vermenigvuldiging-met-nul}
+              \(\forall x \in \Z \ x(0) = 0 \).
+              \begin{proof}
+                  Neem $x \in \Z$ dan:
+                  \begin{align*}
+                      x(0) & = x(0) + 0 \quad (0 \tx{ is neutraal in optelling})              \\
+                           & = x(0) + (x + (-x)) \quad (\tx{Merk op } x + (-x) = 0)           \\
+                           & = x(0) + x + (-x) \quad (\tx{Associativiteit in $\Z$})           \\
+                           & = x(0 + 1) + (-x) \quad (\tx{Ditstributieve eigenschap in $\Z$}) \\
+                           & = x(1) + (-x) \quad (0 \tx{ is neutraal in optelling})           \\
+                           & = x + (-x) \quad (1 \tx{ is neutraal in vermenigvuldiging})      \\
+                           & = 0 \quad (\tx{Merk op } x + (-x) = 0)
+                  \end{align*}
+              \end{proof}
+          \end{lemma}
           Nu beginnen we het bewijs waarom $(-1)a = -a$:
           \begin{align*}
-              (-1)a & = 0 + (-1)a \quad (0 \tx{ is neutraal in optelling})                   \\
-                    & = a + (-a) + (-1)a \quad (a + (-a) = 0 \ \tx{lemma unieke inverse})    \\
-                    & = a + (-1)a + (-a) \quad (\tx{Optelling is commutatief})               \\
-                    & = (1)a + (-1)a + (-a) \quad (1 \tx{ is neutraal in vermenigvuldiging}) \\
-                    & = (1 + (-1))a + (-a) \quad (\tx{Ditstributieve eigenschap})            \\
-                    & = (0)a + (-a)                                                          \\
-                    & = 0 + (-a)                                                             \\
+              (-1)a & = 0 + (-1)a \quad (0 \tx{ is neutraal in optelling})                              \\
+                    & = a + (-a) + (-1)a \quad (a + (-a) = 0 \ \tx{zie Lemma \ref{lem:unieke-inverse}}) \\
+                    & = a + (-1)a + (-a) \quad (\tx{Optelling is commutatief})                          \\
+                    & = (1)a + (-1)a + (-a) \quad (1 \tx{ is neutraal in vermenigvuldiging})            \\
+                    & = (1 + (-1))a + (-a) \quad (\tx{Ditstributieve eigenschap})                       \\
+                    & = (0)a + (-a) \quad (\tx{Merk op }1 + (-1) = 0)                                   \\
+                    & = 0 + (-a)     \quad (\tx{zie Lemma \ref{lem:vermenigvuldiging-met-nul}})         \\
                     & = -a
           \end{align*}
 
     \item
           We moeten eigenlijk laten zien wat het inverse is van $0$.
-          Gebruik lemma waarbij we dus weten dat unieke inverse is.
+          Gebruik Lemma \ref{lem:unieke-inverse} waarbij we zeggen dat elk element een unieke inverse heeft.
           Stel voor $0 + a = 0$ dan:
           \begin{align*}
-              0 + a & = 0 \\
-              a     & = 0 \\
+              0 + a & = 0                                          \\
+              a     & = 0 \quad (0 \tx{ is neutraal in optelling}) \\
           \end{align*}
-          Dus $0$ is het inverse van $0$ en dus $0 = -0$.
+          Hieruit volgt dus dat $0$ een inverse heeft namelijk zichzelf, en dus $0 = -0$.
     \item
-          Bewijs met het ongerijmde, stel $0 = 1$ dan en gebruikt het feit dat elk element
-          een unieke inverse heeft. Bekijk linkerkant $ 0 + 0 = 0$ en rechterkant $1 + (-1) = 0$.
-          maar $0 \neq -1$ dit is een tegenspraak want als 0 = 1 dan zouden ze een unieke inverse moeten hebben.
+          Bewijs met het ongerijmde.
+
+          Stel $0 = 1$ en gebruik het feit dat elk element
+          een unieke inverse heeft (zie Lemma \ref{lem:unieke-inverse}). Bekijk de linker en rechterkant van de vergelijking en bepaal hun inverse.
+
+          Voor $0$:
+          \[0 + 0 = 0 \tx{ en dus is } 0 \tx{ de inverse.}\]
+          Voor $1$:
+          \[1 + (-1) = 0 \tx{ en dus is } (-1) \tx{ de inverse.}\]
+
+          Echter omdat elk element in $\Z$ een unieke inverse heeft is dit een tegenspraak,
+          en dus $1 \neq 0$.
 \end{enumerate}
 
 \pagebreak
 \section*{Opgave 2}
 \begin{enumerate}[label=\alph*)]
     \item
+          We moeten laten zien dat $\sim_n$ reflexief, symmetrisch en transitief is.
           \begin{enumerate}[label=\arabic*.]
               \item \emph{Reflexiviteit:} Te bewijzen $x \sim_n x$.
 
@@ -115,9 +153,16 @@ Studentnr: \emph{s2911159}
                     Dan volgt dat $\sim_n$ transitief is.
           \end{enumerate}
           Vanwege reflexiviteit, symmetrie en transitiviteit geldt dat $\sim_n$ een equivalentie-relatie is.
-
     \item
     \item
+          \begin{align*}
+              1 + 2 + 3 + \dots + n \\
+              n + (n-1) + (n-2) + \dots + 1
+          \end{align*}
+          Tel beide rijen op dan:
+          \[\underbrace{(n+1) + (n+1) + \dots + (n+1)}_{n \tx{ termen}} = n(n+1)\]
+          Delen door twee omdat we beide rijen opgeteld hebben dus:
+          \[\boxed{\sum_{i=1}^{n} i = \f{n(n+1)}{2}}\]
 \end{enumerate}
 
 \end{document}

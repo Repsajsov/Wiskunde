@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1760118004.35608 "/home/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerkset4/huiswerkset4.tex" "huiswerkset4.pdf" "huiswerkset4" 1760118004.77371 0
+["pdflatex"] 1760128958.48619 "/home/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerkset4/huiswerkset4.tex" "huiswerkset4.pdf" "huiswerkset4" 1760128958.80405 0
   "/etc/texmf/web2c/texmf.cnf" 1757446605.82382 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerkset4/huiswerkset4.tex" 1760118004.11858 4995 bd8a5908fa1efed33c4278755f7698de ""
+  "/home/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerkset4/huiswerkset4.tex" 1760128958.26629 7568 4f481c6480703d84f99d40a955097e8b ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -17,9 +17,11 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm" 1136768653 1492 86331993fe614793f5e7e755835c31c5 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
@@ -54,8 +56,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1757446629.09984 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1757446697 8212830 740bee7d723266b3ee93681b5f7463c7 ""
-  "huiswerkset4.aux" 1760118004.73256 130 39353acbd12ce4c61fe15e390d09ca31 "pdflatex"
-  "huiswerkset4.tex" 1760118004.11858 4995 bd8a5908fa1efed33c4278755f7698de ""
+  "huiswerkset4.aux" 1760128958.77196 268 abe8fd5b2558e75b4e4fba1fff9654a9 "pdflatex"
+  "huiswerkset4.tex" 1760128958.26629 7568 4f481c6480703d84f99d40a955097e8b ""
   (generated)
   "huiswerkset4.aux"
   "huiswerkset4.log"
