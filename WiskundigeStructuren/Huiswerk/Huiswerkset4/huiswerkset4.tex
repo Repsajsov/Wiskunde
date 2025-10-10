@@ -51,7 +51,6 @@ Studentnr: \emph{s2911159}
                       x            & = y \quad (0 \tx{ is neutraal in optelling})
                   \end{align*}
               \end{proof}
-
           \end{lemma}
           \begin{lemma}[Unieke inverse]\label{lem:unieke-inverse}
               \(\forall x \in \Z \ \exists ! y \in \Z \zdd x + y = 0 \).
@@ -90,7 +89,6 @@ Studentnr: \emph{s2911159}
                     & = 0 + (-a)     \quad (\tx{zie Lemma \ref{lem:vermenigvuldiging-met-nul}})         \\
                     & = -a
           \end{align*}
-
     \item
           We moeten eigenlijk laten zien wat het inverse is van $0$.
           Gebruik Lemma \ref{lem:unieke-inverse} waarbij we zeggen dat elk element een unieke inverse heeft.
@@ -116,6 +114,7 @@ Studentnr: \emph{s2911159}
 \end{enumerate}
 
 \pagebreak
+
 \section*{Opgave 2}
 \begin{enumerate}[label=\alph*)]
     \item
@@ -155,14 +154,17 @@ Studentnr: \emph{s2911159}
           Vanwege reflexiviteit, symmetrie en transitiviteit geldt dat $\sim_n$ een equivalentie-relatie is.
     \item
     \item
-          \begin{align*}
-              1 + 2 + 3 + \dots + n \\
-              n + (n-1) + (n-2) + \dots + 1
-          \end{align*}
-          Tel beide rijen op dan:
-          \[\underbrace{(n+1) + (n+1) + \dots + (n+1)}_{n \tx{ termen}} = n(n+1)\]
-          Delen door twee omdat we beide rijen opgeteld hebben dus:
-          \[\boxed{\sum_{i=1}^{n} i = \f{n(n+1)}{2}}\]
+          \begin{proof}
+              Schrijf de som als rij op:
+              \begin{align*}
+                  1 & + 2     & + 3     & + \dots & + n &                                           \\
+                  n & + (n-1) & + (n-2) & + \dots & + 1 & \quad (\tx{Zelfde som alleen omgedraaid})
+              \end{align*}
+              Tel beide sommen op dan:
+              \[\underbrace{(n+1) + (n+1) + \dots + (n+1)}_{n \tx{ termen}} = n(n+1)\]
+              Delen door twee omdat we beide sommen opgeteld hebben, dus:
+              \[\boxed{\sum_{i=1}^{n} i = \f{n(n+1)}{2}}\]
+          \end{proof}
 \end{enumerate}
 
 \end{document}
