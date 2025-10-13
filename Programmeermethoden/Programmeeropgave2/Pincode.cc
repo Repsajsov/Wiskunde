@@ -225,9 +225,12 @@ void startProgramma() {
 
   infoblokje();
 
-  cout << "Wat is uw pincode?" << endl;
+  cout << "Coderen/Decoderen (0-9999) | Hacken (-1)" << endl;
+  cin >> pincode;
   while (pincode < -1 || pincode > 9999) {
-    cout << "Coderen/Decoderen (0-9999) | Hacken (-1)" << endl;
+    cout << "Ongeldige invoer. Graag een getal (0-9999) of (-1) voor "
+            "hacken"
+         << endl;
     cin >> pincode;
   } // while
   cout << "Wat is de naam van het bestand wat u wilt coderen/decoderen?"
