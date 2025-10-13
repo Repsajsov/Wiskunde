@@ -23,35 +23,35 @@ void infoblokje() {
   cout << "van de getallen in het bestand." << endl;
 } // infoblokje
 
-int omgedraaid(int pincode) {
-  // draait het getal om vb: 1234 -> 4321
-  int omgetal = 0;
-  int getal;
-  getal = pincode;
+int omgedraaidGetal(int getal) {
+  // Draait het getal om vb: 1234 -> 4321
+  int omGetal = 0;
   while (getal != 0) {
-    omgetal = omgetal * 10 + getal % 10;
+    omGetal = omGetal * 10 + getal % 10;
     getal /= 10;
   } // while
-  return omgetal;
+  return omGetal;
 } // omgedraaid
 
-int lychrel(int pincode) {
-  // berekent het lychrel getal
+int lychrel(int getal) {
+  // Berekent het lychrel getal
   int teller = 0;
-  while (pincode != omgedraaid(pincode)) {
-    int r = omgedraaid(pincode);
-    if (pincode > INT_MAX - r) {
-      cout << "De pincode is een potentieel lychrel getal" << endl;
+  int startGetal = getal;
+  while (getal != omgedraaidGetal(getal)) {
+    int omGetal = omgedraaidGetal(getal);
+    if (getal > INT_MAX - omGetal) {
+      cout << "Het getal: " << startGetal << ", is een potentieel lychrel getal"
+           << endl;
       return teller + 1;
     } // if
-    pincode += r;
+    getal += omGetal;
     teller++;
   } // while
   return teller;
 } // lychrel
 
 int vindCijfer(int pincode, int pos) {
-  // geeft cijfer van een bepaalde positie pincode
+  // Geeft cijfer van een bepaalde positie pincode
   if (pos == 0)
     return (pincode / 1000) % 10;
   if (pos == 1)
@@ -64,18 +64,20 @@ int vindCijfer(int pincode, int pos) {
 } // vindCijfer
 
 bool isGetal(char kar) {
-  // controleert of karakter een getal is
+  // Controleert of karakter een getal is
   return (kar >= '0' && kar <= '9');
 } // isGetal
 
 int maakGetal(char kar, int getal) {
-  // transformeert karakter naar getal
+  // Bouwt een meercijferig getal
   getal = getal * 10 + (kar - '0');
   return getal;
 } // maakGetal
 
 void verwerkGetal(int &getal, char kar, char vkar, bool isKraken,
                   bool &veranderPincode) {
+  // Standaard logica voor verwerken getallen voor 'coderen', 'decoderen' en
+  // 'kraken'
   if (isGetal(kar)) {
     getal = maakGetal(kar, getal);
   } else if (!isGetal(kar) && isGetal(vkar)) {
@@ -90,7 +92,7 @@ void verwerkGetal(int &getal, char kar, char vkar, bool isKraken,
 
 void checkWoord(char &eersteLetter, char &tweedeLetter, char &derdeLetter,
                 char kar, int &aantalWoorden) {
-  // checked of het woord 'the' de voorgaande
+  // controleert of de voorgaande 3 karakters 'the' bevatten
   eersteLetter = tweedeLetter;
   tweedeLetter = derdeLetter;
   derdeLetter = kar;
@@ -119,6 +121,15 @@ void verwerkKarakter(char &kar, int &pos, int pincode, bool isCoderen) {
   } // else if
 } // verwerkKarakter
 
+void updatePincode(bool &veranderPincode, int &pincode, int &getal, int &pos) {
+  if (veranderPincode) {
+    pincode = getal;
+    getal = 0;
+    pos = 0;
+    veranderPincode = false;
+  }
+}
+
 void coderen(string invoerFile, string uitvoerFile, int pincode) {
   char kar;
   char vkar = '\0';
@@ -131,11 +142,7 @@ void coderen(string invoerFile, string uitvoerFile, int pincode) {
     verwerkGetal(getal, kar, vkar, false, veranderPincode);
     vkar = kar;
     verwerkKarakter(kar, pos, pincode, true);
-    if (veranderPincode) {
-      pincode = getal;
-      getal = 0;
-      veranderPincode = false;
-    }
+    updatePincode(veranderPincode, pincode, getal, pos);
     uitvoer.put(kar);
   } // while
   invoer.close();
@@ -152,16 +159,9 @@ void decoderen(string invoerFile, string uitvoerFile, int pincode) {
   ifstream invoer(invoerFile, ios::in);
   ofstream uitvoer(uitvoerFile, ios::out);
   while (invoer.get(kar)) {
-    // verwerk karakter
     verwerkKarakter(kar, pos, pincode, false);
-    // verwerk getal
     verwerkGetal(getal, kar, vkar, false, veranderPincode);
-    if (veranderPincode) {
-      pincode = getal;
-      getal = 0;
-      pos = 0;
-      veranderPincode = false;
-    }
+    updatePincode(veranderPincode, pincode, getal, pos);
     vkar = kar;
     uitvoer.put(kar);
   } // while
@@ -179,19 +179,12 @@ void kraken(string invoerFile) {
     int pos = 0;
     bool veranderPincode = false;
     ifstream invoer(invoerFile, ios::in);
+
     while (invoer.get(kar)) {
-      // verwerk karakter
       verwerkKarakter(kar, pos, nieuwePincode, false);
-      // check of de voorgaande 3 karakter "the" bevatten
       checkWoord(eersteLetter, tweedeLetter, derdeLetter, kar, aantalWoorden);
-      // verwerk getal
       verwerkGetal(getal, kar, vkar, true, veranderPincode);
-      if (veranderPincode) {
-        nieuwePincode = getal;
-        getal = 0;
-        pos = 0;
-        veranderPincode = false;
-      } // if
+      updatePincode(veranderPincode, nieuwePincode, getal, pos);
       vkar = kar;
     } // while
     invoer.close();
