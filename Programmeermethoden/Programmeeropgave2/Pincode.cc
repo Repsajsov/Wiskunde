@@ -9,6 +9,7 @@
 #include <string>
 
 using namespace std;
+
 void infoblokje() {
   // Geeft informatie auteurs en hoe het programma werkt.
   cout << "---------------------------------------------\n"
@@ -24,7 +25,7 @@ void infoblokje() {
           "- Lychrel-getal detectie\n"
           "- Pincode kraken via 'the'-frequentie\n"
           "---------------------------------------------\n\n";
-}
+} // infoblokje
 
 int omgedraaidGetal(int getal) {
   // Draait een getal om. Vb: 1234 -> 4321
@@ -183,6 +184,7 @@ void decoderen(string invoerFile, string uitvoerFile, int pincode) {
 } // decoderen
 
 void kraken(string invoerFile) {
+  // Probeert een pincode te herleiden door de frequentie van 'the' te tellen
   int maxAantalWoorden = 0, bestePincode = 0;
 
   for (int i = 0; i < 10000; i++) {
