@@ -9,22 +9,25 @@
 #include <string>
 
 using namespace std;
-
 void infoblokje() {
-  cout << "Vincent van der Velden - s4494059 - Wiskunde 2024" << endl;
-  cout << "Jasper Vos - s2911159 - Wiskunde 2025" << endl;
-  cout << "Tweede programmeeropgave: Pincode 14/10/2025" << endl;
-  cout << "We gaan een door u gekozen file kopieren naar" << endl;
-  cout << "een ander bestand waarbij we de aantekeningen" << endl;
-  cout << "weglaten en u mag kiezen hoeveel spaties een tab" << endl;
-  cout << "is. Ook gaan we tellen hoe vaak een door u gekozen" << endl;
-  cout << "drieletterwoord voorkomt in het bestand en" << endl;
-  cout << "berekenen we de palindromen en de iteraties" << endl;
-  cout << "van de getallen in het bestand." << endl;
-} // infoblokje
+  // Geeft informatie auteurs en hoe het programma werkt.
+  cout << "---------------------------------------------\n"
+          "|                 PINCODE.                  |\n"
+          "---------------------------------------------\n\n"
+          "Vincent van der Velden - s4494059 - Wiskunde 2024\n"
+          "Jasper Vos - s2911159 - Wiskunde 2025\n"
+          "Pincode - 14/10/2025\n\n"
+          "---------------------------------------------\n"
+          "Functies:\n"
+          "- Codeer/decodeer file met pincode (0-9999)\n"
+          "- Dynamische pincode-wijziging\n"
+          "- Lychrel-getal detectie\n"
+          "- Pincode kraken via 'the'-frequentie\n"
+          "---------------------------------------------\n\n";
+}
 
 int omgedraaidGetal(int getal) {
-  // Draait het getal om vb: 1234 -> 4321
+  // Draait een getal om. Vb: 1234 -> 4321
   int omGetal = 0;
   while (getal != 0) {
     omGetal = omGetal * 10 + getal % 10;
@@ -33,34 +36,37 @@ int omgedraaidGetal(int getal) {
   return omGetal;
 } // omgedraaid
 
-int lychrel(int getal) {
+void lychrel(int getal) {
   // Berekent het lychrel getal
   int teller = 0;
   int startGetal = getal;
   while (getal != omgedraaidGetal(getal)) {
     int omGetal = omgedraaidGetal(getal);
     if (getal > INT_MAX - omGetal) {
-      cout << "Het getal: " << startGetal << ", is een potentieel lychrel getal"
-           << endl;
-      return teller + 1;
+      cout << endl
+           << "Het getal: " << startGetal
+           << ", is een potentieel Lychrel getal." << endl;
+      cout << "Programma gestopt na " << teller + 1 << " iteraties..." << endl;
+      return;
     } // if
     getal += omGetal;
     teller++;
   } // while
-  return teller;
+  cout << endl
+       << "Het getal: " << startGetal << ", is geen Lychrel getal." << endl;
+  cout << "Palindroom gevonden na " << teller << " iteraties." << endl;
 } // lychrel
 
 int vindCijfer(int pincode, int pos) {
   // Geeft cijfer van een bepaalde positie pincode
   if (pos == 0)
-    return (pincode / 1000) % 10;
-  if (pos == 1)
+    return (pincode / 1000);
+  else if (pos == 1)
     return (pincode / 100) % 10;
-  if (pos == 2)
+  else if (pos == 2)
     return (pincode / 10) % 10;
-  if (pos == 3)
-    return (pincode / 1) % 10;
-  return 0;
+  else
+    return pincode % 10;
 } // vindCijfer
 
 bool isGetal(char kar) {
@@ -84,11 +90,11 @@ void verwerkGetal(int &getal, char kar, char vkar, bool isKraken,
     if (getal >= 0 && getal < 10000) {
       veranderPincode = true;
       if (!isKraken) {
-        cout << lychrel(getal) << endl;
+        lychrel(getal);
       } // if
     } // if
   } // else if
-} // verwerk
+} // verwerkGetal
 
 void checkWoord(char &eersteLetter, char &tweedeLetter, char &derdeLetter,
                 char kar, int &aantalWoorden) {
@@ -105,6 +111,8 @@ void checkWoord(char &eersteLetter, char &tweedeLetter, char &derdeLetter,
 } // checkWoord
 
 void verwerkKarakter(char &kar, int &pos, int pincode, bool isCoderen) {
+  // Standaard logica voor verwerken karakters voor 'coderen', 'decoderen' en
+  // 'kraken'
   if (kar >= ' ' && kar <= '~') {
     if (isCoderen) {
       kar = ((char(kar) - ' ' + vindCijfer(pincode, pos)) % 95);
@@ -122,15 +130,18 @@ void verwerkKarakter(char &kar, int &pos, int pincode, bool isCoderen) {
 } // verwerkKarakter
 
 void updatePincode(bool &veranderPincode, int &pincode, int &getal, int &pos) {
+  // Verandert de pincode
   if (veranderPincode) {
     pincode = getal;
     getal = 0;
     pos = 0;
     veranderPincode = false;
-  }
-}
+  } // if
+} // updatePincode
 
 void coderen(string invoerFile, string uitvoerFile, int pincode) {
+  // Verandert alle karakters met een dynamische 'caesar' verschuiving en
+  // schrijft deze naar een aparte file
   char kar;
   char vkar = '\0';
   int getal = 0;
@@ -151,13 +162,17 @@ void coderen(string invoerFile, string uitvoerFile, int pincode) {
 } // coderen
 
 void decoderen(string invoerFile, string uitvoerFile, int pincode) {
+  // Ontsleuteld alle versleutelde karakters en schrijft deze naar een aparte
+  // file
   char kar;
   char vkar = '\0';
   int getal = 0;
   int pos = 0;
   bool veranderPincode = false;
+
   ifstream invoer(invoerFile, ios::in);
   ofstream uitvoer(uitvoerFile, ios::out);
+
   while (invoer.get(kar)) {
     verwerkKarakter(kar, pos, pincode, false);
     verwerkGetal(getal, kar, vkar, false, veranderPincode);
@@ -185,8 +200,10 @@ void kraken(string invoerFile) {
       checkWoord(eersteLetter, tweedeLetter, derdeLetter, kar, aantalWoorden);
       verwerkGetal(getal, kar, vkar, true, veranderPincode);
       updatePincode(veranderPincode, nieuwePincode, getal, pos);
+
       vkar = kar;
     } // while
+
     invoer.close();
     if (maxAantalWoorden < aantalWoorden) {
       maxAantalWoorden = aantalWoorden;
@@ -201,15 +218,18 @@ void kraken(string invoerFile) {
 void startProgramma() {
   string invoerFile;
   string uitvoerFile;
-  char optie;  // coderen of decoderen;
-  int pincode; // ingevoerde pincode;
+  char optie;
+  int pincode;
+
   infoblokje();
+
   cout << "Wat is uw pincode?" << endl;
   while (pincode < -1 || pincode > 9999) {
-    cout << "(0-9999) | (-1)" << endl;
+    cout << "Coderen/Decoderen (0-9999) | Hacken (-1)" << endl;
     cin >> pincode;
   } // while
-  cout << "Hoe heet het originele bestand?" << endl;
+  cout << "Wat is de naam van het bestand wat u wilt coderen/decoderen?"
+       << endl;
   cin >> invoerFile;
   if (pincode == -1) {
     kraken(invoerFile);
@@ -217,10 +237,11 @@ void startProgramma() {
   } // if
   cout << "Wilt u coderen of decoderen?" << endl;
   while (optie != 'c' && optie != 'C' && optie != 'd' && optie != 'D') {
-    cout << "[D]coderen | [C]oderen" << endl;
+    cout << "Coderen (c) | Decoderen (d)" << endl;
     cin >> optie;
   } // while
-  cout << "Hoe heet het uitvoer bestand?" << endl;
+  cout << "Wat is de naam van het bestand waar u naartoe wil schrijven?"
+       << endl;
   cin >> uitvoerFile;
   if (optie == 'c' || optie == 'C') {
     coderen(invoerFile, uitvoerFile, pincode);
