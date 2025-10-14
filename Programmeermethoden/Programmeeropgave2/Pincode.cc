@@ -150,16 +150,17 @@ void coderen(string invoerFile, string uitvoerFile, int pincode) {
   bool veranderPincode = false;
   ifstream invoer(invoerFile, ios::in);
   ofstream uitvoer(uitvoerFile, ios::out);
-  while (invoer.get(kar)) {
+  kar = invoer.get();
+  while (!invoer.eof()) {
     verwerkGetal(getal, kar, vkar, false, veranderPincode);
     vkar = kar;
     verwerkKarakter(kar, pos, pincode, true);
     updatePincode(veranderPincode, pincode, getal, pos);
     uitvoer.put(kar);
+    kar = invoer.get();
   } // while
   invoer.close();
   uitvoer.close();
-  cout << "Bestand gekopieerd." << endl;
 } // coderen
 
 void decoderen(string invoerFile, string uitvoerFile, int pincode) {
@@ -170,17 +171,24 @@ void decoderen(string invoerFile, string uitvoerFile, int pincode) {
   int getal = 0;
   int pos = 0;
   bool veranderPincode = false;
+  char eersteLetter = '\0', tweedeLetter = '\0', derdeLetter = '\0';
+  int aantalWoorden = 0;
 
   ifstream invoer(invoerFile, ios::in);
   ofstream uitvoer(uitvoerFile, ios::out);
 
-  while (invoer.get(kar)) {
+  kar = invoer.get();
+  while (invoer.eof()) {
     verwerkKarakter(kar, pos, pincode, false);
     verwerkGetal(getal, kar, vkar, false, veranderPincode);
     updatePincode(veranderPincode, pincode, getal, pos);
+
     vkar = kar;
     uitvoer.put(kar);
+    kar = invoer.get();
   } // while
+  invoer.close();
+  uitvoer.close();
 } // decoderen
 
 void kraken(string invoerFile) {
@@ -197,13 +205,15 @@ void kraken(string invoerFile) {
     bool veranderPincode = false;
     ifstream invoer(invoerFile, ios::in);
 
-    while (invoer.get(kar)) {
+    kar = invoer.get();
+    while (invoer.eof()) {
       verwerkKarakter(kar, pos, nieuwePincode, false);
       checkWoord(eersteLetter, tweedeLetter, derdeLetter, kar, aantalWoorden);
       verwerkGetal(getal, kar, vkar, true, veranderPincode);
       updatePincode(veranderPincode, nieuwePincode, getal, pos);
 
       vkar = kar;
+      kar = invoer.get();
     } // while
 
     invoer.close();
