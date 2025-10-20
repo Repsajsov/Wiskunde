@@ -1,0 +1,91 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+
+\setlength{\parindent}{0pt}
+\setcounter{section}{3}
+
+\newcommand{\Zg}{\mathbb{Z}_{> 0}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\q}{/_\sim}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\en}{\text{ en }}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\lm}[1]{\lim_{n \rightarrow \infty} #1}
+
+\begin{document}
+
+\begin{center}
+    \Large \textbf{Caleidoscoop Hoofdstuk 3}
+\end{center}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\section{Reele getallen}
+
+\subsection{}
+\begin{enumerate}[label=\alph*)]
+    \item
+          \begin{proof}
+              We kunnen de reële
+              getallen zien als equivalentie-klassen van
+              de verzameling Cauchy-rijen, waarbij:
+              \[a_n \sim b_n \iff \lm{a_n} - \lm{b_n} = 0\]
+              Zij $a_n, b_n$ Cauchy-rijen met:
+              \[a_n = \{\f{1}{3}, \f{1}{3}, \f{1}{3}, \dots \}\]
+              \[b_n = \{0, \f{3}{10}, \f{33}{100}, \dots \}\]
+
+              Laten we nu de stelling bekijken:
+              \[\forall \epsilon \in \Q_{>0} \
+                  \exists N \in \Zg \tx{ met }
+                  i \geq N\ \tx{ zodanig dat }
+                  |a_i - b_i| < \epsilon\]
+              We moeten dus voor alle $\epsilon>0$
+              een bepaalde $N$ vinden
+              zodat het verschil tussen de
+              rijen arbitrair klein kan worden,
+              en dus zeker kleiner dan $\epsilon$.
+
+              Bekijk $|a_i - b_i|$, dan:
+              \begin{align*}
+                  |a_i - b_i| & = \left|\f{1}{3}
+                  - \f{3(10^i - 1)}{9 \cdot 10^i}\right|   \\
+                              & = \left|\f{1}{3}
+                  - \f{10^i - 1}{3 \cdot 10^i}
+                  \right|                                  \\
+                              & = \left|\f{10^i -
+                  (10^i - 1)}{3\cdot 10^i}\right|          \\
+                              & = \left|\f{1}{3\cdot 10^i}
+                  \right|                                  \\
+                              & =  \f{1}{3 \cdot 10^i}
+                  \quad (\tx{Merk op }
+                  \f{1}{3\cdot 10^i } > 0 )
+              \end{align*}
+              Nu laten we dit kleiner worden dan
+              $\epsilon$ en dus:
+              \begin{align*}
+                  \f{1}{3 \cdot 10^i} < \epsilon \\
+                  \f{1}{3 \epsilon} < 10^i
+              \end{align*}
+              Dus neem nu $10^N > 10^i$,
+              dan bestaat er dus voor alle $\epsilon > 0$
+              een $N$ waarvoor de rijen arbitrair dichtbij
+              elkaar liggen.
+              Dit betekent dus dat $a_n \sim b_n$
+              en dus zit $b_n$ in de
+              equivalentie-klassen van $\f{1}{3}$,
+              ofwel $0.33333333\dots = \f{1}{3}$.
+          \end{proof}
+\end{enumerate}
+
+\end{document}

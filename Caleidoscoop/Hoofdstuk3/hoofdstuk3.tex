@@ -20,7 +20,7 @@
 \begin{document}
 
 \begin{center}
-	\Large \textbf{Caleidoscoop Hoofdstuk 3}
+    \Large \textbf{Caleidoscoop Hoofdstuk 3}
 \end{center}
 
 \rule{\textwidth}{2pt}
@@ -31,77 +31,77 @@
 
 \subsection*{Opgave 3.1}
 \begin{enumerate}[label=\alph*)]
-	\item
-	      Stel de volgende equivalentierelatie $\mathcal{R}$ op, waarbij $a \sim b \Longleftrightarrow a = b$.
-	      \begin{enumerate}[label=\arabic*]
-		      \item \emph{Reflexief:} Bekijk $a \mathcal{R} a \implies a = a$
-		      \item \emph{Symmetrie:} Bekijk $(a \mathcal{R} b \implies b \mathcal{R} a) \implies a = b \implies b = a$
-		      \item \emph{Transitiviteit:} Bekijk $((a \mathcal{R} b \wedge b \mathcal{R} c) \implies a \mathcal{R}c) \implies (a = b \wedge b = c) \implies a = c$
-	      \end{enumerate}
-	\item
-	      Neem de volgende equivalentierelatie $\mathcal{R}$ op, waarbij $a \sim b \Longleftrightarrow a \mod 42 = b \mod 42$.
-	      \begin{enumerate}[label=\arabic*]
-		      \item \emph{Reflexief:} $a \mod 42 = a \mod 42$
-		      \item \emph{Symmetrie:} $(a \mod 42 = b \mod 42) \implies b \mod 42 = a \mod 42$
-		      \item \emph{Transitiviteit:} $(a \mod 42 = b \mod 42 \wedge b \mod 42 = c \mod 42) \Longleftrightarrow a \mod 42 = c \mod 42$
-	      \end{enumerate}
-	\item
-	      \begin{proof}X
-		      $\mathbf{Aanname:}$ Ik stel dat $A$ een verzameling is waarbij $A \neq \emptyset$, en $A/_\sim = \emptyset$.
-		      Aangezien $A \neq \emptyset$ bestaat er een $a \in A$, maar als we een equivalentierelatie hebben, dan volgt vanuit reflexiviteit dat $a \sim a$.
-		      Als $a \sim a$ dan moet er een equivalentieklasse $\overline{a} = \{b \in A : b \sim a\}$ bestaan waarbij $a \in \overline{a}$, maar $\overline{a} \in A/_\sim$.
-		      Dit is een tegenspraak want we stelde dat $A/_\sim = \emptyset$, en dus kan $A/_\sim$ niet leeg zijn.
-	      \end{proof}
+    \item
+          Stel de volgende equivalentierelatie $\mathcal{R}$ op, waarbij $a \sim b \Longleftrightarrow a = b$.
+          \begin{enumerate}[label=\arabic*]
+              \item \emph{Reflexief:} Bekijk $a \mathcal{R} a \implies a = a$
+              \item \emph{Symmetrie:} Bekijk $(a \mathcal{R} b \implies b \mathcal{R} a) \implies a = b \implies b = a$
+              \item \emph{Transitiviteit:} Bekijk $((a \mathcal{R} b \wedge b \mathcal{R} c) \implies a \mathcal{R}c) \implies (a = b \wedge b = c) \implies a = c$
+          \end{enumerate}
+    \item
+          Neem de volgende equivalentierelatie $\mathcal{R}$ op, waarbij $a \sim b \Longleftrightarrow a \mod 42 = b \mod 42$.
+          \begin{enumerate}[label=\arabic*]
+              \item \emph{Reflexief:} $a \mod 42 = a \mod 42$
+              \item \emph{Symmetrie:} $(a \mod 42 = b \mod 42) \implies b \mod 42 = a \mod 42$
+              \item \emph{Transitiviteit:} $(a \mod 42 = b \mod 42 \wedge b \mod 42 = c \mod 42) \Longleftrightarrow a \mod 42 = c \mod 42$
+          \end{enumerate}
+    \item
+          \begin{proof}X
+              $\mathbf{Aanname:}$ Ik stel dat $A$ een verzameling is waarbij $A \neq \emptyset$, en $A/_\sim = \emptyset$.
+              Aangezien $A \neq \emptyset$ bestaat er een $a \in A$, maar als we een equivalentierelatie hebben, dan volgt vanuit reflexiviteit dat $a \sim a$.
+              Als $a \sim a$ dan moet er een equivalentieklasse $\overline{a} = \{b \in A : b \sim a\}$ bestaan waarbij $a \in \overline{a}$, maar $\overline{a} \in A/_\sim$.
+              Dit is een tegenspraak want we stelde dat $A/_\sim = \emptyset$, en dus kan $A/_\sim$ niet leeg zijn.
+          \end{proof}
 \end{enumerate}
 \subsection*{Opgave 3.2}
 \begin{enumerate}[label=\alph*)]
-	\item $X$ wordt gepartitioneerd in $X/_\sim$, omdat $|X/_\sim| = \infty =$ zit in elke equivalentieklasse minstens 1 representant die in $X$ moet liggen. Dit betekent dus dat $|X| \geq |X/_\sim| = \infty$.
-	\item
-	      \begin{itemize}
-		      \item \emph{Geval 1:} $(|X/_\sim|) = (n \wedge |X| = \infty)$:
-		            Neem $X=\Z$ met $x \sim y$ als $x \equiv y \mod n$, dan
-		            heeft $|X\q|$ precies $n$ elementen namelijk: $\underbrace{\{ \ol{0}, \ol{1}, \ol{2}, \dots ,\ol{n-1} \}}_{n\ \text{elementen}}$.
-		            Hieruit volgt dus dat $|X| = \infty$, en $|X\q| = n$.
-		      \item \emph{Geval 2:} $(|X\q|  = n) \wedge (|X| = n)$:
-		            Laat $X = \Z_{k}$ en maak een equivalentie relatie waarbij $x \sim y \Longleftrightarrow x = y$.
-		            Dan heeft onder reflexiviteit iedere $x \in X$ een equivalentieklasse,
-		            namelijk: $X\q = \{\ol{0}, \ol{1}, \dots , \ol{k-1} \}$.
-		            Dit betekent dus dat $|X| = k$ en $|X\q| = k$.
-	      \end{itemize}
-	\item
-	      Dan moet $X = \emptyset$,
-	      \begin{proof}
-		      Stel dat $|X| = n$ en $|X\q| = 0$ dan geldt $\forall x \in
-			      X$ dat $x \in \ol{x}$,
-		      maar dit kan niet want $|X\q| = 0$, en dus
-		      moet $|X| = 0$.
-	      \end{proof}
+    \item $X$ wordt gepartitioneerd in $X/_\sim$, omdat $|X/_\sim| = \infty =$ zit in elke equivalentieklasse minstens 1 representant die in $X$ moet liggen. Dit betekent dus dat $|X| \geq |X/_\sim| = \infty$.
+    \item
+          \begin{itemize}
+              \item \emph{Geval 1:} $(|X/_\sim|) = (n \wedge |X| = \infty)$:
+                    Neem $X=\Z$ met $x \sim y$ als $x \equiv y \mod n$, dan
+                    heeft $|X\q|$ precies $n$ elementen namelijk: $\underbrace{\{ \ol{0}, \ol{1}, \ol{2}, \dots ,\ol{n-1} \}}_{n\ \text{elementen}}$.
+                    Hieruit volgt dus dat $|X| = \infty$, en $|X\q| = n$.
+              \item \emph{Geval 2:} $(|X\q|  = n) \wedge (|X| = n)$:
+                    Laat $X = \Z_{k}$ en maak een equivalentie relatie waarbij $x \sim y \Longleftrightarrow x = y$.
+                    Dan heeft onder reflexiviteit iedere $x \in X$ een equivalentieklasse,
+                    namelijk: $X\q = \{\ol{0}, \ol{1}, \dots , \ol{k-1} \}$.
+                    Dit betekent dus dat $|X| = k$ en $|X\q| = k$.
+          \end{itemize}
+    \item
+          Dan moet $X = \emptyset$,
+          \begin{proof}
+              Stel dat $|X| = n$ en $|X\q| = 0$ dan geldt $\forall x \in
+                  X$ dat $x \in \ol{x}$,
+              maar dit kan niet want $|X\q| = 0$, en dus
+              moet $|X| = 0$.
+          \end{proof}
 \end{enumerate}
 \subsection*{Opgave 3.3}
 \begin{enumerate}[label=\alph*)]
-	\item
-	      \begin{enumerate}[label=\arabic*]
-		      \item \emph{Reflexief:} $a-a = 0$ en $0 \in W$,
-		            dus reflexief.
-		            $\quad (\because 0 \in W)$
-		      \item \emph{Symmetrie:} als $a-b \in W$
-		            dan $(-1)(a - b) \in W
-			            \Longleftrightarrow b - a\in W $
-		            $\quad (\because v \in W \implies \lambda v \in W)$
-		      \item \emph{Transitiviteit:} $a - b + b - c  =
-			            a - c \in W$
-		            $\quad (\because v, w \in W \implies v + w \in W)$
-	      \end{enumerate}
-	\item
-	      Neem een $a \in V$ dan geldt voor alle $b \in V$,
-	      dat hij equivalent is aan $a$, en dus heeft de
-	      $V\q$ slechts één equivalentieklasse.
-	\item
-	      Neem een willekeurige $\ol{a} \in V\q$,
-	      dan moet $\ol{a}$ zichzelf bevatten,
-	      want $a \sim b \Leftrightarrow a-b \in \{0\} = W$, en
-	      dus $a = b$. Dit betekent dat elk element in $V$
-	      een eigen equivalentieklasse heeft met zichzelf.
+    \item
+          \begin{enumerate}[label=\arabic*]
+              \item \emph{Reflexief:} $a-a = 0$ en $0 \in W$,
+                    dus reflexief.
+                    $\quad (\because 0 \in W)$
+              \item \emph{Symmetrie:} als $a-b \in W$
+                    dan $(-1)(a - b) \in W
+                        \Longleftrightarrow b - a\in W $
+                    $\quad (\because v \in W \implies \lambda v \in W)$
+              \item \emph{Transitiviteit:} $a - b + b - c  =
+                        a - c \in W$
+                    $\quad (\because v, w \in W \implies v + w \in W)$
+          \end{enumerate}
+    \item
+          Neem een $a \in V$ dan geldt voor alle $b \in V$,
+          dat hij equivalent is aan $a$, en dus heeft de
+          $V\q$ slechts één equivalentieklasse.
+    \item
+          Neem een willekeurige $\ol{a} \in V\q$,
+          dan moet $\ol{a}$ zichzelf bevatten,
+          want $a \sim b \Leftrightarrow a-b \in \{0\} = W$, en
+          dus $a = b$. Dit betekent dat elk element in $V$
+          een eigen equivalentieklasse heeft met zichzelf.
 \end{enumerate}
 \subsection*{Opgave 3.4}
 Ik heb er geen kunnen vinden als we vanuit $\Z$ dit proberen op te lossen.
@@ -109,53 +109,53 @@ Als we vanuit $\Zg$ starten dan kan ik het wel oplossen.
 
 Laat $x \sim y$ met $x, y \in \Zg$ als $x$ en $y$ op hetzelfde niveau $n$ liggen in Pascal's driehoek.
 \begin{enumerate}[label=\arabic*]
-	\item \emph{Reflexief:} $x$ ligt op hetzelfde niveau als $x$ en dus reflexief.
-	\item \emph{Symmetrie:} $x$ en $y$ op hetzelfde niveau betekent $y$ en $x$
-	      op hetzelfde niveau en dus geldt symmetrie.
-	\item \emph{Transitiviteit:} Als $x$ en $y$ op hetzelfde niveau liggen en $y$ en $z$ ook.
-	      Dan moet $x$ ook op hetzelfde niveau liggen als $z$.
+    \item \emph{Reflexief:} $x$ ligt op hetzelfde niveau als $x$ en dus reflexief.
+    \item \emph{Symmetrie:} $x$ en $y$ op hetzelfde niveau betekent $y$ en $x$
+          op hetzelfde niveau en dus geldt symmetrie.
+    \item \emph{Transitiviteit:} Als $x$ en $y$ op hetzelfde niveau liggen en $y$ en $z$ ook.
+          Dan moet $x$ ook op hetzelfde niveau liggen als $z$.
 \end{enumerate}
 Tot slot heb ik nog een idee om alsnog met $\Z$ dit op te lossen.
 We moeten eerst een functie $f$ opstellen met $f: \Z \rightarrow \Zg$ waarbij
 \[
-	f = \begin{cases}
-		2x       & \tx{als } x \geq 0 \\
-		|2x + 1| & \tx{als } x < 0
-	\end{cases}
+    f = \begin{cases}
+        2x       & \tx{als } x \geq 0 \\
+        |2x + 1| & \tx{als } x < 0
+    \end{cases}
 \]
 Dit zorgt ervoor dat we gewoon met $\Zg$ verder kunnen werken en dan
 dezelfde equivalentierelatie kunnen opstellen als hierboven.
 Ik weet niet of dit goed is...
 \subsection*{Opgave 3.5}
 \begin{enumerate}[label=\alph*)]
-	\item
-	      \begin{proof}
-		      \begin{enumerate}[label=\arabic*]
-			      \item \emph{Reflexief:} Als $p = p$ dan moet $p' = p'$.
-			      \item \emph{Symmetrie:} Als $p \sim q$ dan $p' = q'
-				            \implies q' = p' \implies q \sim p$
-			      \item \emph{Transitiviteit:} Als $p \sim q \wedge q \sim r$
-			            dan $p' = q'$ en $q' = r'$ waardoor $p' = r' \implies p \sim r$.
-		      \end{enumerate}
-	      \end{proof}
-	\item
-	      Laat $p, q \in \Z[X]$ waarbij $p \neq q$ en $\ol{p} = \ol{q}$,
-	      dan geldt $f(\ol{p}) \neq f(\ol{q})$
-	      maar dit is een tegenspraak want $\ol{p} = \ol{q}$.
-	      Dit betekent dat dit geen functie is, Aangezien
-	      voor elk argument hebben we een unieke waarde moeten hebben.
-	\item
-	      Laat $P = p(x) + c$ en $Q = q(x) + d$ met
-	      $P \neq Q$ en $P' = Q'$, dan:
-	      \begin{align*}
-		      g(\ol{P}) & = p(1) + c - (p(0) + c) \\
-		                & = p(1) - p(0)           \\ \\
-		      g(\ol{Q}) & = q(1) + c - (q(0) + c) \\
-		                & = q(1) - q(0)
-	      \end{align*}
-	      Het verschil tussen $P$ en $Q$ was de constante.
-	      De constante verdwijnt door de functie $g$ en dus is
-	      deze wel goed gedefinieerd.
+    \item
+          \begin{proof}
+              \begin{enumerate}[label=\arabic*]
+                  \item \emph{Reflexief:} Als $p = p$ dan moet $p' = p'$.
+                  \item \emph{Symmetrie:} Als $p \sim q$ dan $p' = q'
+                            \implies q' = p' \implies q \sim p$
+                  \item \emph{Transitiviteit:} Als $p \sim q \wedge q \sim r$
+                        dan $p' = q'$ en $q' = r'$ waardoor $p' = r' \implies p \sim r$.
+              \end{enumerate}
+          \end{proof}
+    \item
+          Laat $p, q \in \Z[X]$ waarbij $p \neq q$ en $\ol{p} = \ol{q}$,
+          dan geldt $f(\ol{p}) \neq f(\ol{q})$
+          maar dit is een tegenspraak want $\ol{p} = \ol{q}$.
+          Dit betekent dat dit geen functie is, Aangezien
+          voor elk argument hebben we een unieke waarde moeten hebben.
+    \item
+          Laat $P = p(x) + c$ en $Q = q(x) + d$ met
+          $P \neq Q$ en $P' = Q'$, dan:
+          \begin{align*}
+              g(\ol{P}) & = p(1) + c - (p(0) + c) \\
+                        & = p(1) - p(0)           \\ \\
+              g(\ol{Q}) & = q(1) + c - (q(0) + c) \\
+                        & = q(1) - q(0)
+          \end{align*}
+          Het verschil tussen $P$ en $Q$ was de constante.
+          De constante verdwijnt door de functie $g$ en dus is
+          deze wel goed gedefinieerd.
 \end{enumerate}
 \subsection*{Opgave 3.6}
 \subsubsection*{Correct gedefinieerd}
@@ -166,11 +166,11 @@ aangezien voor elk element in $\ol{a}$ geldt dat het in dezelfde restklasse valt
 voor $\ol{0}$ kunnen we elk element schrijven als $2(x) + 0$, \ $\ol{1} \implies 2(x) + 1, \ \ol{2} \implies 2(x) + 2$, etc.
 Voorbeeld:
 \begin{align*}
-	\ol{0}      & = \{0, 6, 12, 18, 24, \dots \}                               \\
-	            & = \{(2\cdot0), (2\cdot3), (2\cdot4), \dots \}                \\ \\
-	\ol{1}      & = \{1, 7, 13, 19, \dots \}                                   \\
-	            & = \{(2\cdot 0 + 1), (2\cdot3 + 1), (2 \cdot 6 + 1), \dots \} \\ \\
-	\ol{\vdots} & = \{ \dots \dots \dots \}
+    \ol{0}      & = \{0, 6, 12, 18, 24, \dots \}                               \\
+                & = \{(2\cdot0), (2\cdot3), (2\cdot4), \dots \}                \\ \\
+    \ol{1}      & = \{1, 7, 13, 19, \dots \}                                   \\
+                & = \{(2\cdot 0 + 1), (2\cdot3 + 1), (2 \cdot 6 + 1), \dots \} \\ \\
+    \ol{\vdots} & = \{ \dots \dots \dots \}
 \end{align*}
 \subsubsection*{Incorrect gedefinieerd}
 Neem $f: X\q \rightarrow \Zg$ met $f(\ol{x}) := g(x)$ waarbij $g: X \rightarrow \Zg$ met $g(x) = x \mod 2$.
@@ -182,89 +182,89 @@ Hieruit volgt dus dat $f$ geen functie is aangezien een argument meer dan één 
 \subsection*{Opgave 3.7}
 Zij $(a, b), (c, d) \in X\q$ en laat de vermenigvuldiging als volgt zijn:
 \begin{align*}
-	(a, \ b)\cdot(c, \ d) & = (a-b)(c-d)            \\
-	                      & = ac - ad - bc + bd     \\
-	                      & = (ac + bd) - (ad + bc) \\
-	                      & = (ac + bd, \ ad + bc)
+    (a, \ b)\cdot(c, \ d) & = (a-b)(c-d)            \\
+                          & = ac - ad - bc + bd     \\
+                          & = (ac + bd) - (ad + bc) \\
+                          & = (ac + bd, \ ad + bc)
 \end{align*}
 We gaan nu laten zien dat de berekening representant onafhankelijk is.
 Neem \((ac + bd, \ ad + bc\)), en \((a'c' + b'd', \ a'd'+b'c')\) en kijk of:
 \begin{align*}
-	(ac + bd, \ ad + bc)  & \sim (a'c' + b'd', \ a'd' + b'c') \\
-	                      & \Downarrow                        \\
-	ac + bd + a'd' + b'c' & = ad + bc + a'c' + b'd'           \\
-	                      & \Downarrow                        \\
-	(ac + bd) - (ad + bd) & = (a'c' + b'd') - (a'd' + b'c')   \\
-	                      & \Downarrow                        \\
-	(ac + bd, ad + bd)    & = (a'c' + b'd', a'd' + b'c')      \\
+    (ac + bd, \ ad + bc)  & \sim (a'c' + b'd', \ a'd' + b'c') \\
+                          & \Downarrow                        \\
+    ac + bd + a'd' + b'c' & = ad + bc + a'c' + b'd'           \\
+                          & \Downarrow                        \\
+    (ac + bd) - (ad + bd) & = (a'c' + b'd') - (a'd' + b'c')   \\
+                          & \Downarrow                        \\
+    (ac + bd, ad + bd)    & = (a'c' + b'd', a'd' + b'c')      \\
 \end{align*}
 Hieruit volgt dat het representant onafhankelijk is. Ik twijfel nog over deze uitwerking..
 
 \subsection*{Opgave 3.8}
 Zij $f: \Z \rightarrow \Z \times \Z_{\neq 0}$ met $f(x) = (x, 1)$, waarbij we een equivalentierelatie opstellen:
 \[(a, b) \sim (c, d) \Longleftrightarrow ad = bc\]
-\subsubsection*{Opstellen van equivalentierelatie op $\Z \times \Z 
-\setminus \{0\}$}
+\subsubsection*{Opstellen van equivalentierelatie op $\Z \times \Z
+        \setminus \{0\}$}
 \begin{enumerate}[label=\arabic*]
-	\item \emph{Reflexief:} Neem $(a, b) \in \Z \times \Z_{\neq 0}$ dan:
-	      \begin{align*}
-		      (a, b) & \sim (a,b)                                                         \\
-		             & \Downarrow                                                         \\
-		      ab     & = ba                                                               \\
-		      ab     & = ab \quad (\because \tx{Vermedigvuldiging is commutatief in } \Z)
-	      \end{align*}
-	      De relatie is dus reflexief.
-	\item \emph{Symmetrie:} Als $(a, b) \sim (c,d)$, waarbij $(a, b) \en (c, d) \in \Z \times \Z$ dan:
-	      \begin{align*}
-		      ad     & = bc                                                               \\
-		             & \Downarrow                                                         \\
-		      bc     & = ad                                                               \\
-		             & \Downarrow                                                         \\
-		      cb     & = da \quad (\because \tx{Vermedigvuldiging is commutatief in } \Z) \\
-		             & \Downarrow                                                         \\
-		      (c,d ) & \sim (a,b)
-	      \end{align*}
-	      De relatie is dus symmetrisch.
-	\item \emph{Transitiviteit:} Als $(a, b) \sim (c, d) \wedge (c, d) \sim (e, f)$ dan $(a, b) \sim (e, f)$
-	      \begin{align*}
-		      (a, b) \sim (c, d) & \implies ad = bc \\
-		                         & \Downarrow       \\
-		      (c, d) \sim (e, f) & \implies cf = de \\
-		                         & \Downarrow       \\
-		      ad(f)              & = bc(f)          \\
-		                         & \Downarrow       \\
-		      ad(f)              & = b(de)          \\
-		                         & \Downarrow       \\
-		      af                 & = be             \\
-		                         & \Downarrow       \\
-		      (a,b)              & \sim (e,f)
-	      \end{align*}
-	      De relatie is dus transitief.
+    \item \emph{Reflexief:} Neem $(a, b) \in \Z \times \Z_{\neq 0}$ dan:
+          \begin{align*}
+              (a, b) & \sim (a,b)                                                         \\
+                     & \Downarrow                                                         \\
+              ab     & = ba                                                               \\
+              ab     & = ab \quad (\because \tx{Vermedigvuldiging is commutatief in } \Z)
+          \end{align*}
+          De relatie is dus reflexief.
+    \item \emph{Symmetrie:} Als $(a, b) \sim (c,d)$, waarbij $(a, b) \en (c, d) \in \Z \times \Z$ dan:
+          \begin{align*}
+              ad     & = bc                                                               \\
+                     & \Downarrow                                                         \\
+              bc     & = ad                                                               \\
+                     & \Downarrow                                                         \\
+              cb     & = da \quad (\because \tx{Vermedigvuldiging is commutatief in } \Z) \\
+                     & \Downarrow                                                         \\
+              (c,d ) & \sim (a,b)
+          \end{align*}
+          De relatie is dus symmetrisch.
+    \item \emph{Transitiviteit:} Als $(a, b) \sim (c, d) \wedge (c, d) \sim (e, f)$ dan $(a, b) \sim (e, f)$
+          \begin{align*}
+              (a, b) \sim (c, d) & \implies ad = bc \\
+                                 & \Downarrow       \\
+              (c, d) \sim (e, f) & \implies cf = de \\
+                                 & \Downarrow       \\
+              ad(f)              & = bc(f)          \\
+                                 & \Downarrow       \\
+              ad(f)              & = b(de)          \\
+                                 & \Downarrow       \\
+              af                 & = be             \\
+                                 & \Downarrow       \\
+              (a,b)              & \sim (e,f)
+          \end{align*}
+          De relatie is dus transitief.
 \end{enumerate}
 \subsubsection*{Opstellen optelling in \(\Z \times \Z \)}
 Neem \((a, b) \en (c, d) \in \Z \times \Z \) dan definiëren we een optelling:
 \[(a, b) + (c, d) = (ad + bc, bd)\]
 \subsubsection*{Opstellen vermenigvuldiging in \( \Z \times \Z \)}
 Neem \((a, b) \en (c, d) \in \Z \times \Z  \) dan definiëren we een vermenigvuldiging:
-\[(a, b) \cdot (c, d) = (ac, bd)\] 
+\[(a, b) \cdot (c, d) = (ac, bd)\]
 \subsubsection*{Representant-onafhankelijkheid}
 Neem \((a, b)\sim (a', b') \en (c, d), \sim (c', d')\) dan moet gelden:
 \begin{itemize}
-	\item \emph{Optelling: } 
-	\begin{align*}
-		 (a, b) + (c, d) = (ad + bc, bd) &\sim (a', b') + (c', d') = (a'd' + b'c', b'd')	\\
-		 \Downarrow \\
-		 (ad+bc,bd ) &\sim  (a'd'+ b'c', b'd') \\
-		 \Downarrow \\
-		 ((ad+bc)(b'd') &= (bd)(a'd'+b'c')) \\
-	\end{align*}
+    \item \emph{Optelling: }
+          \begin{align*}
+              (a, b) + (c, d) = (ad + bc, bd) & \sim (a', b') + (c', d') = (a'd' + b'c', b'd') \\
+              \Downarrow                                                                       \\
+              (ad+bc,bd )                     & \sim  (a'd'+ b'c', b'd')                       \\
+              \Downarrow                                                                       \\
+              ((ad+bc)(b'd')                  & = (bd)(a'd'+b'c'))                             \\
+          \end{align*}
 \end{itemize}
 
 
 
 Nu moeten we nog bewijzen of de equivalentierelatie representant-onafhankelijk is. Neem $(a,b) \sim (c,d)$ en $(a',b') \sim (c',d')$ dan:
 \begin{align*}
-	a
+    a
 \end{align*}
 
 Waarbij de interpretatie als volgt is:
