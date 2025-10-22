@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1760970719.382 "/home/jaspervos/Wiskunde/Caleidoscoop/Hoofdstuk4/hoofdstuk4.tex" "hoofdstuk4.pdf" "hoofdstuk4" 1760970719.79646 0
+["pdflatex"] 1760972627.99677 "/home/jaspervos/Wiskunde/Caleidoscoop/Hoofdstuk4/hoofdstuk4.tex" "hoofdstuk4.pdf" "hoofdstuk4" 1760972628.41194 0
   "/etc/texmf/web2c/texmf.cnf" 1757446605.82382 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jaspervos/Wiskunde/Caleidoscoop/Hoofdstuk4/hoofdstuk4.tex" 1760970719.14389 3029 eddcf91bbe89f584c33f2fa0a030d8e4 ""
+  "/home/jaspervos/Wiskunde/Caleidoscoop/Hoofdstuk4/hoofdstuk4.tex" 1760972627.75932 3370 81bc6cf90ffffc27c426e9f25d96ef39 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -52,8 +52,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1757446629.09984 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1757446697 8212830 740bee7d723266b3ee93681b5f7463c7 ""
-  "hoofdstuk4.aux" 1760970719.75398 325 7bd6498d2480ad8d6d33252acbf41a29 "pdflatex"
-  "hoofdstuk4.tex" 1760970719.14389 3029 eddcf91bbe89f584c33f2fa0a030d8e4 ""
+  "hoofdstuk4.aux" 1760972628.36633 511 b9293bdbd371c0fef14d59aeb85cedb5 "pdflatex"
+  "hoofdstuk4.tex" 1760972627.75932 3370 81bc6cf90ffffc27c426e9f25d96ef39 ""
   (generated)
   "hoofdstuk4.aux"
   "hoofdstuk4.log"
