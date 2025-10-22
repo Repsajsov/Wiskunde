@@ -86,20 +86,23 @@ int main() {
   while (!stoppen) {
     cin.get(actie);
 
-    if (actie == '\n')
+    switch (actie) {
+    case '\n':
       continue;
-    if (actie == 'j') {
-    } else if (actie == 'k') {
-      stoppen = true;
-    } else if (actie == 'd') {
+      break;
+    case 'd':
       game.beweeg(1, 0);
-    } else if (actie == 'a') {
+      break;
+    case 'a':
       game.beweeg(-1, 0);
-    } else if (actie == 'w') {
+      break;
+    case 'w':
       game.beweeg(0, -1);
-    } else if (actie == 's') {
+      break;
+    case 's':
       game.beweeg(0, 1);
-    } else if (actie == 't') {
+      break;
+    case 'e':
       game.klik();
     }
 
