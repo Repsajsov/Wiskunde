@@ -94,9 +94,52 @@ Studentnr: \emph{s2911159}
             &= a^2 + (-b^2)  &\quad (\tx{Gebruik \emph{Lemma 1} waarbij: $-b^2 = b(-b)$}) \\
             &= a^2 - b^2 &\quad (\tx{Definitie: $a-b = a + (-b)$})\\
         \end{align*}
-        
     \end{proof}
 \end{enumerate}
 
+\section*{Opgave 2} 
+
+\subsection*{Infimum:}
+Veronderstel dat $\inf(A) = 0$:
+\begin{proof}
+\begin{enumerate}
+    \item Te bewijzen $0$ is een ondergrens.
+
+    $a_i = \f{1}{n+1}$, en voor alle $n$ geldt $\f{1}{n+1} > 0$, dus is $0$ een ondergrens van $A$.
+    
+    \item Te bewijzen $0$ is de grootste ondergrens.
+
+    Gebruik de definitie: $\forall \epsilon > 0$ bestaat er een $a \in A \zdd a > 0 + \epsilon$. 
+    \begin{align*}
+        a &< 0 + \epsilon \\
+    \f{1}{n + 1} &< 0 + \epsilon \\
+    \f{1}{n + 1} &< \epsilon \\
+    \f{n + 1}{n + 1} &< \epsilon(n + 1) \\
+    \f{1}{\epsilon} &< (n + 1) \\
+    \f{1}{\epsilon} - 1 &< n
+    \end{align*}
+    Dus voor elke $\epsilon > 0$ bestaat er een element kleiner dan $\epsilon$.
+\end{enumerate}
+    Beide voorwaarden gelden en dus: \[\inf(A) = 0\].
+\end{proof}
+
+\subsection*{Supremum:}
+Veronderstel dat $\sup(A) = 1$:
+\begin{proof}
+\begin{enumerate}
+    \item Te bewijzen $1$ is een bovengrens.
+
+    $a_i = \f{1}{n+1}$, merk op dat $\f{1}{n+1}$ dalend is naarmate $n$ groter wordt.
+    Volgens het welordeningsprincipe op $\N$ is $n=0$ het kleinste element en dus $\f{1}{0 + 1} = 1$.
+    Hieruit volgt dus dat voor alle $n\in \N $ dat $1 \geq \f{1}{n + 1}$, en dus is $1$ een bovengrens.
+    \item Te bewijzen $1$ is de kleinste bovengrens.
+
+    Merk op dat $1 \in A$, en een bovengrens is. Dit betekent dat $1$ de kleinste bovengrens moet zijn. 
+\end{enumerate}
+Beide voorwaarden zijn voldaan en dus:
+    \[\sup(A) = 1\]
+\end{proof}
+\subsection*{Maximum/minimum:}
+$A$ heeft geen minimum want $\inf(A) = 0 \notin A$, maar $A$ heeft wel een maximum omdat $\sup(A) = 1$ en $1 \in A$. 
 
 \end{document}

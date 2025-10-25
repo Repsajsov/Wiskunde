@@ -81,6 +81,8 @@ INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti7
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti7.tfm
 OUTPUT huiswerkset5.pdf
 INPUT C:\Users\jaspervos\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
+INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT huiswerkset5.aux
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
@@ -88,6 +90,8 @@ INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfon
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\jaspervos\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb

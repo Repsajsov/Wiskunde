@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1761413719.4879 "c:/Users/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerset5/huiswerkset5.tex" "huiswerkset5.pdf" "huiswerkset5" 1761413719.78133 0
+["pdflatex"] 1761417344.11017 "c:/Users/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerset5/huiswerkset5.tex" "huiswerkset5.pdf" "huiswerkset5" 1761417344.41291 0
   "C:/Users/jaspervos/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1757430017 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/jaspervos/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1757159655 13259278 af0f019f8da3225f6140556aa0bd791e ""
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -17,6 +17,7 @@
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1247596667 36281 c355509802a035cadc5f15869451dcee ""
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -50,9 +51,9 @@
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty" 1578053545 42759 9cf6c5257b1bc7af01a58859749dd37a ""
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty" 1749322634 2671 d9941f4bf4750e9b0603c9a2ec54693b ""
   "C:/Users/jaspervos/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1751005717 30351 a2b09edc6c93a742566b222c33d0278e ""
-  "c:/Users/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerset5/huiswerkset5.tex" 1761413718 4165 6b079636e73fc88289f8cc960083bc10 ""
-  "huiswerkset5.aux" 1761413719 168 bd407caf009ca8c3db424f1a582b452e "pdflatex"
-  "huiswerkset5.tex" 1761413718 4165 6b079636e73fc88289f8cc960083bc10 ""
+  "c:/Users/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerset5/huiswerkset5.tex" 1761417343 5834 9f11d5c6200ab9959a4f6fd909c43d2b ""
+  "huiswerkset5.aux" 1761417344 168 5012da637f9557c8a2eec64451b026b5 "pdflatex"
+  "huiswerkset5.tex" 1761417343 5834 9f11d5c6200ab9959a4f6fd909c43d2b ""
   (generated)
   "huiswerkset5.aux"
   "huiswerkset5.log"
