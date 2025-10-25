@@ -142,4 +142,19 @@ Beide voorwaarden zijn voldaan en dus:
 \subsection*{Maximum/minimum:}
 $A$ heeft geen minimum want $\inf(A) = 0 \notin A$, maar $A$ heeft wel een maximum omdat $\sup(A) = 1$ en $1 \in A$. 
 
+\section*{Opgave 3}
+De definitie van een divergente rij:
+\[\forall M > 0 \ \exists N \in \N \zdd \forall n \geq N : a_n > M \]
+\begin{proof}
+We moeten dus een $N$ vinden die altijd een groter rij-element geeft voor elke $M > 0$.
+\begin{align*}
+    a_n &= \f{n^2 + \sin(n)}{n + 1} \\
+    &\geq \f{n^2 - 1}{n + 1} 
+    = \f{\cn{(n+1)}(n-1)}{\cn{n+1}}  
+    = n-1 \quad (\tx{Merk op dat $-1 \leq \sin(n) \leq 1$})
+\end{align*}
+We willen dat $n - 1 > M$, en dus nemen we $n > M + 1$. Kies $N = \lceil M + 1 \rceil$.
+Daarmee geldt voor alle $n \geq N$ dat $a_n > M$.  
+\end{proof}
+
 \end{document}
