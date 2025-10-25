@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\cn}[1]{\cancel{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rho}{\mathcal{P}}
+\newcommand{\en}{\tx{ en }}
+\newcommand{\of}{\tx{ of }}
+\newcommand{\geldt}{\tx{ geldt }}
+\newcommand{\dan}{\tx{ dan }}
+\newcommand{\als}{\tx{ als }}
+\newcommand{\zdd}{\tx{ zodanig dat }}
+
+\begin{document}
+
+{\Large \textbf{Wiskundige Structuren}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 5} \hfill \today \\
+Studentnr: \emph{s2911159}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\section*{Opgave 1}
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    \begin{proof}
+    Te bewijzen: $a \cdot 0 = 0$:
+    \begin{align*}
+        a\cdot 0 &= a \cdot 0 + 0 &\quad (0 \tx{ is neutraal voor optelling in } \R)\\
+        &= a\cdot 0 + (a + (-a)) &\quad (\forall x \in \R \ \exists (-x) \in \R \zdd x + (-x) = 0) \\
+        &= a \cdot 0 + a\cdot (1) + (-a) &\quad (\tx{Optelling is associatief, en $1$ is neutraal met vermenigvuldiging in }\R) \\
+        &= a \cdot ( 0 + 1) + (-a) &\quad (\tx{Gebruik distributieve eigenschap in }\R) \\
+        &= a \cdot (1) + (-a) &\quad (0\tx{ is neutraal met optelling in } \R) \\
+        &= a + (-a) &\quad (1 \tx{ is neutraal met vermenigvuldiging in } \R) \\
+        &= 0 &\quad ((-a)\tx{ is de inverse van $a$, en dus } a + (-a) = 0 )
+    \end{align*}
+    \end{proof}
+    \item 
+    \begin{proof}
+    Te bewijzen: $a \neq 0$ en $b \neq 0$ dan $a \cdot b \neq 0$: 
+    
+    Bewijs uit het ongerijmde waarbij we
+    stellen dat $a \neq 0$ en $b \neq 0$ dan $a \cdot b = 0$:
+    \begin{align*}
+        ab &= 0 \\
+        a^{-1}ab &= a^{-1}0 &\quad (\tx{Vermenigvuldig beide kanten met $a^{-1}$}) \\
+        (a^{-1}a)b &= 0  &\quad (\tx{Uit resultaat a) geldt }\forall x \in \R \ x\cdot 0 = 0) \\ 
+        (1)b &= 0 &\quad (\forall x \in R \ \exists x^{-1} \in R \zdd x\cdot x^{-1} = 1)\\
+        b^{-1}b &= b^{-1}0 &\quad (\tx{Vermenigvuldig beide kanten met $b^{-1}$}) \\
+        (b^{-1}b) &= 0 &\quad (\tx{Uit resultaat a) geldt }\forall x \in \R \ x\cdot 0 = 0) \\ 
+        1 &= 0 &\quad (\forall x \in R \ \exists x^{-1} \in R \zdd x\cdot x^{-1} = 1)
+    \end{align*}
+    Tegenspraak want $1 \neq 0$, en hieruit volgt als $a \neq 0$ en $b \neq 0$ dan $a\cdot b \neq 0$.
+    \end{proof}
+    \item
+    \begin{proof}
+        Te bewijzen: $(a + b)(a - b) = a^2 - b^2$:
+        \begin{lemma}[Identiteit: $-b^2 = b(-b)$]
+        \end{lemma}
+        \begin{proof}
+            Voor elk element bestaat een inverse, veronderstel dat $b^2$ de inverse van $b(-b)$ is, dan:
+            \begin{align*}
+                b(-b) + b^2 &= b(b + (-b)) &\quad (\tx{Gebruik distributieve eigenschap in } \R) \\
+                &= b(0) &\quad (\tx{De inverse van $b$ is $(-b)$, en dus $b + (-b) = 0$}) \\
+                &= 0 &\quad (\tx{Uit resultaat a) geldt }\forall x \in \R \ x\cdot 0 = 0) 
+            \end{align*}
+            En dus geldt dat $-b^2 = b(-b)$.
+        \end{proof}
+        \begin{align*}
+            (a + b)(a-b) &= (a + b)(a+(-b)) &\quad (\tx{Definitie: $a-b = a + (-b)$})\\
+            &= a^2 + a(-b) + b(a) + b(-b)  \\
+            &= a^2 + a(b + (-b)) + b(-b) &\quad (\tx{Gebruik tweemaal distributieve eigenschap in } \R)\\
+            &= a^2 + a(0) + b(-b) &\quad (\tx{De inverse van $b$ is $(-b)$, en dus $b + (-b) = 0$}) \\
+            &= a^2 + 0 + (b(-b)) &\quad (\tx{Uit resultaat a) geldt }\forall x \in \R \ x\cdot 0 = 0)\\
+            &= a^2 + (b(-b)) &\quad (0 \tx{ is neutraal met optelling in }\R)\\
+            &= a^2 + (-b^2)  &\quad (\tx{Gebruik \emph{Lemma 1} waarbij: $-b^2 = b(-b)$}) \\
+            &= a^2 - b^2 &\quad (\tx{Definitie: $a-b = a + (-b)$})\\
+        \end{align*}
+        
+    \end{proof}
+\end{enumerate}
+
+
+\end{document}
