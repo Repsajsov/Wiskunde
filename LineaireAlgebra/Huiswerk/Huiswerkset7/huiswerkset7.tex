@@ -24,22 +24,89 @@ Studentnr: \emph{s2911159}
 \bigskip
 
 \section*{Opgave 6.3.3}
-Gebruik het resultaat uit het voorbeeld dus:
+Geef generatoren voor de kernel van matrix $A$ uit Example 6.10.
 
-\[A' = \begin{pmatrix}
-    0 & 1 & 0 & 2 & 0 & -5 \\
-    0 & 0 & 1 & -2 & 0 & 3 \\
-    0 & 0 & 0 & 0 & 1 & 1 \\
-    0 & 0 & 0 & 0 & 0 & 0
-\end{pmatrix}\]
+Uit Example 6.10 hebben we de row echelon form:
+\[ A' = \begin{pmatrix}
+        0 & 1 & 0 & 2  & 0 & -5 \\
+        0 & 0 & 1 & -2 & 0 & 3  \\
+        0 & 0 & 0 & 0  & 1 & 1  \\
+        0 & 0 & 0 & 0  & 0 & 0
+    \end{pmatrix} \]
 
-We gaan kernvectoren opstellen bij de kolommen die geen pivot hebben. Ofwel kolom 1, en 4.
-Dan hebben we dus de volgende systemen van vergelijkingen.
+De pivots staan in kolommen $j_1 = 2, j_2 = 3, j_3 = 5$, dus kolommen zonder pivot zijn $k \in \{1, 4, 6\}$.
+We construeren voor elke kolom zonder pivot een generator $w_k$ volgens Propositie 6.19.
 
+\textbf{Generator $w_1$:} Voor kolom 1 nemen we $x = (1, x_2, x_3, 0, x_5, 0)^\top$ met $x_1 = 1$.
+Dan moet $A'x = 0$:
 \begin{align*}
+    \text{Rij 3:} \quad & x_5 = 0 \\
+    \text{Rij 2:} \quad & x_3 = 0 \\
+    \text{Rij 1:} \quad & x_2 = 0
 \end{align*}
+Dus $w_1 = (1, 0, 0, 0, 0, 0)^\top$.
+
+\textbf{Generator $w_4$:} Voor kolom 4 nemen we $x = (0, x_2, x_3, 1, x_5, 0)^\top$ met $x_4 = 1$.
+Dan moet $A'x = 0$:
+\begin{align*}
+    \text{Rij 3:} \quad & x_5 = 0                                           \\
+    \text{Rij 2:} \quad & x_3 - 2 \cdot 1 = 0 \quad \implies \quad x_3 = 2  \\
+    \text{Rij 1:} \quad & x_2 + 2 \cdot 1 = 0 \quad \implies \quad x_2 = -2
+\end{align*}
+Dus $w_4 = (0, -2, 2, 1, 0, 0)^\top$.
+
+\textbf{Generator $w_6$:} Voor kolom 6 nemen we $x = (0, x_2, x_3, 0, x_5, 1)^\top$ met $x_6 = 1$.
+Dan moet $A'x = 0$:
+\begin{align*}
+    \text{Rij 3:} \quad & x_5 + 1 = 0 \quad \implies \quad x_5 = -1 \\
+    \text{Rij 2:} \quad & x_3 + 3 = 0 \quad \implies \quad x_3 = -3 \\
+    \text{Rij 1:} \quad & x_2 - 5 = 0 \quad \implies \quad x_2 = 5
+\end{align*}
+Dus $w_6 = (0, 5, -3, 0, -1, 1)^\top$.
+
+Volgens Propositie 6.3 geldt $\ker A = \ker A'$, dus:
+\[ \boxed{\ker A = L(w_1, w_4, w_6)} \]
+met
+\[ w_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \end{pmatrix}, \quad
+    w_4 = \begin{pmatrix} 0 \\ -2 \\ 2 \\ 1 \\ 0 \\ 0 \end{pmatrix}, \quad
+    w_6 = \begin{pmatrix} 0 \\ 5 \\ -3 \\ 0 \\ -1 \\ 1 \end{pmatrix} \]
 
 \section*{Opgave 6.3.5}
+Zij $A \in \text{Mat}(m \times n, F)$ een matrix en $f_A : F^n \to F^m$ de geassocieerde lineaire afbeelding.
 
+\subsection*{(1) Als $f_A$ injectief is, dan $m \geq n$}
+\begin{proof}
+    Veronderstel $f_A$ is injectief. Breng $A$ in row echelon form $A'$ via elementaire rijoperaties.
+    Volgens Propositie 6.6 is $f_{A'}$ ook injectief.
+
+    Volgens Propositie 6.20 is $f_{A'}$ injectief $\Leftrightarrow$ elke kolom van $A'$ bevat een pivot.
+    Dus $A'$ heeft $n$ pivots, en elke pivot staat in een andere rij.
+    Hieruit volgt dat $A'$ minstens $n$ rijen heeft, dus $m \geq n$.
+\end{proof}
+
+\subsection*{(2) Als $A$ inverteerbaar is, dan $m = n$}
+\begin{proof}
+    Veronderstel $A$ is inverteerbaar. Dan bestaat $A^{-1} \in \text{Mat}(n \times m, F)$ zodat:
+    \begin{align*}
+        A \cdot A^{-1} & = I_m \\
+        A^{-1} \cdot A & = I_n
+    \end{align*}
+
+    Merk op dat $f_A \circ f_{A^{-1}} = f_{AA^{-1}} = f_{I_m} = \text{id}_{F^m}$ surjectief is.
+    Dus $f_A$ is surjectief, wat betekent dat $\text{im } f_A = F^m$.
+
+    Ook geldt $f_{A^{-1}} \circ f_A = f_{A^{-1}A} = f_{I_n} = \text{id}_{F^n}$ injectief is.
+    Dus $f_A$ is injectief, wat betekent dat $\ker f_A = \{0\}$.
+
+    Omdat $f_A$ injectief is, volgt uit deel (1) dat $m \geq n$.
+    Omdat $f_A$ surjectief is, moet $\dim(\text{im } f_A) = m$.
+
+    Breng $A$ in row echelon form $A'$. Dan heeft $A'$ precies $n$ kolommen en elke kolom bevat een pivot (want $f_A$ injectief).
+    Dus $A'$ heeft $n$ niet-nul rijen. Maar $\text{im } A' = \text{im } A = F^m$ heeft dimensie $m$.
+
+    Aangezien de $n$ niet-nul rijen van $A'$ de row space opspannen en $\dim(R(A')) = m$, volgt $n \geq m$.
+
+    Combineren we $m \geq n$ en $n \geq m$, dan $m = n$.
+\end{proof}
 
 \end{document}

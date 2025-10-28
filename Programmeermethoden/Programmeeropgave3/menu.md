@@ -274,3 +274,60 @@ HOOFDMENU
   ├─ T → TEKENMENU ─┬─ terug → HOOFDMENU
   │                 └─ T → TOGGLE-MODE → Q → TEKENMENU
   └─ S → STOP
+
+
+void Puzzel::inputHandler(char input) {
+    switch (huidigeState) {
+        case HOOFDMENU_STATE:
+            switch (input) {
+                case 'p': case 'P': setState(PARAMETERS_STATE); break;
+                case 'u': case 'U': setState(PUZZEL_STATE); break;
+                case 't': case 'T': setState(TEKEN_STATE); break;
+                case 's': case 'S': setState(STOP_STATE); break;
+            }
+            break;
+            
+        case PARAMETERS_STATE:
+            switch (input) {
+                case 'h': case 'H': setHoogte(leesGetal(20)); break;
+                case 'b': case 'B': setBreedte(leesGetal(20)); break;
+                case 'r': case 'R': randomPercentage = leesGetal(100); break;
+                case 't': case 'T': 
+                    isTorus = (leesOptie() == 'j'); 
+                    break;
+                case '\b': setState(HOOFDMENU_STATE); break; // backspace = terug
+            }
+            break;
+            
+        case PUZZEL_STATE:
+            switch (input) {
+                case 'v': case 'V': volg(); break;
+                case 'l': case 'L': los5x5(); break;
+                case 's': case 'S': speelOplossing(); break;
+                case 'd': case 'D': setState(DOE_ZET_STATE); break;
+                case '\b': setState(HOOFDMENU_STATE); break;
+            }
+            break;
+            
+        case TEKEN_STATE:
+            switch (input) {
+                case 's': case 'S': schoon(); break;
+                case 'r': case 'R': random(); break;
+                case 't': case 'T': setState(TOGGLE_STATE); break;
+                case 'g': case 'G': genereer(leesGetal(100)); break;
+                case '\b': setState(HOOFDMENU_STATE); break;
+            }
+            break;
+            
+        case TOGGLE_STATE:
+            switch (input) {
+                case 'w': case 'W': beweeg(0, -1); break;
+                case 'a': case 'A': beweeg(-1, 0); break;
+                case 's': case 'S': beweeg(0, 1); break;
+                case 'd': case 'D': beweeg(1, 0); break;
+                case 't': case 'T': toggleHuidigeLamp(); break;
+                case 'q': case 'Q': setState(TEKEN_STATE); break;
+            }
+            break;
+    }
+}
