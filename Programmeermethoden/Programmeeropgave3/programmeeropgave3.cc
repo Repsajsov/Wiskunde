@@ -8,6 +8,9 @@ char leesOptie() {
   do {
     cin.get(resultaat);
   } while (resultaat == '\n');
+  if (resultaat >= 'a' && resultaat <= 'z') {
+    resultaat = (resultaat - 'a') + 'A';
+  }
   return resultaat;
 }
 
@@ -32,12 +35,12 @@ private:
   const static int MAX_HOOGTE = 20;
   const static int MAX_BREEDTE = 20;
   enum State {
-    HOOFDMENU_STATE,
-    PARAMETER_STATE,
-    TEKEN_STATE,
-    TOGGLE_STATE,
-    PUZZEL_STATE,
-    SPEEL_STATE
+    HOOFDMENU,
+    PARAMETER,
+    TEKEN,
+    TOGGLE,
+    PUZZEL,
+    SPELEN,
   };
   int breedte = 5;
   int hoogte = 5;
@@ -47,18 +50,30 @@ private:
   char karakterLampAan = 'o';
   char karakterLampUit = 'x';
   bool lampen[MAX_HOOGTE][MAX_BREEDTE];
-  State state = HOOFDMENU_STATE;
+  bool eindigSpel = false;
+  State state = HOOFDMENU;
 
 public:
   Puzzel();
+  void start();
   void bordTekenen();
   void maakSchoon();
   void updateScherm();
   void beweeg(int dx, int dy);
   void klik();
   void flipLamp(int x, int y);
+  // input
   void inputHandler(char input);
-  void speel(char input);
+  void inputHoofdmenu(char input);
+  void inputParameterMenu(char input);
+  void inputPuzzelMenu(char input);
+
+  void spelen(char input);
+  void volg();
+  void losOp();
+  void torus();
+  void pen();
+
   void menuText();
   // setters
   void setState(State newState) { state = newState; }
@@ -73,7 +88,26 @@ public:
   void vraagHoogte();
   void vraagBreedte();
   void vraagProportie();
+  void vraagAan();
+  void vraagUit();
 };
+void Puzzel::start() {
+  system("clear");
+  bordTekenen();
+  char input = '\0';
+
+  while (!eindigSpel) {
+    input = leesOptie();
+
+    inputHandler(input);
+    updateScherm();
+  }
+}
+void Puzzel::pen() {};
+void Puzzel::torus() {};
+void Puzzel::setKarakterLampAan(char nieuweKarakter) {
+  karakterLampAan = nieuweKarakter;
+}
 
 void Puzzel::setHoogte(int nieuweHoogte) {
   if (nieuweHoogte <= MAX_HOOGTE && nieuweHoogte >= 0) {
@@ -108,6 +142,13 @@ void Puzzel::vraagBreedte() {
   setBreedte(temp);
 }
 
+void Puzzel::vraagAan() {
+  char temp;
+  cout << "Karakter voor lamp aan: ";
+  temp = leesOptie();
+  setKarakterLampAan(temp);
+}
+
 void Puzzel::setBreedte(int nieuweBreedte) {
   if (nieuweBreedte <= MAX_BREEDTE && nieuweBreedte >= 0) {
     breedte = nieuweBreedte;
@@ -117,74 +158,104 @@ void Puzzel::setBreedte(int nieuweBreedte) {
 
 void Puzzel::menuText() {
   switch (state) {
-  case HOOFDMENU_STATE:
+  case HOOFDMENU:
     cout << "[P]arameters | p[U]zzelmenu | [T]ekenmenu | [S]toppen" << endl;
     break;
-  case PUZZEL_STATE:
-    cout << "[V]olg | [L]os 5x5 | [S]peel oplossing | S[p]elen | [T]erug"
+  case PUZZEL:
+    cout << "[V]olg | [L]os 5x5 | [S]peel oplossing | S[P]elen | [T]erug"
          << endl;
     break;
-  case SPEEL_STATE:
+  case SPELEN:
     cout << "[W]omhoog | [A]links | [S]omlaag | [D]rechts |[E]klik | [T]erug"
          << endl;
     break;
-  case PARAMETER_STATE:
-    cout << "[H]oogte | [B]reedte | [R]andom | [A]an | [U]it | [T]orus | [P]en "
+  case PARAMETER:
+    cout << "[H]oogte | [B]reedte | [R]andom | [A]an | [U]it | T[O]rus | [P]en "
             "| [T]erug"
          << endl;
-    break;
-  default:
-    cout << "NIKS." << endl;
     break;
   }
 }
 
+void Puzzel::inputHoofdmenu(char input) {
+  switch (input) {
+  case 'P':
+    setState(PARAMETER);
+    break;
+  case 'U':
+    setState(PUZZEL);
+    break;
+  case 'T':
+    setState(TEKEN);
+    break;
+  case 'S':
+    eindigSpel = true;
+    break;
+  }
+}
+
+void Puzzel::vraagUit() { return; }
+
+void Puzzel::inputParameterMenu(char input) {
+  switch (input) {
+  case 'H':
+    vraagHoogte();
+    break;
+  case 'B':
+    vraagBreedte();
+    break;
+  case 'R':
+    vraagProportie();
+    break;
+  case 'A':
+    vraagAan();
+    break;
+  case 'U':
+    vraagUit();
+    break;
+  case 'O':
+    torus();
+    break;
+  case 'P':
+    pen();
+  case 'T':
+    setState(HOOFDMENU);
+    break;
+  }
+}
+
+void Puzzel::volg() { return; }
+void Puzzel::losOp() { return; }
+
+void Puzzel::inputPuzzelMenu(char input) {
+  switch (input) {
+  case 'V':
+    volg();
+    break;
+  case 'S':
+    losOp();
+    break;
+  case 'P':
+    setState(SPELEN);
+    break;
+  case 'T':
+    setState(HOOFDMENU);
+    break;
+  }
+}
 void Puzzel::inputHandler(char input) {
   switch (state) {
-  case HOOFDMENU_STATE: {
-    switch (input) {
-    case 'p':
-    case 'P':
-      setState(PARAMETER_STATE);
-      break;
-    case 't':
-    case 'T':
-      setState(TEKEN_STATE);
-      break;
-    case 'u':
-    case 'U':
-      setState(PUZZEL_STATE);
-      break;
-    }
+  case HOOFDMENU:
+    inputHoofdmenu(input);
     break;
-  }
-  case PARAMETER_STATE: {
-    switch (input) {
-    case 'h':
-    case 'H':
-      vraagHoogte();
-      break;
-    case 'b':
-    case 'B':
-      vraagBreedte();
-      break;
-
-    default:
-      break;
-    }
+  case PARAMETER:
+    inputParameterMenu(input);
     break;
-  }
-  case PUZZEL_STATE: {
-    switch (input) {
-    case 'p':
-    case 'P':
-      setState(SPEEL_STATE);
-      break;
-    }
-  } break;
-  case SPEEL_STATE: {
-    speel(input);
-  }
+  case PUZZEL:
+    inputPuzzelMenu(input);
+    break;
+  case SPELEN:
+    spelen(input);
   }
 }
 
@@ -205,7 +276,7 @@ void Puzzel::bordTekenen() {
       } else {
         karakter = karakterLampUit;
       }
-      if (posX == j && posY == i && state == SPEEL_STATE) {
+      if (posX == j && posY == i && state == SPELEN) {
 
         cout << " [" << karakter << "] ";
       } else {
@@ -225,22 +296,25 @@ void Puzzel::maakSchoon() {
   }
 }
 
-void Puzzel::speel(char input) {
+void Puzzel::spelen(char input) {
   switch (input) {
-  case 'd':
+  case 'D':
     beweeg(1, 0);
     break;
-  case 'a':
+  case 'A':
     beweeg(-1, 0);
     break;
-  case 'w':
+  case 'W':
     beweeg(0, -1);
     break;
-  case 's':
+  case 'S':
     beweeg(0, 1);
     break;
-  case 'e':
+  case 'E':
     klik();
+    break;
+  case 'T':
+    setState(PUZZEL);
     break;
   }
 }
@@ -270,19 +344,8 @@ void Puzzel::klik() {
 }
 
 int main() {
-
-  Puzzel game;
-  game.bordTekenen();
-  bool stoppen = false;
-  char input = '\0';
-
-  while (!stoppen) {
-    input = leesOptie();
-
-    game.inputHandler(input);
-    game.updateScherm();
-    // cout << game.getState();
-  }
+  Puzzel game = Puzzel();
+  game.start();
 
   return 0;
 }
