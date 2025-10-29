@@ -23,7 +23,7 @@ int leesGetal(int max) {
   while (cin.get(karakter) && karakter != '\n') {
     if (karakter >= '0' && karakter <= '9') {
       resultaat = resultaat * 10 + (karakter - '0');
-      if (resultaat > max)
+      if (resultaat >= max)
         resultaat = max;
     }
   }
@@ -228,7 +228,15 @@ void Puzzel::inputParameterMenu(char input) {
   }
 }
 
-void Puzzel::volg() { return; }
+void Puzzel::volg() {
+  for (int i = 1; i < hoogte; i++) {
+    for (int j = 0; j < breedte; j++) {
+      if (lampen[i - 1][j]) {
+        klik();
+      }
+    }
+  }
+}
 void Puzzel::losOp() { return; }
 
 void Puzzel::inputPuzzelMenu(char input) {
