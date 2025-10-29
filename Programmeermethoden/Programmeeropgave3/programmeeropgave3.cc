@@ -47,6 +47,7 @@ private:
   int proportieLampenAan = 50;
   int posX = 0;
   int posY = 0;
+  bool isTorus = false;
   char karakterLampAan = 'o';
   char karakterLampUit = 'x';
   bool lampen[MAX_HOOGTE][MAX_BREEDTE];
@@ -71,7 +72,6 @@ public:
   void spelen(char input);
   void volg();
   void losOp();
-  void torus();
   void pen();
 
   void menuText();
@@ -88,8 +88,8 @@ public:
   void vraagHoogte();
   void vraagBreedte();
   void vraagProportie();
-  void vraagAan();
-  void vraagUit();
+  void veranderKarakterAan();
+  void veranderKarakterUit();
 };
 void Puzzel::start() {
   system("clear");
@@ -104,7 +104,6 @@ void Puzzel::start() {
   }
 }
 void Puzzel::pen() {};
-void Puzzel::torus() {};
 void Puzzel::setKarakterLampAan(char nieuweKarakter) {
   karakterLampAan = nieuweKarakter;
 }
@@ -142,7 +141,7 @@ void Puzzel::vraagBreedte() {
   setBreedte(temp);
 }
 
-void Puzzel::vraagAan() {
+void Puzzel::veranderKarakterAan() {
   char temp;
   cout << "Karakter voor lamp aan: ";
   temp = leesOptie();
@@ -194,7 +193,12 @@ void Puzzel::inputHoofdmenu(char input) {
   }
 }
 
-void Puzzel::vraagUit() { return; }
+void Puzzel::veranderKarakterUit() {
+  char temp;
+  cout << "Karakter voor lamp uit: ";
+  temp = leesOptie();
+  setKarakterLampUit(temp);
+}
 
 void Puzzel::inputParameterMenu(char input) {
   switch (input) {
@@ -208,13 +212,13 @@ void Puzzel::inputParameterMenu(char input) {
     vraagProportie();
     break;
   case 'A':
-    vraagAan();
+    veranderKarakterAan();
     break;
   case 'U':
-    vraagUit();
+    veranderKarakterUit();
     break;
   case 'O':
-    torus();
+    isTorus = !isTorus;
     break;
   case 'P':
     pen();
@@ -330,6 +334,14 @@ void Puzzel::beweeg(int dx, int dy) {
 }
 
 void Puzzel::flipLamp(int x, int y) {
+  if (isTorus) {
+    if (x < 0) {
+      x = (x + breedte) % breedte;
+    }
+    if (y < 0) {
+      y = (y + hoogte) % hoogte;
+    }
+  }
   if (y >= 0 && y < hoogte && x >= 0 && x < breedte) {
     lampen[y][x] = !lampen[y][x];
   }
