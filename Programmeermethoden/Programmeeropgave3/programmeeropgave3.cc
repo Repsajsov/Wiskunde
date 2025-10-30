@@ -1,7 +1,15 @@
 #include <cstdlib>
+#include <ctime>
 #include <iostream>
+#include <unistd.h>
 
 using namespace std;
+
+void wissel(int &x, int &y) {
+  int temp = x;
+  x = y;
+  y = temp;
+}
 
 char leesOptie() {
   char resultaat;
@@ -42,20 +50,26 @@ private:
     PUZZEL,
     SPELEN,
   };
+  long seed = time(0);
   int breedte = 5;
   int hoogte = 5;
   int proportieLampenAan = 50;
   int posX = 0;
   int posY = 0;
   bool isTorus = false;
-  char karakterLampAan = 'o';
-  char karakterLampUit = 'x';
+  char karakterLampAan = '0';
+  char karakterLampUit = '.';
   bool lampen[MAX_HOOGTE][MAX_BREEDTE];
+  bool oplossing[MAX_HOOGTE][MAX_BREEDTE];
   bool eindigSpel = false;
   State state = HOOFDMENU;
 
 public:
   Puzzel();
+  void randomArray(int grootte, int array[]);
+  void resetPos();
+  void resetOplossing();
+  int randomGetal();
   void start();
   void bordTekenen();
   void maakSchoon();
@@ -68,15 +82,22 @@ public:
   void inputHoofdmenu(char input);
   void inputParameterMenu(char input);
   void inputPuzzelMenu(char input);
+  void inputTekenMenu(char input);
 
+  void toggle(char input);
   void spelen(char input);
   void volg();
   void losOp();
   void pen();
 
+  void randomBord();
+  void genereerBord();
+  void speelOplossing();
+
   void menuText();
   // setters
   void setState(State newState) { state = newState; }
+  // void setState(GameState newState) { state = newState; }
   void setHoogte(int nieuweHoogte);
   void setBreedte(int nieuweBreedte);
   void setProportieLampenAan(int nieuweProportie);
@@ -91,8 +112,19 @@ public:
   void veranderKarakterAan();
   void veranderKarakterUit();
 };
+
+void Puzzel::setKarakterLampUit(char nieuweKarakter) {
+  karakterLampUit = nieuweKarakter;
+}
+
+void Puzzel::resetPos() {
+  posX = 0;
+  posY = 0;
+}
+
 void Puzzel::start() {
   system("clear");
+  genereerBord();
   bordTekenen();
   char input = '\0';
 
@@ -106,6 +138,97 @@ void Puzzel::start() {
 void Puzzel::pen() {};
 void Puzzel::setKarakterLampAan(char nieuweKarakter) {
   karakterLampAan = nieuweKarakter;
+}
+
+int Puzzel::randomGetal() {
+  seed = (221 * seed + 1) % 1000;
+  return seed;
+}
+
+void Puzzel::randomArray(int grootte, int array[]) {
+  for (int i = 0; i < grootte; i++) {
+    int r = i + randomGetal() % (grootte - i);
+    wissel(array[i], array[r]);
+  }
+}
+
+void Puzzel::randomBord() {
+  maakSchoon();
+  int aantalLampen = breedte * hoogte;
+  int getallen[aantalLampen];
+  for (int i = 0; i < aantalLampen; i++) {
+    getallen[i] = i;
+  }
+  int aantalLampenAan = (aantalLampen * proportieLampenAan) / 100;
+  randomArray(aantalLampen, getallen);
+
+  for (int i = 0; i < aantalLampenAan; i++) {
+    int rij = getallen[i] / breedte;
+    int kolom = getallen[i] % breedte;
+    lampen[rij][kolom] = true;
+  }
+}
+void Puzzel::resetOplossing() {
+  for (int i = 0; i < MAX_HOOGTE; i++) {
+    for (int j = 0; j < MAX_BREEDTE; j++) {
+      oplossing[i][j] = false;
+    }
+  }
+}
+void Puzzel::speelOplossing() {
+
+  for (int i = 0; i < hoogte; i++) {
+    for (int j = 0; j < breedte; j++) {
+      if (oplossing[i][j]) {
+        posX = j;
+        posY = i;
+        klik();
+        sleep(1);
+        updateScherm();
+      }
+    }
+  }
+}
+
+void Puzzel::genereerBord() {
+  maakSchoon();
+  int aantalLampen = breedte * hoogte;
+  int getallen[aantalLampen];
+  for (int i = 0; i < aantalLampen; i++) {
+    getallen[i] = i;
+  }
+  randomArray(aantalLampen, getallen);
+  cout << "Moeilijksheidsgraad (1-" << aantalLampen << ") :";
+  int moeilijkheidsgraad = leesGetal(aantalLampen);
+
+  resetOplossing();
+  for (int i = 0; i < moeilijkheidsgraad; i++) {
+    posY = getallen[i] / breedte;
+    posX = getallen[i] % breedte;
+    oplossing[posY][posX] = true;
+    klik();
+  }
+  resetPos();
+}
+
+void Puzzel::inputTekenMenu(char input) {
+  switch (input) {
+  case 'S':
+    maakSchoon();
+    break;
+  case 'R':
+    randomBord();
+    break;
+  case 'O':
+    setState(TOGGLE);
+    break;
+  case 'G':
+    genereerBord();
+    break;
+  case 'T':
+    setState(HOOFDMENU);
+    break;
+  }
 }
 
 void Puzzel::setHoogte(int nieuweHoogte) {
@@ -160,11 +283,18 @@ void Puzzel::menuText() {
   case HOOFDMENU:
     cout << "[P]arameters | p[U]zzelmenu | [T]ekenmenu | [S]toppen" << endl;
     break;
+  case TEKEN:
+    cout << "[S]choon | [R]andom | T[O]ggle | [G]enereer | [T]erug" << endl;
+    break;
   case PUZZEL:
     cout << "[V]olg | [L]os 5x5 | [S]peel oplossing | S[P]elen | [T]erug"
          << endl;
     break;
   case SPELEN:
+    cout << "[W]omhoog | [A]links | [S]omlaag | [D]rechts |[E]klik | [T]erug"
+         << endl;
+    break;
+  case TOGGLE:
     cout << "[W]omhoog | [A]links | [S]omlaag | [D]rechts |[E]klik | [T]erug"
          << endl;
     break;
@@ -222,6 +352,7 @@ void Puzzel::inputParameterMenu(char input) {
     break;
   case 'P':
     pen();
+    break;
   case 'T':
     setState(HOOFDMENU);
     break;
@@ -232,20 +363,66 @@ void Puzzel::volg() {
   for (int i = 1; i < hoogte; i++) {
     for (int j = 0; j < breedte; j++) {
       if (lampen[i - 1][j]) {
+        posX = j;
+        posY = i;
         klik();
+        updateScherm();
+        sleep(1);
       }
     }
   }
+  resetPos();
 }
-void Puzzel::losOp() { return; }
+void Puzzel::losOp() {
+  if (hoogte != 5 || breedte != 5) {
+    return;
+  }
+  bool isLeeg = true;
+  bool lampenStart[hoogte][breedte];
+  for (int i = 0; i < hoogte; i++) {
+    for (int j = 0; j < breedte; j++) {
+      lampenStart[i][j] = lampen[i][j];
+    }
+  }
+  posY = 0;
+  for (int p = 0; p < 32; p++) {
+    for (int j = 0; j < breedte; j++) {
+      if (p & (1 << j)) {
+        posX = j;
+        klik();
+      }
+    }
+    volg();
+    isLeeg = true;
+    for (int j = 0; j < breedte; j++) {
+      if (lampen[hoogte - 1][j] == true) {
+        isLeeg = false;
+        break;
+      }
+    }
+    if (isLeeg) {
+      return;
+    } else {
+      for (int i = 0; i < hoogte; i++) {
+        for (int j = 0; j < breedte; j++) {
+          lampen[i][j] = lampenStart[i][j];
+        }
+      }
+    }
+  }
+  resetPos();
+}
 
 void Puzzel::inputPuzzelMenu(char input) {
   switch (input) {
   case 'V':
     volg();
     break;
-  case 'S':
+  case 'L':
     losOp();
+    break;
+  case 'S':
+    speelOplossing();
     break;
   case 'P':
     setState(SPELEN);
@@ -266,8 +443,15 @@ void Puzzel::inputHandler(char input) {
   case PUZZEL:
     inputPuzzelMenu(input);
     break;
+  case TEKEN:
+    inputTekenMenu(input);
+    break;
   case SPELEN:
     spelen(input);
+    break;
+  case TOGGLE:
+    toggle(input);
+    break;
   }
 }
 
@@ -288,7 +472,7 @@ void Puzzel::bordTekenen() {
       } else {
         karakter = karakterLampUit;
       }
-      if (posX == j && posY == i && state == SPELEN) {
+      if (posX == j && posY == i && (state == SPELEN || state == TOGGLE)) {
 
         cout << " [" << karakter << "] ";
       } else {
@@ -305,6 +489,29 @@ void Puzzel::maakSchoon() {
     for (int j = 0; j < MAX_BREEDTE; j++) {
       lampen[i][j] = false;
     }
+  }
+}
+
+void Puzzel::toggle(char input) {
+  switch (input) {
+  case 'D':
+    beweeg(1, 0);
+    break;
+  case 'A':
+    beweeg(-1, 0);
+    break;
+  case 'W':
+    beweeg(0, -1);
+    break;
+  case 'S':
+    beweeg(0, 1);
+    break;
+  case 'E':
+    lampen[posY][posX] = !lampen[posY][posX];
+    break;
+  case 'T':
+    setState(TEKEN);
+    break;
   }
 }
 
