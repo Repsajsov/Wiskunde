@@ -63,13 +63,17 @@ private:
   char karakterLampAan = '0';
   char karakterLampUit = '.';
   bool lampen[MAX_HOOGTE][MAX_BREEDTE];
+  bool lampenStart[MAX_HOOGTE][MAX_BREEDTE];
   bool oplossing[MAX_HOOGTE][MAX_BREEDTE];
+
   bool eindigSpel = false;
   State state = HOOFDMENU;
 
 public:
   Puzzel();
   void randomArray(int grootte, int array[]);
+  void kopieArray(bool array1[MAX_HOOGTE][MAX_BREEDTE],
+                  bool array2[MAX_HOOGTE][MAX_BREEDTE]);
   void resetPos();
   int randomGetal();
   void start();
@@ -77,7 +81,7 @@ public:
   void maakSchoon();
   void updateScherm();
   void beweeg(int dx, int dy);
-  void klik();
+  void klik(int x, int y);
   void flipLamp(int x, int y);
   // input
   void inputHandler(char input);
@@ -169,16 +173,25 @@ void Puzzel::randomBord() {
     int rij = getallen[i] / breedte;
     int kolom = getallen[i] % breedte;
     lampen[rij][kolom] = true;
+    lampenStart[rij][kolom] = true;
   }
 }
-void Puzzel::speelOplossing() {
 
+void Puzzel::kopieArray(bool array1[MAX_HOOGTE][MAX_BREEDTE],
+                        bool array2[MAX_HOOGTE][MAX_BREEDTE]) {
+  for (int i = 0; i < hoogte; i++) {
+    for (int j = 0; j < breedte; j++) {
+      array1[i][j] = array2[i][j];
+    }
+  }
+}
+
+void Puzzel::speelOplossing() {
+  kopieArray(lampen, lampenStart);
   for (int i = 0; i < hoogte; i++) {
     for (int j = 0; j < breedte; j++) {
       if (oplossing[i][j]) {
-        posX = j;
-        posY = i;
-        klik();
+        klik(j, i);
         sleep(1);
         updateScherm();
       }
@@ -198,12 +211,12 @@ void Puzzel::genereerBord() {
   int moeilijkheidsgraad = leesGetal(aantalLampen);
 
   for (int i = 0; i < moeilijkheidsgraad; i++) {
-    posY = getallen[i] / breedte;
-    posX = getallen[i] % breedte;
-    oplossing[posY][posX] = true;
-    klik();
+    int rij = getallen[i] / breedte;
+    int kolom = getallen[i] % breedte;
+    oplossing[rij][kolom] = true;
+    klik(kolom, rij);
   }
-  resetPos();
+  kopieArray(lampenStart, lampen);
 }
 
 void Puzzel::inputTekenMenu(char input) {
@@ -294,7 +307,8 @@ void Puzzel::menuText() {
          << endl;
     break;
   case PARAMETER:
-    cout << "[H]oogte | [B]reedte | [R]andom | [A]an | [U]it | T[O]rus | [P]en "
+    cout << "[H]oogte | [B]reedte | [R]andom | [A]an | [U]it | T[O]rus | "
+            "[P]en "
             "| [T]erug"
          << endl;
     break;
@@ -358,33 +372,22 @@ void Puzzel::volg() {
   for (int i = 1; i < hoogte; i++) {
     for (int j = 0; j < breedte; j++) {
       if (lampen[i - 1][j]) {
-        posX = j;
-        posY = i;
-        klik();
+        klik(j, i);
         updateScherm();
         sleep(1);
       }
     }
   }
-  resetPos();
 }
 void Puzzel::losOp() {
   if (hoogte != 5 || breedte != 5) {
     return;
   }
   bool isLeeg = true;
-  bool lampenStart[hoogte][breedte];
-  for (int i = 0; i < hoogte; i++) {
-    for (int j = 0; j < breedte; j++) {
-      lampenStart[i][j] = lampen[i][j];
-    }
-  }
-  posY = 0;
   for (int p = 0; p < 32; p++) {
     for (int j = 0; j < breedte; j++) {
       if (p & (1 << j)) {
-        posX = j;
-        klik();
+        klik(0, j);
       }
     }
     volg();
@@ -477,6 +480,7 @@ void Puzzel::maakSchoon() {
   for (int i = 0; i < MAX_HOOGTE; i++) {
     for (int j = 0; j < MAX_BREEDTE; j++) {
       lampen[i][j] = false;
+      lampenStart[i][j] = false;
       oplossing[i][j] = false;
     }
   }
@@ -520,7 +524,7 @@ void Puzzel::spelen(char input) {
     beweeg(0, 1);
     break;
   case 'E':
-    klik();
+    klik(posX, posY);
     break;
   case 'T':
     setState(PUZZEL);
@@ -552,12 +556,12 @@ void Puzzel::flipLamp(int x, int y) {
   }
 }
 
-void Puzzel::klik() {
-  flipLamp(posX, posY);
-  flipLamp(posX - 1, posY);
-  flipLamp(posX + 1, posY);
-  flipLamp(posX, posY - 1);
-  flipLamp(posX, posY + 1);
+void Puzzel::klik(int x, int y) {
+  flipLamp(x, y);
+  flipLamp(x - 1, y);
+  flipLamp(x + 1, y);
+  flipLamp(x, y - 1);
+  flipLamp(x, y + 1);
 }
 
 int main() {
