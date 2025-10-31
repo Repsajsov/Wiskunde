@@ -58,6 +58,7 @@ private:
   int proportieLampenAan = 50;
   int posX = 0;
   int posY = 0;
+  int pen = 0;
   bool isTorus = false;
   char karakterLampAan = '0';
   char karakterLampUit = '.';
@@ -93,7 +94,6 @@ public:
   void spelen(char input);
   void volg();
   void losOp();
-  void pen();
 
   void randomBord();
   void genereerBord();
@@ -116,6 +116,7 @@ public:
   void vraagProportie();
   void veranderKarakterAan();
   void veranderKarakterUit();
+  void vraagPenModus();
 };
 
 void Puzzel::setKarakterLampUit(char nieuweKarakter) {
@@ -139,9 +140,6 @@ void Puzzel::start() {
     updateScherm();
   }
 }
-void Puzzel::pen() {
-  // moet nog doen...
-};
 void Puzzel::setKarakterLampAan(char nieuweKarakter) {
   karakterLampAan = nieuweKarakter;
 }
@@ -337,6 +335,13 @@ void Puzzel::veranderKarakterUit() {
   temp = leesOptie();
   setKarakterLampUit(temp);
 }
+void Puzzel::vraagPenModus() {
+  int temp;
+  cout << "Verander Pen modus\n-0 geen pen modus\n-1 alle lampen aan\n-2 alle "
+          "lampen uit\n\nGeef Pen modus: ";
+  temp = leesGetal(3);
+  pen = temp;
+}
 
 void Puzzel::inputParameterMenu(char input) {
   switch (input) {
@@ -359,7 +364,7 @@ void Puzzel::inputParameterMenu(char input) {
     isTorus = !isTorus;
     break;
   case 'P':
-    pen();
+    vraagPenModus();
     break;
   case 'T':
     setState(HOOFDMENU);
@@ -500,11 +505,18 @@ void Puzzel::toggle(char input) {
     beweeg(0, 1);
     break;
   case 'E':
-    lampen[posY][posX] = !lampen[posY][posX];
+    if (pen == 0) {
+      lampen[posY][posX] = !lampen[posY][posX];
+    }
     break;
   case 'T':
     setState(TEKEN);
     break;
+  }
+  if (pen == 1) {
+    lampen[posY][posX] = true;
+  } else if (pen == 2) {
+    lampen[posY][posX] = false;
   }
 }
 
