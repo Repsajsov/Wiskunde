@@ -5,6 +5,9 @@
 
 using namespace std;
 
+// FIX DIE RARE KLIK() --> KLIK(X, Y) miss met overloading..
+// MAAK PEN FUNCTIE daarna!
+
 void wissel(int &x, int &y) {
   int temp = x;
   x = y;
@@ -68,7 +71,6 @@ public:
   Puzzel();
   void randomArray(int grootte, int array[]);
   void resetPos();
-  void resetOplossing();
   int randomGetal();
   void start();
   void bordTekenen();
@@ -124,7 +126,6 @@ void Puzzel::resetPos() {
 
 void Puzzel::start() {
   system("clear");
-  genereerBord();
   bordTekenen();
   char input = '\0';
 
@@ -135,7 +136,9 @@ void Puzzel::start() {
     updateScherm();
   }
 }
-void Puzzel::pen() {};
+void Puzzel::pen() {
+  // moet nog doen...
+};
 void Puzzel::setKarakterLampAan(char nieuweKarakter) {
   karakterLampAan = nieuweKarakter;
 }
@@ -168,13 +171,6 @@ void Puzzel::randomBord() {
     lampen[rij][kolom] = true;
   }
 }
-void Puzzel::resetOplossing() {
-  for (int i = 0; i < MAX_HOOGTE; i++) {
-    for (int j = 0; j < MAX_BREEDTE; j++) {
-      oplossing[i][j] = false;
-    }
-  }
-}
 void Puzzel::speelOplossing() {
 
   for (int i = 0; i < hoogte; i++) {
@@ -201,7 +197,6 @@ void Puzzel::genereerBord() {
   cout << "Moeilijksheidsgraad (1-" << aantalLampen << ") :";
   int moeilijkheidsgraad = leesGetal(aantalLampen);
 
-  resetOplossing();
   for (int i = 0; i < moeilijkheidsgraad; i++) {
     posY = getallen[i] / breedte;
     posX = getallen[i] % breedte;
@@ -455,13 +450,7 @@ void Puzzel::inputHandler(char input) {
   }
 }
 
-Puzzel::Puzzel() {
-  for (int i = 0; i < hoogte; i++) {
-    for (int j = 0; j < breedte; j++) {
-      lampen[i][j] = false;
-    }
-  }
-}
+Puzzel::Puzzel() { maakSchoon(); }
 
 void Puzzel::bordTekenen() {
   char karakter = '\0';
@@ -488,6 +477,7 @@ void Puzzel::maakSchoon() {
   for (int i = 0; i < MAX_HOOGTE; i++) {
     for (int j = 0; j < MAX_BREEDTE; j++) {
       lampen[i][j] = false;
+      oplossing[i][j] = false;
     }
   }
 }
