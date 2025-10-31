@@ -5,7 +5,6 @@
 
 using namespace std;
 
-// FIX DIE RARE KLIK() --> KLIK(X, Y) miss met overloading..
 // MAAK PEN FUNCTIE daarna!
 
 void wissel(int &x, int &y) {
