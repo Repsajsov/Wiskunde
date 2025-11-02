@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\cn}[1]{\cancel{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rho}{\mathcal{P}}
+\newcommand{\en}{\tx{ en }}
+\newcommand{\of}{\tx{ of }}
+\newcommand{\geldt}{\tx{ geldt }}
+\newcommand{\dan}{\tx{ dan }}
+\newcommand{\als}{\tx{ als }}
+\newcommand{\zdd}{\tx{ zodanig dat }}
+
+\begin{document}
+
+{\Large \textbf{Wiskundige Structuren}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 6} \hfill \today \\
+Studentnr: \emph{s2911159}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\section*{Opgave 1}
+
+\begin{enumerate}[label=\alph*)]
+    \item
+
+    \begin{itemize}
+        \item \emph{Basisstap: $n = 1$}
+
+        Te bewijzen: $a_1 > a_0$. We weten $a_0 = \log_2(12)$, en $a_1 = a_{0 + 1} = \log_2(a_0 +12) = \log_2(\log_2(12) + 12)$.
+        
+        Nu moeten we laten zien dat: 
+        \[\log_2(\log_2(12) + 12) > \log_2(12)\]
+        Merk op dat $3 < \log_2(12)$ als we dit gebruiken dan:
+        \[\log_2(\log_2(12) + 12) > \log_2(3 + 12) > \log_2(12)\]
+        We kunnen hier dus aflezen dat $\log_2(15) > \log_2(12)$ omdat $\log_2$ strikt stijgend is, en omdat
+        $\log_2(15) < \log_2(\log_2(12) + 12)$. Via transitiviteit van ordening $>$ geldt:
+
+        \[\log_2(\log_2(12) + 12) > \log_2(12) \iff a_1 > a_0\]
+
+        \item \emph{Inductie-hypothese: }
+
+        We nemen aan dat de stelling voor $n = k$ geldt ofwel dat $a_k > a_{k-1}$.
+        Vanuit de inductie-hypothese bouwen we naar de volgende termen. 
+
+        \begin{align*}
+            a_k &> a_{k-1} \\
+            a_k + 12 &> a_{k-1} + 12 \\
+            \log_2(a_k + 12) &> \log_2(a_{k-1} + 12) 
+        \end{align*}
+        Merk op dat dit overeen komt met de definitie van $a_{k+1}$ en $a_k$, en dus:
+        \[ \log_2(a_k + 12) > \log_2(a_{k-1} + 12) \iff \a_{k + 1} > \a_k \]
+    \end{itemize}
+\end{enumerate}
+
+\section*{Opgave 2} 
+
+\begin{enumerate}[label=\alph*)]
+    \item 
+\end{enumerate}
+
+\end{document}
