@@ -41,7 +41,8 @@ Studentnr: \emph{s2911159}
 
 \begin{enumerate}[label=\alph*)]
     \item
-
+    \begin{proof}
+    ~\\
     \begin{itemize}
         \item \emph{Basisstap: $n = 1$}
 
@@ -54,21 +55,63 @@ Studentnr: \emph{s2911159}
         We kunnen hier dus aflezen dat $\log_2(15) > \log_2(12)$ omdat $\log_2$ strikt stijgend is, en omdat
         $\log_2(15) < \log_2(\log_2(12) + 12)$. Via transitiviteit van ordening $>$ geldt:
 
-        \[\log_2(\log_2(12) + 12) > \log_2(12) \iff a_1 > a_0\]
+        \[\log_2(\log_2(12) + 12) > \log_2(12) \iff \boxed{a_1 > a_0}\]
 
         \item \emph{Inductie-hypothese: }
 
         We nemen aan dat de stelling voor $n = k$ geldt ofwel dat $a_k > a_{k-1}$.
         Vanuit de inductie-hypothese bouwen we naar de volgende termen. 
-
         \begin{align*}
             a_k &> a_{k-1} \\
             a_k + 12 &> a_{k-1} + 12 \\
             \log_2(a_k + 12) &> \log_2(a_{k-1} + 12) 
         \end{align*}
         Merk op dat dit overeen komt met de definitie van $a_{k+1}$ en $a_k$, en dus:
-        \[ \log_2(a_k + 12) > \log_2(a_{k-1} + 12) \iff \a_{k + 1} > \a_k \]
+        \[ \log_2(a_k + 12) > \log_2(a_{k-1} + 12) \iff \boxed{a_{k + 1} > a_k} \]
+        Hieruit volgt dus dat de stelling voor elke $n \in \Z_{\geq 0}$ geldt, en daarmee is $a_n$ strikt stijgend.
     \end{itemize}
+    \end{proof}
+    \item 
+    \begin{proof}
+        ~\\
+        \begin{itemize}
+        \item \emph{Basisstap: $n = 1$}
+
+        Te bewijzen $a_1 < 4$. We weten dat $a_1 = a_{0 + 1} = \log_2(a_0 + 12) = \log_2(\log_2(12) + 12)$.
+        Merk op dat $a_0 = \log_2(12) < \log_2(16) = 4$, en dus is $a_0 < 4$ waaruit volgt:
+        \[\log_2(a_0 + 12) < \log_2(4 + 12) \iff \boxed{a_1 < 4} \]
+        $4$ is dus een bovengrens van $a_1$.
+
+        \item \emph{Inductie-hypothese: }
+
+        We nemen aan dat de stelling voor $n = k$ geldt ofwel dat $a_k < 4$.
+        We gebruiken dezelfde truuk als bij de basisstap.
+        Merk op dat $a_k < 4 = \log_2(16)$, weten we dus dat: 
+        \begin{align*}
+        a_{k+1} &= \log_2(a_k + 12) \\ 
+        &< \log_2(4 + 12) = 4 \iff \boxed{a_{k + 1} < 4}
+        \end{align*}
+        Dus $4$ is een bovengrens van $a_{k+1}$.
+
+        Hieruit volgt dat voor alle $n \in \Z_{\geq 0}$ dat $4$ een bovengrens is van $a_n$.
+
+        \end{itemize}
+    \end{proof}
+    \pagebreak
+    \item Merk op dat $a_n$ van boven begrensd is omdat voor alle $n$ geldt dat $4$ een bovengrens is (\emph{vraag 1b}) en dat $a_n$ strikt stijgend is (\emph{vraag 1a}).
+    Dit betekent dat $a_n$ convergent moet zijn volgens de monotone convergentiestelling. De limiet van deze rij is dus het $\sup(a_n)$.
+    \begin{proof}   
+    \emph{Claim: $\sup(a_n) = 4$ }
+        \begin{itemize}
+            \item Te bewijzen: $4$ is een bovengrens. 
+
+            Vanuit \emph{vraag 1b} geldt dat $4$ een bovengrens is.
+            \item Te bewijzen: $4$ is de kleinste bovengrens is:
+
+
+        \end{itemize}
+    \end{proof}
+
 \end{enumerate}
 
 \section*{Opgave 2} 
