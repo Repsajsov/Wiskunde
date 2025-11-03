@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1762129364.52099 "/home/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerkset6/huiswerkset6.tex" "huiswerkset6.pdf" "huiswerkset6" 1762129365.07285 0
+["pdflatex"] 1762129403.938 "/home/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerkset6/huiswerkset6.tex" "huiswerkset6.pdf" "huiswerkset6" 1762129404.58061 0
   "/etc/texmf/web2c/texmf.cnf" 1757446605.82382 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerkset6/huiswerkset6.tex" 1762129364.2547 5609 ae51b5f33cb6e36130fc5d6cf135d82f ""
+  "/home/jaspervos/Wiskunde/WiskundigeStructuren/Huiswerk/Huiswerkset6/huiswerkset6.tex" 1762129403.64527 5619 ddf858c01c598e7384e31e46d4eadc91 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -56,8 +56,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1757446629.09984 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1757446697 8212830 740bee7d723266b3ee93681b5f7463c7 ""
-  "huiswerkset6.aux" 1762129365.01491 130 39353acbd12ce4c61fe15e390d09ca31 "pdflatex"
-  "huiswerkset6.tex" 1762129364.2547 5609 ae51b5f33cb6e36130fc5d6cf135d82f ""
+  "huiswerkset6.aux" 1762129404.51328 130 39353acbd12ce4c61fe15e390d09ca31 "pdflatex"
+  "huiswerkset6.tex" 1762129403.64527 5619 ddf858c01c598e7384e31e46d4eadc91 ""
   (generated)
   "huiswerkset6.aux"
   "huiswerkset6.log"
