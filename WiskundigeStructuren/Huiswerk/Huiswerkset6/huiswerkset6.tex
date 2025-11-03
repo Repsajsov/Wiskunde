@@ -112,19 +112,43 @@ Studentnr: \emph{s2911159}
           \end{align*}
           Bekijk de eerste resultaten van $2^L$, en neem $L = 4$.
           \[2^4 = 4 + 12 \iff 16 = 16\]
-          Hieruit volgt dus dat $4$ het limiet is van de rij.
+          Hieruit volgt dat $4$ het limiet is.
 \end{enumerate}
 
 \section*{Opgave 2}
 
 \begin{enumerate}[label=\alph*)]
-    \item Kies een willekeurige $M \in \R$, omdat $a_n$ niet begrensd is
+    \item
+    \begin{proof}
+        ~\\
+
+        Kies een willekeurige $M \in \R$, omdat $a_n$ niet begrensd is
           bestaat er een $N \in \N$ zodanig dat $a_n > M$. Merk ook op dat $a_n$ strikt stijgend is en dus
           voor alle $n \geq N$ geldt dan $a_n \geq a_N$, en dus:
           \[\forall M \in \R \ \exists N \in \N \tx{ met } n \geq N \zdd a_n > M\]
           Dit is de definitie van een divergente rij, en dus $\lim_{n \rightarrow \infty} a_n = \infty$.
+    \end{proof}
+    \item 
+    \begin{proof}
+        ~\\
+
+    Neem $r = 1 + h$ met $h > 0$ dan:
+    \begin{align*}
+        r^n &= (1 + h)^n \\
+        &\geq 1 + nh
+    \end{align*}
+    Laten we nu een willekeurige $M$ nemen, en vind een
+    $N$ met voor alle $n \geq N$ zodanig dat
+    $1 + nh > M$. Kies \[\boxed{N > \f{M - 1}{h}}\] 
+    Laten we het controleren: $r^n \geq 1 + Nh > 1 + \f{M - 1}{h} \cdot h = 1 + M - 1 = M$, en dus moet $r^n$ een divergente rij zijn waarbij $\lim_{n \rightarrow \infty} r^n = \infty$.
+    \end{proof}
     \item
-    \item
+    \begin{proof}
+        ~\\
+
+        Merk op dat $b_n$ geen divergente rij is want $\lim_{n \rightarrow \infty} b_n \neq \infty$. Dit betekent dat er een $M$ bestaat waarbij $b_n < M$, en hieruit volgt dat $b_n$ begrensd is.
+        Omdat $b_n$ stijgend en begrensd is moet volgens de monotone convergentiestelling gelden dat $b_n$ convergent is.
+    \end{proof}
 \end{enumerate}
 
 \end{document}
