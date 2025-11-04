@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+
+{\Large \textbf{Lineaire Algebra}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 8} \hfill \today \\
+Studentnr: \emph{s2911159}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\section*{Opgave 7.1.8}
+
+We kunnen een matrix opstellen waarbij de rijen de functie $f_i$ voorstellen en $a_j$ de kolommen.
+
+\[
+    \begin{pmatrix}
+        f_0(a_0) & f_0(a_1) & f_0(a_2) & \dots  & f_0(a_n) \\
+        f_1(a_0) & f_1(a_1) & f_1(a_2) & \dots  & f_1(a_n) \\
+        f_2(a_0) & f_2(a_1) & f_2(a_2) & \dots  & f_2(a_n) \\
+        \vdots   & \vdots   & \vdots   & \ddots & \vdots   \\
+        f_n(a_0) & f_n(a_1) & f_n(a_2) & \dots  & f_n(a_n)
+    \end{pmatrix}
+\]
+Met de voorwaarde die we hebben gekregen voor elke $f$:
+\[
+    f_i(a_j) =
+    \begin{cases}
+        1 & \text{als j $\geq$ i} \\
+        0
+    \end{cases}
+\]
+krijgen we:
+\[
+    \begin{pmatrix}
+        1      & 0      & 0      & \dots  & 0      \\
+        1      & 1      & 0      & \dots  & 0      \\
+        1      & 1      & 1      & \dots  & 0      \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1      & 1      & 1      & 1      & 1
+    \end{pmatrix}
+\]
+Met rij-reductie kunnen we $R_2 = R_2 - R_1$.
+\[
+    \begin{pmatrix}
+        1      & 0      & 0      & \dots  & 0      \\
+        0      & 1      & 0      & \dots  & 0      \\
+        1      & 1      & 1      & \dots  & 0      \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1      & 1      & 1      & 1      & 1
+    \end{pmatrix}
+\]
+Met rij-reductie kunnen we $R_3 = R_3 - R_2 - R_1$.
+\[
+    \begin{pmatrix}
+        1      & 0      & 0      & \dots  & 0      \\
+        0      & 1      & 0      & \dots  & 0      \\
+        0      & 0      & 1      & \dots  & 0      \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1      & 1      & 1      & 1      & 1
+    \end{pmatrix}
+\]
+Merk op dat je dit $n$ keer kan doen en dan krijg je de identiteitsmatrix waaruit volgt dat het linear onafhankelijk is.
+
+
+
+\end{document}
