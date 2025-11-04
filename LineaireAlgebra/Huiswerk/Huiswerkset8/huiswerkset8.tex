@@ -150,9 +150,48 @@ Zet $v_1$ als $R_1$ en $v_2$ als $R_2$ en reduceer:
 }
 \end{align*}
 \subsection*{Conclusie}
-Met rij-reductie zien we dus dat de matrix $2$ spillen heeft en daarmee een rang van $2$. Hieruit volgt 
+Met rij-reductie zien we dus dat de matrix $2$ pivots heeft en daarmee een rang van $2$. Hieruit volgt 
 dat $v_1, \ v_2$ lineair onafhankelijk zijn.
-
+\pagebreak
 \section*{Opgave 7.3.3(3)}
+\subsection*{Idee}
+Aangezien we weten dat $dim(V) = 3$, hebben we $3$ onafhankelijke vectoren nodig voor een basis.
+We hebben al $v_1$ en $v_2$ uit \emph{Opgave 7.3.3(2)}, en kiezen
+ $v_3 = (-1, 0, 0, 1)$ die we hebben gevonden in \emph{Opgave 7.3.3(1)}.
+We stellen de matrix op en reduceren om te verifiëren of de rang gelijk is aan $3$.
+\subsection*{Rij-reductie}
+We zetten de vectoren $v_1, \ v_2$, en $v_3$ in de matrix en reduceren: 
+\begin{align*}
+    \begin{pmatrix}
+        -1 & 0 & 0 & 1 \\
+        2 & -3 & -1 & 2 \\
+        1 & 0 &1 & -2 
+    \end{pmatrix}
+    &\xrightarrow{R_3 = R_3 + R_1}
+    \begin{pmatrix}
+        -1 & 0 & 0 & 1 \\
+        2 & -3 & -1 & 2 \\
+        0 & 0 &1 & -1 \\ 
+    \end{pmatrix} \\
+    &\xrightarrow{R_2 = R_2 + 2R_1}
+    \begin{pmatrix}
+        -1 & 0 & 0 & 1 \\
+        0 & -3 & -1 & 4 \\
+        0 & 0 &1 & -1 \\ 
+    \end{pmatrix} \\
+    &\xrightarrow{R_1 = -R_1, \ R_2 = -\frac{1}{3}R_2}
+    \boxed{\begin{pmatrix}
+        1 & 0 & 0 & -1 \\
+        0 & 1 & \frac{1}{3} & -\frac{4}{3} \\
+        0 & 0 &1 & -1 \\ 
+    \end{pmatrix} }
+\end{align*}
+\subsection*{Conclusie}
+De matrix heeft $3$ pivots en dus is de rang van de matrix gelijk aan $3$. De vectoren zijn lineair onafhankelijk en vormen de basis:
+\[
+\boxed{
+V = \Big((-1, 0, 0, 1), \ (2, -3, -1, 2), \ (1, 0, 1, -2) \Big)
+}
+\]
 
 \end{document}
