@@ -24,11 +24,19 @@ Studentnr: \emph{s2911159}
 \bigskip
 
 \section*{Opgave 7.1.8}
+\subsection*{Idee}
+We moeten laten zien dat $f_0, f_1, \dots f_n$ lineair onafhankelijk zijn.
+Dit kunnen we doen door een matrix $A$ te construeren.
+Deze matrix $A$ bevat functies als rijen en de punten worden geëvalueerd als kolommen.
+Tot slot proberen we matrix $A$ met rij-reductie naar de identiteitsmatrix te krijgen.
+Dit toont aan dat de rang $n+1$ is en dus $n+1$ functies lineair onafhankelijk zijn.
 
-We kunnen een matrix opstellen waarbij de rijen de functie $f_i$ voorstellen en $a_j$ de kolommen.
 
+\subsection*{Constructie}
+\subsubsection*{Stap 1: Matrix opstellen}
+Definieer matrix $A$ met $A_{ij} = f_i(a_j)$:
 \[
-    \begin{pmatrix}
+    A =  \begin{pmatrix}
         f_0(a_0) & f_0(a_1) & f_0(a_2) & \dots  & f_0(a_n) \\
         f_1(a_0) & f_1(a_1) & f_1(a_2) & \dots  & f_1(a_n) \\
         f_2(a_0) & f_2(a_1) & f_2(a_2) & \dots  & f_2(a_n) \\
@@ -36,15 +44,27 @@ We kunnen een matrix opstellen waarbij de rijen de functie $f_i$ voorstellen en 
         f_n(a_0) & f_n(a_1) & f_n(a_2) & \dots  & f_n(a_n)
     \end{pmatrix}
 \]
-Met de voorwaarde die we hebben gekregen voor elke $f$:
-\[
+\subsubsection*{Stap 2: Voorwaarde toepassen}
+Gegeven is
+$
     f_i(a_j) =
     \begin{cases}
-        1 & \text{als j $\geq$ i} \\
-        0
+        1 & \text{, als $j \leq i$} \\
+        0 & \text{, als $j > i$}
     \end{cases}
+$
+, Herschrijf de matrix $A$:
+\[
+     A = \begin{pmatrix}
+        1      & 0      & 0      & \dots  & 0      \\
+        1      & 1      & 0      & \dots  & 0      \\
+        1      & 1      & 1      & \dots  & 0      \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1      & 1      & 1      & 1      & 1
+    \end{pmatrix}
 \]
-krijgen we:
+\subsubsection*{Stap 3: Rij-reductie}
+Met de operatie $R_2 = R_2 - R_1$, vervolgens $R_3 = R_3 - R_2 - R_1$, etc. Kunnen we $I_{n+1}$ construeren.
 \[
     \begin{pmatrix}
         1      & 0      & 0      & \dots  & 0      \\
@@ -53,9 +73,7 @@ krijgen we:
         \vdots & \vdots & \vdots & \ddots & \vdots \\
         1      & 1      & 1      & 1      & 1
     \end{pmatrix}
-\]
-Met rij-reductie kunnen we $R_2 = R_2 - R_1$.
-\[
+\xrightarrow{R_2 = R_2 - R_1}
     \begin{pmatrix}
         1      & 0      & 0      & \dots  & 0      \\
         0      & 1      & 0      & \dots  & 0      \\
@@ -63,19 +81,78 @@ Met rij-reductie kunnen we $R_2 = R_2 - R_1$.
         \vdots & \vdots & \vdots & \ddots & \vdots \\
         1      & 1      & 1      & 1      & 1
     \end{pmatrix}
-\]
-Met rij-reductie kunnen we $R_3 = R_3 - R_2 - R_1$.
-\[
+    \rightarrow \dots \xrightarrow{R_{n+1} = R_{n+1} - R_n - \dots - R_1} 
+    \boxed{
     \begin{pmatrix}
         1      & 0      & 0      & \dots  & 0      \\
         0      & 1      & 0      & \dots  & 0      \\
         0      & 0      & 1      & \dots  & 0      \\
         \vdots & \vdots & \vdots & \ddots & \vdots \\
-        1      & 1      & 1      & 1      & 1
+        0      & 0      &0      & 0      & 1
     \end{pmatrix}
+    }
 \]
-Merk op dat je dit $n$ keer kan doen en dan krijg je de identiteitsmatrix waaruit volgt dat het linear onafhankelijk is.
 
+\subsection*{Conclusie}
+Doordat we $I_{n+1}$ hebben geconstrueerd betekent dit dat we een matrix $A$ hebben met een rang van $n+1$, en dus  
+geldt $f_0, f_1, \dots f_n$ lineair onafhankelijk.
 
+\pagebreak
+\section*{Opgave 7.3.3(1)}
+\subsection*{Idee} 
+We proberen de dimensie te vinden door de basis van $V = \ker(a)$ te vinden.
+
+\subsection*{Basis van $V$}
+Neem $v \in V$, dan moet $\langle v, a\rangle = 0$ vanwege $V = a^\bot$.
+\[v = \langle(v_1, v_2, v_3, v_4), \ (1, 1, 1, 1)\rangle = 0 \iff  v_1 = -v_2 -v_3 -v_4 \]
+De algemene oplossing is:
+\[v = v_2(-1, 1, 0, 0) + v_3(-1, 0, 1, 0) + v_4(-1, 0, 0, 1) \]
+Met vrije parameters $v_2, \ v_3, \ v_4 \in \R$.
+
+Een basis voor $V$ is dus: 
+ \[\boxed{V = L\Big((-1, 1, 0, 0), (-1, 0, 1, 0), (-1, 0, 0, 1)\Big)}\]
+
+\subsection*{Conclusie}
+De basis bevat $3$ vectoren, en dus $\dim(V) = 3$.
+
+\section*{Opgave 7.3.3(2)}
+\subsection*{Idee}
+We checken of $v_1, \ v_2$ lineair onafhankelijk zijn door de vectoren als rijen in een matrix te zetten.
+Als de rang van deze matrix gelijk aan $2$ is dan zijn de vectoren lineair onafhankelijk.
+\subsection*{Rij-reductie}
+Zet $v_1$ als $R_1$ en $v_2$ als $R_2$ en reduceer:
+\begin{align*}
+\begin{pmatrix}
+    2 & -3 & -1 & 2 \\
+    -1 & 3 & 2 & -4
+\end{pmatrix}
+&\xrightarrow{R_2 = R_1 + R_2}
+\begin{pmatrix}
+    2 & -3 & -1 & 2 \\
+    1 & 0 & 1 & -2
+\end{pmatrix} \\
+&\xrightarrow{R_1 \rightleftarrows R_2}
+\begin{pmatrix}
+    1 & 0 & 1 & -2 \\
+    2 & -3 & -1 & 2
+\end{pmatrix}  \\
+&\xrightarrow{R_2 = R_2 - 2R_1}
+\begin{pmatrix}
+    1 & 0 & 1 & -2 \\
+    0 & -3 & -3 & 6 
+\end{pmatrix} \\
+&\xrightarrow{R_2 = -\frac{1}{3}R_2}
+\boxed{
+\begin{pmatrix}
+    1 & 0 & 1 & -2 \\
+    0 & 1 & 1 & -2
+\end{pmatrix}
+}
+\end{align*}
+\subsection*{Conclusie}
+Met rij-reductie zien we dus dat de matrix $2$ spillen heeft en daarmee een rang van $2$. Hieruit volgt 
+dat $v_1, \ v_2$ lineair onafhankelijk zijn.
+
+\section*{Opgave 7.3.3(3)}
 
 \end{document}
