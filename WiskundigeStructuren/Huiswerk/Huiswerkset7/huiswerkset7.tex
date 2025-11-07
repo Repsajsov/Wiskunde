@@ -30,7 +30,7 @@
 
 \bigskip
 
-\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 6} \hfill \today \\
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 7} \hfill \today \\
 Studentnr: \emph{s2911159}
 
 \rule{\textwidth}{2pt}
@@ -39,11 +39,44 @@ Studentnr: \emph{s2911159}
 
 \section*{Opgave 1}
 
-\subsection*{Idee}
-We gebruiken volledige inductie om te bewijzen dat $I_n$ leeg is voor alle $n \in \N$.
+We gebruiken volledige inductie om te bewijzen dat $I$ niet leeg is voor alle $n \in \N$.
+\begin{proof}
+    ~\\
+    \begin{itemize}
+        \item \emph{Basisstap: $n=0, \ n = 1$}
 
+              Voor $n=0$ is triviaal want $\mathcal{I}_0 := \bigcap_{0\geq 0} I_0 = I_0$, en $I_0$ is een niet-lege begrensde interval, dus $\mathcal{I}$ niet leeg.
 
+              Voor $n=1$ geldt $\mathcal{I}_1 := \bigcap_{1\geq i \geq0} I_i = I_0 \cap I_1$.
+
+              Laat $x\in I_1$ dan $x\in I_0$ want $I_1 \subset I_0$ en $I_1$ niet-leeg.
+              Hieruit volgt dus $x \in I_1 \cap I_0$, en dus $I_1 \cap I_0 \neq \emptyset$ waaruit volgt dat $\mathcal{I}$ niet-leeg is.
+        \item \emph{Inductie-hypothese:}
+
+              Neem nu $n=k$ en beschouw $\mathcal{I}_k$ niet-leeg. Laat zien dat voor $n = k+1$, geldt dat $\mathcal{I}_{k+1}$ niet-leeg is.
+
+              Voor $n=k$ geldt $\mathcal{I}_k+1 := \bigcap_{k+1 \geq i \geq 0} = I_{k+1} \cap I_k \cap I_{k-1} \cap \dots \cap I_0 = I_{k+1} \cap \mathcal{I}_k $.
+
+              Laat $x \in I_{k+1}$ dan $x \in I_k$ want $I_{k+1} \subset I_k \subset \mathcal{I}_k$, en dus $x \in I_{k+1} \cap \mathcal{I}_k$. Hieruit volgt dus dat $I_{k+1} \cap \mathcal{I}_k \neq \emptyset$, en dus $\mathcal{I}_{k+1}$ niet-leeg.
+        \item \emph{Conclusie:}
+
+              $\mathcal{I}$ is niet-leeg voor $n=0, \ n=1$, en verder voor elke $n = k$ en zijn opvolgers. Hieruit volgt dus dat $\mathcal{I}$ leeg is voor elke $n \in \N$.
+    \end{itemize}
+\end{proof}
 \section*{Opgave 2}
+\begin{enumerate}[label=\alph*)]
+    \item
+          Elke begrensde rij heeft een convergente deelrij. We kijken dus eerst of de rij begrensd is, merk op:
+          \[-1 \leq \sin(\f{\pi}{2}n) \leq 1 \iff |\sin(\f{\pi}{2}n)| \leq 1\]
+          Hieruit volgt dus dat $\sin(\f{\pi}{2}n)$, begrensd is.
 
+          Laten we nu een deelrij zoeken, bekijk $\sin(\f{\pi}{2}n)$:
+          \[\sin(\f{\pi}{2}n) = (0, 1, 0, -1, 0, 1, \dots)\]
+
+          Neem $\sin(n2\pi) = (0, 0, 0, \dots)$ dan hebben we een constante rij, en constante rijen zijn convergent.
+    \item
+          Voor alle $M \in \R$ geldt dat er een $n > M$, volgens de archimedische eigenschap.
+          Dit betekent dus dat de rij onbegrensd is en dus divergent.
+\end{enumerate}
 
 \end{document}
