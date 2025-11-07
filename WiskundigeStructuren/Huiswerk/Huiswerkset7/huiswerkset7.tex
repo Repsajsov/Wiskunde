@@ -66,7 +66,7 @@ We gebruiken volledige inductie om te bewijzen dat $I$ niet leeg is voor alle $n
 \section*{Opgave 2}
 \begin{enumerate}[label=\alph*)]
     \item
-          Elke begrensde rij heeft een convergente deelrij. We kijken dus eerst of de rij begrensd is, merk op:
+          Elke begrensde rij heeft een convergente deelrij (Bolzano-Weierstrass). We kijken dus eerst of de rij begrensd is, merk op:
           \[-1 \leq \sin(\f{\pi}{2}n) \leq 1 \iff |\sin(\f{\pi}{2}n)| \leq 1\]
           Hieruit volgt dus dat $\sin(\f{\pi}{2}n)$, begrensd is.
 
@@ -75,8 +75,8 @@ We gebruiken volledige inductie om te bewijzen dat $I$ niet leeg is voor alle $n
 
           Neem $\sin(n2\pi) = (0, 0, 0, \dots)$ dan hebben we een constante rij, en constante rijen zijn convergent.
     \item
-          Voor alle $M \in \R$ geldt dat er een $n > M$, volgens de archimedische eigenschap.
-          Dit betekent dus dat de rij onbegrensd is en dus divergent.
+          Voor alle $M \in \R_{>0}$ geldt dat er een $n > M$ volgens de Archimedische eigenschap is.
+          Dit betekent dus dat de rij onbegrensd is, en dus geen convergente deelrijen kan bevatten (Bolzano-Weierstrass).
 \end{enumerate}
 
 \end{document}
