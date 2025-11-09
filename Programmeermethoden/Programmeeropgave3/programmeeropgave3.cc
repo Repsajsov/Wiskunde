@@ -66,6 +66,7 @@ private:
   bool lampenStart[MAX_HOOGTE][MAX_BREEDTE];
   bool oplossing[MAX_HOOGTE][MAX_BREEDTE];
 
+  bool startProgramma = true;
   bool eindigSpel = false;
   State state = HOOFDMENU;
 
@@ -117,11 +118,12 @@ void Puzzel::veranderParameter(char naam[], char &variabele) {
 }
 
 void Puzzel::veranderParameter(char naam[], bool &variabele) {
-  variabele = !variabele;
-  if (variabele) {
-    cout << naam << ": AAN";
-  } else {
-    cout << naam << ": UIT";
+  cout << naam << "modus (j/n): ";
+  char keuze = leesOptie();
+  if (keuze == 'J') {
+    variabele = true;
+  } else if (keuze == 'N') {
+    variabele = false;
   }
 }
 
@@ -196,12 +198,16 @@ void Puzzel::genereerBord() {
   maakSchoon();
   int aantalLampen = breedte * hoogte;
   int getallen[aantalLampen];
+  int moeilijkheidsgraad = randomGetal() % aantalLampen;
   for (int i = 0; i < aantalLampen; i++) {
     getallen[i] = i;
   }
   randomArray(aantalLampen, getallen);
-  cout << "Moeilijksheidsgraad (1-" << aantalLampen << ") :";
-  int moeilijkheidsgraad = leesGetal(aantalLampen);
+  if (!startProgramma) {
+    cout << "Moeilijksheidsgraad (1-" << aantalLampen << ") :";
+    moeilijkheidsgraad = leesGetal(aantalLampen);
+    startProgramma = false;
+  }
 
   for (int i = 0; i < moeilijkheidsgraad; i++) {
     int rij = getallen[i] / breedte;
@@ -396,7 +402,7 @@ void Puzzel::inputHandler(char input) {
   }
 }
 
-Puzzel::Puzzel() { maakSchoon(); }
+Puzzel::Puzzel() { genereerBord(); }
 
 void Puzzel::bordTekenen() {
   char karakter = '\0';
