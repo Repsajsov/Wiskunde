@@ -1,0 +1,75 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+
+\parindent=0pt
+
+\usepackage{fullpage}
+
+\frenchspacing
+
+\usepackage{microtype}
+
+\usepackage[english,dutch]{babel}
+
+\usepackage{listings}
+\lstset{language=C++, showstringspaces=false, basicstyle=\small,
+  numbers=left, numberstyle=\tiny, numberfirstline=false, breaklines=true,
+  stepnumber=1, tabsize=8, 
+  commentstyle=\ttfamily, identifierstyle=\ttfamily,
+  stringstyle=\itshape}
+
+\title{LightsOut!}
+\author{Vincent van der Velden \emph{s4494059}, Jasper Vos \emph{s2911159}}
+
+\begin{document}
+
+\selectlanguage{dutch}
+
+\maketitle
+
+\section{Uitleg}
+\subsection*{Hoe het spel werkt}
+LightsOut is een spel waarbij we een rooster hebben met een aantal lampen die 
+aan of uit staan. Het is de bedoeling om elke lamp uit te krijgen, 
+waarbij de speler een lamp kan 
+"togglen". Elke "toggle" zorgt er echter voor dat de desbetreffende 
+lamp wordt omgedraaid en de $4$ directe buren ook.
+
+\subsection*{Structuur van ons programma}
+Het programma wat we hebben gemaakt heeft drie verschillende menu's:
+
+\subsubsection*{Parameter menu:}
+Instellen van hoogte, breedte, karakters, proportie lampen aan,
+torus-modus, pen-modus, en animatie.
+
+\subsubsection*{Puzzel menu:}
+Verschillende manieren om puzzels op te lossen, 
+\begin{itemize}
+    \item \emph{volg()} Lost automatisch op behalve de onderste rij.
+    \item \emph{losOp()} Lost volledige puzzel op door volg steeds aan te roepen, en als het geen oplossing bevat wordt er een bepaalde combinatie in de bovenste rij aangeklikt om vervolgens \emph{volg()} weer te proberen. Dit blijft doorgaan tot alle mogelijke lamp combinaties zijn geprobeerd.
+    \item \emph{speelOplossing()} Lost een volledige puzzel vanuit de geregistreerde "klikken" van een gegenereerde puzzel. 
+    \item \emph{spelen()} Hiermee kun je zelf de puzzel spelen waarbij je de cursor kan bewegen met WASD, en klikken met E.
+\end{itemize}
+
+\subsubsection*{Teken menu:}
+\begin{itemize}
+    \item \emph{maakSchoon()} Zet alle arrays die te maken hebben met de puzzel naar false.
+    \item \emph{randomBord()} Zet random lampen aan met een bepaalde proportie die je kan instellen bij het parameter menu.
+    \item \emph{toggle()} Hiermee kun je bepaalde lampen aan/uit zetten met de cursor die beweegt met WASD, en klikken met E.
+    \item \emph{genereerBord()} Dit zet random zetten waarmee we een puzzel genereren. De zetten worden opgeslagen en kan gebruikt worden voor \emph{speelOplossing}.
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{preview.png}
+\caption{Screenshot van het programma}
+\end{figure}
+
+\section{Tijd}
+
+\section*{Code}
+
+\lstinputlisting{programmeeropgave3.cc}
+
+\end{document}
