@@ -1,48 +1,35 @@
 \documentclass[10pt]{article}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
-
 \parindent=0pt
-
 \usepackage{fullpage}
-
 \frenchspacing
-
 \usepackage{microtype}
-
 \usepackage[english,dutch]{babel}
-
+\usepackage{hyperref}
 \usepackage{listings}
 \lstset{language=C++, showstringspaces=false, basicstyle=\small,
   numbers=left, numberstyle=\tiny, numberfirstline=false, breaklines=true,
   stepnumber=1, tabsize=8, 
   commentstyle=\ttfamily, identifierstyle=\ttfamily,
   stringstyle=\itshape}
-
 \title{LightsOut!}
 \author{Vincent van der Velden \emph{s4494059}, Jasper Vos \emph{s2911159}}
-
 \begin{document}
-
 \selectlanguage{dutch}
-
 \maketitle
-
 \section{Uitleg}
 \subsection*{Hoe het spel werkt}
 LightsOut is een spel waarbij we een rooster hebben met een aantal lampen die 
-aan of uit staan. Het is de bedoeling om elke lamp uit te krijgen, 
+aan of uit staan \cite{wiki:lightsout}. Het is de bedoeling om elke lamp uit te krijgen, 
 waarbij de speler een lamp kan 
 "togglen". Elke "toggle" zorgt er echter voor dat de desbetreffende 
 lamp wordt omgedraaid en de $4$ directe buren ook.
-
 \subsection*{Structuur van ons programma}
 Het programma wat we hebben gemaakt heeft drie verschillende menu's:
-
 \subsubsection*{Parameter menu:}
 Instellen van hoogte, breedte, karakters, proportie lampen aan,
 torus-modus, pen-modus, en animatie.
-
 \subsubsection*{Puzzel menu:}
 Verschillende manieren om puzzels op te lossen, 
 \begin{itemize}
@@ -51,7 +38,6 @@ Verschillende manieren om puzzels op te lossen,
     \item \emph{speelOplossing()} Lost een volledige puzzel vanuit de geregistreerde "klikken" van een gegenereerde puzzel. 
     \item \emph{spelen()} Hiermee kun je zelf de puzzel spelen waarbij je de cursor kan bewegen met WASD, en klikken met E.
 \end{itemize}
-
 \subsubsection*{Teken menu:}
 \begin{itemize}
     \item \emph{maakSchoon()} Zet alle arrays die te maken hebben met de puzzel naar false.
@@ -60,16 +46,48 @@ Verschillende manieren om puzzels op te lossen,
     \item \emph{genereerBord()} Dit zet random zetten waarmee we een puzzel genereren. De zetten worden opgeslagen en kan gebruikt worden voor \emph{speelOplossing}.
 \end{itemize}
 
+Het spel kan ook wiskundig benaderd worden via lineaire algebra over GF(2) \cite{anderson:lightsout}, maar wij gebruiken eenvoudigere algoritmes.
+
+\subsection*{Plaatje:}
+Hier is een plaatje van het spel:
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{preview.png}
-\caption{Screenshot van het programma}
+\includegraphics[width=15cm]{lightsOut.png}
+\caption{Plaatje van het programma}
 \end{figure}
-
+\subsection*{Compiler en overige problemen:}
+We hebben een probleem met het runnen van de code op windows-machines. Op Linux werkt de code prima en het programma crashed bij \emph{genereerBord()} of \emph{randomBord()}.
 \section{Tijd}
+Hieronder is een overzicht van de tijd die we gespendeerd hebben aan LightsOut.
 
-\section*{Code}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Week} & \textbf{Vincent} & \textbf{Jasper} & \textbf{Totaal} \\
+\hline
+13-17 okt & 5u & 4u & 9u \\
+20-24 okt & 6u & 7u & 13u \\
+27-31 okt & 8u & 8u & 16u \\
+3-7 nov & 6u & 5u & 11u \\
+10 nov & 3u & 4u & 7u \\
+\hline
+\textbf{Totaal} & 28u & 28u & 56u \\
+\hline
+\end{tabular}
 
+\begin{thebibliography}{9}
+\bibitem{wiki:lightsout}
+Wikipedia contributors,
+\textit{Lights Out (game)},
+Wikipedia, The Free Encyclopedia,
+\url{https://en.wikipedia.org/wiki/Lights_Out_(game)}
+
+\bibitem{anderson:lightsout}
+Anderson, M. and Feil, T.,
+\textit{Turning Lights Out with Linear Algebra},
+Mathematics Magazine,
+\url{https://people.sc.fsu.edu/~jburkardt/classes/imps_2017/11_28/2690705.pdf} Vol. 71, No. 4 (1998), pp. 300-303
+\end{thebibliography}
+
+\section{Code}
 \lstinputlisting{programmeeropgave3.cc}
-
 \end{document}
