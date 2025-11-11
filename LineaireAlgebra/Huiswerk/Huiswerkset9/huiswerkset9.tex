@@ -32,12 +32,12 @@ Als $g$ injectief is, dan verandert $g$ de dimensie van $f[U]$ niet, en dus:
 \subsection*{Voorbeeld}
 Neem de volgende vectorruimtes: $U = \R, \ V = \R^2$ en tot slot $W = \R$.
 
-Stel de afbeeldingen op $f: U \rightarrow V$ met $f(x) = (x, 0)$, en $g: V \rightarrow W$ waarbij $g(x, y) = x$. 
+Stel de afbeeldingen op $f: U \rightarrow V$ met $f(x) = (x, 0)$, en $g: V \rightarrow W$ waarbij $g(x, y) = x$.
 $g$ is niet injectief omdat: \[g(0, 1) = 0 = g(0, 2)\]
 
 Het beeld van $f$ heeft als dimensie de $x$-as want het tweede component is constant $0$, en dus $\dim(f) = 1$. Het beeld van $g \circ f$ geeft ook de $x$-as want $g \circ f = x$, en dus $\dim(g \circ f) = 1$.
 
-Dit betekent dus dat: \[\boxed{\text{rk}(g \circ f) = \text{rk}(f)\text{ waarbij $g$ niet injectief is}}\] 
+Dit betekent dus dat: \[\boxed{\text{rk}(g \circ f) = \text{rk}(f)\text{ waarbij $g$ niet injectief is}}\]
 
 \section*{Opgave 8.1.4(2)}
 We hebben $\text{rk}(g \circ f) \leq \text{rk}(g)$, als $f$ surjectief dan $f[U] = V$, en dus:
@@ -56,69 +56,63 @@ Gegeven is $F = \mathbb{F}_2$, dus alle bewerkingen gebeuren modulo $2$.
 
 De deelruimte $U \subseteq \mathbb{F}_2^4$ is opgespannen door:
 \[
-u_1 = (1,1,1,1), \ u_2 = (1,1,0,0), \text{ en } u_3 = (0,1,1,0)
+    u_1 = (1,1,1,1), \ u_2 = (1,1,0,0), \text{ en } u_3 = (0,1,1,0)
 \]
-Een willekeurig element uit $U$ is dus te schrijven als:        
+Een willekeurig element uit $U$ is dus te schrijven als:
 $
-(a+b, \ a+b+c, \ a+c, \ a)
-\quad \text{met } a,b,c \in \mathbb{F}_2.
+    (a+b, \ a+b+c, \ a+c, \ a)
+    \quad \text{met } a,b,c \in \mathbb{F}_2.
 $
 
 De deelruimte $V \subseteq \mathbb{F}_2^4$ is opgespannen door:
 $
-v_1 = (1,1,1,0), \ v_2 = (0,1,1,1)
+    v_1 = (1,1,1,0), \ v_2 = (0,1,1,1)
 $
 Een willekeurig element uit $V$ is dus:
 \[
-(p, \ p+q, \ p+q, \ q)
-\quad \text{met } p,q \in \mathbb{F}_2.
+    (p, \ p+q, \ p+q, \ q)
+    \quad \text{met } p,q \in \mathbb{F}_2.
 \]
 
 We zoeken $U \cap V$, dus we stellen:
 \[
-(a+b, \ a+b+c, \ a+c, \ a)
-=
-(p, \ p+q, \ p+q, \ q)
+    (a+b, \ a+b+c, \ a+c, \ a)
+    =
+    (p, \ p+q, \ p+q, \ q)
 \]
 
 Dit geeft het stelsel:
 \begin{align*}
-a + b &= p \\
-a + b + c &= p + q \\
-a + c &= p + q \\
-a &= q
+    a + b     & = p     \\
+    a + b + c & = p + q \\
+    a + c     & = p + q \\
+    a         & = q
 \end{align*}
 
 Invullen $a = q$ in de derde vergelijking:
 $
-q + c = p + q \implies c = p
+    q + c = p + q \implies c = p
 $
 , dan wordt de eerste vergelijking:
 \[
-a + b = p \implies q + b = p \implies b = p + q
+    a + b = p \implies q + b = p \implies b = p + q
 \]
-
 Invullen in de tweede vergelijking:
 \[
-a + b + c = p + q
-\implies q + (p+q) + p = p + q
-\implies 0 = 0
+    a + b + c = p + q
+    \implies q + (p+q) + p = p + q
+    \implies 0 = 0
 \]
-
 Nu geldt $p = q$, en dus:
 $
-p = q = a = c \quad \text{en} \quad b = 0.
+    p = q = a = c \quad \text{en} \quad b = 0.
 $
 Dit levert maar één niet-nulvector op:
 $
-(1,0,0,1)
+    (1,0,0,1)
 $
-
 \[
-U \cap V = \text{span}\{(1,0,0,1)\}
+    \boxed{U \cap V = \text{span}\{(1,0,0,1)\}}
 \]
 
-\[
-\boxed{U \cap V = \{0, (1,0,0,1)\} = \text{span}\{(1,0,0,1)\}}
-\]
 \end{document}

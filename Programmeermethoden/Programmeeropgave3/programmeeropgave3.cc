@@ -237,7 +237,7 @@ void Puzzel::genereerBord() {
   // Maakt een bord door zetten te zetten. Deze puzzels zijn altijd oplosbaar.
   maakSchoon();
   int aantalLampen = breedte * hoogte;
-  int getallen[aantalLampen];
+  int getallen[MAX_BREEDTE * MAX_HOOGTE];
   int moeilijkheidsgraad = randomGetal() % aantalLampen;
   for (int i = 0; i < aantalLampen; i++) {
     getallen[i] = i;
