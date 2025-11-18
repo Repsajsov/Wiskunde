@@ -39,11 +39,19 @@ public:
 Bord::Bord(int m, int n) {
   this->m = m;
   this->n = n;
+  int middenRij = m / 2;
+  int middenKolom = n / 2;
+
   vakjes = new vak *[m * n];
   for (int i = 0; i < m * n; i++) {
     vakjes[i] = new vak;
   }
   this->linksboven = vakjes[0];
+
+  vakjes[(middenRij - 1) * n + (middenKolom - 1)]->teken = 'W';
+  vakjes[(middenRij - 1) * n + middenKolom]->teken = 'Z';
+  vakjes[middenRij * n + (middenKolom - 1)]->teken = 'Z';
+  vakjes[middenRij * n + middenKolom]->teken = 'W';
   bindVakjes();
 }
 
@@ -56,7 +64,18 @@ Bord::~Bord() {
 
 void Bord::afdrukken() {
   vak *rij = linksboven;
+  int rijNummer = 1;
+  cout << "  ";
+  for (int i = 1; i <= n; i++) {
+    cout << char(64 + i) << " ";
+  }
+  cout << endl;
   while (rij) {
+    if (rijNummer < 10) {
+      cout << rijNummer << " ";
+    } else {
+      cout << rijNummer;
+    }
     vak *huidigVakje = rij;
     while (huidigVakje) {
       cout << huidigVakje->teken << " ";
@@ -64,6 +83,7 @@ void Bord::afdrukken() {
     }
     cout << endl;
     rij = rij->buren[ZUID];
+    rijNummer += 1;
   }
 }
 
@@ -100,7 +120,7 @@ void Bord::bindVakjes() {
 }
 
 int main() {
-  Bord spel = Bord(8, 8);
+  Bord spel = Bord(12, 8);
   spel.afdrukken();
 
   return 0;
