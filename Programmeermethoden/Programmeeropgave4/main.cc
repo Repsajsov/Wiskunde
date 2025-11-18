@@ -1,5 +1,6 @@
 #include <iostream>
 
+using namespace std;
 enum {
   NOORD = 0,
   NOORDOOST = 1,
@@ -17,42 +18,62 @@ struct vak {
 };
 
 class Bord {
+private:
   vak *linksboven = nullptr;
   int m;
   int n;
-  vak **indices;
+  vak **vakjes;
 
+public:
   Bord(int m, int n) {
-    indices = new vak *[m * n];
+    vakjes = new vak *[m * n];
     for (int i = 0; i < m * n; i++) {
-      indices[i] = new vak;
+      vakjes[i] = new vak;
+      vakjes[i]->teken = 'X';
     }
-    linksboven = indices[0];
+    linksboven = vakjes[0];
 
     for (int i = 0; i < m; i++) {
       for (int j = 0; j < n; j++) {
         int index = i * n + j;
         if (i > 0) {
-          indices[index]->buren[NOORD] = indices[(i - 1) * n + j];
+          vakjes[index]->buren[NOORD] = vakjes[(i - 1) * n + j];
         }
         if (i > 0 && j < n - 1) {
-          indices[index]->buren[NOORDOOST] = indices[(i - 1) * n + (j + 1)];
+          vakjes[index]->buren[NOORDOOST] = vakjes[(i - 1) * n + (j + 1)];
         }
         if (j < n - 1) {
-          indices[index]->buren[OOST] = indices[i * n + (j + 1)];
+          vakjes[index]->buren[OOST] = vakjes[i * n + (j + 1)];
         }
         if (j < n - 1 && i < m - 1) {
-          indices[index]->buren[ZUIDOOST] = indices[(i + 1) * n + (j + 1)];
+          vakjes[index]->buren[ZUIDOOST] = vakjes[(i + 1) * n + (j + 1)];
         }
         if (i < m - 1) {
-          indices[index]->buren[ZUID] = indices[(i + 1) * n + j];
+          vakjes[index]->buren[ZUID] = vakjes[(i + 1) * n + j];
         }
         if (j > 0) {
-          indices[index]->buren[WEST] = indices[i * n + (j - 1)];
+          vakjes[index]->buren[WEST] = vakjes[i * n + (j - 1)];
         }
       }
     }
   }
+  void afdrukken() {
+    vak *rijStart = linksboven;
+    while (rijStart) {
+      vak *huidigVakje = rijStart;
+      while (huidigVakje) {
+        cout << huidigVakje->teken << " ";
+        huidigVakje = huidigVakje->buren[OOST];
+      }
+      cout << endl;
+      rijStart = rijStart->buren[ZUID];
+    }
+  }
 };
 
-int main() { return 0; }
+int main() {
+  Bord spel = Bord(8, 8);
+  spel.afdrukken();
+
+  return 0;
+}
