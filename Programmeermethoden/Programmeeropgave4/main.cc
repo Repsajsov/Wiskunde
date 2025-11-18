@@ -29,7 +29,6 @@ public:
     vakjes = new vak *[m * n];
     for (int i = 0; i < m * n; i++) {
       vakjes[i] = new vak;
-      vakjes[i]->teken = 'X';
     }
     linksboven = vakjes[0];
 
@@ -51,25 +50,33 @@ public:
         if (i < m - 1) {
           vakjes[index]->buren[ZUID] = vakjes[(i + 1) * n + j];
         }
+        if (j > 0 && i < m - 1) {
+          vakjes[index]->buren[ZUIDWEST] = vakjes[(i + 1) * n + (j - 1)];
+        }
         if (j > 0) {
           vakjes[index]->buren[WEST] = vakjes[i * n + (j - 1)];
+        }
+        if (j > 0 && i > 0) {
+          vakjes[index]->buren[NOORDWEST] = vakjes[(i - 1) * n + (j - 1)];
         }
       }
     }
   }
   void afdrukken() {
-    vak *rijStart = linksboven;
-    while (rijStart) {
-      vak *huidigVakje = rijStart;
+    vak *rij = linksboven;
+    while (rij) {
+      vak *huidigVakje = rij;
       while (huidigVakje) {
         cout << huidigVakje->teken << " ";
         huidigVakje = huidigVakje->buren[OOST];
       }
       cout << endl;
-      rijStart = rijStart->buren[ZUID];
+      rij = rij->buren[ZUID];
     }
   }
 };
+
+Bord::Bord(int m, int n) {}
 
 int main() {
   Bord spel = Bord(8, 8);
