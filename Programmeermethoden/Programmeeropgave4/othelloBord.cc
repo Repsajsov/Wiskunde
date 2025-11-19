@@ -37,6 +37,7 @@ OthelloBord::~OthelloBord() {
 void OthelloBord::afdrukken() {
   vak *rij = linksboven;
   int rijNummer = 1;
+  cout << "Speler: " << mensScore << ", CPU: " << computerScore << endl << endl;
   cout << "  ";
   for (int i = 1; i <= n; i++) {
     cout << char(64 + i) << " ";
@@ -61,49 +62,55 @@ void OthelloBord::afdrukken() {
 
 bool OthelloBord::mensZet() {
   berekenValideZetten(mensSymbool);
-  bool geldig = false;
+  if (aantalMogelijkeZetten == 0) {
+    return false;
+  }
   cout << "Geef coordinaat: ";
   char kolom = leesOptie();
   kolom = int(kolom - 'A');
   int rij = leesGetal(10) - 1;
-  vak *gekozenVak = vakjes[rij * n + kolom];
-  if (aantalMogelijkeZetten == 0) {
+  if (rij < 0 || rij >= m || kolom < 0 || kolom >= n) {
     return false;
   }
+  vak *gekozenVak = vakjes[rij * n + kolom];
   bool geldigVak = false;
   for (int i = 0; i < aantalMogelijkeZetten; i++) {
     if (gekozenVak == valideZetten[i].vakje) {
+      computerScore -= valideZetten[i].aantalFlips;
+      mensScore += valideZetten[i].aantalFlips + 1;
       geldigVak = true;
+      break;
     }
   }
-  if (geldigVak) {
-    for (int richting = NOORD; richting <= NOORDWEST; richting++) {
-      if (gekozenVak->buren[richting] &&
-          gekozenVak->buren[richting]->teken == computerSymbool) {
-        // Recursie
-        if (flipVakken(gekozenVak, richting, mensSymbool)) {
-          gekozenVak->teken = mensSymbool;
-          geldig = true;
-        }
-      }
+  if (!geldigVak) {
+    return false;
+  }
+  for (int richting = NOORD; richting <= NOORDWEST; richting++) {
+    if (gekozenVak->buren[richting] &&
+        gekozenVak->buren[richting]->teken == computerSymbool) {
+      flipVakken(gekozenVak, richting, mensSymbool);
     }
   }
-  return geldig;
+  gekozenVak->teken = mensSymbool;
+  return true;
 }
 
 bool OthelloBord::computerZet() {
   berekenValideZetten(computerSymbool);
+  if (aantalMogelijkeZetten == 0) {
+    return false;
+  }
   int keuze = abs(randomGetal() % aantalMogelijkeZetten);
   vak *huidigVak = valideZetten[keuze].vakje;
+  mensScore -= valideZetten[keuze].aantalFlips;
+  computerScore += valideZetten[keuze].aantalFlips + 1;
   for (int richting = NOORD; richting <= NOORDWEST; richting++) {
     if (huidigVak->buren[richting] &&
         huidigVak->buren[richting]->teken == mensSymbool) {
-      if (flipVakken(huidigVak, richting, computerSymbool)) {
-        huidigVak->teken = computerSymbool;
-      }
+      flipVakken(huidigVak, richting, computerSymbool);
     }
   }
-
+  huidigVak->teken = computerSymbool;
   return true;
 }
 

@@ -32,6 +32,8 @@ private:
   int n;
   char mensSymbool = 'W';
   char computerSymbool = 'Z';
+  int mensScore = 2;
+  int computerScore = 2;
   int seed;
 
 public:
