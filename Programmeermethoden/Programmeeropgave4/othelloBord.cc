@@ -1,4 +1,5 @@
 #include "othelloBord.h"
+#include <ctime>
 #include <iostream>
 
 using namespace std;
@@ -6,6 +7,7 @@ using namespace std;
 OthelloBord::OthelloBord(int m, int n) {
   this->m = m;
   this->n = n;
+  seed = time(0);
   int middenRij = m / 2;
   int middenKolom = n / 2;
 
@@ -20,6 +22,8 @@ OthelloBord::OthelloBord(int m, int n) {
   vakjes[middenRij * n + (middenKolom - 1)]->teken = 'Z';
   vakjes[middenRij * n + middenKolom]->teken = 'W';
   bindVakjes();
+
+  valideZetten = new mogelijkeZet[m * n];
 }
 
 OthelloBord::~OthelloBord() {
@@ -27,6 +31,7 @@ OthelloBord::~OthelloBord() {
     delete vakjes[i];
   }
   delete[] vakjes;
+  delete[] valideZetten;
 }
 
 void OthelloBord::afdrukken() {
@@ -63,7 +68,8 @@ bool OthelloBord::mensZet() {
   vak *gekozenVak = vakjes[rij * n + kolom];
 
   for (int richting = NOORD; richting <= NOORDWEST; richting++) {
-    if (gekozenVak->buren[richting]->teken == karakterTegenstander) {
+    if (gekozenVak->buren[richting] &&
+        gekozenVak->buren[richting]->teken == karakterTegenstander) {
       // Recursie
       if (flipVakken(gekozenVak, richting, karakterSpeler)) {
         gekozenVak->teken = karakterSpeler;
@@ -75,7 +81,17 @@ bool OthelloBord::mensZet() {
 }
 
 bool OthelloBord::computerZet() {
-  for (int i = 0; i < m * n; i++) {}
+  berekenValideZetten('Z');
+  vak *huidigVak = valideZetten[0].vakje;
+  for (int richting = NOORD; richting <= NOORDWEST; richting++) {
+    if (huidigVak->buren[richting] &&
+        huidigVak->buren[richting]->teken == karakterSpeler) {
+      if (flipVakken(huidigVak, richting, karakterTegenstander)) {
+        huidigVak->teken = karakterTegenstander;
+      }
+    }
+  }
+
   return true;
 }
 
@@ -129,6 +145,20 @@ bool OthelloBord::flipVakken(vak *huidigVak, int richting, char kleur) {
   return false;
 }
 
+bool OthelloBord::isGeldig(vak *huidigVakje, int richting) {
+  vak *volgende = huidigVakje->buren[richting];
+  if (!volgende || volgende->teken == '.') {
+    return false;
+  }
+  if (volgende->teken == karakterTegenstander) {
+    return true;
+  }
+  if (isGeldig(volgende, richting)) {
+    return true;
+  }
+  return false;
+}
+
 char OthelloBord::leesOptie() {
   char resultaat;
   do {
@@ -156,13 +186,56 @@ int OthelloBord::leesGetal(int max) {
   return resultaat;
 }
 
-vak **OthelloBord::berekenValideZetten() {
+int OthelloBord::randomGetal() {
+  seed = (221 * seed + 1) % 1000;
+  return seed;
+}
+
+int OthelloBord::telFlips(vak *huidigVakje, int richting, char kleur) {
+  vak *volgende = huidigVakje->buren[richting];
+  if (!volgende || volgende->teken == '.') {
+    return 0;
+  }
+  if (volgende->teken == kleur) {
+    return 1;
+  }
+  int count = telFlips(volgende, richting, kleur);
+  if (count > 0) {
+    return count + 1;
+  }
+  return 0;
+}
+
+void OthelloBord::berekenValideZetten(char kleur) {
+  aantalMogelijkeZetten = 0;
+
+  char tegenstanderKleur = (kleur == 'W') ? 'Z' : 'W';
   vak *rij = linksboven;
   while (rij) {
     vak *huidigVakje = rij;
     while (huidigVakje) {
-      huidigVakje->buren[OOST];
+      if (huidigVakje->teken == '.') {
+        int totaalFlips = 0;
+        bool geldig = false;
+
+        for (int richting = NOORD; richting <= NOORDWEST; richting++) {
+          if (huidigVakje->buren[richting] &&
+              huidigVakje->buren[richting]->teken == tegenstanderKleur) {
+            int flips = telFlips(huidigVakje, richting, kleur);
+            if (flips > 0) {
+              totaalFlips += flips;
+              geldig = true;
+            }
+          }
+        }
+        if (geldig) {
+          valideZetten[aantalMogelijkeZetten].vakje = huidigVakje;
+          valideZetten[aantalMogelijkeZetten].aantalFlips = totaalFlips;
+          aantalMogelijkeZetten++;
+        }
+      }
+      huidigVakje = huidigVakje->buren[OOST];
     }
-    rij = rij->buren[ZUID]
+    rij = rij->buren[ZUID];
   }
 }

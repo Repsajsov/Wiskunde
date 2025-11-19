@@ -1,5 +1,6 @@
 #include "othelloBord.h"
 #include <iostream>
+#include <unistd.h>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ int main() {
       }
     }
     beurtSpeler = !beurtSpeler;
+    sleep(1);
     system("clear");
   }
   return 0;

@@ -17,14 +17,23 @@ struct vak {
   vak *buren[8] = {nullptr};
 };
 
+struct mogelijkeZet {
+  vak *vakje = nullptr;
+  int aantalFlips = 0;
+};
+
 class OthelloBord {
 private:
   vak *linksboven = nullptr;
   vak **vakjes;
+  mogelijkeZet *valideZetten;
+  int aantalMogelijkeZetten = 0;
+  mogelijkeZet besteZet;
   int m;
   int n;
   char karakterSpeler = 'W';
   char karakterTegenstander = 'Z';
+  int seed;
 
 public:
   OthelloBord(int m, int n);
@@ -36,10 +45,14 @@ public:
 
   bool isKlaar();
   void bindVakjes();
+
   bool flipVakken(vak *huidigVak, int richting, char kleur);
+  bool isGeldig(vak *huidigVak, int richting);
+  int telFlips(vak *huidigVak, int richting, char kleur);
 
-  vak **berekenValideZetten();
+  void berekenValideZetten(char kleur);
 
+  int randomGetal();
   char leesOptie();
   int leesGetal(int max);
 };
