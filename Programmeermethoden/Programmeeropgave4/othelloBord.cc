@@ -69,10 +69,10 @@ bool OthelloBord::mensZet() {
 
   for (int richting = NOORD; richting <= NOORDWEST; richting++) {
     if (gekozenVak->buren[richting] &&
-        gekozenVak->buren[richting]->teken == karakterTegenstander) {
+        gekozenVak->buren[richting]->teken == computerSymbool) {
       // Recursie
-      if (flipVakken(gekozenVak, richting, karakterSpeler)) {
-        gekozenVak->teken = karakterSpeler;
+      if (flipVakken(gekozenVak, richting, mensSymbool)) {
+        gekozenVak->teken = mensSymbool;
         geldig = true;
       }
     }
@@ -81,13 +81,13 @@ bool OthelloBord::mensZet() {
 }
 
 bool OthelloBord::computerZet() {
-  berekenValideZetten('Z');
+  berekenValideZetten(computerSymbool);
   vak *huidigVak = valideZetten[0].vakje;
   for (int richting = NOORD; richting <= NOORDWEST; richting++) {
     if (huidigVak->buren[richting] &&
-        huidigVak->buren[richting]->teken == karakterSpeler) {
-      if (flipVakken(huidigVak, richting, karakterTegenstander)) {
-        huidigVak->teken = karakterTegenstander;
+        huidigVak->buren[richting]->teken == mensSymbool) {
+      if (flipVakken(huidigVak, richting, computerSymbool)) {
+        huidigVak->teken = computerSymbool;
       }
     }
   }
@@ -129,31 +129,31 @@ void OthelloBord::bindVakjes() {
   }
 }
 
-bool OthelloBord::flipVakken(vak *huidigVak, int richting, char kleur) {
+bool OthelloBord::flipVakken(vak *huidigVak, int richting, char symbool) {
   vak *volgende = huidigVak->buren[richting];
 
   if (!volgende || volgende->teken == '.') {
     return false;
   }
-  if (volgende->teken == kleur) {
+  if (volgende->teken == symbool) {
     return true;
   }
-  if (flipVakken(volgende, richting, kleur)) {
-    volgende->teken = kleur;
+  if (flipVakken(volgende, richting, symbool)) {
+    volgende->teken = symbool;
     return true;
   }
   return false;
 }
 
-bool OthelloBord::isGeldig(vak *huidigVakje, int richting) {
+bool OthelloBord::isGeldig(vak *huidigVakje, int richting, char symbool) {
   vak *volgende = huidigVakje->buren[richting];
   if (!volgende || volgende->teken == '.') {
     return false;
   }
-  if (volgende->teken == karakterTegenstander) {
+  if (volgende->teken == symbool) {
     return true;
   }
-  if (isGeldig(volgende, richting)) {
+  if (isGeldig(volgende, richting, symbool)) {
     return true;
   }
   return false;
@@ -191,25 +191,26 @@ int OthelloBord::randomGetal() {
   return seed;
 }
 
-int OthelloBord::telFlips(vak *huidigVakje, int richting, char kleur) {
+int OthelloBord::telFlips(vak *huidigVakje, int richting, char symbool) {
   vak *volgende = huidigVakje->buren[richting];
   if (!volgende || volgende->teken == '.') {
     return 0;
   }
-  if (volgende->teken == kleur) {
+  if (volgende->teken == symbool) {
     return 1;
   }
-  int count = telFlips(volgende, richting, kleur);
+  int count = telFlips(volgende, richting, symbool);
   if (count > 0) {
     return count + 1;
   }
   return 0;
 }
 
-void OthelloBord::berekenValideZetten(char kleur) {
+void OthelloBord::berekenValideZetten(char symbool) {
   aantalMogelijkeZetten = 0;
 
-  char tegenstanderKleur = (kleur == 'W') ? 'Z' : 'W';
+  char tegenstanderSymbool =
+      (symbool == mensSymbool) ? computerSymbool : mensSymbool;
   vak *rij = linksboven;
   while (rij) {
     vak *huidigVakje = rij;
@@ -220,8 +221,8 @@ void OthelloBord::berekenValideZetten(char kleur) {
 
         for (int richting = NOORD; richting <= NOORDWEST; richting++) {
           if (huidigVakje->buren[richting] &&
-              huidigVakje->buren[richting]->teken == tegenstanderKleur) {
-            int flips = telFlips(huidigVakje, richting, kleur);
+              huidigVakje->buren[richting]->teken == tegenstanderSymbool) {
+            int flips = telFlips(huidigVakje, richting, symbool);
             if (flips > 0) {
               totaalFlips += flips;
               geldig = true;

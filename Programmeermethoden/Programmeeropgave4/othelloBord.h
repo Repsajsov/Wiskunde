@@ -31,8 +31,8 @@ private:
   mogelijkeZet besteZet;
   int m;
   int n;
-  char karakterSpeler = 'W';
-  char karakterTegenstander = 'Z';
+  char mensSymbool = 'W';
+  char computerSymbool = 'Z';
   int seed;
 
 public:
@@ -46,11 +46,11 @@ public:
   bool isKlaar();
   void bindVakjes();
 
-  bool flipVakken(vak *huidigVak, int richting, char kleur);
-  bool isGeldig(vak *huidigVak, int richting);
-  int telFlips(vak *huidigVak, int richting, char kleur);
+  bool flipVakken(vak *huidigVak, int richting, char symbool);
+  bool isGeldig(vak *huidigVak, int richting, char symbool);
+  int telFlips(vak *huidigVak, int richting, char symbool);
 
-  void berekenValideZetten(char kleur);
+  void berekenValideZetten(char symbool);
 
   int randomGetal();
   char leesOptie();
