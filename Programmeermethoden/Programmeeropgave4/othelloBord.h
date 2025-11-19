@@ -28,7 +28,6 @@ private:
   vak **vakjes;
   mogelijkeZet *valideZetten;
   int aantalMogelijkeZetten = 0;
-  mogelijkeZet besteZet;
   int m;
   int n;
   char mensSymbool = 'W';

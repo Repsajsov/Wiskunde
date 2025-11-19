@@ -60,20 +60,31 @@ void OthelloBord::afdrukken() {
 }
 
 bool OthelloBord::mensZet() {
+  berekenValideZetten(mensSymbool);
   bool geldig = false;
   cout << "Geef coordinaat: ";
   char kolom = leesOptie();
   kolom = int(kolom - 'A');
   int rij = leesGetal(10) - 1;
   vak *gekozenVak = vakjes[rij * n + kolom];
-
-  for (int richting = NOORD; richting <= NOORDWEST; richting++) {
-    if (gekozenVak->buren[richting] &&
-        gekozenVak->buren[richting]->teken == computerSymbool) {
-      // Recursie
-      if (flipVakken(gekozenVak, richting, mensSymbool)) {
-        gekozenVak->teken = mensSymbool;
-        geldig = true;
+  if (aantalMogelijkeZetten == 0) {
+    return false;
+  }
+  bool geldigVak = false;
+  for (int i = 0; i < aantalMogelijkeZetten; i++) {
+    if (gekozenVak == valideZetten[i].vakje) {
+      geldigVak = true;
+    }
+  }
+  if (geldigVak) {
+    for (int richting = NOORD; richting <= NOORDWEST; richting++) {
+      if (gekozenVak->buren[richting] &&
+          gekozenVak->buren[richting]->teken == computerSymbool) {
+        // Recursie
+        if (flipVakken(gekozenVak, richting, mensSymbool)) {
+          gekozenVak->teken = mensSymbool;
+          geldig = true;
+        }
       }
     }
   }
@@ -82,7 +93,8 @@ bool OthelloBord::mensZet() {
 
 bool OthelloBord::computerZet() {
   berekenValideZetten(computerSymbool);
-  vak *huidigVak = valideZetten[0].vakje;
+  int keuze = abs(randomGetal() % aantalMogelijkeZetten);
+  vak *huidigVak = valideZetten[keuze].vakje;
   for (int richting = NOORD; richting <= NOORDWEST; richting++) {
     if (huidigVak->buren[richting] &&
         huidigVak->buren[richting]->teken == mensSymbool) {
