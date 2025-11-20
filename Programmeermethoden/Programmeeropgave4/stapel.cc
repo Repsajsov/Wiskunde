@@ -5,9 +5,9 @@
 
 using namespace std;
 
-Stapel::Stapel(OthelloBord *bord, int s1, int s2) {
+Stapel::Stapel(OthelloBord *bord, int score1, int score2) {
   top = nullptr;
-  push(bord, s1, s2);
+  push(bord, score1, score2);
 }
 
 Stapel::~Stapel() {
@@ -42,8 +42,8 @@ spelStand *Stapel::pop() {
   if (isLeeg()) {
     return nullptr;
   }
-  spelStand *laatsteStand = top;
-  top = laatsteStand->volgende;
-  laatsteStand->volgende = nullptr;
-  return laatsteStand;
+  spelStand *tijdelijkeTop = top;
+  top = tijdelijkeTop->volgende;
+  tijdelijkeTop->volgende = nullptr;
+  return tijdelijkeTop;
 }
