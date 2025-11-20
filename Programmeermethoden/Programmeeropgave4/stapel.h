@@ -20,7 +20,8 @@ public:
   bool isLeeg();
   void push(OthelloBord *bord, int score1, int score2);
   void herstel(OthelloBord *huidigBord, Speler *speler1, Speler *speler2);
-  spelStand *pop();
+  void pop();
+  void undo(OthelloBord *spel, Speler *speler1, Speler *speler2);
 };
 
 #endif

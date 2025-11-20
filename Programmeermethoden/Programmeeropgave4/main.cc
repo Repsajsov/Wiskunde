@@ -1,3 +1,4 @@
+#include "inputHandler.h"
 #include "othelloBord.h"
 #include "overige.h"
 #include "speler.h"
@@ -7,7 +8,7 @@
 using namespace std;
 
 int main() {
-  Speler *speler1 = new Speler('W', true);
+  Speler *speler1 = new Speler('W', false);
   Speler *speler2 = new Speler('Z', true);
 
   OthelloBord *spel = new OthelloBord(8, 8, speler1, speler2);
@@ -23,22 +24,29 @@ int main() {
     if (huidigeSpeler->isComputerSpeler()) {
       zetGelukt = spel->computerZet(huidigeSpeler);
       if (zetGelukt) {
-        cout << "Speler " << huidigeSpeler->krijgSymbool()
-             << " heeft geslagen !" << endl;
+        cout << "Speler " << huidigeSpeler->krijgSymbool() << " heeft geslagen!"
+             << endl;
         Overige::wacht(1);
       } else {
         cout << "Speler " << huidigeSpeler->krijgSymbool()
-             << " kan niks doen! Beurt wordt overgeslagen." << endl;
+             << " kan niks doen! Beurt wordt overgeslagen!" << endl;
         Overige::wacht(2);
       }
     } else {
+      cout << "(U)ndo" << endl;
+      char keuze = InputHandler::leesOptie();
+      if (keuze == 'U') {
+        stapel->herstel(spel, speler1, speler2);
+        continue;
+      }
+
       zetGelukt = spel->mensZet(huidigeSpeler);
       if (zetGelukt) {
-        cout << "Speler " << huidigeSpeler->krijgSymbool()
-             << " heeft geslagen !" << endl;
+        cout << "Speler " << huidigeSpeler->krijgSymbool() << " heeft geslagen!"
+             << endl;
       } else {
         cout << "Speler " << huidigeSpeler->krijgSymbool()
-             << " kan niks doen! Beurt wordt overgeslagen." << endl;
+             << " kan niks doen! Beurt wordt overgeslagen!" << endl;
         Overige::wacht(2);
       }
     }

@@ -12,9 +12,7 @@ Stapel::Stapel(OthelloBord *bord, int score1, int score2) {
 
 Stapel::~Stapel() {
   while (!isLeeg()) {
-    spelStand *temp = pop();
-    delete temp->bord;
-    delete temp;
+    pop();
   }
 }
 
@@ -38,12 +36,19 @@ void Stapel::herstel(OthelloBord *huidigBord, Speler *speler1,
   speler2->zetScore(top->score2);
 }
 
-spelStand *Stapel::pop() {
+void Stapel::pop() {
+  if (isLeeg())
+    return;
+  spelStand *temp = top;
+  top = temp->volgende;
+  delete temp->bord;
+  delete temp;
+}
+
+void Stapel::undo(OthelloBord *bord, Speler *speler1, Speler *speler2) {
+  pop();
+  pop();
   if (isLeeg()) {
-    return nullptr;
+    herstel(bord, speler1, speler2);
   }
-  spelStand *tijdelijkeTop = top;
-  top = tijdelijkeTop->volgende;
-  tijdelijkeTop->volgende = nullptr;
-  return tijdelijkeTop;
 }
