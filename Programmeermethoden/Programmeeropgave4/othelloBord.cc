@@ -1,16 +1,24 @@
 #include "othelloBord.h"
+#include "inputHandler.h"
+#include "overige.h"
+#include "speler.h"
 #include <ctime>
 #include <iostream>
 
 using namespace std;
 
-OthelloBord::OthelloBord(int m, int n) {
+int OthelloBord::krijgM() { return m; }
+int OthelloBord::krijgN() { return n; }
+vak **OthelloBord::krijgVakjes() { return vakjes; }
+
+OthelloBord::OthelloBord(int m, int n, Speler *speler1, Speler *speler2) {
   this->m = m;
   this->n = n;
-  seed = time(0);
+  this->speler1 = speler1;
+  this->speler2 = speler2;
+
   int middenRij = m / 2;
   int middenKolom = n / 2;
-
   vakjes = new vak *[m * n];
   for (int i = 0; i < m * n; i++) {
     vakjes[i] = new vak;
@@ -34,10 +42,21 @@ OthelloBord::~OthelloBord() {
   delete[] valideZetten;
 }
 
+OthelloBord *OthelloBord::kopieer() {
+  OthelloBord *kopieBord = new OthelloBord(m, n, speler1, speler2);
+  for (int i = 0; i < m * n; i++) {
+    kopieBord->vakjes[i]->teken = this->vakjes[i]->teken;
+  }
+  return kopieBord;
+}
+
 void OthelloBord::afdrukken() {
   vak *rij = linksboven;
   int rijNummer = 1;
-  cout << "Speler: " << mensScore << ", CPU: " << computerScore << endl << endl;
+  cout << "Speler " << speler1->krijgSymbool() << ": " << speler1->krijgScore()
+       << ", Speler " << speler2->krijgSymbool() << ": "
+       << speler2->krijgScore() << endl
+       << endl;
   cout << "  ";
   for (int i = 1; i <= n; i++) {
     cout << char(64 + i) << " ";
@@ -60,61 +79,83 @@ void OthelloBord::afdrukken() {
   }
 }
 
-bool OthelloBord::mensZet() {
-  berekenValideZetten(mensSymbool);
-  if (aantalMogelijkeZetten == 0) {
-    return false;
-  }
-  cout << "Geef coordinaat: ";
-  char kolom = leesOptie();
-  kolom = int(kolom - 'A');
-  int rij = leesGetal(10) - 1;
-  if (rij < 0 || rij >= m || kolom < 0 || kolom >= n) {
-    return false;
-  }
-  vak *gekozenVak = vakjes[rij * n + kolom];
-  bool geldigVak = false;
+Speler *OthelloBord::krijgTegenstander(Speler *speler) {
+  return (speler == speler1) ? speler2 : speler1;
+}
+
+mogelijkeZet *OthelloBord::vindZet(vak *vakje) {
   for (int i = 0; i < aantalMogelijkeZetten; i++) {
-    if (gekozenVak == valideZetten[i].vakje) {
-      computerScore -= valideZetten[i].aantalFlips;
-      mensScore += valideZetten[i].aantalFlips + 1;
-      geldigVak = true;
-      break;
+    if (vakje == valideZetten[i].vakje) {
+      return &valideZetten[i];
     }
   }
-  if (!geldigVak) {
-    return false;
-  }
-  for (int richting = NOORD; richting <= NOORDWEST; richting++) {
-    if (gekozenVak->buren[richting] &&
-        gekozenVak->buren[richting]->teken == computerSymbool) {
-      flipVakken(gekozenVak, richting, mensSymbool);
-    }
-  }
-  gekozenVak->teken = mensSymbool;
-  return true;
+  return nullptr;
 }
 
-bool OthelloBord::computerZet() {
-  berekenValideZetten(computerSymbool);
+mogelijkeZet *OthelloBord::kiesVak() {
+  mogelijkeZet *zet = nullptr;
+  while (aantalMogelijkeZetten != 0) {
+    cout << "Geef coordinaat: ";
+    char kolom = InputHandler::leesOptie();
+    kolom = int(kolom - 'A');
+    int rij = InputHandler::leesGetal(10) - 1;
+
+    if (rij >= 0 && rij < m && kolom >= 0 && kolom < n) {
+      zet = vindZet(vakjes[rij * n + kolom]);
+      if (zet != nullptr) {
+        return zet;
+      }
+    }
+  }
+  return nullptr;
+}
+
+bool OthelloBord::mensZet(Speler *speler) {
+  berekenValideZetten(speler);
   if (aantalMogelijkeZetten == 0) {
     return false;
   }
-  int keuze = abs(randomGetal() % aantalMogelijkeZetten);
-  vak *huidigVak = valideZetten[keuze].vakje;
-  mensScore -= valideZetten[keuze].aantalFlips;
-  computerScore += valideZetten[keuze].aantalFlips + 1;
-  for (int richting = NOORD; richting <= NOORDWEST; richting++) {
-    if (huidigVak->buren[richting] &&
-        huidigVak->buren[richting]->teken == mensSymbool) {
-      flipVakken(huidigVak, richting, computerSymbool);
-    }
+  mogelijkeZet *gekozenVak = kiesVak();
+  if (gekozenVak == nullptr) {
+    return false;
   }
-  huidigVak->teken = computerSymbool;
+
+  voerZetUit(gekozenVak->vakje, gekozenVak->aantalFlips, speler);
   return true;
 }
 
-bool OthelloBord::isKlaar() { return false; }
+void OthelloBord::voerZetUit(vak *vakje, int aantalFlips, Speler *speler) {
+  Speler *tegenstander = krijgTegenstander(speler);
+  tegenstander->veranderScore(-aantalFlips);
+  speler->veranderScore(aantalFlips + 1);
+
+  for (int richting = NOORD; richting <= NOORDWEST; richting++) {
+    if (vakje->buren[richting] &&
+        vakje->buren[richting]->teken == tegenstander->krijgSymbool()) {
+      flipVakken(vakje, richting, speler->krijgSymbool());
+    }
+  }
+  vakje->teken = speler->krijgSymbool();
+}
+
+bool OthelloBord::computerZet(Speler *speler) {
+  berekenValideZetten(speler);
+  if (aantalMogelijkeZetten == 0) {
+    return false;
+  }
+  int keuze = Overige::absoluut(Overige::randomGetal(aantalMogelijkeZetten));
+  mogelijkeZet *zet = &valideZetten[keuze];
+  voerZetUit(zet->vakje, zet->aantalFlips, speler);
+  return true;
+}
+
+bool OthelloBord::isKlaar() {
+  berekenValideZetten(speler1);
+  int speler1AantalZetten = aantalMogelijkeZetten;
+  berekenValideZetten(speler2);
+  int speler2AantalZetten = aantalMogelijkeZetten;
+  return (speler1AantalZetten == 0 && speler2AantalZetten == 0);
+}
 
 void OthelloBord::bindVakjes() {
   for (int i = 0; i < m; i++) {
@@ -178,77 +219,43 @@ bool OthelloBord::isGeldig(vak *huidigVakje, int richting, char symbool) {
   return false;
 }
 
-char OthelloBord::leesOptie() {
-  char resultaat;
-  do {
-    cin.get(resultaat);
-  } while (resultaat == '\n');
-  if (resultaat >= 'a' && resultaat <= 'z') {
-    resultaat = (resultaat - 'a') + 'A';
-  }
-  return resultaat;
-}
-
-int OthelloBord::leesGetal(int max) {
-  char resultaat = 0;
-  char karakter = leesOptie();
-  if (karakter >= '0' && karakter <= '9') {
-    resultaat = karakter - '0';
-  }
-  while (cin.get(karakter) && karakter != '\n') {
-    if (karakter >= '0' && karakter <= '9') {
-      resultaat = resultaat * 10 + (karakter - '0');
-      if (resultaat >= max)
-        resultaat = max;
-    }
-  }
-  return resultaat;
-}
-
-int OthelloBord::randomGetal() {
-  seed = (221 * seed + 1) % 1000;
-  return seed;
-}
-
 int OthelloBord::telFlips(vak *huidigVakje, int richting, char symbool) {
   vak *volgende = huidigVakje->buren[richting];
   if (!volgende || volgende->teken == '.') {
-    return 0;
+    return -1;
   }
   if (volgende->teken == symbool) {
-    return 1;
+    return 0;
   }
   int count = telFlips(volgende, richting, symbool);
-  if (count > 0) {
-    return count + 1;
+  if (count < 0) {
+    return -1;
   }
-  return 0;
+  return count + 1;
 }
 
-void OthelloBord::berekenValideZetten(char symbool) {
+void OthelloBord::berekenValideZetten(Speler *speler) {
   aantalMogelijkeZetten = 0;
 
-  char tegenstanderSymbool =
-      (symbool == mensSymbool) ? computerSymbool : mensSymbool;
+  Speler *tegenstander = krijgTegenstander(speler);
   vak *rij = linksboven;
   while (rij) {
     vak *huidigVakje = rij;
     while (huidigVakje) {
       if (huidigVakje->teken == '.') {
         int totaalFlips = 0;
-        bool geldig = false;
 
         for (int richting = NOORD; richting <= NOORDWEST; richting++) {
           if (huidigVakje->buren[richting] &&
-              huidigVakje->buren[richting]->teken == tegenstanderSymbool) {
-            int flips = telFlips(huidigVakje, richting, symbool);
+              huidigVakje->buren[richting]->teken ==
+                  tegenstander->krijgSymbool()) {
+            int flips = telFlips(huidigVakje, richting, speler->krijgSymbool());
             if (flips > 0) {
               totaalFlips += flips;
-              geldig = true;
             }
           }
         }
-        if (geldig) {
+        if (totaalFlips > 0) {
           valideZetten[aantalMogelijkeZetten].vakje = huidigVakje;
           valideZetten[aantalMogelijkeZetten].aantalFlips = totaalFlips;
           aantalMogelijkeZetten++;

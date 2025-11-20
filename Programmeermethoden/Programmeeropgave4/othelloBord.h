@@ -1,16 +1,9 @@
 #ifndef OTHELLOBORD_H
 #define OTHELLOBORD_H
 
-enum {
-  NOORD = 0,
-  NOORDOOST = 1,
-  OOST = 2,
-  ZUIDOOST = 3,
-  ZUID = 4,
-  ZUIDWEST = 5,
-  WEST = 6,
-  NOORDWEST = 7
-};
+class Speler;
+
+enum { NOORD = 0, NOORDOOST, OOST, ZUIDOOST, ZUID, ZUIDWEST, WEST, NOORDWEST };
 
 struct vak {
   char teken = '.';
@@ -30,32 +23,34 @@ private:
   int aantalMogelijkeZetten = 0;
   int m;
   int n;
-  char mensSymbool = 'W';
-  char computerSymbool = 'Z';
-  int mensScore = 2;
-  int computerScore = 2;
-  int seed;
+  Speler *speler1;
+  Speler *speler2;
 
 public:
-  OthelloBord(int m, int n);
+  OthelloBord(int m, int n, Speler *speler1, Speler *speler2);
   ~OthelloBord();
+  OthelloBord *kopieer();
 
   void afdrukken();
-  bool mensZet();
-  bool computerZet();
+  bool mensZet(Speler *speler);
+  bool computerZet(Speler *speler);
 
   bool isKlaar();
   void bindVakjes();
 
+  Speler *krijgTegenstander(Speler *speler);
+  int krijgM();
+  int krijgN();
+  vak **krijgVakjes();
+
   bool flipVakken(vak *huidigVak, int richting, char symbool);
   bool isGeldig(vak *huidigVak, int richting, char symbool);
   int telFlips(vak *huidigVak, int richting, char symbool);
+  mogelijkeZet *vindZet(vak *vakje);
+  void voerZetUit(vak *vakje, int aantalFlips, Speler *speler);
+  mogelijkeZet *kiesVak();
 
-  void berekenValideZetten(char symbool);
-
-  int randomGetal();
-  char leesOptie();
-  int leesGetal(int max);
+  void berekenValideZetten(Speler *speler);
 };
 
 #endif
