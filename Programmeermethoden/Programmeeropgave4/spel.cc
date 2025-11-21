@@ -7,13 +7,14 @@
 
 using namespace std;
 
+int Spel::seed = time(0);
+
 Spel::Spel() {
   bord = nullptr;
   speler1 = nullptr;
   speler2 = nullptr;
   huidigeSpeler = nullptr;
   stapel = nullptr;
-  seed = time(0);
   spelActief = true;
 }
 
@@ -27,6 +28,7 @@ Spel::~Spel() {
 void Spel::start() {
   opstarten();
   spelen();
+  resultaat();
 }
 
 void Spel::opstarten() {
@@ -45,6 +47,16 @@ void Spel::opstarten() {
   bord = new OthelloBord(rijen, kolommen, speler1, speler2);
   stapel = new Stapel(bord, 2, 2);
   huidigeSpeler = speler1;
+}
+
+void Spel::resultaat() {
+  if (speler1->krijgScore() > speler2->krijgScore()) {
+    cout << "Speler " << speler1->krijgSymbool() << " heeft gewonnen!" << endl;
+  } else if (speler1->krijgScore() < speler2->krijgScore()) {
+    cout << "Speler " << speler2->krijgScore() << " heeft gewonnen!" << endl;
+  } else {
+    cout << "Gelijkspel!" << endl;
+  }
 }
 
 void Spel::spelen() {

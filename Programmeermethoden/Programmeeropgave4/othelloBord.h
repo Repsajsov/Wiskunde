@@ -53,6 +53,7 @@ public:
   Speler *krijgTegenstander(Speler *speler);
   int krijgAantalRijen();
   int krijgAantalKolommen();
+  int krijgAantalMogelijkeZetten();
   vak **krijgVakjes();
 
   bool flipVakken(vak *huidigVak, int richting, char symbool);

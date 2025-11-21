@@ -13,14 +13,16 @@ private:
   Speler *huidigeSpeler;
   Stapel *stapel;
   bool spelActief;
-  int seed;
+  static int seed;
 
   void opstarten();
   void spelen();
+  void resultaat();
   static char leesOptie();
   static int leesGetal(int max);
   void schermSchoonmaken();
   void wacht(int seconden);
+
 
 public:
   Spel();

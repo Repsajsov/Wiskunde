@@ -52,6 +52,8 @@ OthelloBord *OthelloBord::kopieer() {
   return kopieBord;
 }
 
+int OthelloBord::krijgAantalMogelijkeZetten() { return aantalMogelijkeZetten; }
+
 void OthelloBord::afdrukken() {
   vak *rij = linksboven;
   int rijNummer = 1;
