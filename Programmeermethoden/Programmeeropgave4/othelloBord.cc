@@ -1,41 +1,42 @@
 #include "othelloBord.h"
-#include "inputHandler.h"
-#include "overige.h"
+#include "spel.h"
 #include "speler.h"
 #include <ctime>
 #include <iostream>
 
 using namespace std;
 
-int OthelloBord::krijgM() { return m; }
-int OthelloBord::krijgN() { return n; }
+int OthelloBord::krijgAantalRijen() { return aantalRijen; }
+int OthelloBord::krijgAantalKolommen() { return aantalKolommen; }
 vak **OthelloBord::krijgVakjes() { return vakjes; }
 
-OthelloBord::OthelloBord(int m, int n, Speler *speler1, Speler *speler2) {
-  this->m = m;
-  this->n = n;
+OthelloBord::OthelloBord(int aantalRijen, int aantalKolommen, Speler *speler1,
+                         Speler *speler2) {
+  this->aantalRijen = aantalRijen;
+  this->aantalKolommen = aantalKolommen;
+  this->oppervlakte = aantalRijen * aantalKolommen;
   this->speler1 = speler1;
   this->speler2 = speler2;
 
-  int middenRij = m / 2;
-  int middenKolom = n / 2;
-  vakjes = new vak *[m * n];
-  for (int i = 0; i < m * n; i++) {
+  int middenRij = aantalRijen / 2;
+  int middenKolom = aantalKolommen / 2;
+  vakjes = new vak *[oppervlakte];
+  for (int i = 0; i < oppervlakte; i++) {
     vakjes[i] = new vak;
   }
   this->linksboven = vakjes[0];
 
-  vakjes[(middenRij - 1) * n + (middenKolom - 1)]->teken = 'W';
-  vakjes[(middenRij - 1) * n + middenKolom]->teken = 'Z';
-  vakjes[middenRij * n + (middenKolom - 1)]->teken = 'Z';
-  vakjes[middenRij * n + middenKolom]->teken = 'W';
+  vakjes[(middenRij - 1) * aantalKolommen + (middenKolom - 1)]->teken = 'W';
+  vakjes[(middenRij - 1) * aantalKolommen + middenKolom]->teken = 'Z';
+  vakjes[middenRij * aantalKolommen + (middenKolom - 1)]->teken = 'Z';
+  vakjes[middenRij * aantalKolommen + middenKolom]->teken = 'W';
   bindVakjes();
 
-  valideZetten = new mogelijkeZet[m * n];
+  valideZetten = new mogelijkeZet[oppervlakte];
 }
 
 OthelloBord::~OthelloBord() {
-  for (int i = 0; i < m * n; i++) {
+  for (int i = 0; i < oppervlakte; i++) {
     delete vakjes[i];
   }
   delete[] vakjes;
@@ -43,8 +44,9 @@ OthelloBord::~OthelloBord() {
 }
 
 OthelloBord *OthelloBord::kopieer() {
-  OthelloBord *kopieBord = new OthelloBord(m, n, speler1, speler2);
-  for (int i = 0; i < m * n; i++) {
+  OthelloBord *kopieBord =
+      new OthelloBord(aantalRijen, aantalKolommen, speler1, speler2);
+  for (int i = 0; i < oppervlakte; i++) {
     kopieBord->vakjes[i]->teken = this->vakjes[i]->teken;
   }
   return kopieBord;
@@ -58,7 +60,7 @@ void OthelloBord::afdrukken() {
        << speler2->krijgScore() << endl
        << endl;
   cout << "  ";
-  for (int i = 1; i <= n; i++) {
+  for (int i = 1; i <= aantalKolommen; i++) {
     cout << char(64 + i) << " ";
   }
   cout << endl;
@@ -91,36 +93,26 @@ mogelijkeZet *OthelloBord::vindZet(vak *vakje) {
   }
   return nullptr;
 }
-
-mogelijkeZet *OthelloBord::kiesVak() {
-  mogelijkeZet *zet = nullptr;
-  while (aantalMogelijkeZetten != 0) {
-    cout << "Geef coordinaat: ";
-    char kolom = InputHandler::leesOptie();
-    kolom = int(kolom - 'A');
-    int rij = InputHandler::leesGetal(10) - 1;
-
-    if (rij >= 0 && rij < m && kolom >= 0 && kolom < n) {
-      zet = vindZet(vakjes[rij * n + kolom]);
-      if (zet != nullptr) {
-        return zet;
-      }
+mogelijkeZet *OthelloBord::vindZet(int rij, int kolom) {
+  if (rij < 0 || rij >= aantalRijen || kolom < 0 || kolom >= aantalKolommen) {
+    return nullptr;
+  }
+  vak *vakje = vakjes[rij * aantalKolommen + kolom];
+  for (int i = 0; i < aantalMogelijkeZetten; i++) {
+    if (vakje == valideZetten[i].vakje) {
+      return &valideZetten[i];
     }
   }
   return nullptr;
 }
 
-bool OthelloBord::mensZet(Speler *speler) {
+bool OthelloBord::mensZet(Speler *speler, mogelijkeZet *gekozenZet) {
   berekenValideZetten(speler);
-  if (aantalMogelijkeZetten == 0) {
-    return false;
-  }
-  mogelijkeZet *gekozenVak = kiesVak();
-  if (gekozenVak == nullptr) {
+  if (aantalMogelijkeZetten == 0 || gekozenZet == nullptr) {
     return false;
   }
 
-  voerZetUit(gekozenVak->vakje, gekozenVak->aantalFlips, speler);
+  voerZetUit(gekozenZet->vakje, gekozenZet->aantalFlips, speler);
   return true;
 }
 
@@ -143,13 +135,13 @@ bool OthelloBord::computerZet(Speler *speler) {
   if (aantalMogelijkeZetten == 0) {
     return false;
   }
-  int keuze = Overige::absoluut(Overige::randomGetal(aantalMogelijkeZetten));
+  int keuze = Spel::randomGetal(aantalMogelijkeZetten);
   mogelijkeZet *zet = &valideZetten[keuze];
   voerZetUit(zet->vakje, zet->aantalFlips, speler);
   return true;
 }
 
-bool OthelloBord::isKlaar() {
+bool OthelloBord::geenMogelijkeZetten() {
   berekenValideZetten(speler1);
   int speler1AantalZetten = aantalMogelijkeZetten;
   berekenValideZetten(speler2);
@@ -158,32 +150,36 @@ bool OthelloBord::isKlaar() {
 }
 
 void OthelloBord::bindVakjes() {
-  for (int i = 0; i < m; i++) {
-    for (int j = 0; j < n; j++) {
-      int index = i * n + j;
+  for (int i = 0; i < aantalRijen; i++) {
+    for (int j = 0; j < aantalKolommen; j++) {
+      int index = i * aantalKolommen + j;
       if (i > 0) {
-        vakjes[index]->buren[NOORD] = vakjes[(i - 1) * n + j];
+        vakjes[index]->buren[NOORD] = vakjes[(i - 1) * aantalKolommen + j];
       }
-      if (i > 0 && j < n - 1) {
-        vakjes[index]->buren[NOORDOOST] = vakjes[(i - 1) * n + (j + 1)];
+      if (i > 0 && j < aantalKolommen - 1) {
+        vakjes[index]->buren[NOORDOOST] =
+            vakjes[(i - 1) * aantalKolommen + (j + 1)];
       }
-      if (j < n - 1) {
-        vakjes[index]->buren[OOST] = vakjes[i * n + (j + 1)];
+      if (j < aantalKolommen - 1) {
+        vakjes[index]->buren[OOST] = vakjes[i * aantalKolommen + (j + 1)];
       }
-      if (j < n - 1 && i < m - 1) {
-        vakjes[index]->buren[ZUIDOOST] = vakjes[(i + 1) * n + (j + 1)];
+      if (j < aantalKolommen - 1 && i < aantalRijen - 1) {
+        vakjes[index]->buren[ZUIDOOST] =
+            vakjes[(i + 1) * aantalKolommen + (j + 1)];
       }
-      if (i < m - 1) {
-        vakjes[index]->buren[ZUID] = vakjes[(i + 1) * n + j];
+      if (i < aantalRijen - 1) {
+        vakjes[index]->buren[ZUID] = vakjes[(i + 1) * aantalKolommen + j];
       }
-      if (j > 0 && i < m - 1) {
-        vakjes[index]->buren[ZUIDWEST] = vakjes[(i + 1) * n + (j - 1)];
+      if (j > 0 && i < aantalRijen - 1) {
+        vakjes[index]->buren[ZUIDWEST] =
+            vakjes[(i + 1) * aantalKolommen + (j - 1)];
       }
       if (j > 0) {
-        vakjes[index]->buren[WEST] = vakjes[i * n + (j - 1)];
+        vakjes[index]->buren[WEST] = vakjes[i * aantalKolommen + (j - 1)];
       }
       if (j > 0 && i > 0) {
-        vakjes[index]->buren[NOORDWEST] = vakjes[(i - 1) * n + (j - 1)];
+        vakjes[index]->buren[NOORDWEST] =
+            vakjes[(i - 1) * aantalKolommen + (j - 1)];
       }
     }
   }

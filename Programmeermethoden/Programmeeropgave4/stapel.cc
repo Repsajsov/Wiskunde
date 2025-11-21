@@ -29,7 +29,9 @@ bool Stapel::isLeeg() { return (top == nullptr); }
 
 void Stapel::herstel(OthelloBord *huidigBord, Speler *speler1,
                      Speler *speler2) {
-  for (int i = 0; i < huidigBord->krijgM() * huidigBord->krijgN(); i++) {
+  for (int i = 0;
+       i < huidigBord->krijgAantalRijen() * huidigBord->krijgAantalKolommen();
+       i++) {
     huidigBord->krijgVakjes()[i]->teken = top->bord->krijgVakjes()[i]->teken;
   }
   speler1->zetScore(top->score1);
@@ -46,9 +48,11 @@ void Stapel::pop() {
 }
 
 void Stapel::undo(OthelloBord *bord, Speler *speler1, Speler *speler2) {
-  pop();
-  pop();
-  if (isLeeg()) {
-    herstel(bord, speler1, speler2);
+  if (top && top->volgende) {
+    pop();
+    pop();
+    if (!isLeeg()) {
+      herstel(bord, speler1, speler2);
+    }
   }
 }

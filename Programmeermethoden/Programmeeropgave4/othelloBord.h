@@ -3,7 +3,16 @@
 
 class Speler;
 
-enum { NOORD = 0, NOORDOOST, OOST, ZUIDOOST, ZUID, ZUIDWEST, WEST, NOORDWEST };
+enum Richting {
+  NOORD = 0,
+  NOORDOOST,
+  OOST,
+  ZUIDOOST,
+  ZUID,
+  ZUIDWEST,
+  WEST,
+  NOORDWEST
+};
 
 struct vak {
   char teken = '.';
@@ -21,34 +30,36 @@ private:
   vak **vakjes;
   mogelijkeZet *valideZetten;
   int aantalMogelijkeZetten = 0;
-  int m;
-  int n;
+  int aantalRijen;
+  int aantalKolommen;
+  int oppervlakte;
   Speler *speler1;
   Speler *speler2;
 
 public:
-  OthelloBord(int m, int n, Speler *speler1, Speler *speler2);
+  OthelloBord(int aantalRijen, int aantalKolommen, Speler *speler1,
+              Speler *speler2);
   ~OthelloBord();
   OthelloBord *kopieer();
 
   void afdrukken();
-  bool mensZet(Speler *speler);
+  bool mensZet(Speler *speler, mogelijkeZet *gekozenZet);
   bool computerZet(Speler *speler);
+  void voerZetUit(vak *vakje, int aantalFlips, Speler *speler);
 
-  bool isKlaar();
   void bindVakjes();
+  bool geenMogelijkeZetten();
 
   Speler *krijgTegenstander(Speler *speler);
-  int krijgM();
-  int krijgN();
+  int krijgAantalRijen();
+  int krijgAantalKolommen();
   vak **krijgVakjes();
 
   bool flipVakken(vak *huidigVak, int richting, char symbool);
   bool isGeldig(vak *huidigVak, int richting, char symbool);
   int telFlips(vak *huidigVak, int richting, char symbool);
   mogelijkeZet *vindZet(vak *vakje);
-  void voerZetUit(vak *vakje, int aantalFlips, Speler *speler);
-  mogelijkeZet *kiesVak();
+  mogelijkeZet *vindZet(int rij, int kolom);
 
   void berekenValideZetten(Speler *speler);
 };
