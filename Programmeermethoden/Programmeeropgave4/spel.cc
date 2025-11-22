@@ -6,7 +6,6 @@
 #include <unistd.h>
 
 using namespace std;
-
 int Spel::seed = time(0);
 
 Spel::Spel() {

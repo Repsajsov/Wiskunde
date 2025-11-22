@@ -1,0 +1,3 @@
+spel.cc:9:1: error: ‘kut’ does not name a type
+    9 | kut int Spel::seed = time(0);
+      | ^~~
