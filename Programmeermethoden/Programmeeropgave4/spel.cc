@@ -17,6 +17,7 @@ Spel::Spel() {
   stapel = nullptr;
   spelActief = true;
   isExperiment = false;
+  aantalSpellen = 1;
 }
 
 Spel::~Spel() {
@@ -30,6 +31,10 @@ void Spel::experiment() {
   int winstZ = 0, winstW = 0, gelijk = 0;
 
   for (int i = 0; i < aantalSpellen; i++) {
+    if (i > 0 && i % (aantalSpellen / 10) == 0) {
+      cout << "Spellen gespeeld: " << i << "/" << aantalSpellen << endl;
+    }
+
     speelZonderStapel();
 
     if (speler1->krijgScore() > speler2->krijgScore())
@@ -47,7 +52,8 @@ void Spel::experiment() {
     bord = new OthelloBord(aantalRijen, aantalKolommen, speler1, speler2);
   }
 
-  cout << "Z: " << winstZ << " | W: " << winstW << " | Gelijk: " << gelijk
+  cout << endl
+       << "Z: " << winstZ << " | W: " << winstW << " | Gelijk: " << gelijk
        << endl;
 }
 
@@ -103,15 +109,18 @@ void Spel::resultaat() {
 
 void Spel::speelZonderStapel() {
   huidigeSpeler = speler1;
+  int nietGespeeld = 0;
 
-  while (!bord->geenMogelijkeZetten()) {
+  while (nietGespeeld < 2) {
     bord->berekenValideZetten(huidigeSpeler);
 
     if (bord->krijgAantalMogelijkeZetten() == 0) {
+      nietGespeeld++;
       huidigeSpeler = bord->krijgTegenstander(huidigeSpeler);
       continue;
     }
 
+    nietGespeeld = 0;
     bord->computerZet(huidigeSpeler);
     huidigeSpeler = bord->krijgTegenstander(huidigeSpeler);
   }
@@ -182,7 +191,7 @@ char Spel::leesOptie() {
 }
 
 int Spel::leesGetal(int max) {
-  char resultaat = 0;
+  int resultaat = 0;
   char karakter = leesOptie();
   if (karakter >= '0' && karakter <= '9') {
     resultaat = karakter - '0';
