@@ -16,6 +16,7 @@ Spel::Spel() {
   huidigeSpeler = nullptr;
   stapel = nullptr;
   spelActief = true;
+  isExperiment = false;
 }
 
 Spel::~Spel() {
@@ -25,10 +26,39 @@ Spel::~Spel() {
   delete stapel;
 }
 
+void Spel::experiment() {
+  int winstZ = 0, winstW = 0, gelijk = 0;
+
+  for (int i = 0; i < aantalSpellen; i++) {
+    speelZonderStapel();
+
+    if (speler1->krijgScore() > speler2->krijgScore())
+      winstZ++;
+    else if (speler2->krijgScore() > speler1->krijgScore())
+      winstW++;
+    else
+      gelijk++;
+
+    int aantalRijen = bord->krijgAantalRijen();
+    int aantalKolommen = bord->krijgAantalKolommen();
+    delete bord;
+    speler1->zetScore(2);
+    speler2->zetScore(2);
+    bord = new OthelloBord(aantalRijen, aantalKolommen, speler1, speler2);
+  }
+
+  cout << "Z: " << winstZ << " | W: " << winstW << " | Gelijk: " << gelijk
+       << endl;
+}
+
 void Spel::start() {
   opstarten();
-  spelen();
-  resultaat();
+  if (aantalSpellen == 1) {
+    spelen();
+    resultaat();
+  } else {
+    experiment();
+  }
 }
 
 void Spel::opstarten() {
@@ -42,10 +72,22 @@ void Spel::opstarten() {
   cout << "Aantal kolommen: ";
   int kolommen = leesGetal(20);
 
+  aantalSpellen = 1;
+  if (speler1Computer == speler2Computer) {
+    cout << "Wil je een experiment doen (j/n):" << endl;
+    if (leesOptie() == 'J') {
+      isExperiment = true;
+      cout << "Hoeveel spelletjes voor statistieken: ";
+      aantalSpellen = leesGetal(10000);
+    }
+  }
+
   speler1 = new Speler('Z', speler1Computer);
   speler2 = new Speler('W', speler2Computer);
   bord = new OthelloBord(rijen, kolommen, speler1, speler2);
-  stapel = new Stapel(bord, 2, 2);
+  if (aantalSpellen == 1) {
+    stapel = new Stapel(bord, 2, 2);
+  }
   huidigeSpeler = speler1;
 }
 
@@ -59,6 +101,21 @@ void Spel::resultaat() {
   }
 }
 
+void Spel::speelZonderStapel() {
+  huidigeSpeler = speler1;
+
+  while (!bord->geenMogelijkeZetten()) {
+    bord->berekenValideZetten(huidigeSpeler);
+
+    if (bord->krijgAantalMogelijkeZetten() == 0) {
+      huidigeSpeler = bord->krijgTegenstander(huidigeSpeler);
+      continue;
+    }
+
+    bord->computerZet(huidigeSpeler);
+    huidigeSpeler = bord->krijgTegenstander(huidigeSpeler);
+  }
+}
 void Spel::spelen() {
   while (!bord->geenMogelijkeZetten() && spelActief) {
     schermSchoonmaken();
@@ -68,7 +125,8 @@ void Spel::spelen() {
     if (bord->krijgAantalMogelijkeZetten() == 0) {
       cout << "Speler " << huidigeSpeler->krijgSymbool()
            << " kan niet zetten! Beurt overgeslagen." << endl;
-      wacht(2);
+      if (!isExperiment)
+        wacht(1);
       huidigeSpeler = bord->krijgTegenstander(huidigeSpeler);
       continue;
     }
@@ -93,7 +151,8 @@ void Spel::spelen() {
 
       if (!zetGelukt) {
         cout << "Ongeldige zet! Probeer opnieuw." << endl;
-        wacht(1);
+        if (!isExperiment)
+          wacht(1);
         continue;
       }
     } else {
@@ -101,9 +160,12 @@ void Spel::spelen() {
     }
     cout << "Speler " << huidigeSpeler->krijgSymbool() << " heeft gezet!"
          << endl;
-    wacht(1);
+    if (!isExperiment)
+      wacht(1);
 
-    stapel->push(bord, speler1->krijgScore(), speler2->krijgScore());
+    if (!isExperiment) {
+      stapel->push(bord, speler1->krijgScore(), speler2->krijgScore());
+    }
     huidigeSpeler = bord->krijgTegenstander(huidigeSpeler);
   }
 }

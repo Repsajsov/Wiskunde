@@ -14,15 +14,18 @@ private:
   Stapel *stapel;
   bool spelActief;
   static int seed;
+  bool isExperiment;
+  int aantalSpellen;
 
   void opstarten();
   void spelen();
+  void speelZonderStapel();
   void resultaat();
   static char leesOptie();
   static int leesGetal(int max);
   void schermSchoonmaken();
   void wacht(int seconden);
-
+  void experiment();
 
 public:
   Spel();
