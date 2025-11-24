@@ -86,29 +86,30 @@ Kies volgens de archimedische eigenschap $N = \lceil\f{1729-1730\epsilon}{\epsil
 Gebruik definitie \emph{i)} uit het boek:
 \[\forall \epsilon > 0 \ \exists \delta > 0 \met \forall x \in \R \zdd |x-c| < \delta \implies |f(x) - f(0)| < \epsilon \]
 Herschrijf:
-\[\left|x^4\cdot\cos(\f{1}{x})-f(0)\right| = \left|x^4\cdot\cos(\f{1}{x})\right| \leq |x^4| = |x|^4 < \delta^4\]
+\begin{align*}
+\left|x^4\cdot\cos(\f{1}{x})-f(0)\right| &= \left|x^4\cdot\cos(\f{1}{x})\right|  \\
+&\leq |x^4| \quad (\tx{Omdat $-1 \leq \cos\left(\f{1}{x}\right) \leq 1$})\\
+&= |x|^4 < \delta^4
+\end{align*}
 Kies $\delta = \sqrt[4]{\epsilon}$, dan:
 \[\left|x^4\cdot\cos(\f{1}{x})-f(0)\right| < \delta^4 = (\sqrt[4]{\epsilon })^4 = \epsilon\]
-Hieruit volgt dus dat voor alle $\epsilon$ een $\delta$ kunnen vinden en daarmee is de functie continue op $x=0$.
+Hieruit volgt dus dat voor alle $\epsilon$ een $\delta$ kunnen vinden en daarmee is de functie continue op $c=0$.
 \end{proof}
 \section*{Opgave 3}
-Voor alle $x, y \in \R$, geldt dat er een $q \in \Q$ bestaat zodanig dat $x < q< y$. 
-Dit betekent dus dat wel altijd een gat tussen $0$ en $1$ hebben en dus kan dit nooit continue zijn.
-Om dit verder formeel te laten zien kunnen we een $\epsilon =\f{1}{2}$ kiezen, en gevallen afgaan.
+Kies epsilon $\epsilon = \f{1}{2}$, voor elke $c$ die we dan hebben in $(c - \delta, \ c + \delta)$ geldt dat er zowel rationale als irrationale getallen zitten.
 
 \begin{itemize}
     \item Stel dat $c \in \R \setminus \Q$, dan bestaat er in het interval $(c-\delta , c + \delta)$ een $x \in Q$ (omdat we tussen elke twee reële getallen een rationaal getal kunnen proppen) en dus:
     \[ |1-0| = 1 \nless \f{1}{2}\] 
     \item Stel dat $c \in \Q$, dan bestaat vice versa ook een reëel getal tussen twee rationale getallen en dus:
     \[|0-1| = 1\nless \f{1}{2}\]
-
 \end{itemize}
 
 \section*{Opgave 4} 
-Ga per term af of hij continue is dan is de som van alle continue termen ook continue.
+Per term bekijken we of het continue is en vervolgens moet de som van alle termen dan ook continue zijn.
 \begin{itemize}
     \item 
-Merk op dat $|x|$ continue is, en dus is $|x||x||x| = |x|^3= |x^3|$ ook continue. 
+    Merk op dat $|x|$ continue is, omdat $|x^3| = |x|^3$ is $|x^3|$ dus ook continue volgens de samenstelling van continue functies.
 \item
 We kunnen $\f{1}{1 + x^2}$ als twee continue functies zien namelijk de constante functie $f(x) = 1 \en g(x) = 1 + x^2$. Constante functies zijn altijd continue en $g(x)$ is ook continue want het is een polynoom.
 Als twee functies continue zijn dan is $\f{f(x)}{g(x)}$ ook continue als $g(x) \neq 0$, en dit geldt want $g(x) > 0$ voor alle $x$. 
