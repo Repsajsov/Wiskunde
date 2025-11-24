@@ -42,43 +42,43 @@ Studentnr: \emph{s2911159}
 
 \section*{Opgave 1}
 \begin{enumerate}[label=\alph*)]
-    \item 
-\begin{proof}
-Om aan te tonen dat $0$ een verdichtingspunt is moeten we kijken of er oneindig aantal elementen rond $0$ zitten.
-Kies $\epsilon > 0$, en dan bekijken we het interval $(0, \ \epsilon)$: 
-\[0 < \f{1729}{n + 1} < \epsilon\]
-Als we dit herschrijven kunnen we een $N$ (met de archimedische eigenschap) vinden waarbij $\f{1729}{N + 1} < \epsilon$, ofwel:
-\[
-    \f{1729}{n + 1} < \epsilon \iff \f{1729}{\epsilon} < n + 1 \iff \f{1729}{\epsilon} - 1 < n\\
-\]
-We kiezen dus $N = \lceil\f{1729}{\epsilon} - 1\rceil$, dan geldt dus voor alle $n > N$ dat het kleiner dan epsilon is en dus bestaan er oneindig punten rond $0$, en daarmee is $0
-$ een verdichtingspunt.
-\end{proof}
-\item
-\begin{proof}
-    Gebruik definitie om te verifiëren dat $1$ het limiet is. Definitie:
-    \[ \forall \epsilon > 0 \ \exists \delta > 0 \en \forall x \in D\ \zdd |x-0|=|x| < \delta \implies \left|\f{1}{1+x} - 1\right| < \epsilon\]
-    Herschrijf de termen:
-\[
-        \left|\f{1}{1+x} - 1\right| = \left|\f{1-1-x}{1+x}\right| = \left|\f{-x}{1+x}\right| = \left|\f{x}{1+x}\right| \\
-\]
-Merk op dat $x > 0$ vanuit \emph{Opgave 1a}, dan:
-\[\left|\f{x}{x + 1}\right| = \f{x}{1 + x} < \f{x}{1} = x \leq |x| < \delta\]
-Als we dus $\delta = \epsilon$ kiezen dan krijgen we:
-\[
-        \left|\f{1}{1+x} - 1\right| < \delta = \epsilon \\
-\]
+    \item
+          \begin{proof}
+              Om aan te tonen dat $0$ een verdichtingspunt is moeten we kijken of er oneindig aantal elementen rond $0$ zitten.
+              Kies $\epsilon > 0$, en dan bekijken we het interval $(0, \ \epsilon)$:
+              \[0 < \f{1729}{n + 1} < \epsilon\]
+              Als we dit herschrijven kunnen we een $N$ (met de archimedische eigenschap) vinden waarbij $\f{1729}{N + 1} < \epsilon$, ofwel:
+              \[
+                  \f{1729}{n + 1} < \epsilon \iff \f{1729}{\epsilon} < n + 1 \iff \f{1729}{\epsilon} - 1 < n\\
+              \]
+              We kiezen dus $N = \lceil\f{1729}{\epsilon} - 1\rceil$, dan geldt dus voor alle $n > N$ dat het kleiner dan epsilon is en dus bestaan er oneindig punten rond $0$, en daarmee is $0
+              $ een verdichtingspunt.
+          \end{proof}
+    \item
+          \begin{proof}
+              Gebruik definitie om te verifiëren dat $1$ het limiet is. Definitie:
+              \[ \forall \epsilon > 0 \ \exists \delta > 0 \en \forall x \in D\ \zdd |x-0|=|x| < \delta \implies \left|\f{1}{1+x} - 1\right| < \epsilon\]
+              Herschrijf de termen:
+              \[
+                  \left|\f{1}{1+x} - 1\right| = \left|\f{1-1-x}{1+x}\right| = \left|\f{-x}{1+x}\right| = \left|\f{x}{1+x}\right| \\
+              \]
+              Merk op dat $x > 0$ vanuit \emph{Opgave 1a}, dan:
+              \[\left|\f{x}{x + 1}\right| = \f{x}{1 + x} < \f{x}{1} = x \leq |x| < \delta\]
+              Als we dus $\delta = \epsilon$ kiezen dan krijgen we:
+              \[
+                  \left|\f{1}{1+x} - 1\right| < \delta = \epsilon \\
+              \]
 
-De definitie houdt stand als we stellen dat $L = 1$, en dus klopt $\lim_{x \rightarrow 0} f(x) = 1$.
-\end{proof}
-\item 
-\begin{proof}
-Laat $\epsilon > 0$, dan moet er een $N \in \N$ bestaan met $\forall n\geq N$ zodanig dat: 
-\[\left|\f{1}{1 + \f{1729}{n+1}}- 1\right| < \epsilon\]
-Herschrijf de termen:
-\[  \left|\f{-1729}{n+1+1729}\right| < \epsilon \iff 1729 < \epsilon (n + 1730) \iff \f{1729 - 1730\epsilon}{\epsilon} < n\]
-Kies volgens de archimedische eigenschap $N = \lceil\f{1729-1730\epsilon}{\epsilon}\rceil$, dan geldt voor alle $n \geq N$ dat je arbitrair dichtbij $1$ kan komen en dus is de rij convergent en het limiet $1$.
-\end{proof}
+              De definitie houdt stand als we stellen dat $L = 1$, en dus klopt $\lim_{x \rightarrow 0} f(x) = 1$.
+          \end{proof}
+    \item
+          \begin{proof}
+              Laat $\epsilon > 0$, dan moet er een $N \in \N$ bestaan met $\forall n\geq N$ zodanig dat:
+              \[\left|\f{1}{1 + \f{1729}{n+1}}- 1\right| < \epsilon\]
+              Herschrijf de termen:
+              \[  \left|\f{-1729}{n+1+1729}\right| < \epsilon \iff 1729 < \epsilon (n + 1730) \iff \f{1729 - 1730\epsilon}{\epsilon} < n\]
+              Kies volgens de archimedische eigenschap $N = \lceil\f{1729-1730\epsilon}{\epsilon}\rceil$, dan geldt voor alle $n \geq N$ dat je arbitrair dichtbij $1$ kan komen en dus is de rij convergent en het limiet $1$.
+          \end{proof}
 \end{enumerate}
 \section*{Opgave 2}
 \begin{proof}
@@ -100,7 +100,7 @@ Kies epsilon $\epsilon = \f{1}{2}$, voor elke $c$ die we dan hebben in $(c - \de
 
 \begin{itemize}
     \item Stel dat $c \in \R \setminus \Q$, dan bestaat er in het interval $(c-\delta , c + \delta)$ een $x \in Q$ (omdat we tussen elke twee reële getallen een rationaal getal kunnen proppen) en dus:
-    \[ |1-0| = 1 \nless \f{1}{2}\] 
+          \[ |1-0| = 1 \nless \f{1}{2}\]
     \item Stel dat $c \in \Q$, dan bestaat vice versa ook een reëel getal tussen twee rationale getallen en dus:
     \[|0-1| = 1\nless \f{1}{2}\]
 \end{itemize}
