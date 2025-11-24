@@ -42,77 +42,75 @@ Studentnr: \emph{s2911159}
 
 \section*{Opgave 1}
 \begin{enumerate}[label=\alph*)]
-    \item 
-\begin{proof}
-Om aan te tonen dat $0$ een verdichtingspunt is moeten we kijken of er oneindig aantal elementen rond $0$ zitten.
-Kies $\epsilon > 0$, en dan bekijken we het interval $(0, \ \epsilon)$: 
-\[0 < \f{1729}{n + 1} < \epsilon\]
-Als we dit herschrijven kunnen we een $N$ (met de archimedische eigenschap) vinden waarbij $\f{1729}{N + 1} < \epsilon$, ofwel:
-\[
-    \f{1729}{n + 1} < \epsilon \iff \f{1729}{\epsilon} < n + 1 \iff \f{1729}{\epsilon} - 1 < n\\
-\]
-We kiezen dus $N = \lceil\f{1729}{\epsilon} - 1\rceil$, dan geldt dus voor alle $n > N$ dat het kleiner dan epsilon is en dus bestaan er oneindig punten rond $0$, en daarmee is $0
-$ een verdichtingspunt.
-\end{proof}
-\item
-\begin{proof}
-    Gebruik definitie om te verifiëren dat $1$ het limiet is. Definitie:
-    \[ \forall \epsilon > 0 \ \exists \delta > 0 \en \forall x \in D\ \zdd |x-0|=|x| < \delta \implies \left|\f{1}{1+x} - 1\right| < \epsilon\]
-    Herschrijf de termen:
-\[
-        \left|\f{1}{1+x} - 1\right| = \left|\f{1-1-x}{1+x}\right| = \left|\f{-x}{1+x}\right| = \left|\f{x}{1+x}\right| \\
-\]
-Merk op dat $x > 0$ vanuit \emph{Opgave 1a}, dan:
-\[\left|\f{x}{x + 1}\right| = \f{x}{1 + x} < \f{x}{1} = x \leq |x| < \delta\]
-Als we dus $\delta = \epsilon$ kiezen dan krijgen we:
-\[
-        \left|\f{1}{1+x} - 1\right| < \delta = \epsilon \\
-\]
+    \item
+          \begin{proof}
+              Om aan te tonen dat $0$ een verdichtingspunt is moeten we kijken of er oneindig aantal elementen rond $0$ zitten.
+              Kies $\epsilon > 0$, en dan bekijken we het interval $(0, \ \epsilon)$:
+              \[0 < \f{1729}{n + 1} < \epsilon\]
+              Als we dit herschrijven kunnen we een $N$ (met de archimedische eigenschap) vinden waarbij $\f{1729}{N + 1} < \epsilon$, ofwel:
+              \[
+                  \f{1729}{n + 1} < \epsilon \iff \f{1729}{\epsilon} < n + 1 \iff \f{1729}{\epsilon} - 1 < n\\
+              \]
+              We kiezen dus $N = \lceil\f{1729}{\epsilon} - 1\rceil$, dan geldt dus voor alle $n > N$ dat het kleiner dan epsilon is en dus bestaan er oneindig punten rond $0$, en daarmee is $0
+              $ een verdichtingspunt.
+          \end{proof}
+    \item
+          \begin{proof}
+              Gebruik definitie om te verifiëren dat $1$ het limiet is. Definitie:
+              \[ \forall \epsilon > 0 \ \exists \delta > 0 \en \forall x \in D\ \zdd |x-0|=|x| < \delta \implies \left|\f{1}{1+x} - 1\right| < \epsilon\]
+              Herschrijf de termen:
+              \[
+                  \left|\f{1}{1+x} - 1\right| = \left|\f{1-1-x}{1+x}\right| = \left|\f{-x}{1+x}\right| = \left|\f{x}{1+x}\right| \\
+              \]
+              Merk op dat $x > 0$ vanuit \emph{Opgave 1a}, dan:
+              \[\left|\f{x}{x + 1}\right| = \f{x}{1 + x} < \f{x}{1} = x \leq |x| < \delta\]
+              Als we dus $\delta = \epsilon$ kiezen dan krijgen we:
+              \[
+                  \left|\f{1}{1+x} - 1\right| < \delta = \epsilon \\
+              \]
 
-De definitie houdt stand als we stellen dat $L = 1$, en dus klopt $\lim_{x \rightarrow 0} f(x) = 1$.
-\end{proof}
-\item 
-\begin{proof}
-Laat $\epsilon > 0$, dan moet er een $N \in \N$ bestaan met $\forall n\geq N$ zodanig dat: 
-\[\left|\f{1}{1 + \f{1729}{n+1}}- 1\right| < \epsilon\]
-Herschrijf de termen:
-\[  \left|\f{-1729}{n+1+1729}\right| < \epsilon \iff 1729 < \epsilon (n + 1730) \iff \f{1729 - 1730\epsilon}{\epsilon} < n\]
-Kies volgens de archimedische eigenschap $N = \lceil\f{1729-1730\epsilon}{\epsilon}\rceil$, dan geldt voor alle $n \geq N$ dat je arbitrair dichtbij $1$ kan komen en dus is de rij convergent en het limiet $1$.
-\end{proof}
+              De definitie houdt stand als we stellen dat $L = 1$, en dus klopt $\lim_{x \rightarrow 0} f(x) = 1$.
+          \end{proof}
+    \item
+          \begin{proof}
+              Laat $\epsilon > 0$, dan moet er een $N \in \N$ bestaan met $\forall n\geq N$ zodanig dat:
+              \[\left|\f{1}{1 + \f{1729}{n+1}}- 1\right| < \epsilon\]
+              Herschrijf de termen:
+              \[  \left|\f{-1729}{n+1+1729}\right| < \epsilon \iff 1729 < \epsilon (n + 1730) \iff \f{1729 - 1730\epsilon}{\epsilon} < n\]
+              Kies volgens de archimedische eigenschap $N = \lceil\f{1729-1730\epsilon}{\epsilon}\rceil$, dan geldt voor alle $n \geq N$ dat je arbitrair dichtbij $1$ kan komen en dus is de rij convergent en het limiet $1$.
+          \end{proof}
 \end{enumerate}
 \section*{Opgave 2}
 \begin{proof}
-    
-Gebruik definitie \emph{i)} uit het boek:
-\[\forall \epsilon > 0 \ \exists \delta > 0 \met \forall x \in \R \zdd |x-c| < \delta \implies |f(x) - f(0)| < \epsilon \]
-Herschrijf:
-\[\left|x^4\cdot\cos(\f{1}{x})-f(0)\right| = \left|x^4\cdot\cos(\f{1}{x})\right| \leq |x^4| = |x|^4 < \delta^4\]
-Kies $\delta = \sqrt[4]{\epsilon}$, dan:
-\[\left|x^4\cdot\cos(\f{1}{x})-f(0)\right| < \delta^4 = (\sqrt[4]{\epsilon })^4 = \epsilon\]
-Hieruit volgt dus dat voor alle $\epsilon$ een $\delta$ kunnen vinden en daarmee is de functie continue op $x=0$.
+    Gebruik definitie \emph{i)} uit het boek:
+    \[\forall \epsilon > 0 \ \exists \delta > 0 \met \forall x \in \R \zdd |x-c| < \delta \implies |f(x) - f(0)| < \epsilon \]
+    Herschrijf:
+    \[\left|x^4\cdot\cos(\f{1}{x})-f(0)\right| = \left|x^4\cdot\cos(\f{1}{x})\right| \leq |x^4| = |x|^4 < \delta^4\]
+    Kies $\delta = \sqrt[4]{\epsilon}$, dan:
+    \[\left|x^4\cdot\cos(\f{1}{x})-f(0)\right| < \delta^4 = (\sqrt[4]{\epsilon })^4 = \epsilon\]
+    Hieruit volgt dus dat voor alle $\epsilon$ een $\delta$ kunnen vinden en daarmee is de functie continue op $x=0$.
 \end{proof}
 \section*{Opgave 3}
-Voor alle $x, y \in \R$, geldt dat er een $q \in \Q$ bestaat zodanig dat $x < q< y$. 
+Voor alle $x, y \in \R$, geldt dat er een $q \in \Q$ bestaat zodanig dat $x < q< y$.
 Dit betekent dus dat wel altijd een gat tussen $0$ en $1$ hebben en dus kan dit nooit continue zijn.
 Om dit verder formeel te laten zien kunnen we een $\epsilon =\f{1}{2}$ kiezen, en gevallen afgaan.
 
 \begin{itemize}
     \item Stel dat $c \in \R \setminus \Q$, dan bestaat er in het interval $(c-\delta , c + \delta)$ een $x \in Q$ (omdat we tussen elke twee reële getallen een rationaal getal kunnen proppen) en dus:
-    \[ |1-0| = 1 \nless \f{1}{2}\] 
+          \[ |1-0| = 1 \nless \f{1}{2}\]
     \item Stel dat $c \in \Q$, dan bestaat vice versa ook een reëel getal tussen twee rationale getallen en dus:
-    \[|0-1| = 1\nless \f{1}{2}\]
-
+          \[|0-1| = 1\nless \f{1}{2}\]
 \end{itemize}
 
-\section*{Opgave 4} 
+\section*{Opgave 4}
 Ga per term af of hij continue is dan is de som van alle continue termen ook continue.
 \begin{itemize}
-    \item 
-Merk op dat $|x|$ continue is, en dus is $|x||x||x| = |x|^3= |x^3|$ ook continue. 
-\item
-We kunnen $\f{1}{1 + x^2}$ als twee continue functies zien namelijk de constante functie $f(x) = 1 \en g(x) = 1 + x^2$. Constante functies zijn altijd continue en $g(x)$ is ook continue want het is een polynoom.
-Als twee functies continue zijn dan is $\f{f(x)}{g(x)}$ ook continue als $g(x) \neq 0$, en dit geldt want $g(x) > 0$ voor alle $x$. 
-\item De laatste term $9x^8$ is een polynoom en dus continue.
+    \item
+          Merk op dat $|x|$ continue is, en dus is $|x||x||x| = |x|^3= |x^3|$ ook continue.
+    \item
+          We kunnen $\f{1}{1 + x^2}$ als twee continue functies zien namelijk de constante functie $f(x) = 1 \en g(x) = 1 + x^2$. Constante functies zijn altijd continue en $g(x)$ is ook continue want het is een polynoom.
+          Als twee functies continue zijn dan is $\f{f(x)}{g(x)}$ ook continue als $g(x) \neq 0$, en dit geldt want $g(x) > 0$ voor alle $x$.
+    \item De laatste term $9x^8$ is een polynoom en dus continue.
 \end{itemize}
 Hierbij zijn alle termen continue en dus is de som ook continue.
 \end{document}
