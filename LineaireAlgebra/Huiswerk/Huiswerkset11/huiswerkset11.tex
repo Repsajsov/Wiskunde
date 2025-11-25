@@ -5,38 +5,48 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage{cancel}
 \usepackage{enumitem}
+
 \setlength{\parindent}{0pt}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\f}[2]{\frac{#1}{#2}}
+
 \begin{document}
 {\Large \textbf{Lineaire Algebra}}
+
 \bigskip
+
 \textbf{Jasper Vos} \hfill \textbf{Huiswerkset 11} \hfill \today \\
 Studentnr: \emph{s2911159}
+
 \rule{\textwidth}{2pt}
+
 \bigskip
-\section*{Opgave 9.4.2}
+
+\section*{Opgave 9.4.2(1)}
 We hebben de lijn $L \subset \R^2$ met $y = 2x$ en een orthogonale projectie $\pi: \R^2 \rightarrow \R^2$ op $L$.
-\begin{enumerate}[label=(\arabic*)]
-    \item Lijn $L = \text{span}\{(1,2)\}$, dus richtingsvector $a = (1, 2)$ met $\langle a, a\rangle = 5$.
+Lijn $L = \text{span}\{(1,2)\}$, dus richtingsvector $a = (1, 2)$ met $\langle a, a\rangle = 5$.
 
 Bereken projectie van basisvectoren:
 \begin{align*}
-\pi(e_1) &= \f{\langle e_1, a \rangle}{\langle a, a\rangle}\cdot (1, 2) = \f{1\cdot 1 + 0\cdot 2}{1\cdot 1 + 2\cdot 2}\cdot(1, 2) = \f{1}{5}(1, 2) = \left(\f{1}{5}, \f{2}{5}\right)\\
-\pi(e_2) &= \f{\langle e_2, a \rangle}{\langle a, a\rangle}\cdot (1, 2) = \f{0\cdot 1 + 1\cdot 2}{1\cdot 1 + 2\cdot 2}\cdot(1, 2) = \f{2}{5}(1, 2) = \left(\f{2}{5}, \f{4}{5}\right)
+    \pi(e_1) & = \f{\langle e_1, a \rangle}{\langle a, a\rangle}\cdot (1, 2) = \f{1\cdot 1 + 0\cdot 2}{1\cdot 1 + 2\cdot 2}\cdot(1, 2) = \f{1}{5}(1, 2) = \left(\f{1}{5}, \f{2}{5}\right) \\
+    \pi(e_2) & = \f{\langle e_2, a \rangle}{\langle a, a\rangle}\cdot (1, 2) = \f{0\cdot 1 + 1\cdot 2}{1\cdot 1 + 2\cdot 2}\cdot(1, 2) = \f{2}{5}(1, 2) = \left(\f{2}{5}, \f{4}{5}\right)
 \end{align*}
 
 Gebruik de vectoren als kolommen in $[\pi]_B^B$:
 \[
-\boxed{
-[\pi]_B^B = \begin{pmatrix}
-\f{1}{5} & \f{2}{5} \\[0.5em]
-\f{2}{5} & \f{4}{5}
-\end{pmatrix}
-}
+    \boxed{
+        [\pi]_B^B = \begin{pmatrix}
+            \f{1}{5} & \f{2}{5} \\
+            \f{2}{5} & \f{4}{5}
+        \end{pmatrix}
+        = \begin{pmatrix}
+            1 & 2 \\2 & 4
+        \end{pmatrix}
+    }
 \]
 
-\item Kies $v_1 = (1,2)$ voor $L$ en $v_2 = (-2, 1)$ voor $L^\bot$. 
+\section*{Opgave 9.4.2(2)}
+Kies $v_1 = (1,2)$ voor $L$ en $v_2 = (-2, 1)$ voor $L^\bot$.
 
 Check: $(1,2) \cdot (-2,1) = -2 + 2 = 0$
 
@@ -44,61 +54,58 @@ Basis $C = (v_1, v_2)$.
 
 Projectie behoudt component langs $L$, zet component langs $L^\bot$ op $0$:
 \[
-\boxed{
-[\pi]_C^C = \begin{pmatrix}
-1 & 0 \\
-0 & 0
-\end{pmatrix}
-}
+    \boxed{
+        [\pi]_C^C = \begin{pmatrix}
+            1 & 0 \\
+            0 & 0
+        \end{pmatrix}
+    }
 \]
-
-\item Basiswisselmatrix $P$ van $C$ naar $B$:
-\[P = \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}, \quad 
-P^{-1} = \f{1}{5} \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}\]
+\section*{Opgave 9.4.2(3)}
+Basiswisselmatrix $P$ van $C$ naar $B$:
+\[P = \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}, \quad
+    P^{-1} = \f{1}{5} \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}\]
 
 Bereken $[\pi]_B^B = P \cdot [\pi]_C^C \cdot P^{-1}$:
 \begin{align*}
-[\pi]_B^B &= \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix} 
-\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
-\f{1}{5} \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix} \\[0.5em]
-&= \f{1}{5} \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}
-\begin{pmatrix} 1 & 2 \\ 0 & 0 \end{pmatrix}
-= \f{1}{5} \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}
+    [\pi]_B^B & = \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}
+    \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+    \f{1}{5} \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}               \\[0.5em]
+              & = \f{1}{5} \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}
+    \begin{pmatrix} 1 & 2 \\ 0 & 0 \end{pmatrix}
+    = \f{1}{5} \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}
 \end{align*}
-
 \[
-\boxed{
-[\pi]_B^B = \begin{pmatrix}
-\f{1}{5} & \f{2}{5} \\[0.5em]
-\f{2}{5} & \f{4}{5}
-\end{pmatrix}
-}
+    \boxed{
+        [\pi]_B^B = \begin{pmatrix}
+            \f{1}{5} & \f{2}{5} \\[0.5em]
+            \f{2}{5} & \f{4}{5}
+        \end{pmatrix}
+    }
 \]
-
 Komt overeen met (1).
-\end{enumerate}
-
 \pagebreak
 \section*{Opgave 10.1.2}
 
-\subsection*{Te bewijzen}
 Voor bovendriehoeksmatrix $A$ geldt: $\det(A) = \prod_{i=1}^{n} a_{ii}$
 
 \subsection*{Bewijs via inductie}
 
 Bovendriehoeksmatrix heeft vorm:
 \[
-A = \begin{pmatrix}
-a_{11} & * & \dots  & * \\
-0      & a_{22} & \dots  & * \\
-\vdots & \vdots & \ddots & \vdots \\
-0      & 0      & \dots  & a_{nn}
-\end{pmatrix}
+    A = \begin{pmatrix}
+        a_{11} & *      & \dots  & *      \\
+        0      & a_{22} & \dots  & *      \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0      & 0      & \dots  & a_{nn}
+    \end{pmatrix}
 \]
 
-\textbf{Basisstap} ($n=1$): $A = (a_{11})$, dus $\det(A) = a_{11}$
+\subsection*{Basisstap $n = 1$}
+$A = (a_{11})$, dus $\det(A) = a_{11}$
 
-\textbf{Inductiestap}: Stel het geldt voor $(n-1) \times (n-1)$ matrices.
+\subsection*{Inductiestap}
+Stel het geldt voor $(n-1) \times (n-1)$ matrices.
 
 Laplace-expansie naar eerste kolom:
 \[\det(A) = a_{11} \cdot \det(A_{11}) + 0 + \ldots + 0\]
@@ -113,7 +120,7 @@ Dus:
 
 \subsection*{Conclusie}
 \[
-\boxed{\det(A) = a_{11} \cdot a_{22} \cdot \ldots \cdot a_{nn}}
+    \boxed{\det(A) = a_{11} \cdot a_{22} \cdot \ldots \cdot a_{nn}}
 \]
 
 \end{document}
