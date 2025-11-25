@@ -70,7 +70,7 @@ Bereken $[\pi]_B^B = P \cdot [\pi]_C^C \cdot P^{-1}$:
 \begin{align*}
     [\pi]_B^B & = \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}
     \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
-    \f{1}{5} \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}               \\[0.5em]
+    \f{1}{5} \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}               \\
               & = \f{1}{5} \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}
     \begin{pmatrix} 1 & 2 \\ 0 & 0 \end{pmatrix}
     = \f{1}{5} \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}
@@ -78,8 +78,12 @@ Bereken $[\pi]_B^B = P \cdot [\pi]_C^C \cdot P^{-1}$:
 \[
     \boxed{
         [\pi]_B^B = \begin{pmatrix}
-            \f{1}{5} & \f{2}{5} \\[0.5em]
+            \f{1}{5} & \f{2}{5} \\
             \f{2}{5} & \f{4}{5}
+        \end{pmatrix}
+        = \begin{pmatrix}
+            1 & 2 \\ 
+            2 & 4
         \end{pmatrix}
     }
 \]
@@ -87,19 +91,7 @@ Komt overeen met (1).
 \pagebreak
 \section*{Opgave 10.1.2}
 
-Voor bovendriehoeksmatrix $A$ geldt: $\det(A) = \prod_{i=1}^{n} a_{ii}$
-
 \subsection*{Bewijs via inductie}
-
-Bovendriehoeksmatrix heeft vorm:
-\[
-    A = \begin{pmatrix}
-        a_{11} & *      & \dots  & *      \\
-        0      & a_{22} & \dots  & *      \\
-        \vdots & \vdots & \ddots & \vdots \\
-        0      & 0      & \dots  & a_{nn}
-    \end{pmatrix}
-\]
 
 \subsection*{Basisstap $n = 1$}
 $A = (a_{11})$, dus $\det(A) = a_{11}$
@@ -107,20 +99,19 @@ $A = (a_{11})$, dus $\det(A) = a_{11}$
 \subsection*{Inductiestap}
 Stel het geldt voor $(n-1) \times (n-1)$ matrices.
 
-Laplace-expansie naar eerste kolom:
+Cofactor-expansie naar eerste kolom:
 \[\det(A) = a_{11} \cdot \det(A_{11}) + 0 + \ldots + 0\]
 
-Submatrix $A_{11}$ is ook bovendriehoeks met diagonaal $(a_{22}, \ldots, a_{nn})$.
+Submatrix $A_{11}$ is ook bovendriehoek met diagonaal $(a_{22}, \ldots, a_{nn})$.
 
 Via inductiehypothese:
 \[\det(A_{11}) = a_{22} \cdot a_{33} \cdot \ldots \cdot a_{nn}\]
 
 Dus:
-\[\det(A) = a_{11} \cdot (a_{22} \cdot \ldots \cdot a_{nn}) = \prod_{i=1}^{n} a_{ii}\]
+\[\det(A) = a_{11} \cdot (a_{22} \cdot \ldots \cdot a_{nn}) \]
 
 \subsection*{Conclusie}
 \[
     \boxed{\det(A) = a_{11} \cdot a_{22} \cdot \ldots \cdot a_{nn}}
 \]
-
 \end{document}
