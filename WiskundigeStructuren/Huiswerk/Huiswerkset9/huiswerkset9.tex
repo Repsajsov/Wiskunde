@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[margin=2cm]{geometry}
+\usepackage{cancel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\cn}[1]{\cancel{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rho}{\mathcal{P}}
+\newcommand{\en}{\tx{ en }}
+\newcommand{\of}{\tx{ of }}
+\newcommand{\geldt}{\tx{ geldt }}
+\newcommand{\dan}{\tx{ dan }}
+\newcommand{\als}{\tx{ als }}
+\newcommand{\zdd}{\tx{ zodanig dat }}
+\newcommand{\met}{\tx{ met }}
+
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\bracket}[1]{\left[ #1 \right]}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+
+\begin{document}
+
+{\Large \textbf{Wiskundige Structuren}}
+
+\bigskip
+
+\textbf{Jasper Vos} \hfill \textbf{Huiswerkset 9} \hfill \today \\
+Studentnr: \emph{s2911159}
+
+\rule{\textwidth}{2pt}
+
+\bigskip
+
+\section*{Opgave 1}
+\begin{proof}
+    Te bewijzen:
+    \[ \forall \epsilon > 0 \ \exists \delta > 0 \ \zdd x, y \in D \geldt |x - y| < \delta \implies \abs{\f{1}{x^2} - \f{1}{y^2}} < \epsilon\]
+    Uitschrijven geeft:
+    \[\abs{\f{1}{x^2} - \f{1}{y^2}} = \abs{\f{x^2 - y^2}{(xy)^2}} = \abs{\f{(x-y)(x+y)}{(xy)^2}}\]
+    Merk op dat $|x - y| < \delta$, alleen zitten we met die $\abs{\f{x + y}{(xy)^2}}$, we moeten een $M$ vinden zodanig dat $M \geq \f{x + y}{(xy)^2}$.
+    Herschrijf:
+    \[\f{x}{(xy)^2} + \f{y}{(xy)^2} = \f{1}{xy^2} + \f{1}{x^2y} \leq 1 + 1 = 2 \tx{, Voor alle } x \in [1, \infty) \]
+    We hebben $M = 2$ gevonden en dus:
+    \[\abs{\f{(x-y)(x+y)}{(xy)^2}} < M \cdot \delta  = 2\delta\]
+    Kies $\delta = \f{\epsilon}{2}$, dan hebben we:
+    \[\boxed{\abs{\f{1}{x^2} - \f{1}{y^2}} < 2\delta = \cn{2}\cdot\f{\epsilon}{\cn{2}} = \epsilon}\]
+    En dus is $f$ uniform continue op $[0, \infty)$.
+\end{proof}
+
+\section*{Opgave 2}
+\begin{proof}
+    Laat $g(x) = x$ en bekijk $x = 0$ dan:
+    \[g(0) = 0 \en f(0) = e^{-\f{5}{2}\sqrt{0}} = e^0 = 1, \tx{ en dus } f(0) > g(0)\]
+    Bekijk nu $x = 2$:
+    \[g(2) = 2 \en f(2) = e^{-\f{5}{2}\sqrt{2}} = \f{1}{e^{\f{5}{2}\sqrt{2}}} < 1, \tx{ en dus } f(2) < g(2)\]
+    Omdat $f$ en $g$ beide continu zijn, en omdat $f(0) > g(0)$ en ook $g(2) > f(2)$ moet er volgens de tussenwaardestelling een $x \in [0, 2]$ bestaan waarvoor:
+    \[\boxed{f(x) = g(x) = x}\].
+\end{proof}
+
+\section*{Opgave 3}
+\begin{proof}
+    Merk op dat $f$ een vorm heeft als:
+    \[f(x) = a_1x^{n_1} + a_2x^{n_2} + \dots \]
+    Waarbij $a_i > 0$, en $n_1 > n_i$ waarvoor $i > 1$. 
+    
+    We kijken dus alleen naar de eerste term om het gedrag van de functie te bepalen.
+    Als $n_1$ even is geldt dus dat $f$ altijd een dalparabool is, en als $n_1$ oneven geldt dat $f$ stijgend is als $x > 0$.
+    Dit betekent dus dat $f$ naar boven onbegrensd is. 
+    
+    Volgens de tussenwaardestelling moet er een $c$ bestaan zodanig dat $f(c) = 0$, voor $n_1$ even geeft dit twee oplossingen en voor $n_1$ oneven geeft dit een enkele oplossing.
+\end{proof}
+
+\section*{Opgave 4}
+\begin{proof}
+    Bewijs vanuit het ongerijmde.
+
+    Laat $f$ continu zijn waarbij $x, y$ bestaan met $f(x) \neq f(y)$.
+    Kies nu een irrationaal getal $p$ waarvoor geldt $f(x) < p < f(y)$. Volgens de tussenwaardestelling moet er dan een $c \in [0, 1]$ bestaan waarvoor $f(c) = p$.
+    Merk op dat $f(c) \in \Q$ volgens definitie van $f$ echter geldt ook dat $f(c) = p$ en $p \notin \Q$, dus hebben we een tegenspraak.
+
+    Als $f$ continu is moet het dus constant zijn,
+    en elke constante functie is per definitie continu.
+\end{proof}
+\end{document}
