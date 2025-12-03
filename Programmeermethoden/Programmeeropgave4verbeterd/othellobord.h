@@ -38,7 +38,7 @@ private:
   void maakGeldigLijstLeeg();
   void swap(char &a, char &b);
 
-  void menszet(char huidigspeler, char tegenstander);
+  bool menszet(char huidigspeler, char tegenstander);
   int mogelijkezetten;
   void mensofpc();
   void groottebord();
@@ -48,7 +48,10 @@ private:
   char wmensofpc;
   void spelteller();
   int aantalspellen;
-
+  int leesgetal(int maxwaarde);
+  char leesoptie();
+  bordvakje *vindVakje(int kolom, int rij);
+  void doeZet(bordvakje *vakje, geldigvakje *geldig, char speler);
   // TODO
 public:
   othellobord();
@@ -57,4 +60,4 @@ public:
   void spel();
   void drukaf();
   // TODO
-}; // othellobord
+  };// othellobord
