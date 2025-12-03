@@ -6,58 +6,52 @@ public:
   bordvakje();         //     5 4 3
 }; // bordvakje
 
-class geldigvakje {
+class geldigeZet {
 public:
   bordvakje *vakje;
-  geldigvakje *volgende;
-  int aantalgeslagen;
+  geldigeZet *volgende;
+  int aantalGeslagen;
   bool richtingen[8];
-  geldigvakje();
+  geldigeZet();
 
 private:
 };
 class othellobord {
 private:
-  bordvakje *ingang;
-  geldigvakje *inganggeldig;
+  bordvakje *bordStart;
+  geldigeZet *geldigeZetten;
 
-  void voegvoor(bordvakje *&ingangpointer);
-  void voegvoor(geldigvakje *&ingangpointer, bordvakje *vakje, int richting);
-  bordvakje *maakrij();
-  void ritsen(bordvakje *boven, bordvakje *onder);
-  void bouwbord();
+  void voegVoor(bordvakje *&startVakje);
+  void voegVoor(geldigeZet *&startGeldigeZet, bordvakje *vakje, int richting);
+  bordvakje *maakRij();
+  void ritsen(bordvakje *bovenRijVakje, bordvakje *onderRijVakje);
+  void bouwBord();
   void zetBeginStenen();
-  const char wit = 'W';
-  const char zwart = 'Z';
-  char gettegenstander(char huidigespeler);
-  geldigvakje *zoekGeldigVakje(bordvakje *vakje);
+  char getTegenstander(char speler);
+  geldigeZet *zoekGeldigeZet(bordvakje *vakje);
   bool geldigzet();
-  bool isgeldig(char huidigespeler);
-  void controleerzet(bordvakje *huidigvakje, char tegenstander,
+  bool berekenGeldigeZetten(char speler);
+  void controleerZet(bordvakje *huidigvakje, char tegenstander,
                      char huidigespeler);
-  void maakGeldigLijstLeeg();
+  void resetGeldigeZetten();
   void swap(char &a, char &b);
 
   bool menszet(char huidigspeler, char tegenstander);
-  int mogelijkezetten;
   void mensofpc();
   void groottebord();
   int m = 8;
   int n = 8;
-  char zmensofpc;
-  char wmensofpc;
   void spelteller();
   int aantalspellen;
-  int leesgetal(int maxwaarde);
-  char leesoptie();
+  int leesGetal(int maxWaarde);
+  char leesOptie();
   bordvakje *vindVakje(int kolom, int rij);
-  void doeZet(bordvakje *vakje, geldigvakje *geldig, char speler);
+  void doeZet(bordvakje *vakje, geldigeZet *geldig, char speler);
   // TODO
 public:
   othellobord();
   ~othellobord();
   bool computerzet(char huidigspeler, char tegenstander);
   void spel();
-  void drukaf();
-  // TODO
-  };// othellobord
+  void bordAfdrukken();
+}; // othellobord

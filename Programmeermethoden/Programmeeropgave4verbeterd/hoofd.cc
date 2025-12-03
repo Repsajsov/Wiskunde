@@ -40,12 +40,12 @@ char leesoptie() {
   return optie;
 } // leesoptie
 
-void othellobord::mensofpc() {
-  cout << "Is zwart een mens of computer? [C]omputer  [M]ens" << endl;
-  zmensofpc = leesoptie();
-  cout << "Is wit een mens of computer? [C]omputer  [M]ens" << endl;
-  wmensofpc = leesoptie();
-}
+// void othellobord::mensofpc() {
+//   cout << "Is zwart een mens of computer? [C]omputer  [M]ens" << endl;
+//   zmensofpc = leesoptie();
+//   cout << "Is wit een mens of computer? [C]omputer  [M]ens" << endl;
+//   wmensofpc = leesoptie();
+// }
 
 void othellobord::groottebord() {
   cout << "Hoeveel kollomen wil je hebben? [>2] , [2|]" << endl;
@@ -54,12 +54,12 @@ void othellobord::groottebord() {
   n = leesgetal(20);
 }
 
-void othellobord::spelteller() {
-  if (zmensofpc == 'C' && wmensofpc == 'M') {
-    cout << "Hoeveel spellen wil je spelen?" << endl;
-    aantalspellen = leesgetal(1000000000);
-  }
-}
+// void othellobord::spelteller() {
+//   if (zmensofpc == 'C' && wmensofpc == 'M') {
+//     cout << "Hoeveel spellen wil je spelen?" << endl;
+//     aantalspellen = leesgetal(1000000000);
+//   }
+// }
 
 int main() {
   othellobord Othellobord;

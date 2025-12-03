@@ -3,6 +3,6 @@ othellobord.cc:116:55: warning: unused parameter ‘tegenstander’ [-Wunused-pa
   116 | bool othellobord::computerzet(char huidigspeler, char tegenstander) {
       |                                                  ~~~~~^~~~~~~~~~~~
 othellobord.cc: In member function ‘bool othellobord::menszet(char, char)’:
-othellobord.cc:152:51: warning: unused parameter ‘tegenstander’ [-Wunused-parameter]
-  152 | bool othellobord::menszet(char huidigspeler, char tegenstander) {
-      |                                              ~~~~~^~~~~~~~~~~~
+othellobord.cc:139:45: warning: unused parameter ‘tegenstander’ [-Wunused-parameter]
+  139 | bool othellobord::menszet(char speler, char tegenstander) {
+      |                                        ~~~~~^~~~~~~~~~~~
