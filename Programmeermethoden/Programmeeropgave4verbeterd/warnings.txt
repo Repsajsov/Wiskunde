@@ -1,0 +1,4 @@
+othellobord.cc: In member function ‘void othellobord::menszet(char, char)’:
+othellobord.cc:119:51: warning: unused parameter ‘tegenstander’ [-Wunused-parameter]
+  119 | void othellobord::menszet(char huidigspeler, char tegenstander) {
+      |                                              ~~~~~^~~~~~~~~~~~
