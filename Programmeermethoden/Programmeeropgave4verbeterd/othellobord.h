@@ -1,43 +1,40 @@
 // file othellobord.h
-class bordvakje {
+class BordVakje {
 public:
   char kleur;          //     7 0 1
-  bordvakje *buren[8]; //     6   2
-  bordvakje();         //     5 4 3
-}; // bordvakje
+  BordVakje *buren[8]; //     6   2
+  BordVakje();         //     5 4 3
+}; // BordVakje
 
-class geldigeZet {
+class GeldigeZet {
 public:
-  bordvakje *vakje;
-  geldigeZet *volgende;
+  BordVakje *vakje;
+  GeldigeZet *volgende;
   int aantalGeslagen;
   bool richtingen[8];
-  geldigeZet();
-
-private:
+  GeldigeZet();
 };
-class othellobord {
-private:
-  bordvakje *bordStart;
-  geldigeZet *geldigeZetten;
 
-  void voegVoor(bordvakje *&startVakje);
-  void voegVoor(geldigeZet *&startGeldigeZet, bordvakje *vakje, int richting);
-  bordvakje *maakRij();
-  void ritsen(bordvakje *bovenRijVakje, bordvakje *onderRijVakje);
+class OthelloBord {
+private:
+  BordVakje *bordStart;
+  GeldigeZet *geldigeZetten;
+
+  void voegVoor(BordVakje *&startVakje);
+  void voegVoor(GeldigeZet *&startGeldigeZet, BordVakje *vakje, int richting);
+  BordVakje *maakRij();
+  void ritsen(BordVakje *bovenRijVakje, BordVakje *onderRijVakje);
   void bouwBord();
   void zetBeginStenen();
   char getTegenstander(char speler);
-  geldigeZet *zoekGeldigeZet(bordvakje *vakje);
-  bool geldigzet();
+  GeldigeZet *zoekGeldigeZet(BordVakje *vakje);
   bool berekenGeldigeZetten(char speler);
-  void controleerZet(bordvakje *huidigvakje, char tegenstander,
-                     char huidigespeler);
+  void controleerZet(BordVakje *huidigVakje, char tegenstander,
+                     char speler);
   void resetGeldigeZetten();
   void swap(char &a, char &b);
 
-  bool menszet(char huidigspeler, char tegenstander);
-  void mensofpc();
+  bool mensZet(char speler, char tegenstander);
   void groottebord();
   int m = 8;
   int n = 8;
@@ -45,13 +42,13 @@ private:
   int aantalspellen;
   int leesGetal(int maxWaarde);
   char leesOptie();
-  bordvakje *vindVakje(int kolom, int rij);
-  void doeZet(bordvakje *vakje, geldigeZet *geldig, char speler);
+  BordVakje *vindVakje(int kolom, int rij);
+  void doeZet(BordVakje *vakje, GeldigeZet *geldig, char speler);
   // TODO
 public:
-  othellobord();
-  ~othellobord();
-  bool computerzet(char huidigspeler, char tegenstander);
+  OthelloBord();
+  ~OthelloBord();
+  bool computerzet(char speler, char tegenstander);
   void spel();
   void bordAfdrukken();
 }; // othellobord

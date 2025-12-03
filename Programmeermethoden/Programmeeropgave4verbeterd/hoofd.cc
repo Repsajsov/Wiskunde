@@ -47,7 +47,7 @@ char leesoptie() {
 //   wmensofpc = leesoptie();
 // }
 
-void othellobord::groottebord() {
+void OthelloBord::groottebord() {
   cout << "Hoeveel kollomen wil je hebben? [>2] , [2|]" << endl;
   m = leesgetal(20);
   cout << "Hoeveel rijen wil je hebben?" << endl;
@@ -62,7 +62,7 @@ void othellobord::groottebord() {
 // }
 
 int main() {
-  othellobord Othellobord;
-  Othellobord.spel();
+  OthelloBord game;
+  game.spel();
   return 0;
 } // main
