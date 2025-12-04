@@ -21,8 +21,20 @@ public:
   char kleur;
   bool isComputer;
   Speler(char kleur, bool isComputer);
-  void setScore(int nieuweScore);
   void verhoogScore(int punten);
+};
+
+class Raport {
+public:
+  int *winnaars;
+  int *aantalZettenSpel;
+  int *aantalPunten;
+  int *aantalVervolgZetten;
+
+  int aantalExperimenten;
+  Raport(int aantalExperimenten);
+  ~Raport();
+  int gemiddelde(int *array);
 };
 
 class OthelloBord {
@@ -33,6 +45,9 @@ private:
   Speler *speler1;
   Speler *speler2;
   Speler *huidigeSpeler;
+
+  int randomGetal(int maxWaarde);
+  int aantalBeurten;
 
   void voegVoor(BordVakje *&startVakje);
   void voegVoor(GeldigeZet *&startZet, BordVakje *vakje, int richting,
@@ -45,7 +60,7 @@ private:
   bool berekenGeldigeZetten();
   void controleerZet(BordVakje *huidigVakje);
   void resetGeldigeZetten();
-  void swap(char &a, char &b);
+  void resetBord();
   void verwisselSpelers();
 
   bool mensZet();
@@ -54,6 +69,7 @@ private:
   int m = 8;
   int n = 8;
   void spelteller();
+  int aantalZetten;
   int aantalspellen;
   int leesGetal(int maxWaarde);
   char leesOptie();
@@ -64,7 +80,8 @@ public:
   OthelloBord();
   ~OthelloBord();
   Speler *getTegenstander();
-  bool computerzet();
+  bool computerZet();
   void spel();
   void bordAfdrukken();
+  void experiment();
 }; // othellobord

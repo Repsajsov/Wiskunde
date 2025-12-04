@@ -1,7 +1,17 @@
-// file othellobord.cc
 #include "othellobord.h"
+#include <ctime>
 #include <iostream>
+
+#ifdef _WIN32
+#include <windows.h>
+#define SLEEP(ms) Sleep(ms)
+#define CLEAR "cls"
+#else
 #include <unistd.h>
+#define SLEEP(ms) usleep((ms) * 1000)
+#define CLEAR "clear"
+#endif
+
 using namespace std;
 
 BordVakje::BordVakje() {
@@ -23,10 +33,9 @@ GeldigeZet::GeldigeZet() {
 Speler::Speler(char kleur, bool isComputer) {
   this->kleur = kleur;
   this->isComputer = isComputer;
-  this->score = 2;
+  score = 2;
 }
 void Speler::verhoogScore(int punten) { score += punten; }
-void Speler::setScore(int nieuweScore) { score = nieuweScore; }
 
 Speler *OthelloBord::getTegenstander() {
   if (huidigeSpeler == speler1) {
@@ -34,6 +43,64 @@ Speler *OthelloBord::getTegenstander() {
   }
   return speler1;
 }
+
+Raport::Raport(int aantalExperimenten) {
+  this->aantalExperimenten = aantalExperimenten;
+  this->winnaars = new int[aantalExperimenten];
+  this->aantalZettenSpel = new int[aantalExperimenten];
+  this->aantalPunten = new int[aantalExperimenten];
+  this->aantalVervolgZetten = new int[aantalExperimenten];
+
+  for (int i = 0; i < aantalExperimenten; i++) {
+    winnaars[i] = 0;
+    aantalZettenSpel[i] = 0;
+    aantalPunten[i] = 0;
+    aantalVervolgZetten[i] = 0;
+  }
+}
+
+int Raport::gemiddelde(int *array) {
+  float resultaat = 0;
+  for (int i = 0; i < aantalExperimenten; i++) {
+    resultaat += array[i];
+  }
+  return resultaat / aantalExperimenten;
+}
+
+Raport::~Raport() {
+  delete[] winnaars;
+  delete[] aantalZettenSpel;
+  delete[] aantalPunten;
+  delete[] aantalVervolgZetten;
+}
+
+void OthelloBord::experiment() {
+  int aantalExperimenten = 10;
+  Raport raport(aantalExperimenten);
+  for (int i = 0; i < aantalExperimenten; i++) {
+    spel();
+
+    if (speler1->score > speler2->score) {
+      raport.winnaars[i] = 0;
+      raport.aantalZettenSpel[i] = aantalBeurten;
+      raport.aantalPunten[i] = speler1->score;
+    } else {
+      raport.winnaars[i] = 1;
+      raport.aantalZettenSpel[i] = aantalBeurten;
+      raport.aantalPunten[i] = speler2->score;
+    }
+    resetBord();
+    bouwBord();
+    speler1->score = 2;
+    speler2->score = 2;
+    huidigeSpeler = speler1;
+  }
+  // beetje raar dit...
+  cout << "geen idee dit: " << raport.gemiddelde(raport.winnaars)
+       << "en dit dan:" << raport.gemiddelde(raport.aantalPunten) << endl;
+}
+
+int OthelloBord::randomGetal(int maxWaarde) { return rand() % maxWaarde; }
 
 GeldigeZet *OthelloBord::zoekGeldigeZet(BordVakje *vakje) {
   GeldigeZet *huidig = geldigeZetten;
@@ -75,6 +142,7 @@ void OthelloBord::voegVoor(GeldigeZet *&startZet, BordVakje *vakje,
   nieuweZet->aantalGeslagen = geslagen;
   nieuweZet->volgende = startZet;
   startZet = nieuweZet;
+  aantalZetten++;
 }
 
 void OthelloBord::controleerZet(BordVakje *huidigVakje) {
@@ -116,12 +184,19 @@ bool OthelloBord::berekenGeldigeZetten() {
   return false;
 } // isgeldig
 
-bool OthelloBord::computerzet() {
+bool OthelloBord::computerZet() {
   if (!berekenGeldigeZetten()) {
     return false;
   }
 
-  flipVakken(geldigeZetten->vakje, geldigeZetten);
+  int a = randomGetal(aantalZetten);
+  GeldigeZet *hulp = geldigeZetten;
+
+  for (int i = 0; i < a && hulp->volgende != nullptr; i++) {
+    hulp = hulp->volgende;
+  }
+
+  flipVakken(hulp->vakje, hulp);
   return true;
 }
 
@@ -144,7 +219,7 @@ void OthelloBord::flipVakken(BordVakje *startVakje, GeldigeZet *zet) {
 
 bool OthelloBord::speelZet() {
   if (huidigeSpeler->isComputer) {
-    return computerzet();
+    return computerZet();
   }
   return mensZet();
 }
@@ -269,14 +344,6 @@ void OthelloBord::zetBeginStenen() {
   huidigVakje->buren[3]->kleur = 'W';
 }
 
-void OthelloBord::resetGeldigeZetten() {
-  while (geldigeZetten != nullptr) {
-    GeldigeZet *oudeZet = geldigeZetten;
-    geldigeZetten = geldigeZetten->volgende;
-    delete oudeZet;
-  }
-}
-
 void OthelloBord::verwisselSpelers() {
   if (huidigeSpeler == speler1) {
     huidigeSpeler = speler2;
@@ -287,6 +354,7 @@ void OthelloBord::verwisselSpelers() {
 
 void OthelloBord::spel() {
   int beurtenOvergeslagen = 0;
+  aantalBeurten = 0;
 
   bordAfdrukken();
   while (beurtenOvergeslagen < 2) {
@@ -296,42 +364,50 @@ void OthelloBord::spel() {
       beurtenOvergeslagen = 0;
     }
     verwisselSpelers();
-    sleep(1);
-    system("clear");
+    SLEEP(100);
+    system(CLEAR);
     bordAfdrukken();
+    aantalBeurten++;
   }
-}
-
-void OthelloBord::swap(char &a, char &b) {
-  char temp = a;
-  a = b;
-  b = temp;
 }
 
 OthelloBord::OthelloBord() {
+  srand(time(NULL));
   bouwBord();
   geldigeZetten = nullptr;
-
-  cout << "Speler 1 [M]ens of [C]omputer?" << endl;
-  char antwoord1 = leesOptie();
-  if (antwoord1 == 'M') {
-    speler1 = new Speler('Z', false);
-  } else {
-    speler1 = new Speler('Z', true);
-  }
-  cout << "Speler 2 [M]ens of [C]omputer?" << endl;
-  char antwoord2 = leesOptie();
-  if (antwoord2 == 'M') {
-    speler2 = new Speler('W', false);
-  } else {
-    speler2 = new Speler('W', true);
-  }
-
+  speler1 = new Speler('Z', true);
+  speler2 = new Speler('W', true);
   huidigeSpeler = speler1;
 } // othellobord::othellobord
 
+void OthelloBord::resetGeldigeZetten() {
+  while (geldigeZetten != nullptr) {
+    GeldigeZet *oudeZet = geldigeZetten;
+    geldigeZetten = geldigeZetten->volgende;
+    delete oudeZet;
+  }
+  aantalZetten = 0;
+}
+
 OthelloBord::~OthelloBord() {
-  // TODO
+  delete speler1;
+  delete speler2;
+  resetGeldigeZetten();
+  resetBord();
+}
+
+void OthelloBord::resetBord() {
+  BordVakje *rij = bordStart;
+  while (rij != nullptr) {
+    BordVakje *huidigVakje = rij;
+    rij = rij->buren[4];
+    while (huidigVakje != nullptr) {
+      BordVakje *oudVakje = huidigVakje;
+      huidigVakje = huidigVakje->buren[2];
+      delete oudVakje;
+    }
+  }
+  bordStart = nullptr;
 } // othellobord::~othellobord
 
 void OthelloBord::bordAfdrukken() {
@@ -345,9 +421,9 @@ void OthelloBord::bordAfdrukken() {
     cout << char('A' + i) << " ";
   }
   cout << endl;
-  int k = 1;
+  int rijNummer = 1;
   while (rij != nullptr) {
-    cout << k << " ";
+    cout << rijNummer << " ";
     BordVakje *kolom = rij;
     while (kolom != nullptr) {
       cout << kolom->kleur << ' ';
@@ -355,7 +431,7 @@ void OthelloBord::bordAfdrukken() {
     }
     cout << endl;
     rij = rij->buren[4];
-    k += 1;
+    rijNummer += 1;
   }
   // TODO
 } // othellobord::drukaf

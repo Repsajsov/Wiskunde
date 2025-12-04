@@ -26,6 +26,7 @@ using namespace std;
 
 int main() {
   OthelloBord game;
-  game.spel();
+  // game.spel();
+  game.experiment();
   return 0;
 } // main
