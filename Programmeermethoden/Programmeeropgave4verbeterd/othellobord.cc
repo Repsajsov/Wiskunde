@@ -50,17 +50,13 @@ BordVakje *OthelloBord::vindVakje(int kolom, int rij) {
   if (kolom < 0 || kolom >= n || rij < 0 || rij >= m) {
     return nullptr;
   }
-
   BordVakje *huidig = bordStart;
-
   for (int i = 0; i < rij; i++) {
     huidig = huidig->buren[4];
   }
-
   for (int i = 0; i < kolom; i++) {
     huidig = huidig->buren[2];
   }
-
   return huidig;
 }
 
