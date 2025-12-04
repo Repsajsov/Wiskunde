@@ -364,7 +364,7 @@ void OthelloBord::spel() {
       beurtenOvergeslagen = 0;
     }
     verwisselSpelers();
-    SLEEP(100);
+    // SLEEP(500);
     system(CLEAR);
     bordAfdrukken();
     aantalBeurten++;
