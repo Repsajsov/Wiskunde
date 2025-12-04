@@ -20,6 +20,21 @@ GeldigeZet::GeldigeZet() {
   aantalGeslagen = 0;
 }
 
+Speler::Speler(char kleur, bool isComputer) {
+  this->kleur = kleur;
+  this->isComputer = isComputer;
+  this->score = 2;
+}
+void Speler::verhoogScore(int punten) { score += punten; }
+void Speler::setScore(int nieuweScore) { score = nieuweScore; }
+
+Speler *OthelloBord::getTegenstander() {
+  if (huidigeSpeler == speler1) {
+    return speler2;
+  }
+  return speler1;
+}
+
 GeldigeZet *OthelloBord::zoekGeldigeZet(BordVakje *vakje) {
   GeldigeZet *huidig = geldigeZetten;
   while (huidig != nullptr) {
@@ -49,43 +64,36 @@ BordVakje *OthelloBord::vindVakje(int kolom, int rij) {
   return huidig;
 }
 
-void OthelloBord::voegVoor(GeldigeZet *&rij_ingang, BordVakje *vakje,
-                           int richting) {
-  GeldigeZet *bestaand = zoekGeldigeZet(vakje);
-  if (bestaand != nullptr) {
-    bestaand->richtingen[richting] = true;
+void OthelloBord::voegVoor(GeldigeZet *&startZet, BordVakje *vakje,
+                           int richting, int geslagen) {
+  GeldigeZet *bestaandeZet = zoekGeldigeZet(vakje);
+  if (bestaandeZet != nullptr) {
+    bestaandeZet->richtingen[richting] = true;
+    bestaandeZet->aantalGeslagen += geslagen;
     return;
   }
 
-  GeldigeZet *hulp = new GeldigeZet;
-  hulp->vakje = vakje;
-  hulp->richtingen[richting] = true;
-  hulp->volgende = rij_ingang;
-  rij_ingang = hulp;
+  GeldigeZet *nieuweZet = new GeldigeZet;
+  nieuweZet->vakje = vakje;
+  nieuweZet->richtingen[richting] = true;
+  nieuweZet->aantalGeslagen = geslagen;
+  nieuweZet->volgende = startZet;
+  startZet = nieuweZet;
 }
 
-char OthelloBord::getTegenstander(char speler) {
-  char tegenstander = '\0';
-  if (speler == 'Z') {
-    tegenstander = 'W';
-  } // if
-  else {
-    tegenstander = 'Z';
-  } // else
-  return tegenstander;
-}
-
-void OthelloBord::controleerZet(BordVakje *huidigVakje, char tegenstander,
-                                char speler) {
+void OthelloBord::controleerZet(BordVakje *huidigVakje) {
+  Speler *tegenstander = getTegenstander();
   for (int i = 0; i < 8; i++) {
     if (huidigVakje->buren[i] != nullptr) {
-      if (huidigVakje->buren[i]->kleur == tegenstander) {
+      if (huidigVakje->buren[i]->kleur == tegenstander->kleur) {
         BordVakje *hulp = huidigVakje->buren[i];
+        int aantalGeslagen = 0;
         while (hulp != nullptr && hulp->kleur != '.') {
-          if (hulp->kleur == speler) {
-            voegVoor(geldigeZetten, huidigVakje, i);
+          if (hulp->kleur == huidigeSpeler->kleur) {
+            voegVoor(geldigeZetten, huidigVakje, i, aantalGeslagen);
             break;
           } // if
+          aantalGeslagen++;
           hulp = hulp->buren[i];
         } // if
       } // if
@@ -93,15 +101,14 @@ void OthelloBord::controleerZet(BordVakje *huidigVakje, char tegenstander,
   } // for
 }
 
-bool OthelloBord::berekenGeldigeZetten(char speler) {
+bool OthelloBord::berekenGeldigeZetten() {
   resetGeldigeZetten();
-  char tegenstander = getTegenstander(speler);
   BordVakje *rij = bordStart;
   while (rij != nullptr) {
     BordVakje *huidigVakje = rij;
     while (huidigVakje != nullptr) {
       if (huidigVakje->kleur == '.') {
-        controleerZet(huidigVakje, tegenstander, speler);
+        controleerZet(huidigVakje);
       } // if
       huidigVakje = huidigVakje->buren[2];
     } // while
@@ -113,35 +120,50 @@ bool OthelloBord::berekenGeldigeZetten(char speler) {
   return false;
 } // isgeldig
 
-bool OthelloBord::computerzet(char speler, char tegenstander) {
-  if (!berekenGeldigeZetten(speler)) {
+bool OthelloBord::computerzet() {
+  if (!berekenGeldigeZetten()) {
     return false;
   }
 
-  doeZet(geldigeZetten->vakje, geldigeZetten, speler);
+  flipVakken(geldigeZetten->vakje, geldigeZetten);
   return true;
 }
 
-void OthelloBord::doeZet(BordVakje *startVakje, GeldigeZet *geldig, char speler) {
-  startVakje->kleur = speler;
-  char tegenstander = getTegenstander(speler);
+void OthelloBord::flipVakken(BordVakje *startVakje, GeldigeZet *zet) {
+  startVakje->kleur = huidigeSpeler->kleur;
+  Speler *tegenstander = getTegenstander();
 
   for (int i = 0; i < 8; i++) {
-    if (geldig->richtingen[i]) {
+    if (zet->richtingen[i]) {
       BordVakje *hulp = startVakje->buren[i];
-      while (hulp != nullptr && hulp->kleur == tegenstander) {
-        hulp->kleur = speler;
+      while (hulp != nullptr && hulp->kleur == tegenstander->kleur) {
+        hulp->kleur = huidigeSpeler->kleur;
         hulp = hulp->buren[i];
       }
     }
   }
+  huidigeSpeler->verhoogScore(zet->aantalGeslagen + 1);
+  tegenstander->verhoogScore(-zet->aantalGeslagen);
 }
-bool OthelloBord::mensZet(char speler, char tegenstander) {
-  berekenGeldigeZetten(speler);
+
+bool OthelloBord::speelZet() {
+  if (huidigeSpeler->isComputer) {
+    return computerzet();
+  }
+  return mensZet();
+}
+
+bool OthelloBord::mensZet() {
+  berekenGeldigeZetten();
   bool isGeldigeZet = false;
   while (!isGeldigeZet) {
-    cout << "Kolom: ";
-    int kolom = int(leesOptie() - 'A');
+    cout << "Geef Coordinaat (A1, B2, ...) of ga een zet terug (U)ndo:" << endl;
+    char eersteKarakter = leesOptie();
+    if (eersteKarakter == 'U') {
+      cout << "Undo nog niet beschikbaar!" << endl;
+      continue;
+    }
+    int kolom = int(eersteKarakter - 'A');
     int rij = leesGetal(m);
     if (kolom < 0 || kolom >= n || rij < 1 || rij > m) {
       cout << "Deze coordinaten liggen buiten het bord!" << endl;
@@ -151,7 +173,7 @@ bool OthelloBord::mensZet(char speler, char tegenstander) {
       if (gekozenZet == nullptr) {
         cout << "Ongeldige zet!" << endl;
       } else {
-        doeZet(gekozenVakje, gekozenZet, speler);
+        flipVakken(gekozenVakje, gekozenZet);
         isGeldigeZet = true;
       }
     }
@@ -259,18 +281,25 @@ void OthelloBord::resetGeldigeZetten() {
   }
 }
 
+void OthelloBord::verwisselSpelers() {
+  if (huidigeSpeler == speler1) {
+    huidigeSpeler = speler2;
+  } else {
+    huidigeSpeler = speler1;
+  }
+}
+
 void OthelloBord::spel() {
   int beurtenOvergeslagen = 0;
-  char speler = 'Z';
-  char tegenstander = 'W';
+
   bordAfdrukken();
   while (beurtenOvergeslagen < 2) {
-    if (!computerzet(speler, tegenstander)) {
+    if (!speelZet()) {
       beurtenOvergeslagen += 1;
     } else {
       beurtenOvergeslagen = 0;
     }
-    swap(speler, tegenstander);
+    verwisselSpelers();
     sleep(1);
     system("clear");
     bordAfdrukken();
@@ -286,6 +315,23 @@ void OthelloBord::swap(char &a, char &b) {
 OthelloBord::OthelloBord() {
   bouwBord();
   geldigeZetten = nullptr;
+
+  cout << "Speler 1 [M]ens of [C]omputer?" << endl;
+  char antwoord1 = leesOptie();
+  if (antwoord1 == 'M') {
+    speler1 = new Speler('Z', false);
+  } else {
+    speler1 = new Speler('Z', true);
+  }
+  cout << "Speler 2 [M]ens of [C]omputer?" << endl;
+  char antwoord2 = leesOptie();
+  if (antwoord2 == 'M') {
+    speler2 = new Speler('W', false);
+  } else {
+    speler2 = new Speler('W', true);
+  }
+
+  huidigeSpeler = speler1;
 } // othellobord::othellobord
 
 OthelloBord::~OthelloBord() {
@@ -294,6 +340,10 @@ OthelloBord::~OthelloBord() {
 
 void OthelloBord::bordAfdrukken() {
   BordVakje *rij = bordStart;
+  cout << "Speler 1: " << speler1->score << ", Speler 2: " << speler2->score
+       << endl
+       << endl;
+  ;
   cout << "  ";
   for (int i = 0; i < n; i++) {
     cout << char('A' + i) << " ";

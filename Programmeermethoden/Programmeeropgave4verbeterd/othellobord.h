@@ -15,26 +15,41 @@ public:
   GeldigeZet();
 };
 
+class Speler {
+public:
+  int score;
+  char kleur;
+  bool isComputer;
+  Speler(char kleur, bool isComputer);
+  void setScore(int nieuweScore);
+  void verhoogScore(int punten);
+};
+
 class OthelloBord {
 private:
   BordVakje *bordStart;
   GeldigeZet *geldigeZetten;
 
+  Speler *speler1;
+  Speler *speler2;
+  Speler *huidigeSpeler;
+
   void voegVoor(BordVakje *&startVakje);
-  void voegVoor(GeldigeZet *&startGeldigeZet, BordVakje *vakje, int richting);
+  void voegVoor(GeldigeZet *&startZet, BordVakje *vakje, int richting,
+                int geslagen);
   BordVakje *maakRij();
   void ritsen(BordVakje *bovenRijVakje, BordVakje *onderRijVakje);
   void bouwBord();
   void zetBeginStenen();
-  char getTegenstander(char speler);
   GeldigeZet *zoekGeldigeZet(BordVakje *vakje);
-  bool berekenGeldigeZetten(char speler);
-  void controleerZet(BordVakje *huidigVakje, char tegenstander,
-                     char speler);
+  bool berekenGeldigeZetten();
+  void controleerZet(BordVakje *huidigVakje);
   void resetGeldigeZetten();
   void swap(char &a, char &b);
+  void verwisselSpelers();
 
-  bool mensZet(char speler, char tegenstander);
+  bool mensZet();
+  bool speelZet();
   void groottebord();
   int m = 8;
   int n = 8;
@@ -43,12 +58,13 @@ private:
   int leesGetal(int maxWaarde);
   char leesOptie();
   BordVakje *vindVakje(int kolom, int rij);
-  void doeZet(BordVakje *vakje, GeldigeZet *geldig, char speler);
+  void flipVakken(BordVakje *vakje, GeldigeZet *geldig);
   // TODO
 public:
   OthelloBord();
   ~OthelloBord();
-  bool computerzet(char speler, char tegenstander);
+  Speler *getTegenstander();
+  bool computerzet();
   void spel();
   void bordAfdrukken();
 }; // othellobord
