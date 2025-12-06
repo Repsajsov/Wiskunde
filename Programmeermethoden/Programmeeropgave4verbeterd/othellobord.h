@@ -1,53 +1,45 @@
-// file othellobord.h
 class BordVakje {
+  // Vertegenwoordigd ieder vakje van het bord
 public:
-  char kleur;          //     7 0 1
-  BordVakje *buren[8]; //     6   2
-  BordVakje();         //     5 4 3
+  char kleur;
+  BordVakje *buren[8];
+  BordVakje();
 }; // BordVakje
 
 class GeldigeZet {
+  // Dit slaat per beurt op welke verschillende zetten er zijn en helpt met
+  // bepalen score en richtingen waar sten omgeslagen moeten worden
 public:
   BordVakje *vakje;
   GeldigeZet *volgende;
   int aantalGeslagen;
   bool richtingen[8];
   GeldigeZet();
-};
+}; // GeldigeZet
 
 class Speler {
+  // Dit maakt het wat makkelijker leesbaar omdat we dan geen scoreZ, scoreW
+  // etc. hoeven te maken
 public:
   int score;
   char kleur;
   bool isComputer;
   Speler(char kleur, bool isComputer);
-  void verhoogScore(int punten);
-};
-
-class Raport {
-public:
-  int *winnaars;
-  int *aantalZettenSpel;
-  int *aantalPunten;
-  int *aantalVervolgZetten;
-
-  int aantalExperimenten;
-  Raport(int aantalExperimenten);
-  ~Raport();
-  int gemiddelde(int *array);
-};
+}; // Speler
 
 class OthelloBord {
+  // Deze klasse bevat alle benodigdheden om het spel te spelen zoals het bord,
+  // geldige zetten, welke spelers er zijn etc.
 private:
-  BordVakje *bordStart;
-  GeldigeZet *geldigeZetten;
-
+  int m;
+  int n;
   Speler *speler1;
   Speler *speler2;
   Speler *huidigeSpeler;
-
-  int randomGetal(int maxWaarde);
+  BordVakje *bordStart;
+  GeldigeZet *geldigeZetten;
   int aantalBeurten;
+  int aantalZetten;
 
   void voegVoor(BordVakje *&startVakje);
   void voegVoor(GeldigeZet *&startZet, BordVakje *vakje, int richting,
@@ -59,29 +51,21 @@ private:
   GeldigeZet *zoekGeldigeZet(BordVakje *vakje);
   bool berekenGeldigeZetten();
   void controleerZet(BordVakje *huidigVakje);
-  void resetGeldigeZetten();
-  void resetBord();
   void verwisselSpelers();
-
   bool mensZet();
+  bool computerZet();
   bool speelZet();
-  void groottebord();
-  int m = 8;
-  int n = 8;
-  void spelteller();
-  int aantalZetten;
-  int aantalspellen;
-  int leesGetal(int maxWaarde);
-  char leesOptie();
   BordVakje *vindVakje(int kolom, int rij);
   void flipVakken(BordVakje *vakje, GeldigeZet *geldig);
-  // TODO
-public:
-  OthelloBord();
-  ~OthelloBord();
   Speler *getTegenstander();
-  bool computerZet();
-  void spel();
   void bordAfdrukken();
-  void experiment();
-}; // othellobord
+  int randomGetal(int maxWaarde);
+  void resetGeldigeZetten();
+  void resetBord();
+
+public:
+  OthelloBord(int rijen, int kolommen, bool zComputer, bool wCompute);
+  ~OthelloBord();
+  void spel();
+  void experiment(int aantalExperimenten);
+}; // OthelloBord
