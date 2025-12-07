@@ -27,7 +27,7 @@ GeldigeZet::GeldigeZet() {
     richtingen[i] = false;
   } // for
   aantalGeslagen = 0;
-} // GeldigeZet::GeldizeZet
+} // GeldigeZet::GeldigeZet
 
 Speler::Speler(char kleur, bool isComputer) {
   // Constructor Speler
@@ -71,6 +71,13 @@ void OthelloBord::experiment(int aantalExperimenten) {
   cout << "Aantal keren gewonnen:" << endl
        << "Speler 1: " << speler1Gewonnen
        << ", Speler 2: " << aantalExperimenten - speler1Gewonnen << endl;
+  std::ofstream uitvoerWinnaars("winnaars.txt", ios::out);
+  uitvoerWinnaars << 0 << " " << speler1Gewonnen << endl
+                  << 1 << " " << aantalExperimenten - speler1Gewonnen << endl;
+
+  uitvoerBeurten.close();
+  uitvoerScores.close();
+  uitvoerWinnaars.close();
 } // OthelloBord::experiment
 
 int OthelloBord::randomGetal(int maxWaarde) { return rand() % maxWaarde; }
