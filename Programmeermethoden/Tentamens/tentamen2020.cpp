@@ -135,6 +135,37 @@ globala variabelen zijn variabelen die overal gebruikt kunnen worden
 
 // Vraag 2.b
 
+/*
+
+peter roept steeds michael aan die steeds u, v, en w opschuift. (we kunnen u, v, en w dus als een cykel zien)
+De output van michael is altijd 2, en dus wordt a (in peter) uiteindelijk 1010 * 2 = 2020.
+Na de for loop moeten u, v, en w dus 1010 mod 3 = 2 plaatsen zijn opgeschoven.
+Dit betekent dat na de for loop u=8, v=2, w=4.
+
+De console print dus uiteindelijk:
+
+1011,8,2,4
+2020,1,4,8
+
+*/
+
+// Vraag 2.c
+
+/*
+
+Voor de for loop gaat j niet verder dan 4 omdat dat de eerste keer is dat u > j en de for loop dus stopt.
+Dit betekent dus dat er 3 rotaties zijn geweest en u=2, v=4, w=8.
+Deze zijn gelijk aan x, y, en z omdat die als reference worden meegegeven.
+
+De console print dus uiteindelijk:
+
+4, 2, 4, 8
+6, 2, 4, 8
+
+*/
+
+// Vraag 2.d
+
 int michael(int &a, int &b, int &c)
 {
     int temp = a;
